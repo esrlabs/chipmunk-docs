@@ -1,0 +1,27 @@
+- links:
+  - name: Blog
+    link: /blog/
+  - name: About
+    link: /about/
+  - name: Contact
+    link: /contact/
+- links:
+  - name: Docs
+    link: /
+    new_window: true
+  - name: Status
+    link: https://github.com/esrlabs/chipmunk/actions
+    new_window: true
+- links:
+  - name: Instagram
+    link: https://www.instagram.com/esrlabs/
+    new_window: true
+    social_icon: Instagram
+  - name: Twitter
+    link: https://twitter.com/esrlabs/
+    social_icon: Twitter
+    new_window: true
+  - name: RSS
+    link: /feed.xml
+    social_icon: RSS
+    new_window: false
