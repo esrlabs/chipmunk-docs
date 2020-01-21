@@ -1,10 +1,10 @@
 - name: Documentation
-  link: /docs/book/
-  new_window: false
+  link: /book/
+  new_window: true
   highlight: false
 - name: Blog
   link: /blog/
-  new_window: true
+  new_window: false
   highlight: false
 - name: About
   link: /about/
