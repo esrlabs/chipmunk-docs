@@ -1,5 +1,5 @@
 .DS_Store
-content/_site/
-content/.sass-cache/
-content/.jekyll-metadata/
-content/.jekyll-cache/
+docs/_site/
+docs/.sass-cache/
+docs/.jekyll-metadata/
+docs/.jekyll-cache/
