@@ -7,7 +7,7 @@
     link: /contact/
 - links:
   - name: Docs
-    link: /
+    link: /book/
     new_window: true
   - name: Status
     link: https://github.com/esrlabs/chipmunk/actions

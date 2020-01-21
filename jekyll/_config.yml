@@ -1,8 +1,8 @@
 # ----
 # Site
 
-title: Hydra Template
-url: "https://proud-alligator.cloudvent.net"
+title: Chipmunk Site
+url: "https://esrlabs.github.io/chipmunk-docs"
 baseurl:
 google_analytics_key:
 google_maps_javascript_api_key:
@@ -10,15 +10,16 @@ disqus_shortname:
 
 # Values for the jekyll-seo-tag gem (https://github.com/jekyll/jekyll-seo-tag)
 logo: /siteicon.png
-description: Product marketing template for Jekyll.
+# destination: public
+description: Page with information on chipmunk
 author:
   name:
   email:
   twitter: # twitter username without the @ symbol
 social:
-  name: Hydra Template
+  name: Chipmunk
   links:
-    - https://github.com/CloudCannon/hydra-jekyll-template
+    - https://github.com/esrlabs
 
 # -----
 # Build
@@ -84,7 +85,10 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
-  - LICENCE
+  - LICENSE
+  - rakefile.rb
+  - tmp
+  - book
 
 # -----------
 # CloudCannon
