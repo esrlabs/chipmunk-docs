@@ -21,7 +21,6 @@ jobs:
         run: rake build
       - name: create mdbook documentation
         run: rake book
-      - run: mv book/book jekyll/_site
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2
         env:
