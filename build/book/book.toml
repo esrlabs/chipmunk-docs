@@ -1,0 +1,6 @@
+[book]
+authors = ["Oliver Mueller"]
+language = "en"
+multilingual = false
+src = "src"
+title = "documentation"
