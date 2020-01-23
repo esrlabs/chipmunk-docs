@@ -1,4 +1,4 @@
-name: Jekyll Deploy
+name: JekyllDeploy
 on:
   push:
     branches:
