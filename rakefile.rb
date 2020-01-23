@@ -4,10 +4,12 @@ GITHUB_TOKEN=ENV['GITHUB_TOKEN']
 GITHUB_ACTOR='marcmo'
 GITHUB_REPOSITORY='esrlabs/chipmunk-docs'
 INPUT_GIT_COMMIT_MESSAGE="generated site content"
-SITE='jekyll/_site'
+SITE_DIR='jekyll/_site'
+SITE="#{SITE_DIR}/index.html"
 DOCS='jekyll/_site/book'
 
-CLEAN.include(SITE)
+directory SITE_DIR
+CLEAN.include(SITE_DIR)
 
 desc 'install'
 task :install do
@@ -19,14 +21,21 @@ task :build_jekyll do
   cd 'jekyll' do
     sh 'bundle exec jekyll build'
   end
-  sh "touch ./#{SITE}/.nojekyll"
+  sh "touch ./#{SITE_DIR}/.nojekyll"
+end
+
+desc 'watch & serve jekyll site only'
+task :watch_serve do
+  cd 'jekyll' do
+    sh 'bundle exec jekyll serve -l --baseurl='
+  end
 end
 
 desc 'build'
 task :build => [SITE, DOCS]
 
 desc 'build mdbook documentation'
-task :book do
+task :book => SITE_DIR do
   cd "book" do
     sh 'mdbook build'
     mv 'book', "../#{DOCS}"
@@ -34,8 +43,8 @@ task :book do
 end
 
 desc 'python webserver'
-task :pyweb do
-  cd SITE do
+task :preview_mdbook => DOCS do
+  cd DOCS do
     sh "python -m http.server 8888"
   end
 end
