@@ -46,9 +46,9 @@ task :clean_docs do
   rm_r DOCS if Dir.exists?(DOCS)
 end
 desc 'python webserver'
-task :preview_mdbook => [:clean_docs, DOCS] do
-  cd DOCS do
-    sh "python -m http.server 8888"
+task :preview_mdbook do
+  cd 'book' do
+    sh "mdbook serve"
   end
 end
 
