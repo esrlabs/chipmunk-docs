@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chapter 1 - documentation</title>
+        <title>Usage - documentation</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="02_extensions/01_chapter.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="02_extensions/02_basics.html"><strong aria-hidden="true">2.1.</strong> The Basics</a></li></ol></li><li class="expanded "><a href="03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -148,7 +148,32 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#chapter-1" id="chapter-1">Chapter 1</a></h1>
+                        <h1><a class="header" href="#user-guide" id="user-guide">User Guide</a></h1>
+<p>This guide describes the most common usecases for using chipmunk.</p>
+<h2><a class="header" href="#a-href01_usagesearching_and_filteringhtmlsearching-and-filteringa" id="a-href01_usagesearching_and_filteringhtmlsearching-and-filteringa"><a href="01_usage/searching_and_filtering.html">Searching and Filtering</a></a></h2>
+<img src="../images/magnifying-search-lenses-tool.png" width="100" height="100">
+<p>Searching through huge logfiles</p>
+<h2><a class="header" href="#a-href01_usageconcatenationhtmlconcatenating-logfilesa" id="a-href01_usageconcatenationhtmlconcatenating-logfilesa"><a href="01_usage/concatenation.html">Concatenating logfiles</a></a></h2>
+<img src="../images/glue_together.png" width="100" height="100">
+<p><code>chipmunk</code> can combine multiple log file. This is useful for example
+when you just want to reassamble a logfile that were stored in parts.</p>
+<h2><a class="header" href="#a-href01_usagemerginghtmlmerginga" id="a-href01_usagemerginghtmlmerginga"><a href="01_usage/merging.html">merging</a></a></h2>
+<p><img src="../images/intersection.png" alt="" /></p>
+<p>Merging is useful if you have several log files e.g. from different
+devices/processors and you want combine them by merging according to their
+timestamps.</p>
+<h2><a class="header" href="#a-href01_usagechartshtmlchartsa" id="a-href01_usagechartshtmlchartsa"><a href="01_usage/charts.html">Charts</a></a></h2>
+<p><img src="../images/chart.png" alt="" /></p>
+<p>To better understand what's going on in a large logfile, it can be helpful to visualize data over
+time. <code>chipmunk</code> let's you define regular expressions that match a number and to use this expression
+to capture a value throughout a logfile.</p>
+<h2><a class="header" href="#a-href01_usagebookmarkshtmlbookmarksa" id="a-href01_usagebookmarkshtmlbookmarksa"><a href="01_usage/bookmarks.html">Bookmarks</a></a></h2>
+<img src="../images/bookmark_sign.png" width="100" height="100">
+<p>Add bookmarks to mark and remember important log entries. Jump between bookmarks with shortcuts (<code>j</code> and <code>k</code>).</p>
+<h2><a class="header" href="#a-href01_usagedlthtmldlt---diagnostic-log-and-tracea" id="a-href01_usagedlthtmldlt---diagnostic-log-and-tracea"><a href="01_usage/dlt.html">DLT - Diagnostic Log and Trace</a></a></h2>
+<img src="../images/dlt.png" width="200" height="200">
+<p>View and search and filter DLT files.
+rogramming in Rust!</p>
 
                     </main>
 
@@ -156,6 +181,10 @@
                         <!-- Mobile navigation buttons -->
                         
 
+                        
+                            <a rel="next" href="01_usage/searching_and_filtering.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -166,6 +195,10 @@
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
 
+                
+                    <a href="01_usage/searching_and_filtering.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 

@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="02_extensions/01_chapter.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="02_extensions/02_basics.html"><strong aria-hidden="true">2.1.</strong> The Basics</a></li></ol></li><li class="expanded "><a href="03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -150,7 +150,135 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#chapter-1" id="chapter-1">Chapter 1</a></h1>
+                        <h1><a class="header" href="#user-guide" id="user-guide">User Guide</a></h1>
+<p>This guide describes the most common usecases for using chipmunk.</p>
+<h2><a class="header" href="#a-href01_usage01_usagesearching_and_filteringhtmlsearching-and-filteringa" id="a-href01_usage01_usagesearching_and_filteringhtmlsearching-and-filteringa"><a href="01_usage/01_usage/searching_and_filtering.html">Searching and Filtering</a></a></h2>
+<img src="01_usage/../images/magnifying-search-lenses-tool.png" width="100" height="100">
+<p>Searching through huge logfiles</p>
+<h2><a class="header" href="#a-href01_usage01_usageconcatenationhtmlconcatenating-logfilesa" id="a-href01_usage01_usageconcatenationhtmlconcatenating-logfilesa"><a href="01_usage/01_usage/concatenation.html">Concatenating logfiles</a></a></h2>
+<img src="01_usage/../images/glue_together.png" width="100" height="100">
+<p><code>chipmunk</code> can combine multiple log file. This is useful for example
+when you just want to reassamble a logfile that were stored in parts.</p>
+<h2><a class="header" href="#a-href01_usage01_usagemerginghtmlmerginga" id="a-href01_usage01_usagemerginghtmlmerginga"><a href="01_usage/01_usage/merging.html">merging</a></a></h2>
+<p><img src="01_usage/../images/intersection.png" alt="" /></p>
+<p>Merging is useful if you have several log files e.g. from different
+devices/processors and you want combine them by merging according to their
+timestamps.</p>
+<h2><a class="header" href="#a-href01_usage01_usagechartshtmlchartsa" id="a-href01_usage01_usagechartshtmlchartsa"><a href="01_usage/01_usage/charts.html">Charts</a></a></h2>
+<p><img src="01_usage/../images/chart.png" alt="" /></p>
+<p>To better understand what's going on in a large logfile, it can be helpful to visualize data over
+time. <code>chipmunk</code> let's you define regular expressions that match a number and to use this expression
+to capture a value throughout a logfile.</p>
+<h2><a class="header" href="#a-href01_usage01_usagebookmarkshtmlbookmarksa" id="a-href01_usage01_usagebookmarkshtmlbookmarksa"><a href="01_usage/01_usage/bookmarks.html">Bookmarks</a></a></h2>
+<img src="01_usage/../images/bookmark_sign.png" width="100" height="100">
+<p>Add bookmarks to mark and remember important log entries. Jump between bookmarks with shortcuts (<code>j</code> and <code>k</code>).</p>
+<h2><a class="header" href="#a-href01_usage01_usagedlthtmldlt---diagnostic-log-and-tracea" id="a-href01_usage01_usagedlthtmldlt---diagnostic-log-and-tracea"><a href="01_usage/01_usage/dlt.html">DLT - Diagnostic Log and Trace</a></a></h2>
+<img src="01_usage/../images/dlt.png" width="200" height="200">
+<p>View and search and filter DLT files.
+rogramming in Rust!</p>
+<h1><a class="header" href="#searching-with-filters" id="searching-with-filters">Searching with Filters</a></h1>
+<p>Of course multiple searches are supported and filters can be saved and restored.</p>
+<p><img src="01_usage/../images/multiple-filters.png" alt="" /></p>
+<h1><a class="header" href="#bookmarks" id="bookmarks">Bookmarks</a></h1>
+<p>Bookmarks can be used to pin down log entries that are important to the user.</p>
+<p><img src="01_usage/../images/bookmarks.png" alt="bookmarks" /></p>
+<p>Lines that are bookmarked will stick in the result view.</p>
+<h1><a class="header" href="#charts" id="charts">Charts</a></h1>
+<p>Getting a quick overview of what happened during a 24h-trace period can be daunting if the logfiles are huge (millions of log entries). A very neat way to get a quick overview is to show some graphs for what is happening.</p>
+<p><img src="01_usage/../images/temperatures_chart.png" alt="" /></p>
+<p>In this graph we captured processor workload for different cores. Any numerical value can be captured by using a regular expression with a group.</p>
+<p>Supported are</p>
+<ul>
+<li>integers</li>
+<li>floats</li>
+</ul>
+<p>An example for a regular expression with such a capture group looks like this:</p>
+<p><code>measured:\s(\d+)</code></p>
+<p>This will match <code>measured: 42</code> and pull out the value <code>42</code>.
+Here is an example of how this looks in action.</p>
+<p><img src="01_usage/../images/capture_expression.gif" alt="" /></p>
+<h1><a class="header" href="#assembling-files" id="assembling-files">Assembling files</a></h1>
+<p>There is handy support for combining multiple files into one view. You simple drag &amp; drop the files you need into a fresh tab. Then select the concatenate option.</p>
+<p>Now you will have the chance to quickly check for a search expression to see if it is present in the dropped files. Here you can potentially include of exclude files.</p>
+<img src="01_usage/../images/concat.gif" width="700" height="400">
+<h1><a class="header" href="#merging" id="merging">Merging</a></h1>
+<p>this is how merging works:</p>
+<p><img src="01_usage/../images/merging.gif" alt="" /></p>
+<p>To help developers to deal with multiple logfiles, chipmunk can automatically detect timestamps and merge logs from multiple files.</p>
+<p><img src="01_usage/../images/merging_sample.gif" alt="" /></p>
+<h1><a class="header" href="#dlt-support" id="dlt-support">DLT support</a></h1>
+<p>The Diagnostic Log and Trace AUTOSAR format is widely used in the automotive industry and is a binary log format. <code>chipmunk</code> can understand and process DLT content in large quantities.</p>
+<p><img src="01_usage/../images/dlt-support.png" alt="" /></p>
+<h2><a class="header" href="#import-file" id="import-file">Import file</a></h2>
+<p>When opening a dlt file, you are prompted with this dialog. Here you can also provide the path to a <strong>FIBEX</strong> file that contains descriptions for you non-verbose messages.</p>
+<p><img src="01_usage/../images/open_dlt.png" alt="" /></p>
+<p>This can be expanded so can select what components or loglevels you want to include. Note that you are presented with a statistics of how many log messages exist e.g. for a component with a certain log level.</p>
+<p><img src="01_usage/../images/open_dlt2.png" alt="" /></p>
+<p>The columns can be configured by right-clicking in one of the column titles. Then you can filter out columns and adjust colors.</p>
+<p><img src="01_usage/../images/dlt_columns.gif" alt="" /></p>
+<h1><a class="header" href="#keyboard-shortcuts" id="keyboard-shortcuts">Keyboard Shortcuts</a></h1>
+<p>Important to most developers: a good and intuitive set of keyboard shortcuts.</p>
+<p><img src="01_usage/../images/shortcuts.png" alt="" /></p>
+<p>Just hit <code>?</code> and you should get the overview documentation.</p>
+<h1><a class="header" href="#extending-chipmunk-with-plugins" id="extending-chipmunk-with-plugins">Extending chipmunk with plugins</a></h1>
+<p>In this section, we'll cover how to extend chipmunk with custom plugins.</p>
+<h1><a class="header" href="#some-basics" id="some-basics">Some basics</a></h1>
+<h1><a class="header" href="#developing-for-chipmunk" id="developing-for-chipmunk">Developing for chipmunk</a></h1>
+<h1><a class="header" href="#create-indexer-operation-with-neon-binding" id="create-indexer-operation-with-neon-binding">create indexer operation with neon binding</a></h1>
+<h2><a class="header" href="#rust-implement-streaming-api" id="rust-implement-streaming-api">Rust: implement streaming API</a></h2>
+<p>Since most operations triggered in chipmunk can take some time (mostly working on big files or
+streams), all functions should use events/messages to inform the chipmunk about progress, results,
+errors and warnings. Below is a description of how to achieve that.</p>
+<p>your function should take 2 additional parameters:</p>
+<pre><pre class="playpen"><code class="language-rust edition2018">
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>update_channel: mpsc::Sender&lt;IndexingResults&lt;T&gt;&gt;,
+shutdown_rx: Option&lt;mpsc::Receiver&lt;()&gt;&gt;,
+<span class="boring">}
+</span></code></pre></pre>
+<p>both are rust mpsc channels that can be used for communication between the client using your
+function and the function itself. the <code>update_channel</code> is the sender-end of a mpsc channel which
+means that your function can use it to send messages to the function-user.
+So what should/can your function send? There are 2 basic categories of events you should send:
+<code>IndexingProgress&lt;T&gt;</code> messages or <code>Notification</code> messages. We use the <code>Result</code> type to make the
+distinction. Kind of like the <code>Either</code> type in haskell. Either we send an <code>Ok(event)</code> or an
+<code>Err(notification)</code>.</p>
+<pre><pre class="playpen"><code class="language-rust edition2018">
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>pub type IndexingResults&lt;T&gt; = std::result::Result&lt;IndexingProgress&lt;T&gt;, Notification&gt;;
+<span class="boring">}
+</span></code></pre></pre>
+<p>In case of an <code>IndexingProgress</code>, you can either send an actual result (<code>GotItem</code>), or report on the
+lifecycle state of the function (indicating progress or the end of the function)</p>
+<pre><pre class="playpen"><code class="language-rust edition2018">
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>pub enum IndexingProgress&lt;T&gt; {
+    GotItem { item: T },
+    Progress { ticks: (usize, usize) },
+    Stopped,
+    Finished,
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Note that for indicating that the function is finished, there are 2 events (<code>Stopped</code> and
+<code>Finished</code>) This is to distinguish between &quot;we were stopped from outside&quot; and &quot;we really did
+finish&quot;).
+For all errors that occure and should be communicated to chipmunk, you can send a <code>Notification</code>.
+This is a struct that contains the severity, some content and optionally a line number to indicate
+at which line the error has occurred.</p>
+<pre><pre class="playpen"><code class="language-rust edition2018">
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>pub struct Notification {
+    pub severity: Severity,
+    pub content: String,
+    pub line: Option&lt;usize&gt;,
+}
+<span class="boring">}
+</span></code></pre></pre>
 
                     </main>
 
