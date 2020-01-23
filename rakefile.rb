@@ -33,5 +33,12 @@ task :book do
   end
 end
 
+desc 'python webserver'
+task :pyweb do
+  cd SITE do
+    sh "python -m http.server 8888"
+  end
+end
+
 file SITE => :build_jekyll
 file DOCS => :book
