@@ -8,19 +8,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.6'
-      - name: Install mdBook
-        uses: peaceiris/actions-mdbook@v1
-        with:
-          mdbook-version: '0.3.5'
-      - name: install jekyll
-        run: rake install
-      - name: build static site
-        run: rake build
-      - name: create mdbook documentation
-        run: rake book
+      - uses: meatlink/chipmunk-docs-builder-gha@master
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2
         env:
