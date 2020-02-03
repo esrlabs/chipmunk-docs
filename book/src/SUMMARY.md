@@ -11,6 +11,7 @@
 - [Developing Plugins](02_extensions/01_chapter.md)
   - [The Basics](02_extensions/02_basics.md)
   - [Front-end](02_extensions/03_front_end.md)
+  - [Back-end](02_extensions/04_back_end.md)
 - [Contributing](03_contributing/01_chapter.md)
   - [Native Development](03_contributing/developer_docs.md)
 - [TODO: API](404.md)
