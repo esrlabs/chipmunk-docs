@@ -12,14 +12,6 @@ rake install_plugins_angular        # Install angular plugins
 
 If a new update of **Chipmunk** is available, first run `rake clobber` and `rake full_pipeline` after, to update **Chipmunk**.
 
-## Developing mode
-
-The developer mode can be very helpful at developing (espescially for the development in the front-end). To enable the developing me, type the following command in the command line of your choice:
-
-`CHIPMUNK_DEVELOPING_MODE=ON`
-
-The developer mode will create a debugger console with which console outputs made in the front-end can be seen. Another feature which the debugger provides is creating breakpoints as well as the ability to select HTML elements which then will be highlighted in the code along with its attributes. 
-
 ## Add plugin to sidebar
 
 For the developed plugin to appear on the sidebar as an option, it will be necessary to add the name of the plugin in:

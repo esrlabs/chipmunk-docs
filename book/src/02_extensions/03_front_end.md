@@ -1,183 +1,357 @@
-# Front-end
+# Front-end - Angular Plugin
 
-The files for the front-end are all located in the folder `client.plugins`. The front-end defines the part of the application, with which the user can interact directly. The files mainly consist of HTML, CSS and Typescript files. It's important to know, that plugins for the front-end are from the Angular type.
+**Angular** plugins are located in the **front-end** of the application in the folder `client.plugins`. An **Angluar** plugin can either be a plugin by itself or be part of a **Complex** plugin.
+The main characteristic of a **front-end** plugin is the ability to interact with the user directly. **front-end** plugins mainly consist of HTML, CSS and Typescript files, whereas the Typescript files include, inter alia, Angular. The files of the **front-end** are located in the `client.plugins` folder. 
 
-The code snippet below shows the hierarchy of the pulled folder mentioned in the first chapter. The text behind the `//` serve as comments for a better understanding what the folders or files contain. The files of the template plugin **myplugin** will all be listed to get a general idea of the plugin.
+## Example
 
-```
-client.plugins                              // Contains files of front-end part of plugins
-|__ dist                                    // Compiled files of plugins
-|__ e2e
-|__ node_modules                            // Node modules
-|__ projects                                // Contains all plugins
-|   |__ dlt                                 // DLT plugin
-|   |__ dlt-render                          // DLT-render plugin
-|   |__ myplugin                            // Example plugin to modify for developer
-|   |   |__ src
-|   |   |   |__ lib
-|   |   |   |   |__ components.ts           // Defines functionality of plugin and communication between front-end and back-end
-|   |   |   |   |__ module.ts               // Manages import and export of modules for the plugin
-|   |   |   |   |__ styles.less             // Configuration of CSS attributes of plugin UI
-|   |   |   |   |__ template.html           // Visual configuration of UI
-|   |   |   |__ public_api.ts               // Interface to manage relevant files for compilation
-|   |   |   |__ test.ts                     // Auto generated test file
-|   |   |__ ng-package.json                 // JSON file to build plugin
-|   |   |__ package.json                    // JSON file with information about the plugin and dependencies
-|   |   |__ tsconfig.lib.json               // JSON file with compiler options and configurations
-|   |   |__ tsconfig.spec.json              // JSON file extension to tsconfig.lib.json with .spec files for test
-|   |   |__ tslint.json                     // JSON file with tslint options
-|   |__ processes                           // Processes plugin
-|   |__ serial                              // Serial plugin
-|   |__ xterminal                           // xTerminal plugin
-|__ src
-|__ theme                                   // Collection of .less files for CSS configuration
-|__ .editorconfig
-|__ .gitignore
-|__ angular.json
-|__ package.json
-|__ README.md
-|__ tsconfig.json                           // Configuration file for Typescript
-|__ tsling.json                             // Configuration file for TSLint
+This section explains how to create a simple plugin with a line of text and a button that prints `'Hello World!'` in the console:
+
+### Visual
+Since the **front-end** is being created with Angular, the plugin is treated like a component. To shape the visual part of the plugin, configure the `template.html` file (holds the HTML components) and `styles.less` file (holds the style settings).
+
+`template.html - HTML`
+``` HTML
+<p>Example</p>                          <!-- Create a line of text -->
+<button (click)="_ng_click"> </button>  <!-- Create a button with a method to be called from the components.ts file -->
 ```
 
-## Configure plugin
+`styles.less - LESS`
+``` CSS
+p {
+    color: #FFFFFF;
+}
 
-The looks of the plugin can be changed by simply configuring the `template.html` and `styles.less` files. The functions for the `template.html` can be defined in `component.ts`, which is the main file of the plugin.
-The different options and libraries provided to the front-end will be described in the following paragraphs.
+button {
+    height: 20px;
+    width: 50px;
+}
+```
 
-## API
+### Functionality
+The HTML elements can be attached with any kind of functions, which need to be configured in the `components.ts` file.
 
-The api is an essential part of the front-end implementation. Chipmunk provides an `API` out of the box, which can be easily used. For the usage, the main component file of the plugin requires the following lines (already implemented in **myplugin**):
-
+`components.ts - Typescript, Angular`
 ``` typescript
-import * as Toolkit from 'chipmunk.client.toolkit';
+import { Component } from '@angular/core';  // Import the Angular component that is necessary for the setup below
 
-@Input() public api: Toolkit.IAPI;                          // Assignment of the api into class variable
-@Input() public session: string;                            // Assignment of session id (necessary for communication FE <-> BE)
-@Input() public sessions: Toolkit.ControllerSessionsEvents; // Assignment of all sessions (necessary for session states)
-```
-
-The `API` grants access to a variety of methods, of which a few will be listed below. To see all methods open the file `/client.plugins/node_modules/chipmunk.client.toolkit/dist/interfaces/api.d.ts`
-
-## Logging
-
-To log any kind of errors or warnings in the front-end instantiate the logger provided by the `api` with a signature. The logged messages will be shown in the console along with timestamp and where the event happened. For more details please check out the path of the `api` mentioned above. 
-
-``` typescript
-private _logger: Toolkit.Logger = new Toolkit.Logger(`Plugin: myplugin: inj_output_bot:`);
-```
-
-## Pre-defined components
-
-Chipmunk also provides a variety of pre-defined components which can be used for plugin creation for example. The components are divided into complex, containers and primitive. Highly used HTML elements such as e.g Button, Checkbox or Input are located In primitive and can be used by importing the corresponding class.
-
-```
-|___application
-    |___client.libs
-        |___chipmunk.client.components.ts
-            |___projects
-                |--- chipmunk-client-complex
-                |--- chipmunk-client-containers
-                |___ chipmunk-client-primitive
-```
-
-To use the components in the plugin, open the `module.ts` file of the plugin `/client.plugins/projects/myplugin/src/lib/module.ts`. The components can then be used in the `template.html` of **myplugin**. For more details please check out `/application/client.libs/chipmunk.client.components/projects/chipmunk-client-primitive/src/lib`.
-
-``` typescript
-import { NgModule } from '@angular/core';
-import { MypluginComponent } from './component';
-import { PrimitiveModule } from 'chipmunk-client-primitive';	// Import the primitive modules (example)
-import * as Toolkit from 'chipmunk.client.toolkit';
-
-@NgModule({
-    declarations: [MypluginComponent],
-    imports: [ PrimitiveModule ],                               // Bind them into the plugin by defining them as imports
-    exports: [MypluginComponent]
+@Component({
+    selector: 'example',                    // Choose the selector name of the plugin
+    templateUrl: './template.html',         // Assign HTML file as template
+    styleUrls: ['./styles.less']            // Assign LESS file as style sheet file
 })
 
-export class PluginModule extends Toolkit.PluginNgModule {
-    constructor() {
-        super('MyPlugin', 'Creates a template plugin');
+export class ExampleComponent {             // Create an example class for the method
+    public _ng_click() {                    // Create a method for the button in template.html
+        console.log('Hello World!');        // Initiate a console output
     }
 }
 ```
 
+### External libraries
+To expand the range of classes and methods the `example` plugin can make use of, modify the `module.ts` file.
+
+`module.ts - Typescript, Angular`
+``` typescript
+import { NgModule } from '@angular/core';                   // Import the Angular component that is necessary for the setup below
+import { Example } from './component';                      // Import the class of the plugin, mentioned in the components.ts file
+import * as Toolkit from 'chipmunk.client.toolkit';         // Import Chipmunk Toolkit to let the module class inherit
+
+@NgModule({
+    declarations: [ Example ],                              // Declare which components, directives and pipes belong to the module 
+    imports: [ ],                                           // Imports other modules with the components, directives and pipes that components in the current module need
+    exports: [ Example ]                                    // Provides services that the other application components can use
+})
+
+export class PluginModule extends Toolkit.PluginNgModule {  // Create module class which inherits from the Toolkit module
+    constructor() {
+        super('Example', 'Create an example plugin');       // Call the constructor of the parent class
+    }
+}
+```
+
+> IMPORTANT: Make sure the `PluginModule` class inherits from `Toolkit.PluginNgModule` or else the modules won't be part of the plugin!
+
+
+#### Library management
+The library management of the plugin is defined in `public_api.ts` which manages and exports the public definitions of the plugin. In this example only the `module.ts` and `component.ts` files are being exported.
+
+`public_api.ts - Typescript`
+```typescript
+export * from './lib/component';    // Export the main component of the plugin
+export * from './lib/module';       // Export the module file of the plugin
+```
+
+> IMPORTANT: Exporting the component and module is required by Angular and necessary for the plugin to work!
+
+## Popup
+
+To create and remove popups, the `API` is required. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
+
+### Example
+
+In this example a plugin with a button will be created. When the button is pressed, a popup with a message (provided by the plugin) will be shown along with a button to close the popup window.
+
+**Popup component**
+`/popup/template.html - HTML`
+```HTML
+<p>{{msg}}</p>  <!-- Show message from component -->
+```
+
+`/popup/styles.less - LESS`
+```CSS
+p {
+    color: #FFFFFF;
+}
+```
+
+`/popup/components.ts - Typescript, Angular`
+```javascript
+import { Component, Input } from '@angular/core';   // Import necessary components for popup
+
+@Component({
+    selector: 'example-popup-com',                  // Choose the selector name of the popup
+    templateUrl: './template.html',                 // Assign HTML file as template
+    styleUrls: ['./styles.less']                    // Assign LESS file as style sheet file})
+
+export class PopupComponent {
+
+    constructor() { }
+
+    @Input() public msg: string;                    // Expect input from host component
+}
+```
+
+**Plugin component**
+`template.html - HTML`
+```HTML
+<p>Example</p>
+<button click="_ng_popup()"></button>               <!-- Button to open popup -->
+```
+
+`styles.less - LESS`
+```CSS
+p {
+    color: #FFFFFF;
+}
+```
+
+`components.ts - Typescript, Angular`
+```javascript
+import { Component, Input } from '@angular/core';       // Import necessary components for plugin
+import { PopupComponent } from './popup/components';    // Import the popup module
+
+@Component({
+    selector: 'example',                                // Choose the selector name of the popup
+    templateUrl: './template.html',                     // Assign HTML file as template
+    styleUrls: ['./styles.less']                        // Assign LESS file as style sheet file})
+
+export class ExampleComponent {
+
+    @Input() public api: Toolkit.IAPI;                  // API assignment
+    @Input() public msg: string;                        // Expect input from host component
+
+    constructor() { }
+
+    public _ng_popup() {
+        this.api.addPopup({
+            caption: 'Example',
+            component: {
+                factory: PopupComponent,                // Assign the popup module to factory
+                inputs: {
+                    msg: 'Hello World!',                // Provide the popup with a message as input
+                }
+            },
+            buttons: [                                  // Create a button on the popup to close it
+                {
+                    caption: 'Cancel',
+                    handler: () => {
+                        this.api.removePopup();         // Close popup
+                    }
+                }
+            ]
+        });
+    }
+}
+```
+
+> NOTE: For more information how the `API` works check out `Chapter 5 - API`
+
 ## Notifications
 
-Another feature the `api` provides is notifying. Notifications can be created which will pop up at the bottom right of Chipmunk and can be found afterwards in the notifications box at the bottom of Chipmunk. It's important to know that using the notifications as well as all other functionalities provided by `api` is only possible in the front-end.
+To create notifications, the `API` is required. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
 
-Example:
-``` typescript
-import { ENotificationType } from 'chipmunk.client.toolkit';    // For notification type
+### Example
 
-this.api.addNotification({
-    caption: 'Info',                                            // Caption of the notification
-    message: 'You just got notified!',                          // Message of the notification
-    options: {
-        type: ENotificationType.info                            // Notification type
+The following example shows an example plugin with a line of text and a button which creates a notification.
+
+`template.html - HTML`
+``` HTML
+<p>Example</p>                                                  <!-- Create a line of text -->
+<button (click)="_ng_notify"></button>                          <!-- Create a button with a method to be called from the components.ts file -->
+```
+
+`styles.less - LESS`
+``` CSS
+p {
+    color: #FFFFFF;
+}
+
+button {
+    height: 20px;
+    width: 50px;
+}
+```
+
+`component.ts - Typescript, Angular`
+```javascript
+import { Component } from '@angular/core';
+import * as Toolkit from 'chipmunk.client.toolkit';
+import { ENotificationType } from 'chipmunk.client.toolkit';    // Import notification type
+
+@Component({
+    selector: 'example',                                        // Choose the selector name of the plugin
+    templateUrl: './template.html',                             // Assign HTML file as template
+    styleUrls: ['./styles.less']                                // Assign LESS file as style sheet file
+})
+
+export class ExampleComponent {
+
+    @Input() public api: Toolkit.IAPI;                          // API assignment
+
+    public _ng_notify() {
+        this.api.addNotification({
+            caption: 'Info',                                    // Caption of the notification
+            message: 'You just got notified!',                  // Message of the notification
+            options: {
+                type: ENotificationType.info                    // Notification type
+            }
+        });
     }
-});
+}
 ```
 
-## Configuration file
+> NOTE: For more information how the `API` works check out `Chapter 5 - API`
 
-If specific settings need to be remembered even after shutting down Chipmunk, the `chipmunk.plugin.ipc` offers a way to write and read from a **.txt** file, which serves as a configuration file. The methods to reach the configuration file are part of the back-end. If anything from the front-end needs to be written into the configuration file, a request with the **API** needs to be made. Further explanation can be found in the following chapter **Back-end**.
+## Logger
 
-## Communication front-end back-end
+To use the logger, the `API` is required. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
 
-Creating a complex plugin requires some way of communication between the front- and the back-end. For that the `api` provides two kind of functions.
-One way is to send a request and await some kind of response from the back-end, for example reading the content of a configuration file, the content can be sent as a response from the back-end to the front-end.
-The other way is to send without expecting any kind of response, an example for this would be `startSpy` from the serial plugin. `startSpy` sends a command to the back-end to connect to all available ports and listen to check for the activity of the ports.
+### Example
 
-Example:
-```typescript
-// Sending and expecting a response
-this.api.getIPC().requestToHost({
-    stream: this.session,
-    command: 'test',
-}, this.session).then((response: any) => {
-    this.logger.info(`Received from the back-end: ${response}`);
-}).catch((error: Error) => {
-    this.logger.error(`Failed to send request due to error: ${error.message}`);
-});
+In the example below a plugin is created which logs a message as soon as the plugin is created.
 
-// Sending without expecting a response
-this.api.getIPC().sentToHost({
-    stream: this.session,
-    command: 'test2',
-}, this.session).catch((error: Error) => {
-    this.logger.error(`Failed to send message due to error: ${error.message}`);
-});
+`template.html - HTML`
+```HTML
+<p>Example</p>                                                                  <!-- Create a line of text -->
 ```
 
-`myplugin` has two buttons whereas one of them makes a request and the other one sends to the back-end.
-
-## How to build front-end
-
-Building the plugin can be made in two ways, either by building the plugin or the whole application. To only build the plugin, it requires to create a new command in the rakefile (which can be found in the **main folder of Chipmunk**) under `namespace :dev do`.
-
-``` typescript
-task :myplugin_render do
-    install_plugin_angular('myplugin')
-end
-```
-To run the command simply type `rake dev:myplugin_render`.
-
-To build the whole application it is also necessary to mention the plugin in its respective category (As mentioned in *chapter_1*:Angular/Standalone/Complex), which needs to be done in:
-
-``` ruby
-COMPLEX_PLUGINS = %w[
-  serial
-  processes
-  xterminal
-].freeze
-ANGULAR_PLUGINS = ['dlt-render'].freeze
-STANDALONE_PLUGINS = ['row.parser.ascii'].freeze
+`styles.less - LESS`
+```CSS
+p {
+    color: #FFFFFF;
+}
 ```
 
-## Errors
+`component.ts - Typescript, Angular`
+```javascript
+import { Component } from '@angular/core';
+import * as Toolkit from 'chipmunk.client.toolkit';
 
-Errors that appear upon building the plugin will either appear in the command line, in which the command to build has been called. Errors that occur on runtime will appear in the console of the debugger (only visible if debugger mode active).
+@Component({
+    selector: 'example',                                                        // Choose the selector name of the plugin
+    templateUrl: './template.html',                                             // Assign HTML file as template
+    styleUrls: ['./styles.less']                                                // Assign LESS file as style sheet file})
 
+export class ExampleComponent {
 
-In the following chapter the back-end will be explained as well as the communication between the front- and back-end will be continued. 
+    private _logger: Toolkit.Logger = new Toolkit.Logger('Plugin: example: ');  // Instantiate logger with signature
+    
+    constructor() {
+        this._logger.debug('Plugin started!');                                  // Create debug message
+    }
+}
+```
+
+> NOTE: For more information how the `API` works check out `Chapter 5 - API`
+
+# Front-end - Non-Angular Plugin
+
+**Non-Angular Plugins** are also known as **Standalone Plugins**, which are plugins that are implemented in the **front-end**, but neither do they have Angular in it nor do they have an UI.
+**Non-Angular Plugins** are used to parse the output stream that is being shown in the main window of **Chipmunk**.
+
+## Example
+
+This example shows how to create a simple **Non-Angular** plugin which prints `-->` in front of each line.
+To create this example the abstract class `ARowCommonParser` from the `API` is required to extend from. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
+
+`index.ts` - Typescript
+```javascript
+import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
+
+class ParseMe extends Toolkit.ARowCommonParser {                                                    // Extend parser class with Abstract parser class 
+    public parse(str: string, themeTypeRef: Toolkit.EThemeType, row: Toolkit.IRowInfo): string {    // Create parser which modifies and returns parsed string
+        return `--> ${str}`;                                                                        // Return string with --> in front
+    }
+} 
+
+const gate: Toolkit.APluginServiceGate | undefined = (window as any).logviewer;                     // Necessary to bind namespace
+if (gate === undefined) {                                                                           // If binding didn't work print out error message
+    console.error(`Fail to find logviewer gate.`);
+} else {
+    gate.setPluginExports({                                                                         // Set parser(s) to export here (Setting Multiple parsers possible)
+        parser: new ParseMe()                                                                       // Create parser instance (Free to choose parser name)
+    });
+}
+```
+
+> NOTE: For more information how the `API` works check out `Chapter 5 - API`
+
+# Developer mode and Breakpoints
+
+The developer mode can be very helpful at developing (espescially for the development in the front-end). To enable the developing mode, type the following command in the command line, in which the application is started:
+
+`CHIPMUNK_DEVELOPING_MODE=ON`
+
+The developer mode will create a debugger console with which console outputs made in the front-end can be seen.
+
+Another feature which the debugger provides is creating breakpoints as well as the ability to select HTML elements which then will be highlighted in the code along with its attributes. 
+
+To create **breakpoints**, type the keyword `debugger` in the line the breakpoint should activate.
+
+### Example
+
+In the example below a plugin is created which has a breakpoint in the constructor, so the application stops as soon as the application is created.
+
+`template.html - HTML`
+```HTML
+<p>Example</p>
+```
+
+`styles.less - LESS`
+```CSS
+p {
+    color: #FFFFFF;
+}
+```
+
+`component.ts - Typescript, Angular`
+```Typescript
+import { Component } from '@angular/core';
+import * as Toolkit from 'chipmunk.client.toolkit';
+
+@Component({
+    selector: 'example',                            // Choose the selector name of the plugin
+    templateUrl: './template.html',                 // Assign HTML file as template
+    styleUrls: ['./styles.less']                    // Assign LESS file as style sheet file})
+
+export class ExampleComponent {
+
+    constructor() {
+        console.log('Stop after!');                 // Console output to see where the breakpoint will appear
+        debugger;                                   // Creating a breakpoint in the constructor
+    }
+}
+```
+
+In the following chapter the **back-end** of plugins as well as the communication between the front-end and the back-end will be covered.
