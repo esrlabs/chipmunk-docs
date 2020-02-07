@@ -19,8 +19,15 @@ end
 desc 'build jekyll site'
 task :build_jekyll do
   cd 'jekyll' do
-    sh 'bundle exec jekyll build'
+    sh '''
+      docker run \
+        -v "$(pwd):/workspace" \
+        -w /workspace \
+        meatlink/chipmunk-docs-builder-gha:latest \
+        bundle exec jekyll build
+    '''
   end
+  sh "sudo chown -R runner:docker #{SITE_DIR}"
   sh "touch ./#{SITE_DIR}/.nojekyll"
 end
 
