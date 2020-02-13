@@ -2,15 +2,20 @@
 
 Rake commands are vital for the compilation of **Chipmunk**, which is why in this section the most important rake commands are going to be mentioned and described.
 
-``` ruby
-rake full_pipeline                  # Build the whole application                
-rake clobber                        # Clean up the whole application
+```
+rake start                          # Start application
+rake dev                            # Install all plugins to application
+rake dev:<pluginName>_render        # Install <pluginName> to application
 rake install_plugins_complex        # Install complex plugins 
 rake install_plugins_standalone     # Install standalone plugins
 rake install_plugins_angular        # Install angular plugins
 ```
 
-If a new update of **Chipmunk** is available, first run `rake clobber` and `rake full_pipeline` after, to update **Chipmunk**.
+To build the back-end of the application, change to the directory `sandbox/<pluginName>/process` and run:
+`npm run build`
+
+
+If a new update of **Chipmunk** is available, first run `rake clobber` (to remove all compiled files) and then `rake full_pipeline`, to update re-build **Chipmunk**.
 
 ## Add plugin to sidebar
 

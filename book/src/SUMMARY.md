@@ -8,7 +8,7 @@
   - [Merging Files](01_usage/merging.md)
   - [DLT support](01_usage/dlt.md)
   - [Keyboard Shortcuts](01_usage/keyboard_shortcuts.md)
-- [Developing Plugins](02_extensions/01_chapter.md)
+- [Developing Plugins](02_extensions/01_about.md)
   - [The Basics](02_extensions/02_basics.md)
   - [Front-end](02_extensions/03_front_end.md)
   - [Back-end](02_extensions/04_back_end.md)
