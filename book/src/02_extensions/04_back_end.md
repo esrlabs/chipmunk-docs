@@ -1,126 +1,186 @@
-# Back-end
+# Back-end - Complex Plugin
 
-The files for the back-end are all located in the folder `sandbox`. The back-end can either contain a standalone plugin, or the back-end part of a complex plugin.
-The standalone plugin serves as a render plugin, which formats the output shown in the output window. There won't be a UI for this kind of plugin.
-The back-end of a complex plugin is there to use either 3rd-party libraries or to read/write configurations.
+The **Complex plugins** consist of a **front-end** (see `Chapter 03 - Front-end` for more information) and a **back-end**.
+This chapter is about the **back-end** and gives a better insight of **Complex plugins**.
 
-An example for the complex plugin would be the `Serial plugin`, which uses the `serialport` library to communicate with serial ports. The connection state, received and sent amount and other information is then forwarded to the front-end (more about it in **Communication between back-end and front-end** below).
+## About Complex plugins
+**Complex plugins** comprises of a **front-end**, which mainly provides the UI, whereas the **back-end** is more about providing functionality from 3rd-party libraries. Plugins cannot exist with a **back-end** implementation only, since the **back-end** has no way to display the results. The **back-end** can communicate with the **front-end** with the help of the `API`, which is provided by **Chipmunk** (see `Chapter 05 - API` for more information).
 
+### Example - Back-end
 
-The code snippet below shows the hierarchy of the `sandbox` folder. The text behind the `//` serve as comments for a better understanding what the folders or files contain. --The files of the template plugin **myplugin** will all be listed to get a general idea of the plugin.
+In this example a **Complex plugin** is created, which offers two buttons to send a command to the **back-end**, which is then returned from the **back-end** to the **front-end**. Upon receiving the message from the **back-end**, the message will be printed out in the console.
+The communication between the **front-end** and the **back-end** is established by the module `IPC` of the `API`, that is offered by **Chipmunk**.
 
-```
-sandbox                                     // Contains files of back-end part of plugins
-|__ dlt                                     // DLT plugin
-|__ dlt-render                              // DLT-render plugin
-|__ myplugin                                // Example plugin to modify for developer
-|   |__ process
-|   |   |__ dist                            // Contains compiled files
-|   |   |__ node_modules                    // Node modules
-|   |   |__ src
-|   |   |   |__ service
-|   |   |   |   |__ service.example.ts      // Test class with main functionality of the plugin
-|   |   |   |__ env.logger.parameter.ts     // Logger Parameter class
-|   |   |   |__ env.logger.ts               // Logger class for back-end
-|   |   |   |__ main.ts                     // Main file of the plugin
-|   |   |__ package.json                    // JSON file with information about the plugin and dependencies
-|   |   |__ tsconfig.json                   // Configuration file for Typescript
-|   |__ render                              // Compiled files
-|__ processes                               // Processes plugin
-|__ row.parser.ascii                        // Row parser ASCII plugin
-|__ serial                                  // Serial plugin
-|__ xterminal                               // xTerminal plugin
-```
+> NOTE: For more information how the `API` works check out `Chapter 5 - API`
 
-## Configure plugin
+## Front-end
 
-The main file which cotains all necessary files and functions for the plugin to work in the back-end is defined as `main.ts`. The back-end of **myplugin** does not do much except for establishing the communication between the front- and the back-end. For the usage, the **main file** of the plugin requires the following lines (already implemented in **myplugin**):
+`client.plugins/example_plugin/component.ts - Typescript, Angular`
+```javascript
+import { Component, Input, AfterViewInit, OnDestroy } from '@angular/core';
+import * as Toolkit from 'chipmunk.client.toolkit';
 
-## chipmunk.plugin.ipc
+@Component({
+    selector: 'example',
+    templateUrl: './template.html',
+    styleUrls: ['./styles.less']
+})
 
-The `chipmunk.plugin.ipc` grants access to a wide range of classes and methods, of which only two are going to be described in this documentation: `PluginIPC` and `ServiceConfig`. A deeper explanation of `PluginIPC` as well as an example can be found in the _Communication front-end back-end_ section. `ServiceConfig` will be described in the _Configuration file_ section as well as an example.
-To see all classes of `chipmunk.plugin.ipc` refer to `sandbox/serial/process/node_modules/chipmunk.plugin.ipc/dist/node.libs/chipmunk.plugin.ipc/src/index.d.ts`.
+export class ExampleComponent implements AfterViewInit, OnDestroy {
 
-## Logging
+    @Input() public api: Toolkit.IAPI;                                                              // API assignment
+    @Input() public session: string;                                                                // Session ID assignment
 
-To log any kind of errors or warnings in the back-end instantiate the logger which is imported locally with a signature and optionally with parameters (more about that in `env.logger.ts`). The logged messages will be shown in the console along with timestamp and where the event happened. 
+    private _subscriptions: { [key: string]: Toolkit.Subscription } = {};                           // Hashlist for session events
 
-``` typescript
-private _logger: Logger = new Logger('MyPlugin');
-```
+    constructor() { }
 
-## Configuration file
-As mentioned in **chapter 3** as well as in the `chipmunk.plugin.ipc` section, it is possible to read from a configuration file as well as write into it with the help of the `ServiceConfig` class.  
-`ServiceConfig` provides a variety of methods such as `read` (return settings of the configuration file) or `write` (save settings in the configuration file).
-
-To see all methods refer to `sandbox/myplugin/process/node_modules/chipmunk.plugin.ipc/dist/node.libs/chipmunk.plugin.ipc/src/services/service.config.d.ts`.
-
-## Communication front-end back-end
-
-`PluginIPC` provides methods to establish the communication between the front- and back-end. For a better explanation of how to communicate, code snippets of `main.ts` are being shown.  
-
-Aside from importing the necessary components, it is also important subscribe to the events with a method which handles the message traffic.
-
-``` typescript
-import PluginIPCService from 'chipmunk.plugin.ipc';                                                                                 // Plugin IPC
-import { IPCMessages } from 'chipmunk.plugin.ipc';                                                                                  // Class to create messages
-
-...
-
-    constructor() {
-        this._onIncomeRenderIPCMessage = this._onIncomeRenderIPCMessage.bind(this);                                                 // Bind the function the will receive the messages from the front-end
-        PluginIPCService.subscribe(IPCMessages.PluginInternalMessage, this._onIncomeRenderIPCMessage);                              // Subscribe to the messages from the front-end
+    ngOnDestroy() {
+        Object.keys(this._subscriptions).forEach((key: string) => {                                 // Unsubscribe from all sources when the component is destroyed
+            this._subscriptions[key].unsubscribe();
+        });
     }
 
-    private _onIncomeRenderIPCMessage(message: IPCMessages.PluginInternalMessage, response: (res: IPCMessages.TMessage) => any) {   // Function that will handle the incoming messages
-        ...
+    ngAfterViewInit() {
+        this._subscriptions.incomeIPCHostMessage = this.api.getIPC().subscribe((message: any) => {  // Subscribe to back-end to listen for messages
+            if (typeof message !== 'object' && message === null) {                                  // Check for correct format of message
+                return;
+            }
+            if (message.event === 'send') {                                                         // Check if it's the expected message
+                console.log(`Received onSend: ${message.data.msg}`);                                // Print out the message in the console
+            }
+        });
     }
-```
 
-The method that takes care of the messages is `_onIncomeRenderIPCMessage`, which then decides which action is to being taken in comply with the commmand.
-In **chapter 3** was a reference to two buttons which either send or make a request to the back-end.
-In accordance to the _request_ that is being made by the front-end, the back-end responds with a message back to the front-end containing a string.
-Similar to the _request_, upon receiving _sent_ as a command from the front-end, the back-end creates a new message and also sends a message containing a string without expecting a response from the front-end.
+    public _ng_onRequest() {                                                                        // on click function for request-type of message to the back-end
+        if (this.api) {                                                                             // check if API exists
+            this.api.getIPC().request({                                                             // send request-type of message to the back-end
+                stream: this.session,
+                command: 'request'
+            }, this.session).then((response) => {                                                   // Catch response from back-end
+                console.log(`Received onRequest: ${response.msg}`);                                 // Print out responsed answer in the console
+            }).catch((error: Error) => {
+                console.error(error);
+            });
+      } else {
+        console.error('No API found!');
+      }
+    }
 
-``` typescript
-private _onIncomeRenderIPCMessage(message: IPCMessages.PluginInternalMessage, response: (res: IPCMessages.TMessage) => any) {
-    // Process commands
-    switch (message.data.command) {
-        case 'request':
-            return response(new IPCMessages.PluginInternalMessage({         // Respond to the request from the front-end
-                data: {                                                     // data can contain any kind of data to be sent
-                    msg: '\'request\' was successful!'                      // Attach a message to the response
-                },
-                token: message.token,
-                stream: message.stream
-            }));
-        case 'sent':                                                        // Send a message to the front-end without expecting any kind of response
-            return PluginIPCService.sendToPluginHost(message.stream, {
-                data: {
-                    msg: '\'sent\' was successful!'
-                },
-                event: 'sent',
-                streamId: message.stream
-            })
-        default:
-            this._logger.warn(`Unknown command: ${message.data.command}`);
+    public _ng_onSend() {                                                                           // on click function for send-type of message to the back-end
+        if (this.api) {                                                                             // check if API exists
+            this.api.getIPC().send({                                                                // send send-type of message to the back-end
+                stream: this.session,
+                command: 'send'
+            }, this.session).catch((error: Error) => {
+                console.error(error);
+            });
+        } else {
+            console.error('No API found!');
+        }
     }
 }
 ```
 
-For a better understanding and deeper insight of `PluginIPC` refer to `sandbox/myplugin/process/node_modules/chipmunk.plugin.ipc/dist/node.libs/chipmunk.plugin.ipc/src/ipc/plugin.ipc.service.d.ts`.
+`client.plugins/example_plugin/module.ts - Typescript, Angular`
+```javascript
+import { NgModule } from '@angular/core';
+import { ExampleComponent } from './component';
+import * as Toolkit from 'chipmunk.client.toolkit';
 
-## How to build back-end
+@NgModule({
+  declarations: [ExampleComponent],                                                                 // Declare which components, directives and pipes belong to the module
+  imports: [ ],                                                                                     // Imports other modules with the components, directives and pipes that components in the current module need
+  exports: [ExampleComponent]                                                                       // Provides services that the other application components can use
+})
 
-To build a `Standalone` plugin or the back-end part of a `Complex` plugin, it is necessary to include the following line in `application/client.plugins/package.json` (in the **"scripts:"**-section):
+export class PluginModule extends Toolkit.PluginNgModule {                                          // Create module class which inherits from the Toolkit module
 
-`"build:myplugin": "./node_modules/.bin/ng build myplugin"`
+  constructor() {
+      super('Example', 'Creates a template plugin');                                                // Call the constructor of the parent class
+  }
+}
+```
 
-After inserting the line, change directory into `sandox/myplugin/process` and run `npm run build`.
+`client.plugins/example_plugin/styles.less - LESS`
+```CSS
+p {
+    color: white;
+}
+button {
+    position: relative;
+    width: 47%;
+    height: 3%;
+    margin-left: 2%;
+    margin-top: 5%;
+    color: black;
+}
+```
+
+`client.plugins/example_plugin/template.html - HTML`
+```HTML
+<p>Example</p>
+<button (click)="_ng_onRequest()">'request' to backend</button>                                     <!-- Create button for request-type of message --> 
+<button (click)="_ng_onSend()">'send' to backend</button>                                           <!-- Create button for send-type of message -->
+```
+
+## Back-end
+
+`client.plugins/example_plugin/public_api.ts - Typescript`
+```javascript
+export * from './lib/component';
+export * from './lib/module';
+```
+
+`sandbox/example_plugin/main.ts`
+```typescript
+import PluginIPCService from 'chipmunk.plugin.ipc';
+import { IPCMessages } from 'chipmunk.plugin.ipc';
+
+class Plugin {
+
+    constructor() {
+        this._onIncome = this._onIncome.bind(this);
+        PluginIPCService.subscribe(IPCMessages.PluginInternalMessage, this._onIncome);                              // Subscribe to incoming messages from front-end
+    }
+
+    private _onIncome(message: IPCMessages.PluginInternalMessage, response: (res: IPCMessages.TMessage) => any) {   // Message handler for messages from the front-end
+        // Process commands
+        switch (message.data.command) {                                                                             // Check incoming command in message from front-end
+            case 'request':
+                return response(new IPCMessages.PluginInternalMessage({                                             // Send response to the front-end
+                    data: {
+                        msg: '\'request\' was successful!'                                                          // Attach string to response
+                    },
+                    token: message.token,
+                    stream: message.stream
+                }));
+            case 'send':
+                return PluginIPCService.sendToPluginHost(message.stream, {                                          // Send message to front-end
+                    data: {
+                        msg: '\'send\' was successful!'                                                             // Attach string to message
+                    },
+                    event: 'send',
+                    streamId: message.stream
+                })
+            default:
+                console.warn(`Unknown command: ${message.data.command}`);
+        }
+    }
+}
+
+const app: Plugin = new Plugin();
+```
+
+## Logging
+
+To log any kind of information/error/warning/etc. simply use the console log, which will automatically save the logs in the log file of Chipmunk `chipmunk.log`.
+`Windows:   "C:\Users\userName\.chipmunk\chipmunk.log"`
+`Unix:      "/users/userName/.chipmunk/chipmunk.log"`
 
 ## Errors
 
-Errors that appear upon building the plugin will appear in the command line, in which the command to build has been called.
+A common issue known is, that changes made in the **back-end** are not being applied, even though the **back-end** has been compiled without any errors.
+To resolve this issue, **delete** the folder in which the **compiled** files are located.
 
-A common issue known is, that changes made in the back-end are not being applied, even though the back-end has been compiled without any errors.
-To resolve this issue, simply **delete** the `dest` folder located in `sandbox/myplugin/process/dist` and compile the plugin again.
+The following chapter gives a deeper insight into the `API` provided by **Chipmunk**. The modules, abstract classes and methods will all be explained thoroughly with an example for each of them.
