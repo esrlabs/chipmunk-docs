@@ -59,9 +59,11 @@ import { Component } from '@angular/core';  // Import the Angular component that
     styleUrls: ['./styles.less']            // Assign LESS file as style sheet file
 })
 export class ExampleComponent {             // Create an example class for the method
+
     public _ng_click() {                    // Create a method for the button in template.html
         console.log('Hello World!');        // Initiate a console output
     }
+
 }
 </code></pre>
 </div>
@@ -77,9 +79,11 @@ import * as Toolkit from 'chipmunk.client.toolkit';         // Import Chipmunk T
     exports: [ Example ]                                    // Provides services that the other application components can use
 })
 export class PluginModule extends Toolkit.PluginNgModule {  // Create module class which inherits from the Toolkit module
+
     constructor() {
         super('Example', 'Create an example plugin');       // Call the constructor of the parent class
     }
+
 }
 </code></pre>
 </div>
@@ -292,6 +296,38 @@ if (gate === undefined) {                                                       
 }
 </code></pre>
 </div>
+
+> NOTE: For more information how the `API` works check out `Chapter 5 - API`
+
+# Front-end - Non-Angular Plugin
+
+**Non-Angular Plugins** are also known as **Standalone Plugins**, which are plugins that are implemented in the **front-end**, but neither do they have Angular in it nor do they have an UI.
+**Non-Angular Plugins** are used to parse the output stream that is being shown in the main window of **Chipmunk**.
+
+## Example
+
+This example shows how to create a simple **Non-Angular** plugin which prints `-->` in front of each line.
+To create this example the abstract class `ARowCommonParser` from the `API` is required to extend from. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
+
+`index.ts` - Typescript
+```javascript
+import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
+
+class ParseMe extends Toolkit.ARowCommonParser {                                                    // Extend parser class with Abstract parser class 
+    public parse(str: string, themeTypeRef: Toolkit.EThemeType, row: Toolkit.IRowInfo): string {    // Create parser which modifies and returns parsed string
+        return `--> ${str}`;                                                                        // Return string with --> in front
+    }
+} 
+
+const gate: Toolkit.APluginServiceGate | undefined = (window as any).logviewer;                     // Necessary to bind namespace
+if (gate === undefined) {                                                                           // If binding didn't work print out error message
+    console.error(`Fail to find logviewer gate.`);
+} else {
+    gate.setPluginExports({                                                                         // Set parser(s) to export here (Setting Multiple parsers possible)
+        parser: new ParseMe()                                                                       // Create parser instance (Free to choose parser name)
+    });
+}
+```
 
 > NOTE: For more information how the `API` works check out `Chapter 5 - API`
 
