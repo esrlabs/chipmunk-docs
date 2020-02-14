@@ -1,5 +1,5 @@
 - name: Documentation
-  link: /book/
+  link: /book/01_usage/01_chapter.html
   new_window: true
   highlight: false
 - name: Blog
