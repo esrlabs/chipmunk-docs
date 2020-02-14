@@ -3,19 +3,23 @@
 Rake commands are vital for the compilation of **Chipmunk**, which is why in this section the most important rake commands are going to be mentioned and described.
 
 ```
+rake dev                            # Build electron application including all plugins and native code parts
 rake start                          # Start application
-rake dev                            # Install all plugins to application
 rake dev:<pluginName>_render        # Install <pluginName> to application
-rake install_plugins_complex        # Install complex plugins 
+rake install_plugins_complex        # Install complex plugins
+                                    # Complex plugins are plugins that consist of a front- and back-end
+                                    # The front-end represents the UI of the plugin whereas the back-end provides information and functionality from external sources (e.g analyzing the stream of a serial connection, for which an external library is used to connect to the serial device)
 rake install_plugins_standalone     # Install standalone plugins
+                                    # Standalone plugins exist in the front-end and provide functions to parse the output stream (e.g. coloring specific terms)
 rake install_plugins_angular        # Install angular plugins
+                                    # Angular plugins exist in the front-end and provide a UI (essentially the same as a complex plugin but without any external sources)
 ```
 
-To build the back-end of the application, change to the directory `sandbox/<pluginName>/process` and run:
+To build the back-end of a plugin, change to the directory of the plugin that will be built (in this example <pluginName>) `sandbox/<pluginName>/process` and run:
 `npm run build`
 
 
-If a new update of **Chipmunk** is available, first run `rake clobber` (to remove all compiled files) and then `rake full_pipeline`, to update re-build **Chipmunk**.
+If a new update of **Chipmunk** is available, first run `rake clobber` (to remove all compiled files) and then `rake dev`, to update and re-build **Chipmunk**.
 
 ## Add plugin to sidebar
 
