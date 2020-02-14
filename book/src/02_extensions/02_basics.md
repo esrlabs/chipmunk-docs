@@ -4,14 +4,14 @@ Rake commands are vital for the compilation of **Chipmunk**, which is why in thi
 
 ```
 rake dev                            # Build electron application including all plugins and native code parts
-rake start                          # Start application
-rake dev:<pluginName>_render        # Install <pluginName> to application
-rake install_plugins_complex        # Install complex plugins
+rake start                          # Start Chipmunk
+rake dev:pluginName_render          # Install 'pluginName' to application
+rake install_plugins_complex        # Install all complex plugins
                                     # Complex plugins are plugins that consist of a front- and back-end
                                     # The front-end represents the UI of the plugin whereas the back-end provides information and functionality from external sources (e.g analyzing the stream of a serial connection, for which an external library is used to connect to the serial device)
-rake install_plugins_standalone     # Install standalone plugins
+rake install_plugins_standalone     # Install all standalone plugins
                                     # Standalone plugins exist in the front-end and provide functions to parse the output stream (e.g. coloring specific terms)
-rake install_plugins_angular        # Install angular plugins
+rake install_plugins_angular        # Install all angular plugins
                                     # Angular plugins exist in the front-end and provide a UI (essentially the same as a complex plugin but without any external sources)
 ```
 
