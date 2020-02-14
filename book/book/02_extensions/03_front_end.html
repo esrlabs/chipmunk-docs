@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_chapter.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_basics.html"><strong aria-hidden="true">2.1.</strong> The Basics</a></li><li class="expanded "><a href="../02_extensions/03_front_end.html" class="active"><strong aria-hidden="true">2.2.</strong> Front-end</a></li><li class="expanded "><a href="../02_extensions/04_back_end.html"><strong aria-hidden="true">2.3.</strong> Back-end</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_basics.html"><strong aria-hidden="true">2.1.</strong> The Basics</a></li><li class="expanded "><a href="../02_extensions/03_front_end.html" class="active"><strong aria-hidden="true">2.2.</strong> Front-end</a></li><li class="expanded "><a href="../02_extensions/04_back_end.html"><strong aria-hidden="true">2.3.</strong> Back-end</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -148,129 +148,155 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#front-end---angular-plugin" id="front-end---angular-plugin">Front-end - Angular Plugin</a></h1>
+                        <link rel="stylesheet" type="text/css" href="../styles/styles.tab.css">
+<script src="../scripts/script.tab.js">
+</script>
+<h1><a class="header" href="#front-end---angular-plugin" id="front-end---angular-plugin">Front-end - Angular Plugin</a></h1>
 <p><strong>Angular</strong> plugins are located in the <strong>front-end</strong> of the application in the folder <code>client.plugins</code>. An <strong>Angluar</strong> plugin can either be a plugin by itself or be part of a <strong>Complex</strong> plugin.
 The main characteristic of a <strong>front-end</strong> plugin is the ability to interact with the user directly. <strong>front-end</strong> plugins mainly consist of HTML, CSS and Typescript files, whereas the Typescript files include, inter alia, Angular. The files of the <strong>front-end</strong> are located in the <code>client.plugins</code> folder. </p>
 <h2><a class="header" href="#example" id="example">Example</a></h2>
 <p>This section explains how to create a simple plugin with a line of text and a button that prints <code>'Hello World!'</code> in the console:</p>
-<h3><a class="header" href="#visual" id="visual">Visual</a></h3>
-<p>Since the <strong>front-end</strong> is being created with Angular, the plugin is treated like a component. To shape the visual part of the plugin, configure the <code>template.html</code> file (holds the HTML components) and <code>styles.less</code> file (holds the style settings).</p>
-<p><code>template.html - HTML</code></p>
-<pre><code class="language-HTML">&lt;p&gt;Example&lt;/p&gt;                          &lt;!-- Create a line of text --&gt;
-&lt;button (click)=&quot;_ng_click&quot;&gt; &lt;/button&gt;  &lt;!-- Create a button with a method to be called from the components.ts file --&gt;
+<p><strong>Visual</strong>
+Since the <strong>front-end</strong> is being created with Angular, the plugin is treated like a component. To shape the visual part of the plugin, configure the <code>template.html</code> file (holds the HTML components) and <code>styles.less</code> file (holds the style settings).</p>
+<p><strong>Functionality</strong>
+The HTML elements can be attached with any kind of functions, which need to be configured in the <code>components.ts</code> file.</p>
+<p><strong>External libraries</strong>
+To expand the range of classes and methods the <code>example</code> plugin can make use of, modify the <code>module.ts</code> file.</p>
+<p>The library management of the plugin is defined in <code>public_api.ts</code> which manages and exports the public definitions of the plugin. In this example only the <code>module.ts</code> and <code>component.ts</code> files are being exported.</p>
+<div class="tab">
+  <button class="tablinks" onclick="openCode(event, 'template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'public_api.ts')">public_api.ts</button>
+</div>
+<div id="template.html" class="tabcontent">
+<pre><code class="language-HTML">
+&lt;p&gt;Example&lt;/p&gt;
+&lt;button (click)=&quot;_ng_click()&quot;&gt;&lt;/button&gt;   &lt;!-- Create a button with a method to be called from the components.ts file --&gt;
 </code></pre>
-<p><code>styles.less - LESS</code></p>
-<pre><code class="language-CSS">p {
+</div>
+<div id="styles.less" class="tabcontent">
+<pre><code class="language-CSS">
+p {
     color: #FFFFFF;
 }
-
 button {
     height: 20px;
     width: 50px;
 }
 </code></pre>
-<h3><a class="header" href="#functionality" id="functionality">Functionality</a></h3>
-<p>The HTML elements can be attached with any kind of functions, which need to be configured in the <code>components.ts</code> file.</p>
-<p><code>components.ts - Typescript, Angular</code></p>
-<pre><code class="language-typescript">import { Component } from '@angular/core';  // Import the Angular component that is necessary for the setup below
-
+</div>
+<div id="component.ts" class="tabcontent">
+<pre><code class="language-Javascript">
+import { Component } from '@angular/core';  // Import the Angular component that is necessary for the setup below
 @Component({
     selector: 'example',                    // Choose the selector name of the plugin
     templateUrl: './template.html',         // Assign HTML file as template
     styleUrls: ['./styles.less']            // Assign LESS file as style sheet file
 })
-
 export class ExampleComponent {             // Create an example class for the method
     public _ng_click() {                    // Create a method for the button in template.html
         console.log('Hello World!');        // Initiate a console output
     }
 }
 </code></pre>
-<h3><a class="header" href="#external-libraries" id="external-libraries">External libraries</a></h3>
-<p>To expand the range of classes and methods the <code>example</code> plugin can make use of, modify the <code>module.ts</code> file.</p>
-<p><code>module.ts - Typescript, Angular</code></p>
-<pre><code class="language-typescript">import { NgModule } from '@angular/core';                   // Import the Angular component that is necessary for the setup below
+</div>
+<div id="module.ts" class="tabcontent">
+<pre><code class="language-Javascript">
+import { NgModule } from '@angular/core';                   // Import the Angular component that is necessary for the setup below
 import { Example } from './component';                      // Import the class of the plugin, mentioned in the components.ts file
 import * as Toolkit from 'chipmunk.client.toolkit';         // Import Chipmunk Toolkit to let the module class inherit
-
 @NgModule({
     declarations: [ Example ],                              // Declare which components, directives and pipes belong to the module 
     imports: [ ],                                           // Imports other modules with the components, directives and pipes that components in the current module need
     exports: [ Example ]                                    // Provides services that the other application components can use
 })
-
 export class PluginModule extends Toolkit.PluginNgModule {  // Create module class which inherits from the Toolkit module
     constructor() {
         super('Example', 'Create an example plugin');       // Call the constructor of the parent class
     }
 }
 </code></pre>
-<blockquote>
-<p>IMPORTANT: Make sure the <code>PluginModule</code> class inherits from <code>Toolkit.PluginNgModule</code> or else the modules won't be part of the plugin!</p>
-</blockquote>
-<h4><a class="header" href="#library-management" id="library-management">Library management</a></h4>
-<p>The library management of the plugin is defined in <code>public_api.ts</code> which manages and exports the public definitions of the plugin. In this example only the <code>module.ts</code> and <code>component.ts</code> files are being exported.</p>
-<p><code>public_api.ts - Typescript</code></p>
-<pre><code class="language-typescript">export * from './lib/component';    // Export the main component of the plugin
+</div>
+<div id="public_api.ts" class="tabcontent">
+<pre><code class="language-Javascript">
+export * from './lib/component';    // Export the main component of the plugin
 export * from './lib/module';       // Export the module file of the plugin
 </code></pre>
+</div>
 <blockquote>
-<p>IMPORTANT: Exporting the component and module is required by Angular and necessary for the plugin to work!</p>
+<p><strong>IMPORTANT</strong>: Make sure the <code>PluginModule</code> class inherits from <code>Toolkit.PluginNgModule</code> or else the modules won't be part of the plugin!</p>
+</blockquote>
+<blockquote>
+<p><strong>IMPORTANT</strong>: Exporting the component and module is required by Angular and necessary for the plugin to work!</p>
 </blockquote>
 <h2><a class="header" href="#popup" id="popup">Popup</a></h2>
 <p>To create and remove popups, the <code>API</code> is required. <strong>Chipmunk</strong> provides an <code>API</code> which gives access to major core events and different modules. The <code>API</code> for the front-end is named <code>chipmunk.client.toollkit</code>.</p>
 <h3><a class="header" href="#example-1" id="example-1">Example</a></h3>
 <p>In this example a plugin with a button will be created. When the button is pressed, a popup with a message (provided by the plugin) will be shown along with a button to close the popup window.</p>
-<p><strong>Popup component</strong>
-<code>/popup/template.html - HTML</code></p>
-<pre><code class="language-HTML">&lt;p&gt;{{msg}}&lt;/p&gt;  &lt;!-- Show message from component --&gt;
+<p><strong>Popup component</strong></p>
+<div class="tab">
+  <button class="tablinks" onclick="openCode(event, 'popup_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'popup_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'popup_component.ts')">component.ts</button>
+</div>
+<div id="popup_template.html" class="tabcontent">
+<pre><code class="language-HTML">
+&lt;p&gt;{{msg}}&lt;/p&gt;  &lt;!-- Show message from component --&gt;
 </code></pre>
-<p><code>/popup/styles.less - LESS</code></p>
-<pre><code class="language-CSS">p {
+</div>
+<div id="popup_styles.less" class="tabcontent">
+<pre><code class="language-CSS">
+p {
     color: #FFFFFF;
 }
 </code></pre>
-<p><code>/popup/components.ts - Typescript, Angular</code></p>
-<pre><code class="language-javascript">import { Component, Input } from '@angular/core';   // Import necessary components for popup
-
+</div>
+<div id="popup_component.ts" class="tabcontent">
+<pre><code class="language-Javascript">
+import { Component, Input } from '@angular/core';   // Import necessary components for popup
 @Component({
     selector: 'example-popup-com',                  // Choose the selector name of the popup
     templateUrl: './template.html',                 // Assign HTML file as template
     styleUrls: ['./styles.less']                    // Assign LESS file as style sheet file})
-
 export class PopupComponent {
-
-    constructor() { }
-
     @Input() public msg: string;                    // Expect input from host component
+    constructor() { }
 }
 </code></pre>
-<p><strong>Plugin component</strong>
-<code>template.html - HTML</code></p>
-<pre><code class="language-HTML">&lt;p&gt;Example&lt;/p&gt;
-&lt;button click=&quot;_ng_popup()&quot;&gt;&lt;/button&gt;               &lt;!-- Button to open popup --&gt;
+</div>
+<p><strong>Plugin component</strong></p>
+<div class="tab">
+  <button class="tablinks" onclick="openCode(event, 'popup_plugin_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'popup_plugin_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'popup_plugin_component.ts')">component.ts</button>
+</div>
+<div id="popup_plugin_template.html" class="tabcontent">
+<pre><code class="language-HTML">
+&lt;p&gt;Example&lt;/p&gt;
+&lt;button (click)=&quot;_ng_popup()&quot;&gt;&lt;/button&gt;   &lt;!-- Button to open popup --&gt;
 </code></pre>
-<p><code>styles.less - LESS</code></p>
-<pre><code class="language-CSS">p {
+</div>
+<div id="popup_plugin_styles.less" class="tabcontent">
+<pre><code class="language-CSS">
+p {
     color: #FFFFFF;
 }
 </code></pre>
-<p><code>components.ts - Typescript, Angular</code></p>
-<pre><code class="language-javascript">import { Component, Input } from '@angular/core';       // Import necessary components for plugin
+</div>
+<div id="popup_plugin_component.ts" class="tabcontent">
+<pre><code class="language-Javascript">
+import { Component, Input } from '@angular/core';       // Import necessary components for plugin
 import { PopupComponent } from './popup/components';    // Import the popup module
-
 @Component({
     selector: 'example',                                // Choose the selector name of the popup
     templateUrl: './template.html',                     // Assign HTML file as template
     styleUrls: ['./styles.less']                        // Assign LESS file as style sheet file})
-
 export class ExampleComponent {
-
     @Input() public api: Toolkit.IAPI;                  // API assignment
     @Input() public msg: string;                        // Expect input from host component
-
     constructor() { }
-
     public _ng_popup() {
         this.api.addPopup({
             caption: 'Example',
@@ -283,7 +309,7 @@ export class ExampleComponent {
             buttons: [                                  // Create a button on the popup to close it
                 {
                     caption: 'Cancel',
-                    handler: () =&gt; {
+                    handler: () => {
                         this.api.removePopup();         // Close popup
                     }
                 }
@@ -292,6 +318,7 @@ export class ExampleComponent {
     }
 }
 </code></pre>
+</div>
 <blockquote>
 <p>NOTE: For more information how the <code>API</code> works check out <code>Chapter 5 - API</code></p>
 </blockquote>
@@ -299,35 +326,41 @@ export class ExampleComponent {
 <p>To create notifications, the <code>API</code> is required. <strong>Chipmunk</strong> provides an <code>API</code> which gives access to major core events and different modules. The <code>API</code> for the front-end is named <code>chipmunk.client.toollkit</code>.</p>
 <h3><a class="header" href="#example-2" id="example-2">Example</a></h3>
 <p>The following example shows an example plugin with a line of text and a button which creates a notification.</p>
-<p><code>template.html - HTML</code></p>
-<pre><code class="language-HTML">&lt;p&gt;Example&lt;/p&gt;                                                  &lt;!-- Create a line of text --&gt;
-&lt;button (click)=&quot;_ng_notify&quot;&gt;&lt;/button&gt;                          &lt;!-- Create a button with a method to be called from the components.ts file --&gt;
+<div class="tab">
+  <button class="tablinks" onclick="openCode(event, 'notification_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'notification_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'notification_component.ts')">component.ts</button>
+</div>
+<div id="notification_template.html" class="tabcontent">
+<pre><code class="language-HTML">
+&lt;p&gt;Example&lt;/p&gt;
+&lt;button (click)=&quot;_ng_notify()&quot;&gt;&lt;/button&gt;   &lt;!-- Create a button with a method to be called from the components.ts file --&gt;
 </code></pre>
-<p><code>styles.less - LESS</code></p>
-<pre><code class="language-CSS">p {
+</div>
+<div id="notification_styles.less" class="tabcontent">
+<pre><code class="language-CSS">
+p {
     color: #FFFFFF;
 }
-
 button {
     height: 20px;
     width: 50px;
 }
 </code></pre>
-<p><code>component.ts - Typescript, Angular</code></p>
-<pre><code class="language-javascript">import { Component } from '@angular/core';
+</div>
+<div id="notification_component.ts" class="tabcontent">
+<pre><code class="language-Javascript">
+import { Component } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
 import { ENotificationType } from 'chipmunk.client.toolkit';    // Import notification type
-
 @Component({
     selector: 'example',                                        // Choose the selector name of the plugin
     templateUrl: './template.html',                             // Assign HTML file as template
     styleUrls: ['./styles.less']                                // Assign LESS file as style sheet file
 })
-
 export class ExampleComponent {
-
     @Input() public api: Toolkit.IAPI;                          // API assignment
-
+    constructor() { }
     public _ng_notify() {
         this.api.addNotification({
             caption: 'Info',                                    // Caption of the notification
@@ -339,57 +372,27 @@ export class ExampleComponent {
     }
 }
 </code></pre>
-<blockquote>
-<p>NOTE: For more information how the <code>API</code> works check out <code>Chapter 5 - API</code></p>
-</blockquote>
-<h2><a class="header" href="#logger" id="logger">Logger</a></h2>
-<p>To use the logger, the <code>API</code> is required. <strong>Chipmunk</strong> provides an <code>API</code> which gives access to major core events and different modules. The <code>API</code> for the front-end is named <code>chipmunk.client.toollkit</code>.</p>
-<h3><a class="header" href="#example-3" id="example-3">Example</a></h3>
-<p>In the example below a plugin is created which logs a message as soon as the plugin is created.</p>
-<p><code>template.html - HTML</code></p>
-<pre><code class="language-HTML">&lt;p&gt;Example&lt;/p&gt;                                                                  &lt;!-- Create a line of text --&gt;
-</code></pre>
-<p><code>styles.less - LESS</code></p>
-<pre><code class="language-CSS">p {
-    color: #FFFFFF;
-}
-</code></pre>
-<p><code>component.ts - Typescript, Angular</code></p>
-<pre><code class="language-javascript">import { Component } from '@angular/core';
-import * as Toolkit from 'chipmunk.client.toolkit';
-
-@Component({
-    selector: 'example',                                                        // Choose the selector name of the plugin
-    templateUrl: './template.html',                                             // Assign HTML file as template
-    styleUrls: ['./styles.less']                                                // Assign LESS file as style sheet file})
-
-export class ExampleComponent {
-
-    private _logger: Toolkit.Logger = new Toolkit.Logger('Plugin: example: ');  // Instantiate logger with signature
-    
-    constructor() {
-        this._logger.debug('Plugin started!');                                  // Create debug message
-    }
-}
-</code></pre>
+</div>
 <blockquote>
 <p>NOTE: For more information how the <code>API</code> works check out <code>Chapter 5 - API</code></p>
 </blockquote>
 <h1><a class="header" href="#front-end---non-angular-plugin" id="front-end---non-angular-plugin">Front-end - Non-Angular Plugin</a></h1>
 <p><strong>Non-Angular Plugins</strong> are also known as <strong>Standalone Plugins</strong>, which are plugins that are implemented in the <strong>front-end</strong>, but neither do they have Angular in it nor do they have an UI.
 <strong>Non-Angular Plugins</strong> are used to parse the output stream that is being shown in the main window of <strong>Chipmunk</strong>.</p>
-<h2><a class="header" href="#example-4" id="example-4">Example</a></h2>
+<h2><a class="header" href="#example-3" id="example-3">Example</a></h2>
 <p>This example shows how to create a simple <strong>Non-Angular</strong> plugin which prints <code>--&gt;</code> in front of each line.
 To create this example the abstract class <code>ARowCommonParser</code> from the <code>API</code> is required to extend from. <strong>Chipmunk</strong> provides an <code>API</code> which gives access to major core events and different modules. The <code>API</code> for the front-end is named <code>chipmunk.client.toollkit</code>.</p>
-<p><code>index.ts</code> - Typescript</p>
-<pre><code class="language-javascript">import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
-
+<div class="tab">
+  <button class="tablinks" onclick="openCode(event, 'index.ts')">index.ts</button>
+</div>
+<div id="index.ts" class="tabcontent">
+<pre><code class="language-Javascript">
+import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
 class ParseMe extends Toolkit.ARowCommonParser {                                                    // Extend parser class with Abstract parser class 
     public parse(str: string, themeTypeRef: Toolkit.EThemeType, row: Toolkit.IRowInfo): string {    // Create parser which modifies and returns parsed string
-        return `--&gt; ${str}`;                                                                        // Return string with --&gt; in front
+        return `--> ${str}`;                                                                        // Return string with --> in front
     }
 } 
-
 const gate: Toolkit.APluginServiceGate | undefined = (window as any).logviewer;                     // Necessary to bind namespace
 if (gate === undefined) {                                                                           // If binding didn't work print out error message
     console.error(`Fail to find logviewer gate.`);
@@ -399,6 +402,47 @@ if (gate === undefined) {                                                       
     });
 }
 </code></pre>
+</div>
+<blockquote>
+<p>NOTE: For more information how the <code>API</code> works check out <code>Chapter 5 - API</code></p>
+</blockquote>
+<h2><a class="header" href="#logger" id="logger">Logger</a></h2>
+<p>To use the logger, the <code>API</code> is required. <strong>Chipmunk</strong> provides an <code>API</code> which gives access to major core events and different modules. The <code>API</code> for the front-end is named <code>chipmunk.client.toollkit</code>.</p>
+<h3><a class="header" href="#example-4" id="example-4">Example</a></h3>
+<p>In the example below a plugin is created which logs a message as soon as the plugin is created.</p>
+<div class="tab">
+  <button class="tablinks" onclick="openCode(event, 'logger_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'logger_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'logger_component.ts')">component.ts</button>
+</div>
+<div id="logger_template.html" class="tabcontent">
+<pre><code class="language-HTML">
+&lt;p&gt;Example&lt;/p&gt;     &lt;!-- Create a line of text --&gt;
+</code></pre>
+</div>
+<div id="logger_styles.less" class="tabcontent">
+<pre><code class="language-CSS">
+p {
+    color: #FFFFFF;
+}
+</code></pre>
+</div>
+<div id="logger_component.ts" class="tabcontent">
+<pre><code class="language-Javascript">
+import { Component } from '@angular/core';
+import * as Toolkit from 'chipmunk.client.toolkit';
+@Component({
+    selector: 'example',                                                        // Choose the selector name of the plugin
+    templateUrl: './template.html',                                             // Assign HTML file as template
+    styleUrls: ['./styles.less']                                                // Assign LESS file as style sheet file})
+export class ExampleComponent {
+    private _logger: Toolkit.Logger = new Toolkit.Logger('Plugin: example: ');  // Instantiate logger with signature
+    constructor() {
+        this._logger.debug('Plugin started!');                                  // Create debug message
+    }
+}
+</code></pre>
+</div>
 <blockquote>
 <p>NOTE: For more information how the <code>API</code> works check out <code>Chapter 5 - API</code></p>
 </blockquote>
@@ -410,32 +454,40 @@ if (gate === undefined) {                                                       
 <p>To create <strong>breakpoints</strong>, type the keyword <code>debugger</code> in the line the breakpoint should activate.</p>
 <h3><a class="header" href="#example-5" id="example-5">Example</a></h3>
 <p>In the example below a plugin is created which has a breakpoint in the constructor, so the application stops as soon as the application is created.</p>
-<p><code>template.html - HTML</code></p>
-<pre><code class="language-HTML">&lt;p&gt;Example&lt;/p&gt;
+<div class="tab">
+  <button class="tablinks" onclick="openCode(event, 'dev_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'dev_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'dev_component.ts')">component.ts</button>
+</div>
+<div id="dev_template.html" class="tabcontent">
+<pre><code class="language-HTML">
+&lt;p&gt;Example&lt;/p&gt;
 </code></pre>
-<p><code>styles.less - LESS</code></p>
-<pre><code class="language-CSS">p {
+</div>
+<div id="dev_styles.less" class="tabcontent">
+<pre><code class="language-CSS">
+p {
     color: #FFFFFF;
 }
 </code></pre>
-<p><code>component.ts - Typescript, Angular</code></p>
-<pre><code class="language-Typescript">import { Component } from '@angular/core';
+</div>
+<div id="dev_component.ts" class="tabcontent">
+<pre><code class="language-Javascript">
+import { Component } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
-
 @Component({
     selector: 'example',                            // Choose the selector name of the plugin
     templateUrl: './template.html',                 // Assign HTML file as template
     styleUrls: ['./styles.less']                    // Assign LESS file as style sheet file})
-
 export class ExampleComponent {
-
     constructor() {
         console.log('Stop after!');                 // Console output to see where the breakpoint will appear
         debugger;                                   // Creating a breakpoint in the constructor
     }
 }
 </code></pre>
-<p>In the following chapter the <strong>back-end</strong> of plugins as well as the communication between the front-end and the back-end will be covered.</p>
+</div>
+<p>The following chapter covers some general information about the <strong>back-end</strong> of complex plugins as well as an example.</p>
 
                     </main>
 
