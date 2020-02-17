@@ -1442,15 +1442,15 @@ export * from './module';
 
 These abstract classes allow to create **parsers** that can modify the output in the rows (e.g: change text color, convert into different format).
 
-| Parser name      | Description                                                                                                                      |
-|------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| `RowBoundParser` | Parse only data received from the back-end of the plugin                                                                         |
-| `RowCommomParser`| Parse data from any kind of source                                                                                               |
-| `RowTypedParser` | Parse only specific type of source (e.g. DLT)                                                                                    |
-| `SelectionParser`| Parse only selected line(s), right-click to see self-chosen name as option to see the parsed result in the tab **Details** below |
-| `TypedRowRender` | Parser for more complex stream output                                                                                            |
-|                  | `TypedRowRenderAPIColumns` - show stream line as columns                                                                         |
-|                  | `TypedRowRenderAPIExternal` - use custom Angular component as stream                                                             |
+| Parser name                         | Description                                                                                                                     |
+|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| <a href="#rbp">`RowBoundParser`</a> | Parse only data received from the back-end of the plugin                                                                        |
+| <a href="#rcp">`RowCommomParser`</a>| Parse data from any kind of source                                                                                              |
+| <a href="#rtp">`RowTypedParser`</a> | Parse only specific type of source (e.g. DLT)                                                                                   |
+| <a href="#sp">`SelectionParser`</a> | Parse only selected line(s), right-click to see self-chosen name as option to see the parsed result in the tab **Details** below|
+| <a href="#trr">`TypedRowRender`</a> | Parser for more complex stream output                                                                                           |
+|                                     | <a href="#trrCol">`TypedRowRenderAPIColumns`</a> - show stream line as columns                                                  |
+|                                     | <a href="#trrExt">`TypedRowRenderAPIExternal`</a> - use custom Angular component as stream                                      |
 
 <h3 id="rbp">RowBoundParser</h3>
 
@@ -1740,8 +1740,6 @@ The abstract classes listed below are necessary for the **identification and reg
  * @class PluginNgModule
  */
 export declare class PluginNgModule {
-    private _name;
-    private _description;
     constructor(name: string, description: string) {}
 }
 ```
@@ -2704,23 +2702,6 @@ const app: Plugin = new Plugin();
 /**
  * @class PluginIPCService
  * @description Service provides communition between plugin's process and parent (main) process
- * @notes Parent (main) process attach plugin's process as fork with next FDs:
- *      { fd: 0 } stdin     doesn't used by parent process
- *      { fd: 1 } stdout    listened by parent process. Whole output from it goes to logs of parent process
- *      { fd: 2 } stderr    listened by parent process. Whole output from it goes to logs of parent process
- *      { fd: 3 } ipc       used by parent process as command sender / reciever
- * @recommendations
- *      - to parse logs use simple "console.log (warn, err etc)" or you can write it directly to stdout
- *      - parent process nothig send to process.stdin ( fd: 0 )
- *      - ipc channel ({ fd: 3 }) are using to exchange commands, but not data. Data should be send via stream
- *      - pipe channel ({ fd: 4 }) are using to send stream's data to parent. In only in one way: plugin -> parent.
- *        To work with this channel WriteStream is created. Developer are able:
- *        a) use method of this service "sendToStream" to send chunk of data
- *        b) get stream using "getDataStream" and pipe it with source of data
- *      - use event "message" to get commands from parent process
- *      - plugin process doesn't have direct access to render process; communication via render and main process
- *        goes via main process: [plugin -> main (parent) -> render] and [render -> main (parent) -> plugin]
- */
 export declare class PluginIPCService extends EventEmitter {
     private _pending;
     private _subscriptions;
