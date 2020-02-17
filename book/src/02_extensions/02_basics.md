@@ -2,7 +2,7 @@
 
 Rake commands are vital for the compilation of **Chipmunk**, which is why in this section the most important rake commands are going to be mentioned and described.
 
-```
+<pre><code>
 rake dev                            # Build electron application including all plugins and native code parts
 rake start                          # Start Chipmunk
 rake dev:pluginName_render          # Install 'pluginName' to application
@@ -13,7 +13,7 @@ rake install_plugins_standalone     # Install all standalone plugins
                                     # Standalone plugins exist in the front-end and provide functions to parse the output stream (e.g. coloring specific terms)
 rake install_plugins_angular        # Install all angular plugins
                                     # Angular plugins exist in the front-end and provide a UI (essentially the same as a complex plugin but without any external sources)
-```
+</code></pre>
 
 To build the back-end of a plugin, change to the directory of the plugin that will be built (in this example <pluginName>) `sandbox/<pluginName>/process` and run:
 `npm run build`
@@ -32,7 +32,7 @@ In the method `public add(): Promise<string>` add the name of the plugin into th
 ## Git commit
 
 Commits that are being made need to be in following shape:
-```
+<pre><code>
 [#xxx](type) message
 
 #xxx        Issue number
@@ -42,4 +42,4 @@ type        Commit type
             refact   - refactoring of existing code
             fix      - fix for bug
 message     Commit message
-```
+</code></pre>
