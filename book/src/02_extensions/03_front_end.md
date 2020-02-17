@@ -13,12 +13,15 @@ The main characteristic of an implementation in the **front-end** is the ability
 This section explains how to create a simple plugin with a line of text and a button that prints `'Hello World!'` in the console:
 
 **Visual**
+
 Since the **front-end** is being created with Angular, the plugin is treated like a component. To shape the visual part of the plugin, configure the `template.html` file (holds the HTML components) and `styles.less` file (holds the style settings).
 
 **Functionality**
+
 The HTML elements can be attached with any kind of functions, which need to be configured in the `components.ts` file.
 
 **External libraries**
+
 To expand the range of classes and methods the `example` plugin can make use of, modify the `module.ts` file.
 
 The library management of the plugin is defined in `public_api.ts` which manages and exports the public definitions of the plugin. In this example only the `module.ts` and `component.ts` files are being exported.
