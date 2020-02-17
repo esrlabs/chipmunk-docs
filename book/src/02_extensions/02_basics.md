@@ -15,7 +15,7 @@ rake install_plugins_angular        # Install all angular plugins
                                     # Angular plugins exist in the front-end and provide a UI (essentially the same as a complex plugin but without any external sources)
 </code></pre>
 
-To build the back-end of a plugin, change to the directory of the plugin that will be built (in this example <pluginName>) `sandbox/<pluginName>/process` and run:
+To build the back-end of a plugin, change to the directory of the plugin that will be built (in this example <pluginName>) `sandbox/pluginName/process` and run:
 `npm run build`
 
 
