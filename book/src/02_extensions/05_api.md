@@ -7,6 +7,26 @@
 
 Chipmunk provides an `API` for the front-end, which gives access to major core events, UI of the core and plugin IPC (required for communication beteween the host and render of plugin). The `API` for the front-end is named `chipmunk.client.toollkit` and holds different modules.
 
+<h2> Table of content </h2>
+<ol class="toc">
+    <li><a href="#howAPI">How to use the API</a></li>
+    <li><a href="#iapi">IAPI interface</a></li>
+    <li><a href="#abstract">Abstract classes</a>
+        <ol>
+            <li><a href="#parsers">Parsers</a></li>
+            <li><a href="#ipc">IPC</a></li>
+        </ol>
+    </li>
+    <li><a href="#api_class">Classes</a>
+        <ol>
+            <li><a href="#cse">ControllerSessionEvents</a></li>
+            <li><a href="#ipc_service">PluginIPCService</a></li>
+            <li><a href="#service_conf">ServiceConfig</a></li>
+            <li><a href="#logger">Logger</a></li>
+        </ol>
+    </li>
+</ol>
+
 <h2 id="howAPI"> How to use the API</h2>
 
 <h3 id="api1"> Method 1: Bind the api to the component </h3>
@@ -1434,7 +1454,7 @@ export * from './module';
 </code></pre>
 </div>
 
-# API - Abstract classes
+<h1 id="abstract">API - Abstract classes</h1>
 
 `chipmunk.client.toolkit` provides different kinds of abstract classes from which classes can extend from.
 
@@ -2940,7 +2960,7 @@ const app: Plugin = new Plugin();
 </code></pre>
 </div>
 
-<h2 id=service_conf"> ServiceConfig </h2>
+<h2 id="service_conf"> ServiceConfig </h2>
 
 The class `ServiceConfig` offers a variety of methods to read and write from an external file. This feature can be used to save and load settings.
 
