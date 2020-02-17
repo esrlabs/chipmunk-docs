@@ -1395,10 +1395,11 @@ export class ExampleComponent {
     @Input() public session: string;                                                                                    // Session ID assignment
     @Input() public sessions: Toolkit.ControllerSessionsEvents;                                                         // Session event listener assignment
     private _subs: { [key: string]: Toolkit.Subscription } = {};                                                        // Hashlist for session events
-    constructor() { }
-    this._subs.onSessionChange = this.sessions.subscribe().onSessionChange(this._onSessionSessionChange.bind(this));    // Subscribe to session change event
-    this._subs.onSessionOpen = this.sessions.subscribe().onSessionOpen(this._onSessionOpen.bind(this));                 // Subscribe to new session open event
-    this._subs.onSessionClose = this.sessions.subscribe().onSessionClose(this._onSessionClose.bind(this));              // Subscribe to session close event
+    constructor() {
+        this._subs.onSessionChange = this.sessions.subscribe().onSessionChange(this._onSessionSessionChange.bind(this));    // Subscribe to session change event
+        this._subs.onSessionOpen = this.sessions.subscribe().onSessionOpen(this._onSessionOpen.bind(this));                 // Subscribe to new session open event
+        this._subs.onSessionClose = this.sessions.subscribe().onSessionClose(this._onSessionClose.bind(this));              // Subscribe to session close event
+    }
     private _onSessionChange(session: string) {                                                                         // Method when session changes
         this.session = session;                                                                                         // Reassign the session to the session, to which has been changed to
     }
