@@ -5,8 +5,8 @@
 
 # Front-end - Angular Plugin
 
-**Angular** plugins are located in the **front-end** of the application in the folder `client.plugins`. An **Angluar** plugin can either be a plugin by itself or be part of a **Complex** plugin.
-The main characteristic of a **front-end** plugin is the ability to interact with the user directly. **front-end** plugins mainly consist of HTML, CSS and Typescript files, whereas the Typescript files include, inter alia, Angular. The files of the **front-end** are located in the `client.plugins` folder. 
+**Angular** plugins are located in the **front-end** of the application in the folder `client.plugins`.
+The main characteristic of an implementation in the **front-end** is the ability to modify the visual part of the plugin. **front-end** plugins mainly consist of HTML, CSS and Typescript files, whereas the Typescript files include, inter alia, Angular.
 
 ## Example
 
@@ -97,7 +97,7 @@ export * from './lib/module';       // Export the module file of the plugin
 
 ## Popup
 
-To create and remove popups, the `API` is required. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
+To create and remove popups, the <a href="05_api.html#api">`API`</a> is required. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the front-end is named `chipmunk.client.toollkit`.
 
 ### Example
 
@@ -197,11 +197,11 @@ export class ExampleComponent {
 </code></pre>
 </div>
 
-> NOTE: For more information how the `API` works check out `Chapter 5 - API`
+> NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
 ## Notifications
 
-To create notifications, the `API` is required. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
+To create notifications, the <a href="05_api.html#api">`API`</a> is required. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the front-end is named `chipmunk.client.toollkit`.
 
 ### Example
 
@@ -258,7 +258,7 @@ export class ExampleComponent {
 </code></pre>
 </div>
 
-> NOTE: For more information how the `API` works check out `Chapter 5 - API`
+> NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
 # Front-end - Non-Angular Plugin
 
@@ -268,7 +268,7 @@ export class ExampleComponent {
 ## Example
 
 This example shows how to create a simple **Non-Angular** plugin which prints `-->` in front of each line.
-To create this example the abstract class `ARowCommonParser` from the `API` is required to extend from. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
+To create this example the abstract class <a href="05_api.html#rcp">`RowCommonParser`</a> from the <a href="05_api.html#api">`API`</a> is required to extend from. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the front-end is named `chipmunk.client.toollkit`.
 
 <div class="tab">
   <button class="tablinks" onclick="openCode(event, 'index.ts')">index.ts</button>
@@ -277,7 +277,7 @@ To create this example the abstract class `ARowCommonParser` from the `API` is r
 <div id="index.ts" class="tabcontent">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
-class ParseMe extends Toolkit.ARowCommonParser {                                                    // Extend parser class with Abstract parser class 
+class ParseMe extends Toolkit.RowCommonParser {                                                    // Extend parser class with Abstract parser class 
     public parse(str: string, themeTypeRef: Toolkit.EThemeType, row: Toolkit.IRowInfo): string {    // Create parser which modifies and returns parsed string
         return `--> ${str}`;                                                                        // Return string with --> in front
     }
@@ -293,7 +293,7 @@ if (gate === undefined) {                                                       
 </code></pre>
 </div>
 
-> NOTE: For more information how the `API` works check out `Chapter 5 - API`
+> NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
 # Front-end - Non-Angular Plugin
 
@@ -332,7 +332,7 @@ if (gate === undefined) {                                                       
 
 ## Logger
 
-To use the logger, the `API` is required. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
+To use the logger, the <a href="05_api.html#api">`API`</a> is required. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the front-end is named `chipmunk.client.toollkit`.
 
 ### Example
 
@@ -375,7 +375,7 @@ export class ExampleComponent {
 </code></pre>
 </div>
 
-> NOTE: For more information how the `API` works check out `Chapter 5 - API`
+> NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
 # Developer mode and Breakpoints
 
