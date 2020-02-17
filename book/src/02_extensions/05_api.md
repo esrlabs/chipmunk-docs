@@ -1977,7 +1977,7 @@ This example shows how to create a parser, that puts '-->' in front of every lin
 <div id="psg_index.ts" class="tabcontent">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
-class ParseMe extends Toolkit.RowCommonParser {                                                    // Extend parser class with Abstract parser class 
+class ParseMe extends Toolkit.RowCommonParser {                                                     // Extend parser class with Abstract parser class 
     public parse(str: string, themeTypeRef: Toolkit.EThemeType, row: Toolkit.IRowInfo): string {    // Create parser which modifies and returns parsed string
         return `--> ${str}`;                                                                        // Return string with --> in front
     }

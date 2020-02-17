@@ -18,7 +18,6 @@ rake install_plugins_angular        # Install all angular plugins
 To build the back-end of a plugin, change to the directory of the plugin that will be built (in this example <pluginName>) `sandbox/pluginName/process` and run:
 `npm run build`
 
-
 If a new update of **Chipmunk** is available, first run `rake clobber` (to remove all compiled files) and then `rake dev`, to update and re-build **Chipmunk**.
 
 ## Add plugin to sidebar

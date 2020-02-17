@@ -268,6 +268,34 @@ export class ExampleComponent {
 ## Example
 
 This example shows how to create a simple **Non-Angular** plugin which prints `-->` in front of each line.
+To create this example the abstract class `ARowCommonParser` from the `API` is required to extend from. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
+
+<div class="tab">
+  <button class="tablinks" onclick="openCode(event, 'index.ts')">index.ts</button>
+</div>
+
+<div id="index.ts" class="tabcontent">
+<pre><code class="language-Javascript">
+import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
+class ParseMe extends Toolkit.ARowCommonParser {                                                    // Extend parser class with Abstract parser class 
+    public parse(str: string, themeTypeRef: Toolkit.EThemeType, row: Toolkit.IRowInfo): string {    // Create parser which modifies and returns parsed string
+        return `--> ${str}`;                                                                        // Return string with --> in front
+    }
+} 
+const gate: Toolkit.APluginServiceGate | undefined = (window as any).logviewer;                     // Necessary to bind namespace
+if (gate === undefined) {                                                                           // If binding didn't work print out error message
+    console.error(`Fail to find logviewer gate.`);
+} else {
+    gate.setPluginExports({                                                                         // Set parser(s) to export here (Setting Multiple parsers possible)
+        parser: new ParseMe()                                                                       // Create parser instance (Free to choose parser name)
+    });
+}
+</code></pre>
+</div>
+
+## Example
+
+This example shows how to create a simple **Non-Angular** plugin which prints `-->` in front of each line.
 To create this example the abstract class <a href="05_api.html#rcp">`RowCommonParser`</a> from the <a href="05_api.html#api">`API`</a> is required to extend from. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the front-end is named `chipmunk.client.toollkit`.
 
 <div class="tab">
