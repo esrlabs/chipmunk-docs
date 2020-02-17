@@ -24,7 +24,7 @@ If a new update of **Chipmunk** is available, first run `rake clobber` (to remov
 
 For the developed plugin to appear on the sidebar as an option, it will be necessary to add the name of the plugin in:
 
-`application\client.core\src\app\environment\services\service.sessions.tabs.ts`
+`application/client.core/src/app/environment/services/service.sessions.tabs.ts`
 
 In the method `public add(): Promise<string>` add the name of the plugin into the array `transports: ['processes', 'serial', 'dlt-render']`
 

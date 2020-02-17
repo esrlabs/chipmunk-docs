@@ -20,14 +20,14 @@ The communication between the **front-end** and the **back-end** is established 
 
 ## Front-end
 
-<div class="tab">
+<div class="tab befe">
   <button class="tablinks" onclick="openCode(event, 'template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'module.ts')">module.ts</button>
 </div>
 
-<div id="component.ts" class="tabcontent">
+<div id="component.ts" class="tabcontent befe">
 <pre><code class="language-Javascript">
 import { Component, Input, AfterViewInit, OnDestroy } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -86,7 +86,7 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
 </code></pre>
 </div>
 
-<div id="module.ts" class="tabcontent">
+<div id="module.ts" class="tabcontent befe">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';
 import { ExampleComponent } from './component';
@@ -104,7 +104,7 @@ export class PluginModule extends Toolkit.PluginNgModule {                      
 </code></pre>
 </div>
 
-<div id="styles.less" class="tabcontent">
+<div id="styles.less" class="tabcontent befe">
 <pre><code class="language-CSS">
 p {
     color: white;
@@ -120,7 +120,7 @@ button {
 </code></pre>
 </div>
 
-<div id="template.html" class="tabcontent">
+<div id="template.html" class="tabcontent befe">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_onRequest()&quot;&gt;&lt;/button&gt;   &lt;!-- Create a button for request-type of message --&gt;
@@ -130,19 +130,19 @@ button {
 
 ## Back-end
 
-<div class="tab">
+<div class="tab bebe">
   <button class="tablinks" onclick="openCode(event, 'public_api.ts')">public_api.ts</button>
   <button class="tablinks" onclick="openCode(event, 'main.ts')">main.ts</button>
 </div>
 
-<div id="public_api.ts" class="tabcontent">
+<div id="public_api.ts" class="tabcontent bebe">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
 </code></pre>
 </div>
 
-<div id="main.ts" class="tabcontent">
+<div id="main.ts" class="tabcontent bebe">
 <pre><code class="language-Javascript">
 import PluginIPCService from 'chipmunk.plugin.ipc';
 import { IPCMessages } from 'chipmunk.plugin.ipc';
