@@ -15,14 +15,14 @@ Chipmunk provides an `API` for the **UI**, which gives access to major core even
     <li><a href="#abstract">Abstract classes</a>
         <ol>
             <li><a href="#parsers">Parsers</a></li>
-            <li><a href="#ipc">IPC</a></li>
+            <li><a href="#ipc">IPC</a> (Coming soon)</li>
         </ol>
     </li>
     <li><a href="#api_class">Classes</a>
         <ol>
             <li><a href="#cse">ControllerSessionEvents</a></li>
-            <li><a href="#ipc_service">PluginIPCService (Coming soon)</a></li>
-            <li><a href="#service_conf">ServiceConfig</a></li>
+            <li><a href="#ipc_service">PluginIPCService</a> (Coming soon)</li>
+            <li><a href="#service_conf">ServiceConfig</a> (Coming soon)</li>
             <li><a href="#logger">Logger</a></li>
         </ol>
     </li>
@@ -1285,8 +1285,8 @@ These abstract classes allow to create **parsers** that can modify the output in
 | <a href="#rbp">`RowBoundParser`</a> | Parse only data received from the back-end of the plugin                                                                        |
 | <a href="#rcp">`RowCommomParser`</a>| Parse data from any kind of source                                                                                              |
 | <a href="#rtp">`RowTypedParser`</a> | Parse only specific type of source (e.g. DLT)                                                                                   |
-| <a href="#sp">`SelectionParser`</a> | Parse only selected line(s), right-click to see self-chosen name as option to see the parsed result in the tab **Details** below|
-| <a href="#trr">`TypedRowRender`</a> | Parser for more complex stream output                                                                                           |
+| <a href="#sp">`SelectionParser` (coming soon)</a> | Parse only selected line(s), right-click to see self-chosen name as option to see the parsed result in the tab **Details** below|
+| <a href="#trr">`TypedRowRender` (coming soon)</a> | Parser for more complex stream output                                                                                           |
 |                                     | <a href="#trrCol">`TypedRowRenderAPIColumns`</a> - show stream line as columns                                                  |
 |                                     | <a href="#trrExt">`TypedRowRenderAPIExternal`</a> - use custom Angular component as stream                                      |
 
