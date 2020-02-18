@@ -8,8 +8,6 @@
 
 Chipmunk provides an `API` for the **UI**, which gives access to major core events, UI of the core and plugin IPC (required for communication beteween the host and render of plugin). The `API` for the **UI** is named `chipmunk.client.toollkit` and holds different modules.
 
-<h1>NOTE: The back-end implementation is not available for the time being!</h1>
-
 <h2> Table of content </h2>
 <ol class="toc">
     <li><a href="#howAPI">How to use the API</a></li>
@@ -23,7 +21,7 @@ Chipmunk provides an `API` for the **UI**, which gives access to major core even
     <li><a href="#api_class">Classes</a>
         <ol>
             <li><a href="#cse">ControllerSessionEvents</a></li>
-            <li><a href="#ipc_service">PluginIPCService</a></li>
+            <li><a href="#ipc_service">PluginIPCService (Coming soon)</a></li>
             <li><a href="#service_conf">ServiceConfig</a></li>
             <li><a href="#logger">Logger</a></li>
         </ol>
@@ -1831,6 +1829,7 @@ if (gate === undefined) {                                                       
 </code></pre>
 </div>
 
+<!--
 <h3 id="trrCol"> TypedRowRenderAPIColumns </h3>
 
 ```Javascript
@@ -1875,8 +1874,6 @@ export abstract class TypedRowRenderAPIColumns {
 ```
 
 <h3>Example - TypedRowRenderAPIColumns</h3>
-
-> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
 
 <div class="tab trrc">
   <button class="tablinks active" onclick="openCode(event, 'trrc_template.html')">template.html</button>
@@ -2053,6 +2050,8 @@ export abstract class TypedRowRenderAPIExternal {
 <h3>Example - TypedRowRenderAPIExternal</h3>
 
 **User-Interface UI**
+
+> **IMPORTANT: This implementation will be available soon**
 
 <div class="tab trre">
   <button class="tablinks active" onclick="openCode(event, 'trreR_template.html')">/row/template.html</button>
@@ -2260,8 +2259,6 @@ p {
 
 **Back-end**
 
-> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
-
 <div class="tab trreB">
   <button class="tablinks active" onclick="openCode(event, 'trre_main.ts')">main.ts</button>
 </div>
@@ -2295,15 +2292,14 @@ class ExampleBackend {
 export default new ExampleBackend();
 </code></pre>
 </div>
+-->
 
-
+<!--
 <h2 id="ipc">3.2 IPC </h2>
 
 These abstract classes allow to create different methods to establish communication between the **back-end** and the **UI**.
 
 > **IMPORTANT**: `IPC` is only used in the **back-end**
-
-> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
 
 ```Javascript
 // Typescript
@@ -2350,8 +2346,6 @@ export declare abstract class IPC {
 ```
 
 <h3>Example - IPC</h3>
-
-> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
 
 This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **back-end**.
 
@@ -2539,6 +2533,7 @@ class Plugin {
 const app: Plugin = new Plugin();
 </code></pre>
 </div>
+-->
 
 <h1 id="api_class">4. Classes </h1>
 
@@ -2727,6 +2722,8 @@ export * from './module';
 </code></pre>
 </div>
 
+
+<!--
 <h2 id="ipc_service">4.2 PluginIPCService </h2>
 
 ```Javascript
@@ -2810,8 +2807,6 @@ export declare class PluginIPCService extends EventEmitter {
 ```
 
 <h3>Example</h3>
-
-> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
 
 This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **back-end**.
 
@@ -2935,8 +2930,6 @@ export * from './module';
 
 <h2>Back-end</h2>
 
-> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
-
 <div class="tab pipcB">
   <button class="tablinks active" onclick="openCode(event, 'pIPC_main.ts')">main.ts</button>
 </div>
@@ -3037,8 +3030,6 @@ export declare class ServiceConfig {
 ```
 
 <h3>Example - ServiceConfig</h3>
-
-> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
 
 <h2>UI</h2>
 
@@ -3167,8 +3158,6 @@ export * from './module';
 
 <h2>Back-end</h2>
 
-> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
-
 <div class="tab scB">
   <button class="tablinks active" onclick="openCode(event, 'sc_main.ts')">main.ts</button>
 </div>
@@ -3231,6 +3220,7 @@ class Plugin {
 const app: Plugin = new Plugin();
 </code></pre>
 </div>
+-->
 
 <h2 id="logger">4.4 Logger </h2>
 
