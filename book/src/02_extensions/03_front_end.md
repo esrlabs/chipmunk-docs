@@ -34,7 +34,7 @@ The library management of the plugin is defined in `public_api.ts` which manages
   <button class="tablinks" onclick="openCode(event, 'public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="template.html" class="tabcontent ang">
+<div id="template.html" class="tabcontent ang active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_click()&quot;&gt;&lt;/button&gt;   &lt;!-- Create a button with a method to be called from the components.ts file --&gt;
@@ -109,12 +109,12 @@ In this example a plugin with a button will be created. When the button is press
 **Popup component**
 
 <div class="tab popup">
-  <button class="tablinks" onclick="openCode(event, 'popup_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'popup_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'popup_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'popup_component.ts')">component.ts</button>
 </div>
 
-<div id="popup_template.html" class="tabcontent popup">
+<div id="popup_template.html" class="tabcontent popup active">
 <pre><code class="language-HTML">
 &lt;p&gt;{{msg}}&lt;/p&gt;  &lt;!-- Show message from component --&gt;
 </code></pre>
@@ -145,12 +145,12 @@ export class PopupComponent {
 **Plugin component**
 
 <div class="tab ppopup">
-  <button class="tablinks" onclick="openCode(event, 'popup_plugin_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'popup_plugin_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'popup_plugin_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'popup_plugin_component.ts')">component.ts</button>
 </div>
 
-<div id="popup_plugin_template.html" class="tabcontent ppopup">
+<div id="popup_plugin_template.html" class="tabcontent ppopup active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_popup()&quot;&gt;&lt;/button&gt;   &lt;!-- Button to open popup --&gt;
@@ -211,12 +211,12 @@ To create notifications, the <a href="05_api.html#api">`API`</a> is required. **
 The following example shows an example plugin with a line of text and a button which creates a notification.
 
 <div class="tab not">
-  <button class="tablinks" onclick="openCode(event, 'notification_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'notification_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'notification_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'notification_component.ts')">component.ts</button>
 </div>
 
-<div id="notification_template.html" class="tabcontent not">
+<div id="notification_template.html" class="tabcontent not active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_notify()&quot;&gt;&lt;/button&gt;   &lt;!-- Create a button with a method to be called from the components.ts file --&gt;
@@ -273,11 +273,11 @@ export class ExampleComponent {
 This example shows how to create a simple **Non-Angular** plugin which prints `-->` in front of each line.
 To create this example the abstract class `ARowCommonParser` from the `API` is required to extend from. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
 
-<div class="tab">
-  <button class="tablinks" onclick="openCode(event, 'index.ts')">index.ts</button>
+<div class="tab nangp">
+  <button class="tablinks active" onclick="openCode(event, 'nangp_index.ts')">index.ts</button>
 </div>
 
-<div id="index.ts" class="tabcontent">
+<div id="nangp_index.ts" class="tabcontent nangp active">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
 class ParseMe extends Toolkit.ARowCommonParser {                                                    // Extend parser class with Abstract parser class 
@@ -302,10 +302,10 @@ This example shows how to create a simple **Non-Angular** plugin which prints `-
 To create this example the abstract class <a href="05_api.html#rcp">`RowCommonParser`</a> from the <a href="05_api.html#api">`API`</a> is required to extend from. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the front-end is named `chipmunk.client.toollkit`.
 
 <div class="tab nang">
-  <button class="tablinks" onclick="openCode(event, 'index.ts')">index.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'nang_index.ts')">index.ts</button>
 </div>
 
-<div id="index.ts" class="tabcontent nang">
+<div id="nang_index.ts" class="tabcontent nang active">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
 class ParseMe extends Toolkit.RowCommonParser {                                                     // Extend parser class with Abstract parser class 
@@ -335,12 +335,12 @@ To use the logger, the <a href="05_api.html#api">`API`</a> is required. **Chipmu
 In the example below a plugin is created which logs a message as soon as the plugin is created.
 
 <div class="tab log">
-  <button class="tablinks" onclick="openCode(event, 'logger_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'logger_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'logger_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'logger_component.ts')">component.ts</button>
 </div>
 
-<div id="logger_template.html" class="tabcontent log">
+<div id="logger_template.html" class="tabcontent log active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;     &lt;!-- Create a line of text --&gt;
 </code></pre>
@@ -390,12 +390,12 @@ To create **breakpoints**, type the keyword `debugger` in the line the breakpoin
 In the example below a plugin is created which has a breakpoint in the constructor, so the application stops as soon as the application is created.
 
 <div class="tab dev">
-  <button class="tablinks" onclick="openCode(event, 'dev_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'dev_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'dev_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'dev_component.ts')">component.ts</button>
 </div>
 
-<div id="dev_template.html" class="tabcontent dev">
+<div id="dev_template.html" class="tabcontent dev active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 </code></pre>

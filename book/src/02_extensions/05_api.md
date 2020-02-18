@@ -37,14 +37,14 @@ One way to use the API is by binding it to the main component of the plugin (`co
 The example code below shows an example plugin with the API bound to it. The example also includes three methods that are being called upon specific events from the sessions/tabs. To demonstrate how to use the `API`, each time the session changes the session ID will be printed out in the console.
 
 <div class="tab api">
-  <button class="tablinks" onclick="openCode(event, 'api_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'api_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'api_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'api_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'api_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'api_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="api_template.html" class="tabcontent api">
+<div id="api_template.html" class="tabcontent api active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 </code></pre>
@@ -121,7 +121,7 @@ To demonstrate how to use the `API`, each time the session changes the session I
 > **IMPORTANT**: Compared to the first method, when the `API` is created in a service file, the `API` will be accessable globally (in scope of the plugin) and will only get destroyed when the application is closed.
 
 <div class="tab api2">
-  <button class="tablinks" onclick="openCode(event, 'api2_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'api2_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'api2_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'api2_service.ts')">service.ts</button>
   <button class="tablinks" onclick="openCode(event, 'api2_component.ts')">component.ts</button>
@@ -129,7 +129,7 @@ To demonstrate how to use the `API`, each time the session changes the session I
   <button class="tablinks" onclick="openCode(event, 'api2_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="api2_template.html" class="tabcontent api2">
+<div id="api2_template.html" class="tabcontent api2 active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 </code></pre>
@@ -300,14 +300,14 @@ export interface IAPI {
 In this example the `API` will be assigned to the instance variable of the main component of the plugin
 
 <div class="tab getipc">
-  <button class="tablinks" onclick="openCode(event, 'getIPC_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'getIPC_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'getIPC_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'getIPC_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'getIPC_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'getIPC_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="getIPC_template.html" class="tabcontent getipc">
+<div id="getIPC_template.html" class="tabcontent getipc active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;     &lt;!-- Show session ID --&gt;
 </code></pre>
@@ -379,14 +379,14 @@ export * from './module';
 In this example the session id will be shown in the plugin
 
 <div class="tab asid">
-  <button class="tablinks" onclick="openCode(event, 'asid_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'asid_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'asid_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'asid_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'asid_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'asid_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="asid_template.html" class="tabcontent asid">
+<div id="asid_template.html" class="tabcontent asid active">
 <pre><code class="language-HTML">
 &lt;p&gt;{{sessionID}}&lt;/p&gt;   &lt;!-- Show session ID --&gt;
 </code></pre>
@@ -458,14 +458,14 @@ export * from './module';
 ### Example - getViewportEventsHub
 
 <div class="tab vpe">
-  <button class="tablinks" onclick="openCode(event, 'vpe_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'vpe_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'vpe_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'vpe_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'vpe_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'vpe_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="vpe_template.html" class="tabcontent vpe">
+<div id="vpe_template.html" class="tabcontent vpe active">
 <pre><code class="language-HTML">
 &lt;p #element&gt;Example&lt;/p&gt;     &lt;!-- Create a line of text --&gt;
 </code></pre>
@@ -544,7 +544,7 @@ export * from './module';
 This example shows the usage of `getSessionsEventsHub` by creating methods to be called when a session _opens/closes/changes_:
 
 <div class="tab seh">
-  <button class="tablinks" onclick="openCode(event, 'seh_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'seh_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'seh_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'seh_service.ts')">service.ts</button>
   <button class="tablinks" onclick="openCode(event, 'seh_component.ts')">component.ts</button>
@@ -552,7 +552,7 @@ This example shows the usage of `getSessionsEventsHub` by creating methods to be
   <button class="tablinks" onclick="openCode(event, 'seh_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="seh_template.html" class="tabcontent seh">
+<div id="seh_template.html" class="tabcontent seh active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;      &lt;!-- Create a line of text --&gt;
 </code></pre>
@@ -656,7 +656,7 @@ export { Service };
 To create a popup, a plugin to host the popup and the popup itself have to be defined.
 
 <div class="tab addpop">
-  <button class="tablinks" onclick="openCode(event, 'addPop_pop_template.html')">/popup/template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'addPop_pop_template.html')">/popup/template.html</button>
   <button class="tablinks" onclick="openCode(event, 'addPop_pop_styles.less')">/popup/styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'addPop_pop_component.ts')">/popup/component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'addPop_template.html')">template.html</button>
@@ -666,7 +666,7 @@ To create a popup, a plugin to host the popup and the popup itself have to be de
   <button class="tablinks" onclick="openCode(event, 'addPop_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="addPop_pop_template.html" class="tabcontent addpop">
+<div id="addPop_pop_template.html" class="tabcontent addpop active">
 <pre><code class="language-HTML">
 &lt;p&gt;{{msg}}&lt;/p&gt;      &lt;!-- Show message from component --&gt;
 </code></pre>
@@ -777,7 +777,7 @@ export * from './module';
 To remove the popup, one way is to create a button on the popup, which calls the method to remove the popup upon clicking.
 
 <div class="tab rempop">
-  <button class="tablinks" onclick="openCode(event, 'remPop_pop_template.html')">/popup/template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'remPop_pop_template.html')">/popup/template.html</button>
   <button class="tablinks" onclick="openCode(event, 'remPop_pop_styles.less')">/popup/styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'remPop_pop_component.ts')">/popup/component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'remPop_template.html')">template.html</button>
@@ -787,7 +787,7 @@ To remove the popup, one way is to create a button on the popup, which calls the
   <button class="tablinks" onclick="openCode(event, 'remPop_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="remPop_pop_template.html" class="tabcontent rempop">
+<div id="remPop_pop_template.html" class="tabcontent rempop active">
 <pre><code class="language-HTML">
 &lt;p&gt;{{msg}}&lt;/p&gt;      &lt;!-- Show message from component --&gt;
 </code></pre>
@@ -910,7 +910,7 @@ export * from './module';
 In this example a button will be created in the title of the sidebar which will log a message when clicked.
 
 <div class="tab sti">
-  <button class="tablinks" onclick="openCode(event, 'title_template.html')">/title/template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'title_template.html')">/title/template.html</button>
   <button class="tablinks" onclick="openCode(event, 'title_styles.less')">/title/styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'title_component.ts')">/title/component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'titleP_template.html')">template.html</button>
@@ -920,7 +920,7 @@ In this example a button will be created in the title of the sidebar which will 
   <button class="tablinks" onclick="openCode(event, 'titleP_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="title_template.html" class="tabcontent sti">
+<div id="title_template.html" class="tabcontent sti active">
 <pre><code class="language-HTML">
 &lt;!-- Create the title component of the button. --&gt;
 &lt;span&gt;+&lt;/span&gt;      &lt;!-- Create '+' as button --&gt;
@@ -1028,14 +1028,14 @@ export * from './module';
 In this example the plugin `serial` will be opened and set as the active plugin 2 seconds after the `example` plugin is opened.
 
 <div class="tab osa">
-  <button class="tablinks" onclick="openCode(event, 'sb_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'sb_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'sb_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'sb_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'sb_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'sb_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="sb_template.html" class="tabcontent osa">
+<div id="sb_template.html" class="tabcontent osa active">
 <pre><code class="language-HTML">
 &lt;p&gt;Wait for it...&lt;/p&gt;       &lt;!-- Show example string --&gt;
 </code></pre>
@@ -1110,14 +1110,14 @@ export * from './module';
 In this example the `xterminal` app will be opened and set as active 2 seconds after the `example` plugin is opened.
 
 <div class="tab ota">
-  <button class="tablinks" onclick="openCode(event, 'tb_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'tb_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'tb_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'tb_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'tb_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'tb_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="tb_template.html" class="tabcontent ota">
+<div id="tb_template.html" class="tabcontent ota active">
 <pre><code class="language-HTML">
 &lt;p&gt;Wait for it...&lt;/p&gt;       &lt;!-- Show example string --&gt;
 </code></pre>
@@ -1193,14 +1193,14 @@ In this example the `xterminal` app will be opened and set as active 2 seconds a
 The following example shows an example plugin with a line of text and a button which creates a notification.
 
 <div class="tab not">
-  <button class="tablinks" onclick="openCode(event, 'not_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'not_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'not_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'not_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'not_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'not_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="not_template.html" class="tabcontent not">
+<div id="not_template.html" class="tabcontent not active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;                                                  &lt;!-- Create a line of text --&gt;
 &lt;button (click)=&quot;_ng_notify()&quot;&gt;&lt;/button&gt;              &lt;!-- Create a button with a method to be called from the components.ts file --&gt;
@@ -1381,14 +1381,14 @@ export class ControllerSessionsEvents {
 This example shows how to call specific methods when a session is created/closed/changed: 
 
 <div class="tab cse">
-  <button class="tablinks" onclick="openCode(event, 'cse_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'cse_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'cse_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'cse_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'cse_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'cse_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="cse_template.html" class="tabcontent cse">
+<div id="cse_template.html" class="tabcontent cse active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;      &lt;!-- Create a line of text --&gt;
 </code></pre>
@@ -1506,10 +1506,10 @@ export declare abstract class RowBoundParser {
 ### Example - RowBoundParser
 
 <div class="tab rbp">
-  <button class="tablinks" onclick="openCode(event, 'rbp_index.ts')">index.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'rbp_index.ts')">index.ts</button>
 </div>
 
-<div id="rbp_index.ts" class="tabcontent rbp">
+<div id="rbp_index.ts" class="tabcontent rbp active">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
 class ParseMe extends Toolkit.RowBoundParser {                                                      // Extend parser class with Abstract parser class 
@@ -1555,10 +1555,10 @@ export declare abstract class RowCommonParser {
 ### Example - RowCommonParser
 
 <div class="tab rcp">
-  <button class="tablinks" onclick="openCode(event, 'rcp_index.ts')">index.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'rcp_index.ts')">index.ts</button>
 </div>
 
-<div id="rcp_index.ts" class="tabcontent rcp">
+<div id="rcp_index.ts" class="tabcontent rcp active">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
 class ParseMe extends Toolkit.RowCommonParser {                                                     // Extend parser class with Abstract parser class 
@@ -1612,10 +1612,10 @@ export declare abstract class RowTypedParser {
 ### Example - RowTypedParser
 
 <div class="tab rtp">
-  <button class="tablinks" onclick="openCode(event, 'rtp_index.ts')">index.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'rtp_index.ts')">index.ts</button>
 </div>
 
-<div id="rtp_index.ts" class="tabcontent rtp">
+<div id="rtp_index.ts" class="tabcontent rtp active">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
 class ParseMe extends Toolkit.RowTypedParser {                                                      // Extend parser class with Abstract parser class 
@@ -1673,10 +1673,10 @@ export declare abstract class SelectionParser {
 ### Example - SelectionParser
 
 <div class="tab sp">
-  <button class="tablinks" onclick="openCode(event, 'sp_index.ts')">index.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'sp_index.ts')">index.ts</button>
 </div>
 
-<div id="sp_index.ts" class="tabcontent sp">
+<div id="sp_index.ts" class="tabcontent sp active">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
 class ParseMe extends Toolkit.SelectionParser {                                                     // Extend parser class with Abstract parser class 
@@ -1769,13 +1769,13 @@ export declare class PluginNgModule {
 This example shows how to create a simple plugin along with the usage of `PluginNgModule`:
 
 <div class="tab ng">
-  <button class="tablinks" onclick="openCode(event, 'ng_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'ng_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'ng_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'ng_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'ng_module.ts')">module.ts</button>
 </div>
 
-<div id="ng_template.html" class="tabcontent ng">
+<div id="ng_template.html" class="tabcontent ng active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 </code></pre>
@@ -1860,14 +1860,14 @@ export declare abstract class PluginService {
 This example shows how to create a service class, that extends from `PluginService`, which allows global access to the `API` by import the service class:
 
 <div class="tab ps">
-  <button class="tablinks" onclick="openCode(event, 'ps_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'ps_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'ps_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'ps_service.ts')">service.ts</button>
   <button class="tablinks" onclick="openCode(event, 'ps_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'ps_module.ts')">module.ts</button>
 </div>
 
-<div id="ps_template.html" class="tabcontent ps">
+<div id="ps_template.html" class="tabcontent ps active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 </code></pre>
@@ -1989,10 +1989,10 @@ export declare abstract class PluginServiceGate {
 This example shows how to create a parser, that puts '-->' in front of every line in the output.
 
 <div class="tab psg">
-  <button class="tablinks" onclick="openCode(event, 'psg_index.ts')">index.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'psg_index.ts')">index.ts</button>
 </div>
 
-<div id="psg_index.ts" class="tabcontent psg">
+<div id="psg_index.ts" class="tabcontent psg active">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
 class ParseMe extends Toolkit.RowCommonParser {                                                     // Extend parser class with Abstract parser class 
@@ -2057,7 +2057,7 @@ export abstract class TypedRowRenderAPIColumns {
 ### Example - TypedRowRenderAPIColumns
 
 <div class="tab trrc">
-  <button class="tablinks" onclick="openCode(event, 'trrc_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'trrc_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'trrc_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'trrc_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'trrc_row_columns_api.ts')">row.columns_api.ts</button>
@@ -2066,7 +2066,7 @@ export abstract class TypedRowRenderAPIColumns {
   <button class="tablinks" onclick="openCode(event, 'trrc_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="trrc_public_api.ts" class="tabcontent trrc">
+<div id="trrc_public_api.ts" class="tabcontent trrc active">
 <pre><code class="language-Javascript">
 import { ExampleRowRender } from './lib/row/render';    // Import the renderer
 const externalRowRender = new ExampleRowRender();       // Instanticate the renderer once
@@ -2233,7 +2233,7 @@ export abstract class TypedRowRenderAPIExternal {
 **Front-end**
 
 <div class="tab trre">
-  <button class="tablinks" onclick="openCode(event, 'trreR_template.html')">/row/template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'trreR_template.html')">/row/template.html</button>
   <button class="tablinks" onclick="openCode(event, 'trreR_styles.less')">/row/styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'trreR_component.ts')">/row/component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'trre_render_api.ts')">/row/render_api.ts</button>
@@ -2245,7 +2245,7 @@ export abstract class TypedRowRenderAPIExternal {
   <button class="tablinks" onclick="openCode(event, 'trre_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="trre_render_api.ts" class="tabcontent trre">
+<div id="trre_render_api.ts" class="tabcontent trre active">
 <pre><code class="language-Javascript">
 import * from 'chipmunk.client.toolkit';
 export class ExampleRowRenderAPI extends Toolkit.TypedRowRenderAPIExternal {
@@ -2439,10 +2439,10 @@ p {
 **Back-end**
 
 <div class="tab trreB">
-  <button class="tablinks" onclick="openCode(event, 'trre_main.ts')">maint.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'trre_main.ts')">main.ts</button>
 </div>
 
-<div id="trre_main.ts" class="tabcontent trreB">
+<div id="trre_main.ts" class="tabcontent trreB active">
 <pre><code class="language-Javascript">
 import PluginIPCService, { IPCMessages } from 'chipmunk.plugin.ipc';
 class ExampleBackend {
@@ -2532,14 +2532,14 @@ This example shows a **Complex plugin** with two buttons demonstrating how to co
 ## Front-end
 
 <div class="tab ipc">
-  <button class="tablinks" onclick="openCode(event, 'ipc_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'ipc_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'ipc_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'ipc_service.ts')">service.ts</button>
   <button class="tablinks" onclick="openCode(event, 'ipc_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'ipc_public_api.ts')">public_api.ts</button> 
 </div>
 
-<div id="ipc_template.html" class="tabcontent ipc">
+<div id="ipc_template.html" class="tabcontent ipc active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_onRequest()">'request' to backend&lt;/button&gt    &lt;!-- Create button for request-type of message --&gt; 
@@ -2673,10 +2673,10 @@ export { Service };
 ## Back-end
 
 <div class="tab ipcB">
-  <button class="tablinks" onclick="openCode(event, 'ipc_main.ts')">main.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'ipc_main.ts')">main.ts</button>
 </div>
 
-<div id="ipc_main.ts" class="tabcontent ipcB">
+<div id="ipc_main.ts" class="tabcontent ipcB active">
 <pre><code class="language-Javascript">
 import PluginIPCService from 'chipmunk.plugin.ipc';
 import { IPCMessages } from 'chipmunk.plugin.ipc';
@@ -2803,14 +2803,14 @@ This example shows a **Complex plugin** with two buttons demonstrating how to co
 ## Front-end
 
 <div class="tab pipc">
-  <button class="tablinks" onclick="openCode(event, 'pIPC_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'pIPC_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'pIPC_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'pIPC_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'pIPC_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'pIPC_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="pIPC_component.ts" class="tabcontent pipc">
+<div id="pIPC_component.ts" class="tabcontent pipc active">
 <pre><code class="language-Javascript">
 import { Component, Input, AfterViewInit, OnDestroy } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -2921,10 +2921,10 @@ export * from './module';
 ## Back-end
 
 <div class="tab pipcB">
-  <button class="tablinks" onclick="openCode(event, 'pIPC_main.ts')">main.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'pIPC_main.ts')">main.ts</button>
 </div>
 
-<div id="pIPC_main.ts" class="tabcontent pipcB">
+<div id="pIPC_main.ts" class="tabcontent pipcB active">
 <pre><code class="language-Javascript">
 import PluginIPCService from 'chipmunk.plugin.ipc';
 import { IPCMessages } from 'chipmunk.plugin.ipc';
@@ -3024,14 +3024,14 @@ export declare class ServiceConfig {
 ## Front-end
 
 <div class="tab sc">
-  <button class="tablinks" onclick="openCode(event, 'sc_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'sc_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'sc_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'sc_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'sc_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'sc_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="sc_template.html" class="tabcontent sc">
+<div id="sc_template.html" class="tabcontent sc active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_onRead()"&gt;Read settings&lt;/button&gt;                               &lt;!-- Create button read settings --&gt;
@@ -3149,10 +3149,10 @@ export * from './module';
 ## Back-end
 
 <div class="tab scB">
-  <button class="tablinks" onclick="openCode(event, 'sc_main.ts')">main.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'sc_main.ts')">main.ts</button>
 </div>
 
-<div id="sc_main.ts" class="tabcontent scB">
+<div id="sc_main.ts" class="tabcontent scB active">
 <pre><code class="language-Javascript">
 import PluginIPCService from 'chipmunk.plugin.ipc';
 import { IPCMessages, ServiceConfig } from 'chipmunk.plugin.ipc';
@@ -3276,14 +3276,14 @@ export default class Logger {
 In the example below a plugin is created which logs a message.
 
 <div class="tab log">
-  <button class="tablinks" onclick="openCode(event, 'log_template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'log_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'log_styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'log_component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'log_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'log_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="log_template.html" class="tabcontent log">
+<div id="log_template.html" class="tabcontent log active">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 </code></pre>

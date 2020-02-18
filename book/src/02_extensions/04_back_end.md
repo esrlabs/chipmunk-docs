@@ -21,13 +21,13 @@ The communication between the **front-end** and the **back-end** is established 
 ## Front-end
 
 <div class="tab befe">
-  <button class="tablinks" onclick="openCode(event, 'template.html')">template.html</button>
+  <button class="tablinks active" onclick="openCode(event, 'template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'styles.less')">styles.less</button>
   <button class="tablinks" onclick="openCode(event, 'component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'module.ts')">module.ts</button>
 </div>
 
-<div id="component.ts" class="tabcontent befe">
+<div id="component.ts" class="tabcontent befe active">
 <pre><code class="language-Javascript">
 import { Component, Input, AfterViewInit, OnDestroy } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -131,11 +131,11 @@ button {
 ## Back-end
 
 <div class="tab bebe">
-  <button class="tablinks" onclick="openCode(event, 'public_api.ts')">public_api.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'public_api.ts')">public_api.ts</button>
   <button class="tablinks" onclick="openCode(event, 'main.ts')">main.ts</button>
 </div>
 
-<div id="public_api.ts" class="tabcontent bebe">
+<div id="public_api.ts" class="tabcontent bebe active">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
