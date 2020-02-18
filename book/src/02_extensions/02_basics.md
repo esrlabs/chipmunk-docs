@@ -8,17 +8,19 @@ Rake commands are vital for the compilation of **Chipmunk**, which is why in thi
 rake dev                            # Build electron application including all plugins and native code parts
 rake start                          # Start Chipmunk
 rake dev:pluginName_render          # Install 'pluginName' to application
+
+# NOTE: Complex plugins are not available for the time being! #
 rake install_plugins_complex        # Install all complex plugins
-                                    # Complex plugins are plugins that consist of a front- and back-end
-                                    # The front-end represents the UI of the plugin whereas the back-end provides information and functionality from external sources (e.g analyzing the stream of a serial connection, for which an external library is used to connect to the serial device)
+                                    # Complex plugins are plugins that consist of a UI and a back-end implementation
+                                    # The UI represents the user-interface of the plugin whereas the back-end provides information and functionality from external sources (e.g analyzing the stream of a serial connection, for which an external library is used to connect to the serial device)
 rake install_plugins_standalone     # Install all standalone plugins
-                                    # Standalone plugins exist in the front-end and provide functions to parse the output stream (e.g. coloring specific terms)
+                                    # Standalone plugins exist in the UI part of Chipmunk and provide functions to parse the output stream (e.g. coloring specific terms)
 rake install_plugins_angular        # Install all angular plugins
-                                    # Angular plugins exist in the front-end and provide a UI (essentially the same as a complex plugin but without any external sources)
+                                    # Angular plugins exist in the UI part of Chipmunk
 </code></pre>
 
-To build the back-end of a plugin, change to the directory of the plugin that will be built (in this example <pluginName>) `sandbox/pluginName/process` and run:
-`npm run build`
+<!-- To build the back-end of a plugin, change to the directory of the plugin that will be built (in this example <pluginName>) `sandbox/pluginName/process` and run:
+`npm run build` -->
 
 If a new update of **Chipmunk** is available, first run `rake clobber` (to remove all compiled files) and then `rake dev`, to update and re-build **Chipmunk**.
 
