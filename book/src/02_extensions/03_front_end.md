@@ -1,14 +1,15 @@
 <link rel="stylesheet" type="text/css" href="../styles/styles.tab.css">
+<link rel="stylesheet" type="text/css" href="../styles/styles.extensions.css">
 
 <script src="../scripts/script.tab.js">
 </script>
 
-# Front-end - Angular Plugin
+<h1>Front-end - Angular Plugin</h1>
 
 **Angular** plugins are located in the **front-end** of the application in the folder `client.plugins`.
 The main characteristic of an implementation in the **front-end** is the ability to modify the visual part of the plugin. **front-end** plugins mainly consist of HTML, CSS and Typescript files, whereas the Typescript files include, inter alia, Angular.
 
-## Example
+<h2> Example </h2>
 
 This section explains how to create a simple plugin with a line of text and a button that prints `'Hello World!'` in the console:
 
@@ -98,11 +99,11 @@ export * from './lib/module';       // Export the module file of the plugin
 
 > **IMPORTANT**: Exporting the component and module is required by Angular and necessary for the plugin to work!
 
-## Popup
+<h2> Popup </h2>
 
 To create and remove popups, the <a href="05_api.html#api">`API`</a> is required. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the front-end is named `chipmunk.client.toollkit`.
 
-### Example
+<h3> Example </h3>
 
 In this example a plugin with a button will be created. When the button is pressed, a popup with a message (provided by the plugin) will be shown along with a button to close the popup window.
 
@@ -202,11 +203,11 @@ export class ExampleComponent {
 
 > NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
-## Notifications
+<h2> Notifications </h2>
 
 To create notifications, the <a href="05_api.html#api">`API`</a> is required. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the front-end is named `chipmunk.client.toollkit`.
 
-### Example
+<h3> Example </h3>
 
 The following example shows an example plugin with a line of text and a button which creates a notification.
 
@@ -263,12 +264,12 @@ export class ExampleComponent {
 
 > NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
-# Front-end - Non-Angular Plugin
+<h1> Front-end - Non-Angular Plugin </h1>
 
 **Non-Angular Plugins** are also known as **Standalone Plugins**, which are plugins that are implemented in the **front-end**, but neither do they have Angular in it nor do they have an UI.
 **Non-Angular Plugins** are used to parse the output stream that is being shown in the main window of **Chipmunk**.
 
-## Example
+<h2> Example </h2>
 
 This example shows how to create a simple **Non-Angular** plugin which prints `-->` in front of each line.
 To create this example the abstract class `ARowCommonParser` from the `API` is required to extend from. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
@@ -296,7 +297,7 @@ if (gate === undefined) {                                                       
 </code></pre>
 </div>
 
-## Example
+<h2> Example </h2>
 
 This example shows how to create a simple **Non-Angular** plugin which prints `-->` in front of each line.
 To create this example the abstract class <a href="05_api.html#rcp">`RowCommonParser`</a> from the <a href="05_api.html#api">`API`</a> is required to extend from. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the front-end is named `chipmunk.client.toollkit`.
@@ -326,11 +327,11 @@ if (gate === undefined) {                                                       
 
 > NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
-## Logger
+<h2> Logger </h2>
 
 To use the logger, the <a href="05_api.html#api">`API`</a> is required. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the front-end is named `chipmunk.client.toollkit`.
 
-### Example
+<h3> Example </h3>
 
 In the example below a plugin is created which logs a message as soon as the plugin is created.
 
@@ -373,7 +374,7 @@ export class ExampleComponent {
 
 > NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
-# Developer mode and Breakpoints
+<h1> Developer mode and Breakpoints </h1>
 
 The developer mode can be very helpful at developing (espescially for the development in the front-end). To enable the developing mode, type the following command in the command line, in which the application is started:
 
@@ -385,7 +386,7 @@ Another feature which the debugger provides is creating breakpoints as well as t
 
 To create **breakpoints**, type the keyword `debugger` in the line the breakpoint should activate.
 
-### Example
+<h3> Example </h3>
 
 In the example below a plugin is created which has a breakpoint in the constructor, so the application stops as soon as the application is created.
 

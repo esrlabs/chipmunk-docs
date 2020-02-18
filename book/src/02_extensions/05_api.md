@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="../styles/styles.tab.css">
+<link rel="stylesheet" type="text/css" href="../styles/styles.extensions.css">
 
 <script src="../scripts/script.tab.js">
 </script>
@@ -27,7 +28,7 @@ Chipmunk provides an `API` for the front-end, which gives access to major core e
     </li>
 </ol>
 
-<h2 id="howAPI"> How to use the API</h2>
+<h2 id="howAPI">1. How to use the API</h2>
 
 <h3 id="api1"> Method 1: Bind the api to the component </h3>
 One way to use the API is by binding it to the main component of the plugin (`component.ts`).
@@ -220,7 +221,7 @@ export { Service };
 
 <h1 id="api_inter"> API - Interfaces</h1>
 
-<h2 id="iapi">IAPI</h2>
+<h2 id="iapi">2. IAPI interface</h2>
 
 ```Javascript
 // Typescript
@@ -295,7 +296,7 @@ export interface IAPI {
     getIPC: () => PluginIPC | undefined;
 ```
 
-### Example - getIPC
+<h3> Example - getIPC</h3>
 
 In this example the `API` will be assigned to the instance variable of the main component of the plugin
 
@@ -374,7 +375,7 @@ export * from './module';
     getActiveSessionId: () => string;
 ```
 
-### Example - getActiveSessionId
+<h2>Example - getActiveSessionId</h2>
 
 In this example the session id will be shown in the plugin
 
@@ -455,7 +456,7 @@ export * from './module';
     getViewportEventsHub: () => ControllerViewportEvents;
 ```
 
-### Example - getViewportEventsHub
+<h3>Example - getViewportEventsHub</h3>
 
 <div class="tab vpe">
   <button class="tablinks active" onclick="openCode(event, 'vpe_template.html')">template.html</button>
@@ -539,7 +540,7 @@ export * from './module';
     getSessionsEventsHub: () => ControllerSessionsEvents;
 ```
 
-### Example - getSessionsEventsHub
+<h3>Example - getSessionsEventsHub</h3>
 
 This example shows the usage of `getSessionsEventsHub` by creating methods to be called when a session _opens/closes/changes_:
 
@@ -651,7 +652,7 @@ export { Service };
     addPopup: (popup: IPopup) => string;
 ```
 
-### Example - addPopup
+<h3>Example - addPopup</h3>
 
 To create a popup, a plugin to host the popup and the popup itself have to be defined.
 
@@ -772,7 +773,7 @@ export * from './module';
     removePopup: (guid: string) => void;
 ```
 
-### Example - removePopup
+<h3>Example - removePopup</h3>
 
 To remove the popup, one way is to create a button on the popup, which calls the method to remove the popup upon clicking.
 
@@ -905,7 +906,7 @@ export * from './module';
     setSidebarTitleInjection: (component: IComponentDesc | undefined) => void;
 ```
 
-### Example - setSidebarTitleInjection
+<h3>Example - setSidebarTitleInjection</h3>
 
 In this example a button will be created in the title of the sidebar which will log a message when clicked.
 
@@ -1023,7 +1024,7 @@ export * from './module';
     openSidebarApp: (appId: string, silence: boolean) => void;
 ```
 
-### Example - openSidebarApp
+<h3>Example - openSidebarApp</h3>
 
 In this example the plugin `serial` will be opened and set as the active plugin 2 seconds after the `example` plugin is opened.
 
@@ -1105,7 +1106,7 @@ export * from './module';
     openToolbarApp: (appId: string, silence: boolean) => void;
 ```
 
-### Example - openToolbarApp
+<h3>Example - openToolbarApp</h3>
 
 In this example the `xterminal` app will be opened and set as active 2 seconds after the `example` plugin is opened.
 
@@ -1186,7 +1187,7 @@ export * from './module';
     addNotification: (notification: INotification) => void;
 ```
 
-### Example - addNotification
+<h3>Example - addNotification</h3>
 
 In this example the `xterminal` app will be opened and set as active 2 seconds after the `example` plugin is opened.
 
@@ -1269,196 +1270,11 @@ export * from './module';
 </code></pre>
 </div>
 
-<h2 id="cse"> ControllerSessionsEvents </h2>
-
-```Javascript
-// Typescript
-
-/**
- * This class provides access to sessions events (like close, open, change of session).
- *
- * @usecases to track sessions state
- * @class ControllerSessionsEvents
- */
-export class ControllerSessionsEvents {
-
-    public static Events = {
-        /**
-         * Fired on user switch a tab (session)
-         * @name onSessionChange
-         * @event {string} sessionId - active session ID
-         */
-        onSessionChange: 'onSessionChange',
-        /**
-         * Fired on user open a new tab (session)
-         * @name onSessionOpen
-         * @event {string} sessionId - a new session ID
-         */
-        onSessionOpen: 'onSessionOpen',
-        /**
-         * Fired on user close a new tab (session)
-         * @name onSessionClose
-         * @event {string} sessionId - ID of closed session
-         */
-        onSessionClose: 'onSessionClose',
-        /**
-         * Fired on stream has been changed
-         * @name onStreamUpdated
-         * @event {IEventStreamUpdate} event - current state of stream
-         */
-        onStreamUpdated: 'onStreamUpdated',
-        /**
-         * Fired on search results has been changed
-         * @name onSearchUpdated
-         * @event {IEventSearchUpdate} event - current state of stream
-         */
-        onSearchUpdated: 'onSearchUpdated',
-    };
-
-    private _emitter: Emitter = new Emitter();
-
-    public destroy() {
-        this._emitter.unsubscribeAll();
-    }
-
-    public unsubscribe(event: any) {
-        this._emitter.unsubscribeAll(event);
-    }
-
-    /**
-     * Emits event
-     * @returns {Event Emitter} - function event emitter
-     */
-    public emit(): {
-        onSessionChange: (sessionId: string) => void,
-        onSessionOpen: (sessionId: string) => void,
-        onSessionClose: (sessionId: string) => void,
-        onStreamUpdated: (event: IEventStreamUpdate) => void,
-        onSearchUpdated: (event: IEventSearchUpdate) => void,
-    } {
-        return {
-            onSessionChange: this._getEmit.bind(this, ControllerSessionsEvents.Events.onSessionChange),
-            onSessionOpen: this._getEmit.bind(this, ControllerSessionsEvents.Events.onSessionOpen),
-            onSessionClose: this._getEmit.bind(this, ControllerSessionsEvents.Events.onSessionClose),
-            onStreamUpdated: this._getEmit.bind(this, ControllerSessionsEvents.Events.onStreamUpdated),
-            onSearchUpdated: this._getEmit.bind(this, ControllerSessionsEvents.Events.onSearchUpdated),
-        };
-    }
-
-    /**
-     * Subscribes to event
-     * @returns {Event Subscriber} - function-subscriber for each available event
-     */
-    public subscribe(): {
-        onSessionChange: (handler: TSubscriptionHandler<string>) => Subscription,
-        onSessionOpen: (handler: TSubscriptionHandler<string>) => Subscription,
-        onSessionClose: (handler: TSubscriptionHandler<string>) => Subscription,
-        onStreamUpdated: (handler: TSubscriptionHandler<IEventStreamUpdate>) => Subscription,
-        onSearchUpdated: (handler: TSubscriptionHandler<IEventSearchUpdate>) => Subscription,
-    } {
-        return {
-            onSessionChange: (handler: TSubscriptionHandler<string>) => {
-                return this._getSubscription<string>(ControllerSessionsEvents.Events.onSessionChange, handler);
-            },
-            onSessionOpen: (handler: TSubscriptionHandler<string>) => {
-                return this._getSubscription<string>(ControllerSessionsEvents.Events.onSessionOpen, handler);
-            },
-            onSessionClose: (handler: TSubscriptionHandler<string>) => {
-                return this._getSubscription<string>(ControllerSessionsEvents.Events.onSessionClose, handler);
-            },
-            onStreamUpdated: (handler: TSubscriptionHandler<IEventStreamUpdate>) => {
-                return this._getSubscription<IEventStreamUpdate>(ControllerSessionsEvents.Events.onStreamUpdated, handler);
-            },
-            onSearchUpdated: (handler: TSubscriptionHandler<IEventSearchUpdate>) => {
-                return this._getSubscription<IEventSearchUpdate>(ControllerSessionsEvents.Events.onSearchUpdated, handler);
-            },
-        };
-    }
-```
-
-### Example - ControllerSessionEvents
-
-This example shows how to call specific methods when a session is created/closed/changed: 
-
-<div class="tab cse">
-  <button class="tablinks active" onclick="openCode(event, 'cse_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'cse_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'cse_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'cse_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'cse_public_api.ts')">public_api.ts</button>
-</div>
-
-<div id="cse_template.html" class="tabcontent cse active">
-<pre><code class="language-HTML">
-&lt;p&gt;Example&lt;/p&gt;      &lt;!-- Create a line of text --&gt;
-</code></pre>
-</div>
-
-<div id="cse_styles.less" class="tabcontent cse">
-<pre><code class="language-CSS">
-p {
-    color: #FFFFFF;
-}
-</code></pre>
-</div>
-
-<div id="cse_component.ts" class="tabcontent cse">
-<pre><code class="language-Javascript">
-import { Component, Input } from '@angular/core';
-import * as Toolkit from 'chipmunk.client.toolkit';
-@Component({
-    selector: 'example',                                                                                                // Choose the selector name of the plugin
-    templateUrl: './template.html',                                                                                     // Assign HTML file as template
-    styleUrls: ['./styles.less']                                                                                        // Assign LESS file as style sheet file})
-export class ExampleComponent {
-    @Input() public api: Toolkit.IAPI;                                                                                  // API assignment
-    @Input() public session: string;                                                                                    // Session ID assignment
-    @Input() public sessions: Toolkit.ControllerSessionsEvents;                                                         // Session event listener assignment
-    private _subs: { [key: string]: Toolkit.Subscription } = {};                                                        // Hashlist for session events
-    constructor() {
-        this._subs.onSessionChange = this.sessions.subscribe().onSessionChange(this._onSessionSessionChange.bind(this));    // Subscribe to session change event
-        this._subs.onSessionOpen = this.sessions.subscribe().onSessionOpen(this._onSessionOpen.bind(this));                 // Subscribe to new session open event
-        this._subs.onSessionClose = this.sessions.subscribe().onSessionClose(this._onSessionClose.bind(this));              // Subscribe to session close event
-    }
-    private _onSessionChange(session: string) {                                                                         // Method when session changes
-        this.session = session;                                                                                         // Reassign the session to the session, to which has been changed to
-    }
-    private _onSessionOpen(session: string) { }                                                                         // Method when new session opens
-    private _onSessionClose(session: string) { }                                                                        // Method when session closes
-}
-</code></pre>
-</div>
-
-<div id="cse_module.ts" class="tabcontent cse">
-<pre><code class="language-Javascript">
-import { NgModule } from '@angular/core';                   // Import the Angular component that is necessary for the setup below
-import { ExampleComponent } from './component';             // Import the class of the plugin, mentioned in the components.ts file
-import * as Toolkit from 'chipmunk.client.toolkit';         // Import Chipmunk Toolkit to let the module class inherit
-@NgModule({
-    declarations: [ ExampleComponent ],                     // Declare which components, directives and pipes belong to the module 
-    imports: [ ],                                           // Imports other modules with the components, directives and pipes that components in the current module need
-    exports: [ ExampleComponent ]                           // Provides services that the other application components can use
-})
-export class PluginModule extends Toolkit.PluginNgModule {  // Create module class which inherits from the Toolkit module
-    constructor() {
-        super('Example', 'Create an example plugin');       // Call the constructor of the parent class
-    }
-}
-</code></pre>
-</div>
-
-<div id="cse_public_api.ts" class="tabcontent cse">
-<pre><code class="language-Javascript">
-export * from './component';
-export * from './module';
-</code></pre>
-</div>
-
-<h1 id="abstract">API - Abstract classes</h1>
+<h1 id="abstract">3. Abstract classes</h1>
 
 `chipmunk.client.toolkit` provides different kinds of abstract classes from which classes can extend from.
 
-<h2 id="parsers">Parsers</h2>
+<h2 id="parsers">3.1 Parsers</h2>
 
 These abstract classes allow to create **parsers** that can modify the output in the rows (e.g: change text color, convert into different format).
 
@@ -1503,7 +1319,7 @@ export declare abstract class RowBoundParser {
 }
 ```
 
-### Example - RowBoundParser
+<h3>Example - RowBoundParser</h3>
 
 <div class="tab rbp">
   <button class="tablinks active" onclick="openCode(event, 'rbp_index.ts')">index.ts</button>
@@ -1552,7 +1368,7 @@ export declare abstract class RowCommonParser {
 }
 ```
 
-### Example - RowCommonParser
+<h3>Example - RowCommonParser</h3>
 
 <div class="tab rcp">
   <button class="tablinks active" onclick="openCode(event, 'rcp_index.ts')">index.ts</button>
@@ -1609,7 +1425,7 @@ export declare abstract class RowTypedParser {
 }
 ```
 
-### Example - RowTypedParser
+<h3>Example - RowTypedParser</h3>
 
 <div class="tab rtp">
   <button class="tablinks active" onclick="openCode(event, 'rtp_index.ts')">index.ts</button>
@@ -1670,7 +1486,7 @@ export declare abstract class SelectionParser {
 }
 ```
 
-### Example - SelectionParser
+<h3>Example - SelectionParser</h3>
 
 <div class="tab sp">
   <button class="tablinks active" onclick="openCode(event, 'sp_index.ts')">index.ts</button>
@@ -1738,7 +1554,7 @@ export declare abstract class TypedRowRender<T> {
 }
 ```
 
-### Example - TypedRowRender
+<h3>Example - TypedRowRender</h3>
 
 > **IMPORTANT**: It's important to note, that `TypedRowRender` **cannot** be used by itself, but instead used to create `TypedRowRenderAPIColumns` and `TypedRowRenderAPIExternal` renderers. For examples and further information check out the sections <a href="#trrCol">TypedRowRenderAPIColumns</a> and <a href="#trrExt">TypedRowRenderAPIExternal</a>
 
@@ -1764,7 +1580,7 @@ export declare class PluginNgModule {
 }
 ```
 
-### Example - PluginNgModule
+<h3>Example - PluginNgModule</h3>
 
 This example shows how to create a simple plugin along with the usage of `PluginNgModule`:
 
@@ -1855,7 +1671,7 @@ export declare abstract class PluginService {
 }
 ```
 
-### Example - PluginService
+<h3>Example - PluginService</h3>
 
 This example shows how to create a service class, that extends from `PluginService`, which allows global access to the `API` by import the service class:
 
@@ -1984,7 +1800,7 @@ export declare abstract class PluginServiceGate {
 }
 ```
 
-### Example - PluginServiceGate
+<h3>Example - PluginServiceGate</h3>
 
 This example shows how to create a parser, that puts '-->' in front of every line in the output.
 
@@ -2054,7 +1870,7 @@ export abstract class TypedRowRenderAPIColumns {
 }
 ```
 
-### Example - TypedRowRenderAPIColumns
+<h3>Example - TypedRowRenderAPIColumns</h3>
 
 <div class="tab trrc">
   <button class="tablinks active" onclick="openCode(event, 'trrc_template.html')">template.html</button>
@@ -2228,7 +2044,7 @@ export abstract class TypedRowRenderAPIExternal {
 }
 ```
 
-### Example - TypedRowRenderAPIExternal
+<h3>Example - TypedRowRenderAPIExternal</h3>
 
 **Front-end**
 
@@ -2473,7 +2289,7 @@ export default new ExampleBackend();
 </div>
 
 
-<h2 id="ipc"> IPC </h2>
+<h2 id="ipc">3.2 IPC </h2>
 
 These abstract classes allow to create different methods to establish communication between the **back-end** and the **front-end**.
 
@@ -2523,13 +2339,13 @@ export declare abstract class IPC {
 }
 ```
 
-### Example - IPC
+<h3>Example - IPC</h3>
 
 This example shows a **Complex plugin** with two buttons demonstrating how to communicate **front-end** <-> **back-end**.
 
 > **NOTE**: To make use of `IPC` add `IAPI` in the code, since `IAPI` holds the method `getIPC()` which provides an instance of `IPC` with the methods already implemented. (For more information: <a href="#iapi">IAPI</a>) 
 
-## Front-end
+<h2>Front-end</h2>
 
 <div class="tab ipc">
   <button class="tablinks active" onclick="openCode(event, 'ipc_template.html')">template.html</button>
@@ -2670,7 +2486,7 @@ export { Service };
 
 > **NOTE**: Using a service file is one of two ways to make use of the `API` (check out _How to use the API_ in <a href="#api">API</a> for more information)
 
-## Back-end
+<h2>Back-end</h2>
 
 <div class="tab ipcB">
   <button class="tablinks active" onclick="openCode(event, 'ipc_main.ts')">main.ts</button>
@@ -2712,9 +2528,194 @@ const app: Plugin = new Plugin();
 </code></pre>
 </div>
 
-<h1 id="api_class"> API - Classes </h1>
+<h1 id="api_class">4. Classes </h1>
 
-<h2 id="ipc_service"> PluginIPCService </h2>
+<h2 id="cse">4.1 ControllerSessionsEvents </h2>
+
+```Javascript
+// Typescript
+
+/**
+ * This class provides access to sessions events (like close, open, change of session).
+ *
+ * @usecases to track sessions state
+ * @class ControllerSessionsEvents
+ */
+export class ControllerSessionsEvents {
+
+    public static Events = {
+        /**
+         * Fired on user switch a tab (session)
+         * @name onSessionChange
+         * @event {string} sessionId - active session ID
+         */
+        onSessionChange: 'onSessionChange',
+        /**
+         * Fired on user open a new tab (session)
+         * @name onSessionOpen
+         * @event {string} sessionId - a new session ID
+         */
+        onSessionOpen: 'onSessionOpen',
+        /**
+         * Fired on user close a new tab (session)
+         * @name onSessionClose
+         * @event {string} sessionId - ID of closed session
+         */
+        onSessionClose: 'onSessionClose',
+        /**
+         * Fired on stream has been changed
+         * @name onStreamUpdated
+         * @event {IEventStreamUpdate} event - current state of stream
+         */
+        onStreamUpdated: 'onStreamUpdated',
+        /**
+         * Fired on search results has been changed
+         * @name onSearchUpdated
+         * @event {IEventSearchUpdate} event - current state of stream
+         */
+        onSearchUpdated: 'onSearchUpdated',
+    };
+
+    private _emitter: Emitter = new Emitter();
+
+    public destroy() {
+        this._emitter.unsubscribeAll();
+    }
+
+    public unsubscribe(event: any) {
+        this._emitter.unsubscribeAll(event);
+    }
+
+    /**
+     * Emits event
+     * @returns {Event Emitter} - function event emitter
+     */
+    public emit(): {
+        onSessionChange: (sessionId: string) => void,
+        onSessionOpen: (sessionId: string) => void,
+        onSessionClose: (sessionId: string) => void,
+        onStreamUpdated: (event: IEventStreamUpdate) => void,
+        onSearchUpdated: (event: IEventSearchUpdate) => void,
+    } {
+        return {
+            onSessionChange: this._getEmit.bind(this, ControllerSessionsEvents.Events.onSessionChange),
+            onSessionOpen: this._getEmit.bind(this, ControllerSessionsEvents.Events.onSessionOpen),
+            onSessionClose: this._getEmit.bind(this, ControllerSessionsEvents.Events.onSessionClose),
+            onStreamUpdated: this._getEmit.bind(this, ControllerSessionsEvents.Events.onStreamUpdated),
+            onSearchUpdated: this._getEmit.bind(this, ControllerSessionsEvents.Events.onSearchUpdated),
+        };
+    }
+
+    /**
+     * Subscribes to event
+     * @returns {Event Subscriber} - function-subscriber for each available event
+     */
+    public subscribe(): {
+        onSessionChange: (handler: TSubscriptionHandler<string>) => Subscription,
+        onSessionOpen: (handler: TSubscriptionHandler<string>) => Subscription,
+        onSessionClose: (handler: TSubscriptionHandler<string>) => Subscription,
+        onStreamUpdated: (handler: TSubscriptionHandler<IEventStreamUpdate>) => Subscription,
+        onSearchUpdated: (handler: TSubscriptionHandler<IEventSearchUpdate>) => Subscription,
+    } {
+        return {
+            onSessionChange: (handler: TSubscriptionHandler<string>) => {
+                return this._getSubscription<string>(ControllerSessionsEvents.Events.onSessionChange, handler);
+            },
+            onSessionOpen: (handler: TSubscriptionHandler<string>) => {
+                return this._getSubscription<string>(ControllerSessionsEvents.Events.onSessionOpen, handler);
+            },
+            onSessionClose: (handler: TSubscriptionHandler<string>) => {
+                return this._getSubscription<string>(ControllerSessionsEvents.Events.onSessionClose, handler);
+            },
+            onStreamUpdated: (handler: TSubscriptionHandler<IEventStreamUpdate>) => {
+                return this._getSubscription<IEventStreamUpdate>(ControllerSessionsEvents.Events.onStreamUpdated, handler);
+            },
+            onSearchUpdated: (handler: TSubscriptionHandler<IEventSearchUpdate>) => {
+                return this._getSubscription<IEventSearchUpdate>(ControllerSessionsEvents.Events.onSearchUpdated, handler);
+            },
+        };
+    }
+```
+
+<h3>Example - ControllerSessionEvents</h3>
+
+This example shows how to call specific methods when a session is created/closed/changed: 
+
+<div class="tab cse">
+  <button class="tablinks active" onclick="openCode(event, 'cse_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'cse_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'cse_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'cse_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'cse_public_api.ts')">public_api.ts</button>
+</div>
+
+<div id="cse_template.html" class="tabcontent cse active">
+<pre><code class="language-HTML">
+&lt;p&gt;Example&lt;/p&gt;      &lt;!-- Create a line of text --&gt;
+</code></pre>
+</div>
+
+<div id="cse_styles.less" class="tabcontent cse">
+<pre><code class="language-CSS">
+p {
+    color: #FFFFFF;
+}
+</code></pre>
+</div>
+
+<div id="cse_component.ts" class="tabcontent cse">
+<pre><code class="language-Javascript">
+import { Component, Input } from '@angular/core';
+import * as Toolkit from 'chipmunk.client.toolkit';
+@Component({
+    selector: 'example',                                                                                                // Choose the selector name of the plugin
+    templateUrl: './template.html',                                                                                     // Assign HTML file as template
+    styleUrls: ['./styles.less']                                                                                        // Assign LESS file as style sheet file})
+export class ExampleComponent {
+    @Input() public api: Toolkit.IAPI;                                                                                  // API assignment
+    @Input() public session: string;                                                                                    // Session ID assignment
+    @Input() public sessions: Toolkit.ControllerSessionsEvents;                                                         // Session event listener assignment
+    private _subs: { [key: string]: Toolkit.Subscription } = {};                                                        // Hashlist for session events
+    constructor() {
+        this._subs.onSessionChange = this.sessions.subscribe().onSessionChange(this._onSessionSessionChange.bind(this));    // Subscribe to session change event
+        this._subs.onSessionOpen = this.sessions.subscribe().onSessionOpen(this._onSessionOpen.bind(this));                 // Subscribe to new session open event
+        this._subs.onSessionClose = this.sessions.subscribe().onSessionClose(this._onSessionClose.bind(this));              // Subscribe to session close event
+    }
+    private _onSessionChange(session: string) {                                                                         // Method when session changes
+        this.session = session;                                                                                         // Reassign the session to the session, to which has been changed to
+    }
+    private _onSessionOpen(session: string) { }                                                                         // Method when new session opens
+    private _onSessionClose(session: string) { }                                                                        // Method when session closes
+}
+</code></pre>
+</div>
+
+<div id="cse_module.ts" class="tabcontent cse">
+<pre><code class="language-Javascript">
+import { NgModule } from '@angular/core';                   // Import the Angular component that is necessary for the setup below
+import { ExampleComponent } from './component';             // Import the class of the plugin, mentioned in the components.ts file
+import * as Toolkit from 'chipmunk.client.toolkit';         // Import Chipmunk Toolkit to let the module class inherit
+@NgModule({
+    declarations: [ ExampleComponent ],                     // Declare which components, directives and pipes belong to the module 
+    imports: [ ],                                           // Imports other modules with the components, directives and pipes that components in the current module need
+    exports: [ ExampleComponent ]                           // Provides services that the other application components can use
+})
+export class PluginModule extends Toolkit.PluginNgModule {  // Create module class which inherits from the Toolkit module
+    constructor() {
+        super('Example', 'Create an example plugin');       // Call the constructor of the parent class
+    }
+}
+</code></pre>
+</div>
+
+<div id="cse_public_api.ts" class="tabcontent cse">
+<pre><code class="language-Javascript">
+export * from './component';
+export * from './module';
+</code></pre>
+</div>
+
+<h2 id="ipc_service">4.2 PluginIPCService </h2>
 
 ```Javascript
 // Typescript
@@ -2796,11 +2797,11 @@ export declare class PluginIPCService extends EventEmitter {
 }
 ```
 
-### Example
+<h3>Example</h3>
 
 This example shows a **Complex plugin** with two buttons demonstrating how to communicate **front-end** <-> **back-end**.
 
-## Front-end
+<h2>Front-end</h2>
 
 <div class="tab pipc">
   <button class="tablinks active" onclick="openCode(event, 'pIPC_template.html')">template.html</button>
@@ -2918,7 +2919,7 @@ export * from './module';
 </code></pre>
 </div>
 
-## Back-end
+<h2>Back-end</h2>
 
 <div class="tab pipcB">
   <button class="tablinks active" onclick="openCode(event, 'pIPC_main.ts')">main.ts</button>
@@ -2960,7 +2961,7 @@ const app: Plugin = new Plugin();
 </code></pre>
 </div>
 
-<h2 id="service_conf"> ServiceConfig </h2>
+<h2 id="service_conf">4.3 ServiceConfig </h2>
 
 The class `ServiceConfig` offers a variety of methods to read and write from an external file. This feature can be used to save and load settings.
 
@@ -3019,9 +3020,9 @@ export declare class ServiceConfig {
 }
 ```
 
-### Example - ServiceConfig
+<h3>Example - ServiceConfig</h3>
 
-## Front-end
+<h2>Front-end</h2>
 
 <div class="tab sc">
   <button class="tablinks active" onclick="openCode(event, 'sc_template.html')">template.html</button>
@@ -3146,7 +3147,7 @@ export * from './module';
 </code></pre>
 </div>
 
-## Back-end
+<h2>Back-end</h2>
 
 <div class="tab scB">
   <button class="tablinks active" onclick="openCode(event, 'sc_main.ts')">main.ts</button>
@@ -3211,7 +3212,7 @@ const app: Plugin = new Plugin();
 </code></pre>
 </div>
 
-<h2 id="logger"> Logger </h2>
+<h2 id="logger">4.4 Logger </h2>
 
 The `API` also offers a logger to log any kind of errors or warnings in the **front-end**.
 
@@ -3271,7 +3272,7 @@ export default class Logger {
 }
 ```
 
-### Example - Logger
+<h3>Example - Logger</h3>
 
 In the example below a plugin is created which logs a message.
 

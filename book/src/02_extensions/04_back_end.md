@@ -1,24 +1,25 @@
 <link rel="stylesheet" type="text/css" href="../styles/styles.tab.css">
+<link rel="stylesheet" type="text/css" href="../styles/styles.extentions.css">
 
 <script src="../scripts/script.tab.js">
 </script>
 
-# Back-end - Complex Plugin
+<h1>Back-end - Complex Plugin</h1>
 
 The **Complex plugins** consist of a **front-end** (see `Chapter 03 - Front-end` for more information) and a **back-end**.
 This chapter is about the **back-end** and gives a better insight of **Complex plugins**.
 
-## About Complex plugins
+<h2> About Complex plugins</h2>
 **Complex plugins** comprises of a **front-end**, which mainly provides the UI, whereas the **back-end** is more about providing functionality from 3rd-party libraries. Plugins cannot exist with a **back-end** implementation only, since the **back-end** has no way to display the results. The **back-end** can communicate with the **front-end** with the help of the <a href="05_api.html#api">`API`</a>, which is provided by **Chipmunk** (see `Chapter 05 - API` for more information).
 
-### Example - Back-end
+<h3> Example - Back-end</h3>
 
 In this example a **Complex plugin** is created, which offers two buttons to send a command to the **back-end**, which is then returned from the **back-end** to the **front-end**. Upon receiving the message from the **back-end**, the message will be printed out in the console.
 The communication between the **front-end** and the **back-end** is established by the module `IPC` of the <a href="05_api.html#api">`API`</a>, that is offered by **Chipmunk**.
 
 > NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
-## Front-end
+<h2> Front-end</h2>
 
 <div class="tab befe">
   <button class="tablinks active" onclick="openCode(event, 'template.html')">template.html</button>
@@ -128,7 +129,7 @@ button {
 </code></pre>
 </div>
 
-## Back-end
+<h2> Back-end</h2>
 
 <div class="tab bebe">
   <button class="tablinks active" onclick="openCode(event, 'public_api.ts')">public_api.ts</button>
@@ -179,14 +180,14 @@ const app: Plugin = new Plugin();
 </code></pre>
 </div>
 
-## Logging
+<h2> Logging</h2>
 
 To log any kind of information/error/warning/etc. simply use the console log, which will automatically save the logs in the log file of Chipmunk `chipmunk.log`.
 > Windows:   `"C:\Users\userName\.chipmunk\chipmunk.log"`
 
 > Unix:      `"/users/userName/.chipmunk/chipmunk.log"`
 
-## Errors
+<h2> Errors</h2>
 
 A common issue known is, that changes made in the **back-end** are not being applied, even though the **back-end** has been compiled without any errors.
 To resolve this issue, **delete** the folder in which the **compiled** files are located.
