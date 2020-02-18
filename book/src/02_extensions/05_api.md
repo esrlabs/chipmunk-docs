@@ -6,7 +6,9 @@
 
 <h1 id="api">API</h1>
 
-Chipmunk provides an `API` for the front-end, which gives access to major core events, UI of the core and plugin IPC (required for communication beteween the host and render of plugin). The `API` for the front-end is named `chipmunk.client.toollkit` and holds different modules.
+Chipmunk provides an `API` for the **UI**, which gives access to major core events, UI of the core and plugin IPC (required for communication beteween the host and render of plugin). The `API` for the **UI** is named `chipmunk.client.toollkit` and holds different modules.
+
+<h1>NOTE: The back-end implementation is not available for the time being!</h1>
 
 <h2> Table of content </h2>
 <ol class="toc">
@@ -1327,7 +1329,7 @@ export declare abstract class RowBoundParser {
 
 <div id="rbp_index.ts" class="tabcontent rbp active">
 <pre><code class="language-Javascript">
-import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
+import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import UI API to extend Parser class
 class ParseMe extends Toolkit.RowBoundParser {                                                      // Extend parser class with Abstract parser class 
     public parse(str: string, themeTypeRef: Toolkit.EThemeType, row: Toolkit.IRowInfo): string {    // Create parser which modifies and returns parsed string
         return `--> ${str}`;                                                                        // Return string with --> in front
@@ -1376,7 +1378,7 @@ export declare abstract class RowCommonParser {
 
 <div id="rcp_index.ts" class="tabcontent rcp active">
 <pre><code class="language-Javascript">
-import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
+import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import UI API to extend Parser class
 class ParseMe extends Toolkit.RowCommonParser {                                                     // Extend parser class with Abstract parser class 
     public parse(str: string, themeTypeRef: Toolkit.EThemeType, row: Toolkit.IRowInfo): string {    // Create parser which modifies and returns parsed string
         return `--> ${str}`;                                                                        // Return string with --> in front
@@ -1433,7 +1435,7 @@ export declare abstract class RowTypedParser {
 
 <div id="rtp_index.ts" class="tabcontent rtp active">
 <pre><code class="language-Javascript">
-import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
+import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import UI API to extend Parser class
 class ParseMe extends Toolkit.RowTypedParser {                                                      // Extend parser class with Abstract parser class 
     public parse(str: string, themeTypeRef: Toolkit.EThemeType, row: Toolkit.IRowInfo): string {    // Create parser which modifies and returns parsed string
         return `--> ${str}`;                                                                        // Return string with --> in front
@@ -1494,7 +1496,7 @@ export declare abstract class SelectionParser {
 
 <div id="sp_index.ts" class="tabcontent sp active">
 <pre><code class="language-Javascript">
-import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
+import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import UI API to extend Parser class
 class ParseMe extends Toolkit.SelectionParser {                                                     // Extend parser class with Abstract parser class 
     public parse(str: string, themeTypeRef: Toolkit.EThemeType): string {                           // Create parser which modifies and returns parsed string
         return `--> ${str}`;                                                                        // Return string with --> in front
@@ -1872,6 +1874,8 @@ export abstract class TypedRowRenderAPIColumns {
 
 <h3>Example - TypedRowRenderAPIColumns</h3>
 
+> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
+
 <div class="tab trrc">
   <button class="tablinks active" onclick="openCode(event, 'trrc_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'trrc_styles.less')">styles.less</button>
@@ -2046,7 +2050,7 @@ export abstract class TypedRowRenderAPIExternal {
 
 <h3>Example - TypedRowRenderAPIExternal</h3>
 
-**Front-end**
+**User-Interface UI**
 
 <div class="tab trre">
   <button class="tablinks active" onclick="openCode(event, 'trreR_template.html')">/row/template.html</button>
@@ -2254,6 +2258,8 @@ p {
 
 **Back-end**
 
+> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
+
 <div class="tab trreB">
   <button class="tablinks active" onclick="openCode(event, 'trre_main.ts')">main.ts</button>
 </div>
@@ -2265,9 +2271,9 @@ class ExampleBackend {
     public static count = 0;                                                                                    // Create counting variable
     constructor(){      
         this._onIncomeRenderIPCMessage = this._onIncomeRenderIPCMessage.bind(this);                             // Bind method for subscription
-        PluginIPCService.subscribe(IPCMessages.PluginInternalMessage, this._onIncomeRenderIPCMessage);          // Subscribe to messages from the front-end
+        PluginIPCService.subscribe(IPCMessages.PluginInternalMessage, this._onIncomeRenderIPCMessage);          // Subscribe to messages from the UI
     }
-    private _onIncomeRenderIPCMessage(message: IPCMessages.PluginInternalMessage) {                             // Create method to listen to messages from the front-end
+    private _onIncomeRenderIPCMessage(message: IPCMessages.PluginInternalMessage) {                             // Create method to listen to messages from the UI
         if (message.data.command === 'session') {                                                               // Check if the session ID have been sent
             this.send(message.stream);
         } else {
@@ -2275,7 +2281,7 @@ class ExampleBackend {
         }
     }
     private send(stream: string) {                                                                              // When the session ID has been sent
-        if(ExampleBackend.count <= 10) {                                                                        // Send every 500ms 10 times "Hello World! No.: <Counted times>" to the front-end
+        if(ExampleBackend.count <= 10) {                                                                        // Send every 500ms 10 times "Hello World! No.: <Counted times>" to the UI
             return setTimeout(() => {
                 ExampleBackend.count++;
                 PluginIPCService.sendToStream(new Buffer(`Hello World! No.: ${ExampleBackend.count}`, 'utf-8'), stream);
@@ -2291,9 +2297,11 @@ export default new ExampleBackend();
 
 <h2 id="ipc">3.2 IPC </h2>
 
-These abstract classes allow to create different methods to establish communication between the **back-end** and the **front-end**.
+These abstract classes allow to create different methods to establish communication between the **back-end** and the **UI**.
 
 > **IMPORTANT**: `IPC` is only used in the **back-end**
+
+> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
 
 ```Javascript
 // Typescript
@@ -2303,7 +2311,7 @@ These abstract classes allow to create different methods to establish communicat
  * Abstract class, which used for creating a plugin IPC controller.
  * Plugin IPC controller allows communicating between render part of a plugin
  * and backend part of a plugin.
- * Render part (render) - a plugin's part, which executes on front-end in browser
+ * Render part (render) - a plugin's part, which executes on UI in browser
  * Backend part (host) - a plugin's part, which executes on back-end on nodejs level
  */
 
@@ -2341,11 +2349,13 @@ export declare abstract class IPC {
 
 <h3>Example - IPC</h3>
 
-This example shows a **Complex plugin** with two buttons demonstrating how to communicate **front-end** <-> **back-end**.
+> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
+
+This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **back-end**.
 
 > **NOTE**: To make use of `IPC` add `IAPI` in the code, since `IAPI` holds the method `getIPC()` which provides an instance of `IPC` with the methods already implemented. (For more information: <a href="#iapi">IAPI</a>) 
 
-<h2>Front-end</h2>
+<h2>UI</h2>
 
 <div class="tab ipc">
   <button class="tablinks active" onclick="openCode(event, 'ipc_template.html')">template.html</button>
@@ -2499,12 +2509,12 @@ import { IPCMessages } from 'chipmunk.plugin.ipc';
 class Plugin {
     constructor() {
         this._onIncome = this._onIncome.bind(this);
-        PluginIPCService.subscribe(IPCMessages.PluginInternalMessage, this._onIncome);                              // <-- Usage of PluginIPCService - Subscribe to incoming messages from front-end
+        PluginIPCService.subscribe(IPCMessages.PluginInternalMessage, this._onIncome);                              // <-- Usage of PluginIPCService - Subscribe to incoming messages from UI
     }
-    private _onIncome(message: IPCMessages.PluginInternalMessage, response: (res: IPCMessages.TMessage) => any) {   // Message handler for messages from the front-end
-        switch (message.data.command) {                                                                             // Check incoming command in message from front-end
+    private _onIncome(message: IPCMessages.PluginInternalMessage, response: (res: IPCMessages.TMessage) => any) {   // Message handler for messages from the UI
+        switch (message.data.command) {                                                                             // Check incoming command in message from UI
             case 'request':
-                return response(new IPCMessages.PluginInternalMessage({                                             // Send response to the front-end
+                return response(new IPCMessages.PluginInternalMessage({                                             // Send response to the UI
                     data: {
                         msg: '\'request\' was successful!'                                                          // Attach string to response
                     },
@@ -2512,7 +2522,7 @@ class Plugin {
                     stream: message.stream
                 }));
             case 'send':
-                return PluginIPCService.sendToPluginHost(message.stream, {                                          // <-- Usage of PluginIPCService - Send message to front-end
+                return PluginIPCService.sendToPluginHost(message.stream, {                                          // <-- Usage of PluginIPCService - Send message to UI
                     data: {
                         msg: '\'send\' was successful!'                                                             // Attach string to message
                     },
@@ -2799,9 +2809,11 @@ export declare class PluginIPCService extends EventEmitter {
 
 <h3>Example</h3>
 
-This example shows a **Complex plugin** with two buttons demonstrating how to communicate **front-end** <-> **back-end**.
+> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
 
-<h2>Front-end</h2>
+This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **back-end**.
+
+<h2>UI</h2>
 
 <div class="tab pipc">
   <button class="tablinks active" onclick="openCode(event, 'pIPC_template.html')">template.html</button>
@@ -2921,6 +2933,8 @@ export * from './module';
 
 <h2>Back-end</h2>
 
+> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
+
 <div class="tab pipcB">
   <button class="tablinks active" onclick="openCode(event, 'pIPC_main.ts')">main.ts</button>
 </div>
@@ -2932,12 +2946,12 @@ import { IPCMessages } from 'chipmunk.plugin.ipc';
 class Plugin {
     constructor() {
         this._onIncome = this._onIncome.bind(this);
-        PluginIPCService.subscribe(IPCMessages.PluginInternalMessage, this._onIncome);                              // <-- Usage of PluginIPCService - Subscribe to incoming messages from front-end
+        PluginIPCService.subscribe(IPCMessages.PluginInternalMessage, this._onIncome);                              // <-- Usage of PluginIPCService - Subscribe to incoming messages from UI
     }
-    private _onIncome(message: IPCMessages.PluginInternalMessage, response: (res: IPCMessages.TMessage) => any) {   // Message handler for messages from the front-end
-        switch (message.data.command) {                                                                             // Check incoming command in message from front-end
+    private _onIncome(message: IPCMessages.PluginInternalMessage, response: (res: IPCMessages.TMessage) => any) {   // Message handler for messages from the UI
+        switch (message.data.command) {                                                                             // Check incoming command in message from UI
             case 'request':
-                return response(new IPCMessages.PluginInternalMessage({                                             // Send response to the front-end
+                return response(new IPCMessages.PluginInternalMessage({                                             // Send response to the UI
                     data: {
                         msg: '\'request\' was successful!'                                                          // Attach string to response
                     },
@@ -2945,7 +2959,7 @@ class Plugin {
                     stream: message.stream
                 }));
             case 'send':
-                return PluginIPCService.sendToPluginHost(message.stream, {                                          // <-- Usage of PluginIPCService - Send message to front-end
+                return PluginIPCService.sendToPluginHost(message.stream, {                                          // <-- Usage of PluginIPCService - Send message to UI
                     data: {
                         msg: '\'send\' was successful!'                                                             // Attach string to message
                     },
@@ -3022,7 +3036,9 @@ export declare class ServiceConfig {
 
 <h3>Example - ServiceConfig</h3>
 
-<h2>Front-end</h2>
+> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
+
+<h2>UI</h2>
 
 <div class="tab sc">
   <button class="tablinks active" onclick="openCode(event, 'sc_template.html')">template.html</button>
@@ -3149,6 +3165,8 @@ export * from './module';
 
 <h2>Back-end</h2>
 
+> **IMPORTANT: This example contains a back-end implementation, which is not available for the time being**
+
 <div class="tab scB">
   <button class="tablinks active" onclick="openCode(event, 'sc_main.ts')">main.ts</button>
 </div>
@@ -3170,15 +3188,15 @@ interface IPortSettings {
 class Plugin {
     constructor() {
         this._onIncome = this._onIncome.bind(this);
-        PluginIPCService.subscribe(IPCMessages.PluginInternalMessage, this._onIncome);                              // Subscribe to incoming messages from front-end
+        PluginIPCService.subscribe(IPCMessages.PluginInternalMessage, this._onIncome);                              // Subscribe to incoming messages from UI
     }
-    private _onIncome(message: IPCMessages.PluginInternalMessage, response: (res: IPCMessages.TMessage) => any) {   // Message handler for messages from the front-end
-        switch (message.data.command) {                                                                             // Check incoming command in message from front-end
+    private _onIncome(message: IPCMessages.PluginInternalMessage, response: (res: IPCMessages.TMessage) => any) {   // Message handler for messages from the UI
+        switch (message.data.command) {                                                                             // Check incoming command in message from UI
             case 'write':
                 return ServiceConfig.write(settings).then(() => {                                                   // Override current settings
                     response(new IPCMessages.PluginInternalMessage({
                         data: {
-                            status: 'done'                                                                          // Send status as response message to the front-end
+                            status: 'done'                                                                          // Send status as response message to the UI
                         },
                         token: message.token,
                         stream: message.stream
@@ -3194,7 +3212,7 @@ class Plugin {
                 return ServiceConfig.read<IPortSettings>().then(settings => {                                       // Read current settings
                     response(new IPCMessages.PluginInternalMessage({
                         data: {
-                            msg: settings                                                                           // Forward settings as response message to the front-end
+                            msg: settings                                                                           // Forward settings as response message to the UI
                         },
                         token: message.token,
                         stream: message.stream
@@ -3214,7 +3232,7 @@ const app: Plugin = new Plugin();
 
 <h2 id="logger">4.4 Logger </h2>
 
-The `API` also offers a logger to log any kind of errors or warnings in the **front-end**.
+The `API` also offers a logger to log any kind of errors or warnings in the **UI**.
 
 ```Javascript
 // Typescript
