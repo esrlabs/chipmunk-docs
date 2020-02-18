@@ -1,4 +1,6 @@
-## Rake commands
+<link rel="stylesheet" type="text/css" href="../styles/styles.extensions.css">
+
+<h2>Rake commands</h2>
 
 Rake commands are vital for the compilation of **Chipmunk**, which is why in this section the most important rake commands are going to be mentioned and described.
 
@@ -21,7 +23,7 @@ To build the back-end of a plugin, change to the directory of the plugin that wi
 
 If a new update of **Chipmunk** is available, first run `rake clobber` (to remove all compiled files) and then `rake dev`, to update and re-build **Chipmunk**.
 
-## Add plugin to sidebar
+<h2>Add plugin to sidebar</h2>
 
 For the developed plugin to appear on the sidebar as an option, it will be necessary to add the name of the plugin in:
 
@@ -29,7 +31,7 @@ For the developed plugin to appear on the sidebar as an option, it will be neces
 
 In the method `public add(): Promise<string>` add the name of the plugin into the array `transports: ['processes', 'serial', 'dlt-render']`
 
-## Git commit
+<h2>Git commit</h2>
 
 Commits that are being made need to be in following shape:
 <pre><code>
