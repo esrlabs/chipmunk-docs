@@ -40,24 +40,6 @@
     display: block;
   }
 
-  ol {
-    font-size: large;
-    font-weight: bold;
-    counter-reset: item;
-}
-
-ol > li {
-    counter-increment: item;
-}
-
-ol ol > li {
-    display: block;
-}
-
-ol ol > li:before {
-    content: counters(item, ".") ".   ";
-}
-
 h1, h2, h3 {
     font-weight: bold;
 }
