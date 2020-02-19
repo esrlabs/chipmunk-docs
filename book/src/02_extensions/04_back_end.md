@@ -21,9 +21,9 @@ The communication between the **front-end** and the **back-end** is established 
 <h2> Front-end</h2>
 
 <div class="tab befe">
-  <button class="tablinks active" onclick="openCode(event, 'template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'component.ts')">component.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'module.ts')">module.ts</button>
 </div>
 
