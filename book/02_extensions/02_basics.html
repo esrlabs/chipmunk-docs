@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_basics.html" class="active"><strong aria-hidden="true">2.1.</strong> The Basics</a></li><li class="expanded "><a href="../02_extensions/03_front_end.html"><strong aria-hidden="true">2.2.</strong> Front-end</a></li><li class="expanded "><a href="../02_extensions/04_back_end.html"><strong aria-hidden="true">2.3.</strong> Back-end</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_basics.html" class="active"><strong aria-hidden="true">2.1.</strong> The Basics</a></li><li class="expanded "><a href="../02_extensions/03_ui.html"><strong aria-hidden="true">2.2.</strong> Front-end</a></li><li class="expanded "><a href="../02_extensions/05_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -148,29 +148,34 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2><a class="header" href="#rake-commands" id="rake-commands">Rake commands</a></h2>
+                        <link rel="stylesheet" type="text/css" href="../styles/styles.extensions.css">
+<h2><a class="header" href="#rake-commands" id="rake-commands">Rake commands</a></h2>
 <p>Rake commands are vital for the compilation of <strong>Chipmunk</strong>, which is why in this section the most important rake commands are going to be mentioned and described.</p>
-<pre><code>rake dev                            # Build electron application including all plugins and native code parts
+<pre><code>
+rake dev                            # Build electron application including all plugins and native code parts
 rake start                          # Start Chipmunk
 rake dev:pluginName_render          # Install 'pluginName' to application
+
+# NOTE: Complex plugins are not available for the time being! #
 rake install_plugins_complex        # Install all complex plugins
-                                    # Complex plugins are plugins that consist of a front- and back-end
-                                    # The front-end represents the UI of the plugin whereas the back-end provides information and functionality from external sources (e.g analyzing the stream of a serial connection, for which an external library is used to connect to the serial device)
+                                    # Complex plugins are plugins that consist of a UI and a back-end implementation
+                                    # The UI represents the user-interface of the plugin whereas the back-end provides information and functionality from external sources (e.g analyzing the stream of a serial connection, for which an external library is used to connect to the serial device)
 rake install_plugins_standalone     # Install all standalone plugins
-                                    # Standalone plugins exist in the front-end and provide functions to parse the output stream (e.g. coloring specific terms)
+                                    # Standalone plugins exist in the UI part of Chipmunk and provide functions to parse the output stream (e.g. coloring specific terms)
 rake install_plugins_angular        # Install all angular plugins
-                                    # Angular plugins exist in the front-end and provide a UI (essentially the same as a complex plugin but without any external sources)
+                                    # Angular plugins exist in the UI part of Chipmunk
 </code></pre>
-<p>To build the back-end of a plugin, change to the directory of the plugin that will be built (in this example <pluginName>) <code>sandbox/&lt;pluginName&gt;/process</code> and run:
-<code>npm run build</code></p>
+<!-- To build the back-end of a plugin, change to the directory of the plugin that will be built (in this example <pluginName>) `sandbox/pluginName/process` and run:
+`npm run build` -->
 <p>If a new update of <strong>Chipmunk</strong> is available, first run <code>rake clobber</code> (to remove all compiled files) and then <code>rake dev</code>, to update and re-build <strong>Chipmunk</strong>.</p>
 <h2><a class="header" href="#add-plugin-to-sidebar" id="add-plugin-to-sidebar">Add plugin to sidebar</a></h2>
 <p>For the developed plugin to appear on the sidebar as an option, it will be necessary to add the name of the plugin in:</p>
-<p><code>application\client.core\src\app\environment\services\service.sessions.tabs.ts</code></p>
+<p><code>application/client.core/src/app/environment/services/service.sessions.tabs.ts</code></p>
 <p>In the method <code>public add(): Promise&lt;string&gt;</code> add the name of the plugin into the array <code>transports: ['processes', 'serial', 'dlt-render']</code></p>
 <h2><a class="header" href="#git-commit" id="git-commit">Git commit</a></h2>
 <p>Commits that are being made need to be in following shape:</p>
-<pre><code>[#xxx](type) message
+<pre><code>
+[#xxx](type) message
 
 #xxx        Issue number
 type        Commit type
@@ -180,7 +185,6 @@ type        Commit type
             fix      - fix for bug
 message     Commit message
 </code></pre>
-
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -192,7 +196,7 @@ message     Commit message
                         
 
                         
-                            <a rel="next" href="../02_extensions/03_front_end.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../02_extensions/03_ui.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -210,7 +214,7 @@ message     Commit message
                 
 
                 
-                    <a href="../02_extensions/03_front_end.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="../02_extensions/03_ui.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

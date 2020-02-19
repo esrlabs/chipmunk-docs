@@ -1,20 +1,15 @@
-function openCode(evt, cityName) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-  
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
+function openCode(evt, fileName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    if (tabcontent[i].className.split(' ')[1] === evt.currentTarget.parentElement.className.split(' ')[1]) {
+      tabcontent[i].className = tabcontent[i].className.replace(/ active/gi, '');
     }
-  
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-  
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
   }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(/ active/gi, '');
+  }
+  document.getElementById(fileName).className += " active";
+  evt.currentTarget.className += " active";
+}
