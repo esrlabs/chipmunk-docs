@@ -1,5 +1,4 @@
-<link rel="stylesheet" type="text/css" href="../styles/styles.tab.css">
-<link rel="stylesheet" type="text/css" href="../styles/styles.extentions.css">
+<link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
 
 <script src="../scripts/script.tab.js">
 </script>

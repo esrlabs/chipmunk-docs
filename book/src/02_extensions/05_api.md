@@ -1,5 +1,4 @@
-<link rel="stylesheet" type="text/css" href="../styles/styles.tab.css">
-<link rel="stylesheet" type="text/css" href="../styles/styles.extensions.css">
+<link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
 
 <script src="../scripts/script.tab.js">
 </script>
@@ -7,26 +6,6 @@
 <h1 id="api">API</h1>
 
 Chipmunk provides an `API` for the **UI**, which gives access to major core events, UI of the core and plugin IPC (required for communication beteween the host and render of plugin). The `API` for the **UI** is named `chipmunk.client.toollkit` and holds different modules.
-
-<h2> Table of content </h2>
-<ol class="toc">
-    <li><a href="#howAPI">How to use the API</a></li>
-    <li><a href="#iapi">IAPI interface</a></li>
-    <li><a href="#abstract">Abstract classes</a>
-        <ol>
-            <li><a href="#parsers">Parsers</a></li>
-            <li><a href="#ipc">IPC</a> (Coming soon)</li>
-        </ol>
-    </li>
-    <li><a href="#api_class">Classes</a>
-        <ol>
-            <li><a href="#cse">ControllerSessionEvents</a></li>
-            <li><a href="#ipc_service">PluginIPCService</a> (Coming soon)</li>
-            <li><a href="#service_conf">ServiceConfig</a> (Coming soon)</li>
-            <li><a href="#logger">Logger</a></li>
-        </ol>
-    </li>
-</ol>
 
 <h2 id="howAPI">1. How to use the API</h2>
 

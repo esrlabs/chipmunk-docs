@@ -12,8 +12,8 @@
   - [The Basics](02_extensions/02_basics.md)
   - [Front-end](02_extensions/03_ui.md)
   - [Plugin API](02_extensions/05_api.md)
-  <!-- - [Back-end](02_extensions/04_back_end.md) -->
 - [Contributing](03_contributing/01_chapter.md)
   - [Native Development](03_contributing/developer_docs.md)
 - [TODO: API](404.md)
   - [TODO: nothing here yet...](404.md)
+  

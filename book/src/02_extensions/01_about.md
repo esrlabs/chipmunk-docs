@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="../styles/styles.extensions.css">
+<link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
 
 <h1>Extending chipmunk with plugins</h1>
 
