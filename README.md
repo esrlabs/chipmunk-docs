@@ -5,7 +5,7 @@
 
 chipmunk is developed as an open source project [on github](https://github.com/esrlabs/chipmunk).
 
-This repo hosts the source of the [website](https://esrlabs.github.io/chipmunk-docs/) (including the [documentation](https://esrlabs.github.io/chipmunk-docs/book/)) for chipmunk.
+This repo hosts the source of the [website](https://esrlabs.github.io/chipmunk-docs/) (including the [documentation](https://esrlabs.github.io/chipmunk-docs/book/01_usage/01_chapter.html)) for chipmunk.
 
 
 
