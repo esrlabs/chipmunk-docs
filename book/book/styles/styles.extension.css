@@ -39,3 +39,7 @@
   .tabcontent.active{
     display: block;
   }
+
+h1, h2, h3 {
+    font-weight: bold;
+}

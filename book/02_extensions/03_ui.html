@@ -148,8 +148,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" type="text/css" href="../styles/styles.tab.css">
-<link rel="stylesheet" type="text/css" href="../styles/styles.extensions.css">
+                        <link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
 <script src="../scripts/script.tab.js">
 </script>
 <h1><a class="header" href="#user-interface---angular-plugin" id="user-interface---angular-plugin">User-Interface - Angular Plugin</a></h1>
@@ -165,13 +164,13 @@ The main characteristic of the implementation in the <strong>UI</strong> is the 
 <p>To expand the range of classes and methods the <code>example</code> plugin can make use of, modify the <code>module.ts</code> file.</p>
 <p>The library management of the plugin is defined in <code>public_api.ts</code> which manages and exports the public definitions of the plugin. In this example, only the <code>module.ts</code> and <code>component.ts</code> files are being exported.</p>
 <div class="tab ang">
-  <button class="tablinks active" onclick="openCode(event, 'template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'component.ts')">component.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'component.ts')">component.ts</button>
   <button class="tablinks" onclick="openCode(event, 'module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'public_api.ts')">public_api.ts</button>
 </div>
-<div id="template.html" class="tabcontent ang active">
+<div id="template.html" class="tabcontent ang">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_click()&quot;&gt;&lt;/button&gt;   &lt;!-- Create a button with a method to be called from the components.ts file --&gt;
@@ -188,7 +187,7 @@ button {
 }
 </code></pre>
 </div>
-<div id="component.ts" class="tabcontent ang">
+<div id="component.ts" class="tabcontent ang active">
 <pre><code class="language-Javascript">
 import { Component } from '@angular/core';  // Import the Angular component that is necessary for the setup below
 @Component({
@@ -238,11 +237,11 @@ export * from './lib/module';       // Export the module file of the plugin
 <p>In this example, a plugin with a button will be created. When the button is pressed, a popup with a message (provided by the plugin) will be shown along with a button to close the popup window.</p>
 <p><strong>Popup component</strong></p>
 <div class="tab popup">
-  <button class="tablinks active" onclick="openCode(event, 'popup_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'popup_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'popup_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'popup_component.ts')">component.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'popup_component.ts')">component.ts</button>
 </div>
-<div id="popup_template.html" class="tabcontent popup active">
+<div id="popup_template.html" class="tabcontent popup">
 <pre><code class="language-HTML">
 &lt;p&gt;{{msg}}&lt;/p&gt;  &lt;!-- Show message from component --&gt;
 </code></pre>
@@ -254,7 +253,7 @@ p {
 }
 </code></pre>
 </div>
-<div id="popup_component.ts" class="tabcontent popup">
+<div id="popup_component.ts" class="tabcontent popup active">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';   // Import necessary components for popup
 @Component({
@@ -269,11 +268,11 @@ export class PopupComponent {
 </div>
 <p><strong>Plugin component</strong></p>
 <div class="tab ppopup">
-  <button class="tablinks active" onclick="openCode(event, 'popup_plugin_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'popup_plugin_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'popup_plugin_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'popup_plugin_component.ts')">component.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'popup_plugin_component.ts')">component.ts</button>
 </div>
-<div id="popup_plugin_template.html" class="tabcontent ppopup active">
+<div id="popup_plugin_template.html" class="tabcontent ppopup">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_popup()&quot;&gt;&lt;/button&gt;   &lt;!-- Button to open popup --&gt;
@@ -286,7 +285,7 @@ p {
 }
 </code></pre>
 </div>
-<div id="popup_plugin_component.ts" class="tabcontent ppopup">
+<div id="popup_plugin_component.ts" class="tabcontent ppopup active">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';       // Import necessary components for plugin
 import { PopupComponent } from './popup/components';    // Import the popup module
@@ -328,11 +327,11 @@ export class ExampleComponent {
 <h3><a class="header" href="#example-2" id="example-2"> Example </a></h3>
 <p>The following example shows an example plugin with a line of text and a button which creates a notification.</p>
 <div class="tab not">
-  <button class="tablinks active" onclick="openCode(event, 'notification_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'notification_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'notification_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'notification_component.ts')">component.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'notification_component.ts')">component.ts</button>
 </div>
-<div id="notification_template.html" class="tabcontent not active">
+<div id="notification_template.html" class="tabcontent not">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_notify()&quot;&gt;&lt;/button&gt;   &lt;!-- Create a button with a method to be called from the components.ts file --&gt;
@@ -349,7 +348,7 @@ button {
 }
 </code></pre>
 </div>
-<div id="notification_component.ts" class="tabcontent not">
+<div id="notification_component.ts" class="tabcontent not active">
 <pre><code class="language-Javascript">
 import { Component } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -442,11 +441,11 @@ if (gate === undefined) {                                                       
 <h3><a class="header" href="#example-5" id="example-5"> Example </a></h3>
 <p>In the example below a plugin is created which logs a message as soon as the plugin is created.</p>
 <div class="tab log">
-  <button class="tablinks active" onclick="openCode(event, 'logger_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'logger_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'logger_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'logger_component.ts')">component.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'logger_component.ts')">component.ts</button>
 </div>
-<div id="logger_template.html" class="tabcontent log active">
+<div id="logger_template.html" class="tabcontent log">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;     &lt;!-- Create a line of text --&gt;
 </code></pre>
@@ -458,7 +457,7 @@ p {
 }
 </code></pre>
 </div>
-<div id="logger_component.ts" class="tabcontent log">
+<div id="logger_component.ts" class="tabcontent log active">
 <pre><code class="language-Javascript">
 import { Component } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -486,11 +485,11 @@ export class ExampleComponent {
 <h3><a class="header" href="#example-6" id="example-6"> Example </a></h3>
 <p>In the example below a plugin is created which has a breakpoint in the constructor, so the application stops as soon as the application is created.</p>
 <div class="tab dev">
-  <button class="tablinks active" onclick="openCode(event, 'dev_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'dev_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'dev_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'dev_component.ts')">component.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'dev_component.ts')">component.ts</button>
 </div>
-<div id="dev_template.html" class="tabcontent dev active">
+<div id="dev_template.html" class="tabcontent dev">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 </code></pre>
@@ -502,7 +501,7 @@ p {
 }
 </code></pre>
 </div>
-<div id="dev_component.ts" class="tabcontent dev">
+<div id="dev_component.ts" class="tabcontent dev active">
 <pre><code class="language-Javascript">
 import { Component } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
