@@ -6,17 +6,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Blog | Chipmunk Site</title>
+<title>Charts now with scales | Chipmunk Site</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Blog" />
+<meta property="og:title" content="Charts now with scales" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Keep up with the latest news." />
-<meta property="og:description" content="Keep up with the latest news." />
-<link rel="canonical" href="https://esrlabs.github.io/chipmunk-docs/https://esrlabs.github.io/chipmunk-docs/blog/" />
-<meta property="og:url" content="https://esrlabs.github.io/chipmunk-docs/https://esrlabs.github.io/chipmunk-docs/blog/" />
+<meta name="description" content="Charts were the first graphical feature we introduced in chipmunk. Using them will allow you to get a quick overview of the data you need to analyze." />
+<meta property="og:description" content="Charts were the first graphical feature we introduced in chipmunk. Using them will allow you to get a quick overview of the data you need to analyze." />
+<link rel="canonical" href="https://esrlabs.github.io/chipmunk-docs/https://esrlabs.github.io/chipmunk-docs/charts/logs/2020/04/13/charts-with-scales/" />
+<meta property="og:url" content="https://esrlabs.github.io/chipmunk-docs/https://esrlabs.github.io/chipmunk-docs/charts/logs/2020/04/13/charts-with-scales/" />
 <meta property="og:site_name" content="Chipmunk Site" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-13T00:00:00+00:00" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"https://esrlabs.github.io/chipmunk-docs/https://esrlabs.github.io/chipmunk-docs/blog/","headline":"Blog","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://esrlabs.github.io/chipmunk-docs/https://esrlabs.github.io/chipmunk-docs/siteicon.png"}},"description":"Keep up with the latest news.","@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://esrlabs.github.io/chipmunk-docs/https://esrlabs.github.io/chipmunk-docs/charts/logs/2020/04/13/charts-with-scales/"},"@type":"BlogPosting","url":"https://esrlabs.github.io/chipmunk-docs/https://esrlabs.github.io/chipmunk-docs/charts/logs/2020/04/13/charts-with-scales/","headline":"Charts now with scales","dateModified":"2020-04-13T00:00:00+00:00","datePublished":"2020-04-13T00:00:00+00:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://esrlabs.github.io/chipmunk-docs/https://esrlabs.github.io/chipmunk-docs/siteicon.png"}},"description":"Charts were the first graphical feature we introduced in chipmunk. Using them will allow you to get a quick overview of the data you need to analyze.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 		<link type="application/atom+xml" rel="alternate" href="https://esrlabs.github.io/chipmunk-docs/https://esrlabs.github.io/chipmunk-docs/feed.xml" title="Chipmunk Site" />
@@ -46,7 +48,7 @@
 
 		
 		<a href="https://esrlabs.github.io/chipmunk-docs/blog/
-" class=" active" >Blog</a>
+" class="" >Blog</a>
 	
 		
 		
@@ -77,19 +79,11 @@
 	<section class="page">
 		<div class="container ">
 			
-				<h2><strong>Blog</strong></h2
+				<h2><strong>Charts now with scales</strong></h2
 			
 			
-				<p class="subtext">Keep up with the latest news.</p>
-			
-			<div class="text-container">
-	<p class="editor-link"><a href="cloudcannon:collections/_posts" class="btn"><strong>&#9998;</strong> Add Post</a></p>
-	<ul class="blog-posts">
-		
-	<li class="blog-post">
-		<h3><a href="https://esrlabs.github.io/chipmunk-docs/charts/logs/2020/04/13/charts-with-scales/
-">Charts now with scales</a></h3>
-		<p class="post-details">
+			<div class="blog-post text-container">
+	<p class="post-details">
 	
 		<span class="blog-filter">
 			<a href="https://esrlabs.github.io/chipmunk-docs/category/charts/">Charts</a>
@@ -102,42 +96,53 @@
 	<span class="post-date">April 13, 2020</span>
 </p>
 
-		<div class="post-content">
-			<p>Charts were the first graphical feature we introduced in chipmunk. Using them will allow you to get a quick overview of the data you need to analyze.</p>
 
-			<div class="button"><a href="https://esrlabs.github.io/chipmunk-docs/charts/logs/2020/04/13/charts-with-scales/
-">Read More</a></div>
+	<p class="editor-link"><a href="cloudcannon:collections/_posts/2020-04-13-charts-with-scales.md" class="btn"><strong>&#9998;</strong> Edit Post</a></p>
+	<div class="post-content">
+		<p>Charts were the first graphical feature we introduced in chipmunk. Using them will allow you to get a quick overview of the data you need to analyze.</p>
+
+<h2 id="data-with-a-chart">Data with a chart</h2>
+<p>In an example we used chipmunks command-plugin to repeatedly execute the <code class="highlighter-rouge">top</code> command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>top <span class="nt">-s</span> 5 | rg <span class="s2">"Load|CPU</span><span class="se">\s</span><span class="s2">usage|Networks|Disks"</span>
+</code></pre></div></div>
+<p>We applied a chart-search-expression to the data, once to extract the CPU usage and once to extract the Load average.
+<img src="https://esrlabs.github.io/chipmunk-docs/images/charts_without_scale.png" alt="Performance" /></p>
+
+<h2 id="details-for-individual-charts">Details for individual charts</h2>
+
+<p>While we think this is already immensely powerful, the charts feature gained a very important detail with the latest release: charts can now show you the scale of the data they depict, depending on which of the graphs is selected.
+In the images below, we respectively selected the green and the pink graph.</p>
+
+<p><img src="https://esrlabs.github.io/chipmunk-docs/images/chart_with_green_scale.png" alt="Performance" /></p>
+
+<p>It’s now easy to see at a glance that the load was always between 1 and 2 percent.</p>
+
+<p><img src="https://esrlabs.github.io/chipmunk-docs/images/chart_with_red_scale.png" alt="Performance" /></p>
+
+<p>The CPU usage was between 0 and 30 percent.</p>
+
+<p>We hope that this little detail will make charts even more useful to you.</p>
+
+
+
+		<div class="author">
+			
+			
+			<div class="square-image"><img src="https://esrlabs.github.io/chipmunk-docs/images/oliver.png
+" alt="Oliver Mueller"/></div>
+			<p class="blurb">Oliver loves typed languages and fluid user experiences.</p>
 		</div>
-	</li>
 
-	<li class="blog-post">
-		<h3><a href="https://esrlabs.github.io/chipmunk-docs/tech/performance/2020/01/21/dealing-with-huge-files/
-">Dealing with huge files</a></h3>
-		<p class="post-details">
-	
-		<span class="blog-filter">
-			<a href="https://esrlabs.github.io/chipmunk-docs/category/tech/">Tech</a>
-		</span>
-	
-		<span class="blog-filter">
-			<a href="https://esrlabs.github.io/chipmunk-docs/category/performance/">Performance</a>
-		</span>
-	
-	<span class="post-date">January 21, 2020</span>
-</p>
-
-		<div class="post-content">
-			<p>With well-performing desktop and notebook computers, it should no longer be an issue to quickly work with large log files. But unfortunately, this is not as straight forward as you might think. Especially when working with windows, the out-of-the-box tools just do not cut it.</p>
-
-			<div class="button"><a href="https://esrlabs.github.io/chipmunk-docs/tech/performance/2020/01/21/dealing-with-huge-files/
-">Read More</a></div>
+		<div class="blog-navigation">
+			
+				<a class="prev" href="https://esrlabs.github.io/chipmunk-docs/tech/performance/2020/01/21/dealing-with-huge-files/
+">&laquo; Dealing with huge files</a>
+			
+			
 		</div>
-	</li>
 
-
-	</ul>
-
-	
+		
+	</div>
 </div>
 
 		</div>
