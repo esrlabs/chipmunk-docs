@@ -3,29 +3,66 @@
 <script src="../scripts/script.tab.js">
 </script>
 
-<h1>User-Interface - Angular Plugin</h1>
+# Default plugins
 
-**Angular** plugins are located in the **UI** part of the **Chipmunk** in the folder `client.plugins`.
-The main characteristic of the implementation in the **UI** is the ability to modify the visual part of the plugin. The **Angular** plugins mainly consist of HTML, CSS and Typescript files, whereas the Typescript files include, inter alia, Angular.
+In this section all default plugins provided by **Quickstart** will be thoroughly explained as of what they do and explain each line.
 
-<h2> Example </h2>
+## plugin.helloworld
 
-This section explains how to create a simple plugin with a line of text and a button that prints `'Hello World!'` in the console:
+--> Short description of plugin
 
-**Visual**
+<!-- <pre><code>&#9492;&#9472;&#9472; plugins
+&#9474    &#9500;&#9472;&#9472; plugin.helloworld
+&#9474    &#9500;&#9472;&#9472; plugin.row.columns
+&#9474    &#9500;&#9472;&#9472; plugin.row.parser
+&#9474    &#9500;&#9472;&#9472; plugin.selection.parser
+&#9474    &#9492;&#9472;&#9472; plugin.sh
+&#9492;&#9472;&#9472; releases
+     &#9492;&#9472;&#9472; plugin.helloworld
+</code></pre> -->
 
-Since the **UI** is being created with Angular, the plugin is treated as a component. To shape the visual part of the plugin, configure the `template.html` file (holds the HTML components) and `styles.less` file (holds the style settings).
+<pre><code>
+&#9500;&#9472;&#9472; process
+&#9474;   &#9500;&#9472;&#9472; src
+&#9474;   &#9474;   &#9492;&#9472;&#9472; main.ts
+&#9474;   &#9500;&#9472;&#9472; package.json
+&#9474;   &#9492;&#9472;&#9472; tsconfig.json
+&#9492;&#9472;&#9472; render
+  &#9500;&#9472;&#9472; src
+  &#9474; &#9500; lib
+  &#9474; &#9474; &#9492; views
+  &#9474; &#9474;  &#9492; sidebar.vertical
+  &#9474; &#9474;   &#9500; compontent.ts
+  &#9474; &#9474;   &#9500; styles.less
+  &#9474; &#9474;   &#9492; template.html
+  &#9474; &#9492; public-api.ts
+  &#9500; ng-package.json
+  &#9500; package.json
+  &#9500; tsconfig.json
+  &#9500; tsconfig.spec.json
+  &#9492; tslin.json
+</code></pre>
 
-**Functionality**
-
-The HTML elements can be attached to any kind of function, which needs to be configured in the `components.ts` file.
-
-**External libraries**
-
-To expand the range of classes and methods the `example` plugin can make use of, modify the `module.ts` file.
-
-The library management of the plugin is defined in `public_api.ts` which manages and exports the public definitions of the plugin. In this example, only the `module.ts` and `component.ts` files are being exported.
-
+<!-- ~-- process
+|   |~-- src
+|   |    ~-- main.ts
+|   |~-- package.json
+|   |~-- tsconfig.json
+~-- render
+    |~-- src
+    |    |~-- lib
+    |    |    |~-- views
+    |    |         |~-- sidebar.vertical
+    |    |              |~-- compontent.ts
+    |    |              |~-- styles.less
+    |    |              |~-- template.html
+    |    |~-- public-api.ts
+    |~-- ng-package.json
+    |~-- package.json
+    |~-- tsconfig.json
+    |~-- tsconfig.spec.json
+    |~-- tslin.json
+ -->
 <div class="tab ang">
   <button class="tablinks" onclick="openCode(event, 'template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'styles.less')">styles.less</button>
@@ -263,41 +300,6 @@ export class ExampleComponent {
 
 > NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
-<h1> Front-end - Non-Angular Plugin </h1>
-
-**Non-Angular Plugins** are also known as **Standalone Plugins**, which are plugins that are implemented in the **UI**, but neither do they have Angular in it nor do they have a UI.
-**Non-Angular Plugins** are used to parse the output stream that is being shown in the main window of **Chipmunk**.
-
-<h2> Example </h2>
-
-This example shows how to create a simple **Non-Angular** plugin which prints `-->` in front of each line.
-To create this example the abstract class <a href="05_api.html#rcp">`RowCommonParser`</a> from the <a href="05_api.html#api">`API`</a> is required to extend from. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the front-end is named `chipmunk.client.toollkit`.
-
-<div class="tab nangp">
-  <button class="tablinks active" onclick="openCode(event, 'nangp_index.ts')">index.ts</button>
-</div>
-
-<div id="nangp_index.ts" class="tabcontent nangp active">
-<pre><code class="language-Javascript">
-import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
-class ParseMe extends Toolkit.RowCommonParser {                                                    // Extend parser class with Abstract parser class 
-    public parse(str: string, themeTypeRef: Toolkit.EThemeType, row: Toolkit.IRowInfo): string {    // Create parser which modifies and returns parsed string
-        return `--> ${str}`;                                                                        // Return string with --> in front
-    }
-} 
-const gate: Toolkit.APluginServiceGate | undefined = (window as any).logviewer;                     // Necessary to bind namespace
-if (gate === undefined) {                                                                           // If binding didn't work print out error message
-    console.error(`Fail to find logviewer gate.`);
-} else {
-    gate.setPluginExports({                                                                         // Set parser(s) to export here (Setting Multiple parsers possible)
-        parser: new ParseMe()                                                                       // Create parser instance (Free to choose parser name)
-    });
-}
-</code></pre>
-</div>
-
-> NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
-
 # Front-end - Non-Angular Plugin
 
 **Non-Angular Plugins** are also known as **Standalone Plugins**, which are plugins that are implemented in the **front-end**, but neither do they have Angular in it nor do they have an UI.
@@ -384,7 +386,7 @@ export class ExampleComponent {
 
 The developer mode can be very helpful at developing (especially for the development in the **UI**). To enable the developing mode, type the following command in the command line, in which the application is started:
 
-`CHIPMUNK_DEVELOPING_MODE=ON`
+`export CHIPMUNK_DEVELOPING_MODE=ON`
 
 The developer mode will create a debugger console with which console outputs made in the **UI** can be seen.
 
