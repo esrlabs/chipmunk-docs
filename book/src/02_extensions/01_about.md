@@ -1,36 +1,33 @@
 <link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
 
-<h1>Extending chipmunk with plugins</h1>
+# Extending Chipmunk with plugins
 
-In this section, the basics of plugins will be covered as well as how to create a custom plugin for **Chipmunk**.
+In this section everything about plugins will be explained as well as how to create custom plugins for **Chipmunk**.
 
-<h2>Plugin types</h2>
+## About plugins
 
-To create a plugin, it's necessary to understand what types of plugins exist on **Chipmunk**. There are **3** different types of plugins that already exist on **Chipmunk**:
+In computing, a plug-in (or plugin, add-in, addin, add-on, or addon) is a software component that adds a specific feature to an existing computer program. When a program supports plug-ins, it enables customization.<sup>[1]</sup>
 
-1. **Angular**      (DLT-Render)
-2. **Standalone**   (row.parser.ascii)
-3. **Complex**      (Serial, Processes, xTerminal)
+Plugins in **Chipmunk** extend the default functionalities making it possible to receive and analyze data from different kind of sources (e.g. serial connections).
 
-<h3>Angular</h3>
+## Plugin structure
 
-Plugins of the **Angular** type provide a user-interface at the UI part of **Chipmunk** with which the user can interact directly with **Chipmunk**. Angular plugin only consists of a UI and no back-end implementation.
-An example from the implemented plugins is `DLT-Render`. `DLT-Render` renders output data of `.dlt` files and puts them into columns.
+**Chipmunk** plugins mainly consist of a **render** and a **process** part.
 
-<h3>Standalone</h3>
+### Render
 
-Plugins of the **Standalone** type exist in the **UI** part of **Chipmunk**, but don't provide a UI. **Standalone** plugins consist of a parser(s). The plugin can modify the output in the main window, e.g. putting the date in front of every line.
-An example from the implemented plugins is `row.parser.ascii`. `row.parser.ascii` renders the output data by colorizing specific terms.
+The render part is responsible for the visual part of the plugin itself. With the help of Angular components are created using Typescript, HTML and CSS. The component will be automatically included in **Chipmunk** after building the plugin.
 
-<h3>Complex</h3>
+### Process
 
-Plugins of the **Complex** type provide both a UI and functionality in the back-end. The idea in this kind of plugins is to provide the **UI** with the necessary data from the back-end when any external sources are requested.
-An example from the implemented plugins is `Serial`. `Serial` provides a UI to connect to a port. The connection is being established in the back-end by making use of an external library and informs the **UI** about the result of the connection attempt.
+The process part is responsible for the background processing of the plugin and modifying the output stream.
 
-> **NOTE**: The implementation of **Complex** plugins is disabled for the time being!
+## Chipmunk Store
 
-<h2>How to create a plugin</h2>
+The **Chipmunk Store** provides different plugins to install on **Chipmunk**. By simply clicking on the desired plugin and then on _install_ will add the plugin to **Chipmunk**. The **Chipmunk Store** also provides the option to upgrade the already installed plugin to a newer version.
 
-One way of creating plugins is to pull the latest version of the plugins from Github **(link coming soon)**. In the plugins folder, there will be a template plugin called **myplugin**. The template is provided to save the trouble with all the pre-work and setup. The template plugin will be a complex type of plugin, but can be changed into any kind of plugin.
+<img src="../images/chipmunk_store.png"/>
 
-The creation of a plugin will be further explained in the following chapters, starting with the basics. 
+## References
+<hr/>
+<sup>[1]</sup> https://en.wikipedia.org/wiki/Plug-in_(computing)
