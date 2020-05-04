@@ -282,20 +282,19 @@ export interface IAPI {
 In this example the `API` will be assigned to the instance variable of the main component of the plugin
 
 <div class="tab getipc">
-  <button class="tablinks" onclick="openCode(event, 'getIPC_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'getIPC_styles.less')">styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'getIPC_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'getIPC_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'getIPC_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'getipc_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'getipc_styles.less')">styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'getipc_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'getipc_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'getipc_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="getIPC_template.html" class="tabcontent getipc">
-<pre><code class="language-HTML">
-&lt;p&gt;Example&lt;/p&gt;     &lt;!-- Show session ID --&gt;
+<div id="getipc_template.html" class="tabcontent getipc">
+<pre><code class="language-HTML">&lt;p&gt;Example&lt;/p&gt;     &lt;!-- Show session ID --&gt;
 </code></pre>
 </div>
 
-<div id="getIPC_styles.less" class="tabcontent getipc">
+<div id="getipc_styles.less" class="tabcontent getipc">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
@@ -303,7 +302,7 @@ p {
 </code></pre>
 </div>
 
-<div id="getIPC_component.ts" class="tabcontent getipc active">
+<div id="getipc_component.ts" class="tabcontent getipc active">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -322,7 +321,7 @@ export class ExampleComponent {
 </code></pre>
 </div>
 
-<div id="getIPC_module.ts" class="tabcontent getipc">
+<div id="getipc_module.ts" class="tabcontent getipc">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                   // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';             // Import the class of the plugin, mentioned in the components.ts file
@@ -340,7 +339,7 @@ export class PluginModule extends Toolkit.PluginNgModule {  // Create module cla
 </code></pre>
 </div>
 
-<div id="getIPC_public_api.ts" class="tabcontent getipc">
+<div id="getipc_public_api.ts" class="tabcontent getipc">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
@@ -638,23 +637,23 @@ export { Service };
 To create a popup, a plugin to host the popup and the popup itself have to be defined.
 
 <div class="tab addpop">
-  <button class="tablinks" onclick="openCode(event, 'addPop_pop_template.html')">/popup/template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'addPop_pop_styles.less')">/popup/styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'addPop_pop_component.ts')">/popup/component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'addPop_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'addPop_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'addPop_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'addPop_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'addPop_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_pop_template.html')">/popup/template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_pop_styles.less')">/popup/styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'addpop_pop_component.ts')">/popup/component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="addPop_pop_template.html" class="tabcontent addpop">
+<div id="addpop_pop_template.html" class="tabcontent addpop">
 <pre><code class="language-HTML">
 &lt;p&gt;{{msg}}&lt;/p&gt;      &lt;!-- Show message from component --&gt;
 </code></pre>
 </div>
 
-<div id="addPop_pop_styles.less" class="tabcontent addpop">
+<div id="addpop_pop_styles.less" class="tabcontent addpop">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
@@ -662,7 +661,7 @@ p {
 </code></pre>
 </div>
 
-<div id="addPop_pop_component.ts" class="tabcontent addpop active">
+<div id="addpop_pop_component.ts" class="tabcontent addpop active">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';           // Import necessary components for popup
 @Component({
@@ -676,14 +675,14 @@ export class PopupComponent {
 </code></pre>
 </div>
 
-<div id="addPop_template.html" class="tabcontent addpop">
+<div id="addpop_template.html" class="tabcontent addpop">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_popup()&quot;&gt;&lt;/button&gt;       &lt;!-- Button to open popup --&gt;
 </code></pre>
 </div>
 
-<div id="addPop_styles.less" class="tabcontent addpop">
+<div id="addpop_styles.less" class="tabcontent addpop">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
@@ -691,7 +690,7 @@ p {
 </code></pre>
 </div>
 
-<div id="addPop_component.ts" class="tabcontent addpop">
+<div id="addpop_component.ts" class="tabcontent addpop">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';           // Import necessary components for plugin
 import { PopupComponent } from './popup/components';        // Import the popup module
@@ -719,7 +718,7 @@ export class ExampleComponent {
 </code></pre>
 </div>
 
-<div id="addPop_module.ts" class="tabcontent addpop">
+<div id="addpop_module.ts" class="tabcontent addpop">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                   // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';             // Import the class of the plugin, mentioned in the components.ts file
@@ -737,7 +736,7 @@ export class PluginModule extends Toolkit.PluginNgModule {  // Create module cla
 </code></pre>
 </div>
 
-<div id="addPop_public_api.ts" class="tabcontent addpop">
+<div id="addpop_public_api.ts" class="tabcontent addpop">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
@@ -759,23 +758,23 @@ export * from './module';
 To remove the popup, one way is to create a button on the popup, which calls the method to remove the popup upon clicking.
 
 <div class="tab rempop">
-  <button class="tablinks" onclick="openCode(event, 'remPop_pop_template.html')">/popup/template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'remPop_pop_styles.less')">/popup/styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'remPop_pop_component.ts')">/popup/component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'remPop_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'remPop_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'remPop_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'remPop_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'remPop_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_pop_template.html')">/popup/template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_pop_styles.less')">/popup/styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'rempop_pop_component.ts')">/popup/component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="remPop_pop_template.html" class="tabcontent rempop">
+<div id="rempop_pop_template.html" class="tabcontent rempop">
 <pre><code class="language-HTML">
 &lt;p&gt;{{msg}}&lt;/p&gt;      &lt;!-- Show message from component --&gt;
 </code></pre>
 </div>
 
-<div id="remPop_pop_styles.less" class="tabcontent rempop">
+<div id="rempop_pop_styles.less" class="tabcontent rempop">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
@@ -783,7 +782,7 @@ p {
 </code></pre>
 </div>
 
-<div id="remPop_pop_component.ts" class="tabcontent rempop active">
+<div id="rempop_pop_component.ts" class="tabcontent rempop active">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';           // Import necessary components for popup
 @Component({
@@ -797,14 +796,14 @@ export class PopupComponent {
 </code></pre>
 </div>
 
-<div id="remPop_template.html" class="tabcontent rempop">
+<div id="rempop_template.html" class="tabcontent rempop">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_popup()&quot;&gt;&lt;/button&gt;       &lt;!-- Button to open popup --&gt;
 </code></pre>
 </div>
 
-<div id="remPop_styles.less" class="tabcontent rempop">
+<div id="rempop_styles.less" class="tabcontent rempop">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
@@ -812,7 +811,7 @@ p {
 </code></pre>
 </div>
 
-<div id="remPop_component.ts" class="tabcontent rempop">
+<div id="rempop_component.ts" class="tabcontent rempop">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';           // Import necessary components for plugin
 import { PopupComponent } from './popup/components';        // Import the popup module
@@ -847,7 +846,7 @@ export class ExampleComponent {
 </code></pre>
 </div>
 
-<div id="remPop_module.ts" class="tabcontent rempop">
+<div id="rempop_module.ts" class="tabcontent rempop">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                   // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';             // Import the class of the plugin, mentioned in the components.ts file
@@ -865,14 +864,14 @@ export class PluginModule extends Toolkit.PluginNgModule {  // Create module cla
 </code></pre>
 </div>
 
-<div id="remPop_public_api.ts" class="tabcontent rempop">
+<div id="rempop_public_api.ts" class="tabcontent rempop">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
 </code></pre>
 </div>
 
-<h3 id="iapi_sti">setSidebarTitleInjection</h3>
+<h3 id="iapi_title">setSidebarTitleInjection</h3>
 
 ```Javascript
     /**
@@ -891,25 +890,25 @@ export * from './module';
 
 In this example a button will be created in the title of the sidebar which will log a message when clicked.
 
-<div class="tab sti">
+<div class="tab title">
   <button class="tablinks" onclick="openCode(event, 'title_template.html')">/title/template.html</button>
   <button class="tablinks" onclick="openCode(event, 'title_styles.less')">/title/styles.less</button>
   <button class="tablinks active" onclick="openCode(event, 'title_component.ts')">/title/component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'titleP_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'titleP_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'titleP_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'titleP_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'titleP_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'title_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'title_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'title_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'title_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'title_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="title_template.html" class="tabcontent sti">
+<div id="title_template.html" class="tabcontent title">
 <pre><code class="language-HTML">
 &lt;!-- Create the title component of the button. --&gt;
 &lt;span&gt;+&lt;/span&gt;      &lt;!-- Create '+' as button --&gt;
 </code></pre>
 </div>
 
-<div id="title_styles.less" class="tabcontent sti">
+<div id="title_styles.less" class="tabcontent title">
 <pre><code class="language-CSS">
 span {
     color: #FFFFFF;
@@ -917,7 +916,7 @@ span {
 </code></pre>
 </div>
 
-<div id="title_component.ts" class="tabcontent sti active">
+<div id="title_component.ts" class="tabcontent title active">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -932,13 +931,13 @@ export class ExampleTitleComponent {
 </code></pre>
 </div>
 
-<div id="titleP_template.html" class="tabcontent sti">
+<div id="title_template.html" class="tabcontent title">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;      &lt;!-- Show example string --&gt;
 </code></pre>
 </div>
 
-<div id="titleP_styles.less" class="tabcontent sti">
+<div id="title_styles.less" class="tabcontent title">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
@@ -946,7 +945,7 @@ p {
 </code></pre>
 </div>
 
-<div id="titleP_component.ts" class="tabcontent sti">
+<div id="title_component.ts" class="tabcontent title">
 <pre><code class="language-Javascript">
 import { Component, AfterViewInit } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -969,7 +968,7 @@ export class ExampleComponent implements AfterViewInit {
 </code></pre>
 </div>
 
-<div id="titleP_module.ts" class="tabcontent sti">
+<div id="title_module.ts" class="tabcontent title">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                       // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';                 // Import the class of the plugin, mentioned in the components.ts file
@@ -987,7 +986,7 @@ export class PluginModule extends Toolkit.PluginNgModule {      // Create module
 </code></pre>
 </div>
 
-<div id="titleP_public_api.ts" class="tabcontent sti">
+<div id="title_public_api.ts" class="tabcontent title">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
@@ -1010,20 +1009,20 @@ export * from './module';
 In this example the plugin `serial` will be opened and set as the active plugin 2 seconds after the `example` plugin is opened.
 
 <div class="tab osa">
-  <button class="tablinks" onclick="openCode(event, 'sb_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'sb_styles.less')">styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'sb_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sb_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sb_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'osa_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'osa_styles.less')">styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'osa_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'osa_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'osa_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="sb_template.html" class="tabcontent osa">
+<div id="osa_template.html" class="tabcontent osa">
 <pre><code class="language-HTML">
 &lt;p&gt;Wait for it...&lt;/p&gt;       &lt;!-- Show example string --&gt;
 </code></pre>
 </div>
 
-<div id="sb_styles.less" class="tabcontent osa">
+<div id="osa_styles.less" class="tabcontent osa">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
@@ -1031,7 +1030,7 @@ p {
 </code></pre>
 </div>
 
-<div id="sb_component.ts" class="tabcontent osa active">
+<div id="osa_component.ts" class="tabcontent osa active">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -1051,7 +1050,7 @@ export class ExampleComponent {
 </code></pre>
 </div>
 
-<div id="sb_module.ts" class="tabcontent osa">
+<div id="osa_module.ts" class="tabcontent osa">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                       // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';                 // Import the class of the plugin, mentioned in the components.ts file
@@ -1069,7 +1068,7 @@ export class PluginModule extends Toolkit.PluginNgModule {      // Create module
 </code></pre>
 </div>
 
-<div id="sb_public_api.ts" class="tabcontent osa">
+<div id="osa_public_api.ts" class="tabcontent osa">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
@@ -1092,20 +1091,20 @@ export * from './module';
 In this example the `xterminal` app will be opened and set as active 2 seconds after the `example` plugin is opened.
 
 <div class="tab ota">
-  <button class="tablinks" onclick="openCode(event, 'tb_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'tb_styles.less')">styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'tb_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'tb_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'tb_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'ota_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'ota_styles.less')">styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'ota_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'ota_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'ota_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="tb_template.html" class="tabcontent ota">
+<div id="ota_template.html" class="tabcontent ota">
 <pre><code class="language-HTML">
 &lt;p&gt;Wait for it...&lt;/p&gt;       &lt;!-- Show example string --&gt;
 </code></pre>
 </div>
 
-<div id="tb_styles.less" class="tabcontent ota">
+<div id="ota_styles.less" class="tabcontent ota">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
@@ -1113,7 +1112,7 @@ p {
 </code></pre>
 </div>
 
-<div id="tb_component.ts" class="tabcontent ota active">
+<div id="ota_component.ts" class="tabcontent ota active">
 <pre><code class="language-Javascript">
 import { Component, Input, AfterViewInit } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -1133,7 +1132,7 @@ export class ExampleComponent implements AfterViewInit {
 </code></pre>
 </div>
 
-<div id="tb_module.ts" class="tabcontent ota">
+<div id="ota_module.ts" class="tabcontent ota">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                       // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';                 // Import the class of the plugin, mentioned in the components.ts file
@@ -1151,7 +1150,7 @@ export class PluginModule extends Toolkit.PluginNgModule {      // Create module
 </code></pre>
 </div>
 
-<div id="tb_public_api.ts" class="tabcontent ota">
+<div id="ota_public_api.ts" class="tabcontent ota">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
@@ -1618,7 +1617,7 @@ export class PluginModule extends Toolkit.PluginNgModule {      // <-- The modul
 </code></pre>
 </div>
 
-<h3 id="ps">PluginService</h3>
+<h3 id="pls">PluginService</h3>
 
 ```Javascript
 // Typescript
@@ -1656,28 +1655,28 @@ export declare abstract class PluginService {
 
 This example shows how to create a service class, that extends from `PluginService`, which allows global access to the `API` by import the service class:
 
-<div class="tab ps">
-  <button class="tablinks" onclick="openCode(event, 'ps_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'ps_styles.less')">styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'ps_service.ts')">service.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'ps_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'ps_module.ts')">module.ts</button>
+<div class="tab pls">
+  <button class="tablinks" onclick="openCode(event, 'pls_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'pls_styles.less')">styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'pls_service.ts')">service.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'pls_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'pls_module.ts')">module.ts</button>
 </div>
 
-<div id="ps_template.html" class="tabcontent ps">
+<div id="pls_template.html" class="tabcontent pls">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 </code></pre>
 </div>
 
-<div id="ps_styles.less" class="tabcontent ps">
+<div id="pls_styles.less" class="tabcontent pls">
 <pre><code class="language-CSS">p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
 
-<div id="ps_service.ts" class="tabcontent ps active">
+<div id="pls_service.ts" class="tabcontent pls active">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';
 export class Service extends Toolkit.PluginService {                    // The service class has to inherit the PluginService from chipmunk.client.toolkit to get access the the API methods
@@ -1700,7 +1699,7 @@ export default (new Service());                                         // Expor
 </code></pre>
 </div>
 
-<div id="ps_component.ts" class="tabcontent ps">
+<div id="pls_component.ts" class="tabcontent pls">
 <pre><code class="language-Javascript">
 import { Component } from '@angular/core';
 import Service from './service.ts'              // Import the service class to use in main component of plugin
@@ -1716,7 +1715,7 @@ export class ExampleComponent {
 </code></pre>
 </div>
 
-<div id="ps_module.ts" class="tabcontent ps">
+<div id="pls_module.ts" class="tabcontent pls">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                       // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';                 // Import the class of the plugin, mentioned in the components.ts file
@@ -1734,7 +1733,7 @@ export class PluginModule extends Toolkit.PluginNgModule {      // Create module
 </code></pre>
 </div>
 
-<div id="ps_public_api.ts" class="tabcontent ps">
+<div id="pls_public_api.ts" class="tabcontent pls">
 <pre><code class="language-Javascript">
 import Service from './service';
 export * from './component';
@@ -1785,11 +1784,11 @@ export declare abstract class PluginServiceGate {
 
 This example shows how to create a parser, that puts '-->' in front of every line in the output.
 
-<div class="tab psg">
-  <button class="tablinks active" onclick="openCode(event, 'psg_index.ts')">index.ts</button>
+<div class="tab psge">
+  <button class="tablinks active" onclick="openCode(event, 'psge_index.ts')">index.ts</button>
 </div>
 
-<div id="psg_index.ts" class="tabcontent psg active">
+<div id="psge_index.ts" class="tabcontent psge active">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
 class ParseMe extends Toolkit.RowCommonParser {                                                    // Extend parser class with Abstract parser class 

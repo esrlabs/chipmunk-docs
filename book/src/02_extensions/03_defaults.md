@@ -103,7 +103,7 @@ export * from './lib/module';       // Export the module file of the plugin
 
 ## Row Columns
 
-The plugin **Row Columns** ...
+The plugin **Row Columns** creates a custom render for CSV files to show its conent in columns.
 
 <pre><code>&#9492;&#9472;&#9472; render
     &#9500;&#9472;&#9472; src
@@ -119,8 +119,8 @@ The plugin **Row Columns** ...
 </code></pre>
 
 <div class="tab col">
-  <button class="tablinks" onclick="openCode(event, 'row.columns.api.ts')">row.columns.api.ts</button>
-  <button class="tablinks active" onclick="openCode(event, 'row.columns.ts')">row.columns.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'col_row.columns.api.ts')">row.columns.api.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'col_row.columns.ts')">row.columns.ts</button>
   <button class="tablinks" onclick="openCode(event, 'col_public_api.ts')">public_api.ts</button>
 </div>
 
@@ -287,7 +287,7 @@ export { columns };
 
 ## Row Parser
 
-The plugin **Row Parser** ...
+The plugin **Row Parser** creates a custom render for DLT files to colorize keywords.
 
 <pre><code>&#9492;&#9472;&#9472; render
     &#9500;&#9472;&#9472; src
@@ -360,7 +360,7 @@ if (gate === undefined) {
 
 ## Selection Parser
 
-The plugin **Selection Parser** ...
+The plugin **Selection Parser** creates a parser that parses the selected string in the output console. The parser can be selected by right-clicking and opening the option menu. 
 
 <pre><code>&#9492;&#9472;&#9472; render
     &#9500;&#9472;&#9472; src
@@ -434,11 +434,9 @@ if (gate === undefined) {
 </code></pre>
 </div>
 
-
-
 ## Shell
 
-The plugin **Shell** ...
+The plugin **Shell** creates an input in which console commands can be typed whereas the output will be directed into the output section of Chipmunk.
 
 <pre><code>&#9500;&#9472;&#9472; process
 &#9474;   &#9500;&#9472;&#9472; src
@@ -477,16 +475,16 @@ The plugin **Shell** ...
 </code></pre>
 
 ### Process
-<div class="tab sh_process">
-  <button class="tablinks" onclick="openCode(event, 'sh_env.logger.parameters.ts')">env.logger.parameters.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_env.logger.ts')">env.logger.ts</button>
-  <button class="tablinks active" onclick="openCode(event, 'sh_main.ts')">main.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_process.env.ts')">process.env.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_process.fork.ts')">process.fork.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_service.stream.ts')">service.stream.ts</button>
+<div class="tab shp_process">
+  <button class="tablinks" onclick="openCode(event, 'shp_env.logger.parameters.ts')">env.logger.parameters.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'shp_env.logger.ts')">env.logger.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'shp_main.ts')">main.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'shp_process.env.ts')">process.env.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'shp_process.fork.ts')">process.fork.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'shp_service.stream.ts')">service.stream.ts</button>
 </div>
 
-<div id="sh_env.logger.parameters.ts" class="tabcontent sh_process">
+<div id="shp_env.logger.parameters.ts" class="tabcontent shp_process">
 <pre><code class="language-Javascript">const DEFAUT_ALLOWED_CONSOLE = {
     DEBUG: true,
     ENV: true,
@@ -525,7 +523,7 @@ export class LoggerParameters {
 </code></pre>
 </div>
 
-<div id="sh_env.logger.ts" class="tabcontent sh_process">
+<div id="shp_env.logger.ts" class="tabcontent shp_process">
 <pre><code class="language-Javascript">import { inspect } from 'util';
 import { LoggerParameters } from './env.logger.parameters';
 enum ELogLevels {
@@ -652,7 +650,7 @@ export default class Logger {
 </code></pre>
 </div>
 
-<div id="sh_main.ts" class="tabcontent sh_process active">
+<div id="shp_main.ts" class="tabcontent shp_process active">
 <pre><code class="language-Javascript">import Logger from './env.logger';
 import * as path from 'path';
 import PluginIPCService, { ServiceState } from 'chipmunk.plugin.ipc';
@@ -871,7 +869,7 @@ ServiceState.accept().catch((err: Error) => {
 </code></pre>
 </div>
 
-<div id="sh_process.env.ts" class="tabcontent sh_process">
+<div id="shp_process.env.ts" class="tabcontent shp_process">
 <pre><code class="language-Javascript">import { exec, ExecOptions } from 'child_process';
 import * as OS from 'os';
 import * as Path from 'path';
@@ -987,7 +985,7 @@ export function getHomePath(): string {
 </code></pre>
 </div>
 
-<div id="sh_process.fork.ts" class="tabcontent sh_process">
+<div id="shp_process.fork.ts" class="tabcontent shp_process">
 <pre><code class="language-Javascript">import { spawn, ChildProcess } from 'child_process';
 import { EventEmitter } from 'events';
 export interface IForkSettings {
@@ -1079,7 +1077,7 @@ export default class Fork extends EventEmitter {
 </code></pre>
 </div>
 
-<div id="sh_service.stream.ts" class="tabcontent sh_process">
+<div id="shp_service.stream.ts" class="tabcontent shp_process">
 <pre><code class="language-Javascript">import Logger from './env.logger';
 import PluginIPCService from 'chipmunk.plugin.ipc';
 import Fork, { IForkSettings } from './process.fork';
@@ -1222,21 +1220,21 @@ export default (new StreamsService());
 </div>
 
 ### Render
-<div class="tab sh_render">
-  <button class="tablinks" onclick="openCode(event, 'sh_public_api.ts')">public_api.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_service.ts')">service.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_host.events.ts')">host.events.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_interface.settings.ts')">interface.settings.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_parser.rest.ts')">parser.rest.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_parser.row.ts')">parser.row.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_ansi.colors.ts')">ansi.colors.ts</button>
-  <button class="tablinks active" onclick="openCode(event, 'sh_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'sh_template.html')">template.html</button>
+<div class="tab shr_render">
+  <button class="tablinks" onclick="openCode(event, 'shr_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'shr_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'shr_service.ts')">service.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'shr_host.events.ts')">host.events.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'shr_interface.settings.ts')">interface.settings.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'shr_parser.rest.ts')">parser.rest.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'shr_parser.row.ts')">parser.row.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'shr_ansi.colors.ts')">ansi.colors.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'shr_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'shr_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'shr_template.html')">template.html</button>
 </div>
 
-<div id="sh_public_api.ts" class="tabcontent sh_render">
+<div id="shr_public_api.ts" class="tabcontent shr_render">
 <pre><code class="language-Javascript">/*
  * Public API Surface of terminal
  */
@@ -1247,7 +1245,7 @@ export { parserRest } from './lib/parsers/parser.rest';
 </code></pre>
 </div>
 
-<div id="sh_module.ts" class="tabcontent sh_render">
+<div id="shr_module.ts" class="tabcontent shr_render">
 <pre><code class="language-Javascript">import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -1268,7 +1266,7 @@ export class PluginModule extends Toolkit.PluginNgModule {
 </code></pre>
 </div>
 
-<div id="sh_service.ts" class="tabcontent sh_render">
+<div id="shr_service.ts" class="tabcontent shr_render">
 <pre><code class="language-Javascript">import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
@@ -1279,7 +1277,7 @@ export class TerminalService {
 </code></pre>
 </div>
 
-<div id="sh_host.events.ts" class="tabcontent sh_render">
+<div id="shr_host.events.ts" class="tabcontent shr_render">
 <pre><code class="language-Javascript">export enum EHostEvents {
     ForkStarted = 'ForkStarted',
     ForkClosed = 'ForkClosed',
@@ -1294,7 +1292,7 @@ export enum EHostCommands {
 </code></pre>
 </div>
 
-<div id="sh_interface.settings.ts" class="tabcontent sh_render">
+<div id="shr_interface.settings.ts" class="tabcontent shr_render">
 <pre><code class="language-Javascript">export interface IForkSettings {
     env: { [key: string]: string };
     shell: string | boolean;
@@ -1303,7 +1301,7 @@ export enum EHostCommands {
 </code></pre>
 </div>
 
-<div id="sh_parser.rest.ts" class="tabcontent sh_render">
+<div id="shr_parser.rest.ts" class="tabcontent shr_render">
 <pre><code class="language-Javascript">import { AnsiEscapeSequencesColors } from '../tools/ansi.colors';
 export function parserRest(str: string): string {
     const colors: AnsiEscapeSequencesColors = new AnsiEscapeSequencesColors();
@@ -1312,7 +1310,7 @@ export function parserRest(str: string): string {
 </code></pre>
 </div>
 
-<div id="sh_parser.row.ts" class="tabcontent sh_render">
+<div id="shr_parser.row.ts" class="tabcontent shr_render">
 <pre><code class="language-Javascript">import { AnsiEscapeSequencesColors } from '../tools/ansi.colors';
 export function parserRow(str: string): string {
     const colors: AnsiEscapeSequencesColors = new AnsiEscapeSequencesColors();
@@ -1321,7 +1319,7 @@ export function parserRow(str: string): string {
 </code></pre>
 </div>
 
-<div id="sh_ansi.colors.ts" class="tabcontent sh_render">
+<div id="shr_ansi.colors.ts" class="tabcontent shr_render">
 <pre><code class="language-Javascript">// tslint:disable:max-line-length
 // tslint:disable:no-inferrable-types
 // Base: https://en.wikipedia.org/wiki/ANSI_escape_code
@@ -1515,7 +1513,7 @@ export class AnsiEscapeSequencesColors {
 </code></pre>
 </div>
 
-<div id="sh_component.ts" class="tabcontent sh_render active">
+<div id="shr_component.ts" class="tabcontent shr_render active">
 <pre><code class="language-Javascript">// tslint:disable:no-inferrable-types
 import { Component, OnDestroy, ChangeDetectorRef, AfterViewInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { EHostEvents, EHostCommands } from '../../common/host.events';
@@ -1732,7 +1730,7 @@ export class SidebarVerticalComponent implements AfterViewInit, OnDestroy {
 </code></pre>
 </div>
 
-<div id="sh_styles.less" class="tabcontent sh_render">
+<div id="shr_styles.less" class="tabcontent shr_render">
 <pre><code class="language-CSS">
 @import '../../../../../../theme/variables.less';
 :host {
@@ -1838,7 +1836,7 @@ export class SidebarVerticalComponent implements AfterViewInit, OnDestroy {
 </code></pre>
 </div>
 
-<div id="sh_template.html" class="tabcontent sh_render">
+<div id="shr_template.html" class="tabcontent shr_render">
 <pre><code class="language-HTML">&lt;div class="wrapper" *ngIf="_ng_settings !== undefined"&gt;
     &lt;p class="t-normal"&gt;Environment vars&lt;/p&gt;
     &lt;ul class="env-vars"&gt;
@@ -1883,7 +1881,7 @@ In this part a few useful features will be explained with an example as well as 
 A popup is a window that appears on the most upper layer of Chipmunk and blocks any kind of interaction outside of the popup until closed. It can be closed by either clicking the 'x' button on the upper right
 To create and remove popups, the <a href="05_api.html#api">`API`</a> is required. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the **UI** is named `chipmunk.client.toollkit`.
 
-<h3> Example </h3>
+### Example
 
 In this example, a plugin with a button will be created. When the button is pressed, a popup with a message (provided by the plugin) will be shown along with a button to close the popup window.
 
@@ -1983,11 +1981,11 @@ export class ExampleComponent {
 
 > NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
-<h2> Notifications </h2>
+## Notifications
 
 To create notifications, the <a href="05_api.html#api">`API`</a> is required. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the **UI** is named `chipmunk.client.toollkit`.
 
-<h3> Example </h3>
+### Example
 
 The following example shows an example plugin with a line of text and a button which creates a notification.
 
@@ -2044,46 +2042,11 @@ export class ExampleComponent {
 
 > NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
-# Front-end - Non-Angular Plugin
-
-**Non-Angular Plugins** are also known as **Standalone Plugins**, which are plugins that are implemented in the **front-end**, but neither do they have Angular in it nor do they have an UI.
-**Non-Angular Plugins** are used to parse the output stream that is being shown in the main window of **Chipmunk**.
-
-## Example
-
-This example shows how to create a simple **Non-Angular** plugin which prints `-->` in front of each line.
-To create this example the abstract class `ARowCommonParser` from the `API` is required to extend from. **Chipmunk** provides an `API` which gives access to major core events and different modules. The `API` for the front-end is named `chipmunk.client.toollkit`.
-
-<div class="tab nang">
-  <button class="tablinks active" onclick="openCode(event, 'nang_index.ts')">index.ts</button>
-</div>
-
-<div id="nang_index.ts" class="tabcontent nang active">
-<pre><code class="language-Javascript">
-import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
-class ParseMe extends Toolkit.ARowCommonParser {                                                    // Extend parser class with Abstract parser class 
-    public parse(str: string, themeTypeRef: Toolkit.EThemeType, row: Toolkit.IRowInfo): string {    // Create parser which modifies and returns parsed string
-        return `--> ${str}`;                                                                        // Return string with --> in front
-    }
-} 
-const gate: Toolkit.APluginServiceGate | undefined = (window as any).logviewer;                     // Necessary to bind namespace
-if (gate === undefined) {                                                                           // If binding didn't work print out error message
-    console.error(`Fail to find logviewer gate.`);
-} else {
-    gate.setPluginExports({                                                                         // Set parser(s) to export here (Setting Multiple parsers possible)
-        parser: new ParseMe()                                                                       // Create parser instance (Free to choose parser name)
-    });
-}
-</code></pre>
-</div>
-
-> NOTE: For more information how the `API` works check out `Chapter 5 - API`
-
-<h2> Logger </h2>
+## Logger
 
 To use the logger, the <a href="05_api.html#api">`API`</a> is required. **Chipmunk** provides an <a href="05_api.html#api">`API`</a> which gives access to major core events and different modules. The <a href="05_api.html#api">`API`</a> for the **UI** is named `chipmunk.client.toollkit`.
 
-<h3> Example </h3>
+### Example
 
 In the example below a plugin is created which logs a message as soon as the plugin is created.
 
@@ -2138,7 +2101,7 @@ Another feature which the debugger provides is creating breakpoints as well as t
 
 To create **breakpoints**, type the keyword `debugger` in the line the breakpoint should activate.
 
-<h3> Example </h3>
+### Example
 
 In the example below a plugin is created which has a breakpoint in the constructor, so the application stops as soon as the application is created.
 
@@ -2178,5 +2141,3 @@ export class ExampleComponent {
 }
 </code></pre>
 </div>
-
-<!-- The following chapter covers some general information about the **back-end** of complex plugins as well as an example. -->
