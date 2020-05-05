@@ -124,7 +124,7 @@ The plugin **Row Columns** creates a custom render for CSV files to show its con
   <button class="tablinks" onclick="openCode(event, 'col_public_api.ts')">public_api.ts</button>
 </div>
 
-<div id="row.columns.api.ts" class="tabcontent col">
+<div id="col_row.columns.api.ts" class="tabcontent col">
 <pre><code class="language-Javascript">import * as Toolkit from 'chipmunk.client.toolkit';
 // Delimiter for CSV files.
 export const CDelimiters = [';', ',', '\t'];
@@ -216,7 +216,7 @@ export class ColumnsAPI extends Toolkit.TypedRowRenderAPIColumns {
 </code></pre>
 </div>
 
-<div id="row.columns.ts" class="tabcontent col active">
+<div id="col_row.columns.ts" class="tabcontent col active">
 <pre><code class="language-Javascript">import * as Toolkit from 'chipmunk.client.toolkit';
 import { ColumnsAPI } from './row.columns.api';
 /**
@@ -475,7 +475,7 @@ The plugin **Shell** creates an input in which console commands can be typed whe
 </code></pre>
 
 ### Process
-<div class="tab shp_process">
+<div class="tab shp">
   <button class="tablinks" onclick="openCode(event, 'shp_env.logger.parameters.ts')">env.logger.parameters.ts</button>
   <button class="tablinks" onclick="openCode(event, 'shp_env.logger.ts')">env.logger.ts</button>
   <button class="tablinks active" onclick="openCode(event, 'shp_main.ts')">main.ts</button>
@@ -484,7 +484,7 @@ The plugin **Shell** creates an input in which console commands can be typed whe
   <button class="tablinks" onclick="openCode(event, 'shp_service.stream.ts')">service.stream.ts</button>
 </div>
 
-<div id="shp_env.logger.parameters.ts" class="tabcontent shp_process">
+<div id="shp_env.logger.parameters.ts" class="tabcontent shp">
 <pre><code class="language-Javascript">const DEFAUT_ALLOWED_CONSOLE = {
     DEBUG: true,
     ENV: true,
@@ -523,7 +523,7 @@ export class LoggerParameters {
 </code></pre>
 </div>
 
-<div id="shp_env.logger.ts" class="tabcontent shp_process">
+<div id="shp_env.logger.ts" class="tabcontent shp">
 <pre><code class="language-Javascript">import { inspect } from 'util';
 import { LoggerParameters } from './env.logger.parameters';
 enum ELogLevels {
@@ -650,7 +650,7 @@ export default class Logger {
 </code></pre>
 </div>
 
-<div id="shp_main.ts" class="tabcontent shp_process active">
+<div id="shp_main.ts" class="tabcontent shp active">
 <pre><code class="language-Javascript">import Logger from './env.logger';
 import * as path from 'path';
 import PluginIPCService, { ServiceState } from 'chipmunk.plugin.ipc';
@@ -869,7 +869,7 @@ ServiceState.accept().catch((err: Error) => {
 </code></pre>
 </div>
 
-<div id="shp_process.env.ts" class="tabcontent shp_process">
+<div id="shp_process.env.ts" class="tabcontent shp">
 <pre><code class="language-Javascript">import { exec, ExecOptions } from 'child_process';
 import * as OS from 'os';
 import * as Path from 'path';
@@ -985,7 +985,7 @@ export function getHomePath(): string {
 </code></pre>
 </div>
 
-<div id="shp_process.fork.ts" class="tabcontent shp_process">
+<div id="shp_process.fork.ts" class="tabcontent shp">
 <pre><code class="language-Javascript">import { spawn, ChildProcess } from 'child_process';
 import { EventEmitter } from 'events';
 export interface IForkSettings {
@@ -1077,7 +1077,7 @@ export default class Fork extends EventEmitter {
 </code></pre>
 </div>
 
-<div id="shp_service.stream.ts" class="tabcontent shp_process">
+<div id="shp_service.stream.ts" class="tabcontent shp">
 <pre><code class="language-Javascript">import Logger from './env.logger';
 import PluginIPCService from 'chipmunk.plugin.ipc';
 import Fork, { IForkSettings } from './process.fork';
@@ -1220,7 +1220,7 @@ export default (new StreamsService());
 </div>
 
 ### Render
-<div class="tab shr_render">
+<div class="tab shr">
   <button class="tablinks" onclick="openCode(event, 'shr_public_api.ts')">public_api.ts</button>
   <button class="tablinks" onclick="openCode(event, 'shr_module.ts')">module.ts</button>
   <button class="tablinks" onclick="openCode(event, 'shr_service.ts')">service.ts</button>
@@ -1234,7 +1234,7 @@ export default (new StreamsService());
   <button class="tablinks" onclick="openCode(event, 'shr_template.html')">template.html</button>
 </div>
 
-<div id="shr_public_api.ts" class="tabcontent shr_render">
+<div id="shr_public_api.ts" class="tabcontent shr">
 <pre><code class="language-Javascript">/*
  * Public API Surface of terminal
  */
@@ -1245,7 +1245,7 @@ export { parserRest } from './lib/parsers/parser.rest';
 </code></pre>
 </div>
 
-<div id="shr_module.ts" class="tabcontent shr_render">
+<div id="shr_module.ts" class="tabcontent shr">
 <pre><code class="language-Javascript">import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -1266,7 +1266,7 @@ export class PluginModule extends Toolkit.PluginNgModule {
 </code></pre>
 </div>
 
-<div id="shr_service.ts" class="tabcontent shr_render">
+<div id="shr_service.ts" class="tabcontent shr">
 <pre><code class="language-Javascript">import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
@@ -1277,7 +1277,7 @@ export class TerminalService {
 </code></pre>
 </div>
 
-<div id="shr_host.events.ts" class="tabcontent shr_render">
+<div id="shr_host.events.ts" class="tabcontent shr">
 <pre><code class="language-Javascript">export enum EHostEvents {
     ForkStarted = 'ForkStarted',
     ForkClosed = 'ForkClosed',
@@ -1292,7 +1292,7 @@ export enum EHostCommands {
 </code></pre>
 </div>
 
-<div id="shr_interface.settings.ts" class="tabcontent shr_render">
+<div id="shr_interface.settings.ts" class="tabcontent shr">
 <pre><code class="language-Javascript">export interface IForkSettings {
     env: { [key: string]: string };
     shell: string | boolean;
@@ -1301,7 +1301,7 @@ export enum EHostCommands {
 </code></pre>
 </div>
 
-<div id="shr_parser.rest.ts" class="tabcontent shr_render">
+<div id="shr_parser.rest.ts" class="tabcontent shr">
 <pre><code class="language-Javascript">import { AnsiEscapeSequencesColors } from '../tools/ansi.colors';
 export function parserRest(str: string): string {
     const colors: AnsiEscapeSequencesColors = new AnsiEscapeSequencesColors();
@@ -1310,7 +1310,7 @@ export function parserRest(str: string): string {
 </code></pre>
 </div>
 
-<div id="shr_parser.row.ts" class="tabcontent shr_render">
+<div id="shr_parser.row.ts" class="tabcontent shr">
 <pre><code class="language-Javascript">import { AnsiEscapeSequencesColors } from '../tools/ansi.colors';
 export function parserRow(str: string): string {
     const colors: AnsiEscapeSequencesColors = new AnsiEscapeSequencesColors();
@@ -1319,7 +1319,7 @@ export function parserRow(str: string): string {
 </code></pre>
 </div>
 
-<div id="shr_ansi.colors.ts" class="tabcontent shr_render">
+<div id="shr_ansi.colors.ts" class="tabcontent shr">
 <pre><code class="language-Javascript">// tslint:disable:max-line-length
 // tslint:disable:no-inferrable-types
 // Base: https://en.wikipedia.org/wiki/ANSI_escape_code
@@ -1513,7 +1513,7 @@ export class AnsiEscapeSequencesColors {
 </code></pre>
 </div>
 
-<div id="shr_component.ts" class="tabcontent shr_render active">
+<div id="shr_component.ts" class="tabcontent shr active">
 <pre><code class="language-Javascript">// tslint:disable:no-inferrable-types
 import { Component, OnDestroy, ChangeDetectorRef, AfterViewInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { EHostEvents, EHostCommands } from '../../common/host.events';
@@ -1730,7 +1730,7 @@ export class SidebarVerticalComponent implements AfterViewInit, OnDestroy {
 </code></pre>
 </div>
 
-<div id="shr_styles.less" class="tabcontent shr_render">
+<div id="shr_styles.less" class="tabcontent shr">
 <pre><code class="language-CSS">
 @import '../../../../../../theme/variables.less';
 :host {
@@ -1836,7 +1836,7 @@ export class SidebarVerticalComponent implements AfterViewInit, OnDestroy {
 </code></pre>
 </div>
 
-<div id="shr_template.html" class="tabcontent shr_render">
+<div id="shr_template.html" class="tabcontent shr">
 <pre><code class="language-HTML">&lt;div class="wrapper" *ngIf="_ng_settings !== undefined"&gt;
     &lt;p class="t-normal"&gt;Environment vars&lt;/p&gt;
     &lt;ul class="env-vars"&gt;
@@ -1872,9 +1872,9 @@ export class SidebarVerticalComponent implements AfterViewInit, OnDestroy {
 </code></pre>
 </div>
 
-# Useful features to implement with examples
+# Additional features
 
-In this part a few useful features will be explained with an example as well as a line by line description of the example code.
+In this part a few additional features will be explained with an example as well as a line by line description of the example code.
 
 ## Popup
 
@@ -1894,22 +1894,19 @@ In this example, a plugin with a button will be created. When the button is pres
 </div>
 
 <div id="popup_template.html" class="tabcontent popup">
-<pre><code class="language-HTML">
-&lt;p&gt;{{msg}}&lt;/p&gt;  &lt;!-- Show message from component --&gt;
+<pre><code class="language-HTML">&lt;p&gt;{{msg}}&lt;/p&gt;  &lt;!-- Show message from component --&gt;
 </code></pre>
 </div>
 
 <div id="popup_styles.less" class="tabcontent popup">
-<pre><code class="language-CSS">
-p {
+<pre><code class="language-CSS">p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
 
 <div id="popup_component.ts" class="tabcontent popup active">
-<pre><code class="language-Javascript">
-import { Component, Input } from '@angular/core';   // Import necessary components for popup
+<pre><code class="language-Javascript">import { Component, Input } from '@angular/core';   // Import necessary components for popup
 @Component({
     selector: 'example-popup-com',                  // Choose the selector name of the popup
     templateUrl: './template.html',                 // Assign HTML file as template
@@ -1924,29 +1921,26 @@ export class PopupComponent {
 **Plugin component**
 
 <div class="tab ppopup">
-  <button class="tablinks" onclick="openCode(event, 'popup_plugin_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'popup_plugin_styles.less')">styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'popup_plugin_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'ppopup_plugin_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'ppopup_plugin_styles.less')">styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'ppopup_plugin_component.ts')">component.ts</button>
 </div>
 
-<div id="popup_plugin_template.html" class="tabcontent ppopup">
-<pre><code class="language-HTML">
-&lt;p&gt;Example&lt;/p&gt;
+<div id="ppopup_plugin_template.html" class="tabcontent ppopup">
+<pre><code class="language-HTML">&lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_popup()&quot;&gt;&lt;/button&gt;   &lt;!-- Button to open popup --&gt;
 </code></pre>
 </div>
 
-<div id="popup_plugin_styles.less" class="tabcontent ppopup">
-<pre><code class="language-CSS">
-p {
+<div id="ppopup_plugin_styles.less" class="tabcontent ppopup">
+<pre><code class="language-CSS">p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
 
-<div id="popup_plugin_component.ts" class="tabcontent ppopup active">
-<pre><code class="language-Javascript">
-import { Component, Input } from '@angular/core';       // Import necessary components for plugin
+<div id="ppopup_plugin_component.ts" class="tabcontent ppopup active">
+<pre><code class="language-Javascript">import { Component, Input } from '@angular/core';       // Import necessary components for plugin
 import { PopupComponent } from './popup/components';    // Import the popup module
 @Component({
     selector: 'example',                                // Choose the selector name of the popup
@@ -1990,21 +1984,19 @@ To create notifications, the <a href="05_api.html#api">`API`</a> is required. **
 The following example shows an example plugin with a line of text and a button which creates a notification.
 
 <div class="tab not">
-  <button class="tablinks" onclick="openCode(event, 'notification_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'notification_styles.less')">styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'notification_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'not_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'not_styles.less')">styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'not_component.ts')">component.ts</button>
 </div>
 
-<div id="notification_template.html" class="tabcontent not">
-<pre><code class="language-HTML">
-&lt;p&gt;Example&lt;/p&gt;
+<div id="not_template.html" class="tabcontent not">
+<pre><code class="language-HTML">&lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_notify()&quot;&gt;&lt;/button&gt;   &lt;!-- Create a button with a method to be called from the components.ts file --&gt;
 </code></pre>
 </div>
 
-<div id="notification_styles.less" class="tabcontent not">
-<pre><code class="language-CSS">
-p {
+<div id="not_styles.less" class="tabcontent not">
+<pre><code class="language-CSS">p {
     color: #FFFFFF;
 }
 button {
@@ -2014,9 +2006,8 @@ button {
 </code></pre>
 </div>
 
-<div id="notification_component.ts" class="tabcontent not active">
-<pre><code class="language-Javascript">
-import { Component } from '@angular/core';
+<div id="not_component.ts" class="tabcontent not active">
+<pre><code class="language-Javascript">import { Component } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
 import { ENotificationType } from 'chipmunk.client.toolkit';    // Import notification type
 @Component({
@@ -2051,28 +2042,25 @@ To use the logger, the <a href="05_api.html#api">`API`</a> is required. **Chipmu
 In the example below a plugin is created which logs a message as soon as the plugin is created.
 
 <div class="tab log">
-  <button class="tablinks" onclick="openCode(event, 'logger_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'logger_styles.less')">styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'logger_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'log_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'log_styles.less')">styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'log_component.ts')">component.ts</button>
 </div>
 
-<div id="logger_template.html" class="tabcontent log">
-<pre><code class="language-HTML">
-&lt;p&gt;Example&lt;/p&gt;     &lt;!-- Create a line of text --&gt;
+<div id="log_template.html" class="tabcontent log">
+<pre><code class="language-HTML">&lt;p&gt;Example&lt;/p&gt;     &lt;!-- Create a line of text --&gt;
 </code></pre>
 </div>
 
-<div id="logger_styles.less" class="tabcontent log">
-<pre><code class="language-CSS">
-p {
+<div id="log_styles.less" class="tabcontent log">
+<pre><code class="language-CSS">p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
 
-<div id="logger_component.ts" class="tabcontent log active">
-<pre><code class="language-Javascript">
-import { Component } from '@angular/core';
+<div id="log_component.ts" class="tabcontent log active">
+<pre><code class="language-Javascript">import { Component } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
 @Component({
     selector: 'example',                                                        // Choose the selector name of the plugin
@@ -2112,22 +2100,19 @@ In the example below a plugin is created which has a breakpoint in the construct
 </div>
 
 <div id="dev_template.html" class="tabcontent dev">
-<pre><code class="language-HTML">
-&lt;p&gt;Example&lt;/p&gt;
+<pre><code class="language-HTML">&lt;p&gt;Example&lt;/p&gt;
 </code></pre>
 </div>
 
 <div id="dev_styles.less" class="tabcontent dev">
-<pre><code class="language-CSS">
-p {
+<pre><code class="language-CSS">p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
 
 <div id="dev_component.ts" class="tabcontent dev active">
-<pre><code class="language-Javascript">
-import { Component } from '@angular/core';
+<pre><code class="language-Javascript">import { Component } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
 @Component({
     selector: 'example',                            // Choose the selector name of the plugin
