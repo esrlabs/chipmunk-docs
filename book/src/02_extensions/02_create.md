@@ -12,7 +12,7 @@ First off clone the create a folder for **Chipmunk** and **Quickstart** by typin
 cd chipmunk-developing
 </code></pre>
 
-After creating the folder clone both the **Chipmunk** repository and the **Quickstart** repository into the folder and navigate into it. 
+After creating the folder, clone both the **Chipmunk** and the **Quickstart** repository into the folder and navigate into it. 
 
 <pre><code>git clone https://github.com/esrlabs/chipmunk.git
 git clone https://github.com/esrlabs/chipmunk-quickstart.git
@@ -40,7 +40,7 @@ Optionally you can define a version of your plugin:
 
 As a result the folder <code>releases</code> will be created with the compiled plugin:
 
-<pre><code>&#9492;&#9472;&#9472; plugins
+<pre><code>&#9500;&#9472;&#9472; plugins
 &#9474    &#9500;&#9472;&#9472; plugin.helloworld
 &#9474    &#9500;&#9472;&#9472; plugin.row.columns
 &#9474    &#9500;&#9472;&#9472; plugin.row.parser
