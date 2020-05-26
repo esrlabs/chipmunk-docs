@@ -1260,7 +1260,7 @@ These abstract classes allow to create **parsers** that can modify the output in
 
 | Parser name                         | Description                                                                                                                     |
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| <a href="#rbp">`RowBoundParser`</a> | Parse only data received from the back-end of the plugin                                                                        |
+| <a href="#rbp">`RowBoundParser`</a> | Parse only data received from the process part of the plugin                                                                        |
 | <a href="#rcp">`RowCommomParser`</a>| Parse data from any kind of source                                                                                              |
 | <a href="#rtp">`RowTypedParser`</a> | Parse only specific type of source (e.g. DLT)                                                                                   |
 | <a href="#sp">`SelectionParser` (coming soon)</a> | Parse only selected line(s), right-click to see self-chosen name as option to see the parsed result in the tab **Details** below|
@@ -1906,7 +1906,7 @@ export class SidebarVerticalComponent {
     @Input() public api: Toolkit.IAPI;                  // Assign API to instance variable
     @Input() public session: string;                    // Assign session ID to instance variable
     constructor() {
-        this.api.getIPC().send({                        // Send session ID to back-end of plugin
+        this.api.getIPC().send({                        // Send session ID to process part of plugin
             stream: this.session,
             command: 'session'
         }).catch((error: Error) => {
@@ -2210,7 +2210,7 @@ export class SidebarVerticalComponent {
     @Input() public api: Toolkit.IAPI;                  // Assign API to instance variable
     @Input() public session: string;                    // Assign session ID to instance variable 
     constructor() {
-        this.api.getIPC().send({                        // Send session ID to the back-end
+        this.api.getIPC().send({                        // Send session ID to the process part
             stream: this.session,
             command: 'session'
         }).catch((error: Error) => {
@@ -2235,7 +2235,7 @@ p {
 </code></pre>
 </div>
 
-**Back-end**
+**process part**
 
 <div class="tab trreB">
   <button class="tablinks active" onclick="openCode(event, 'trre_main.ts')">main.ts</button>
@@ -2275,9 +2275,9 @@ export default new ExampleBackend();
 <!--
 <h2 id="ipc">3.2 IPC </h2>
 
-These abstract classes allow to create different methods to establish communication between the **back-end** and the **UI**.
+These abstract classes allow to create different methods to establish communication between the **process part** and the **UI**.
 
-> **IMPORTANT**: `IPC` is only used in the **back-end**
+> **IMPORTANT**: `IPC` is only used in the **process part**
 
 ```Javascript
 // Typescript
@@ -2288,7 +2288,7 @@ These abstract classes allow to create different methods to establish communicat
  * Plugin IPC controller allows communicating between render part of a plugin
  * and backend part of a plugin.
  * Render part (render) - a plugin's part, which executes on UI in browser
- * Backend part (host) - a plugin's part, which executes on back-end on nodejs level
+ * Backend part (host) - a plugin's part, which executes on process part on nodejs level
  */
 
 export declare abstract class IPC {
@@ -2325,7 +2325,7 @@ export declare abstract class IPC {
 
 <h3>Example - IPC</h3>
 
-This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **back-end**.
+This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **process part**.
 
 > **NOTE**: To make use of `IPC` add `IAPI` in the code, since `IAPI` holds the method `getIPC()` which provides an instance of `IPC` with the methods already implemented. (For more information: <a href="#iapi">IAPI</a>) 
 
@@ -2408,12 +2408,12 @@ export class Service extends Toolkit.PluginService {                            
             }
         });
     }
-    public _ng_onRequest() {                                                                                                        // on click function for request-type of message to the back-end
+    public _ng_onRequest() {                                                                                                        // on click function for request-type of message to the process part
         if (this.api) {                                                                                                             // check if API exists
-            this.api.getIPC().request({                                                                                             // send request-type of message to the back-end
+            this.api.getIPC().request({                                                                                             // send request-type of message to the process part
                 stream: this.session,
                 command: 'request'
-            }, this.session).then((response) => {                                                                                   // Catch response from back-end
+            }, this.session).then((response) => {                                                                                   // Catch response from process part
                 console.log(`Received onRequest: ${response.msg}`);                                                                 // Print out responsed answer in the console
             }).catch((error: Error) => {
                 console.error(error);
@@ -2422,9 +2422,9 @@ export class Service extends Toolkit.PluginService {                            
         console.error('No API found!');
       }
     }
-    public _ng_onSend() {                                                                                                           // on click function for send-type of message to the back-end
+    public _ng_onSend() {                                                                                                           // on click function for send-type of message to the process part
         if (this.api) {                                                                                                             // check if API exists
-            this.api.getIPC().send({                                                                                                // send send-type of message to the back-end
+            this.api.getIPC().send({                                                                                                // send send-type of message to the process part
                 stream: this.session,
                 command: 'send'
             }, this.session).catch((error: Error) => {
@@ -2470,7 +2470,7 @@ export { Service };
 
 > **NOTE**: Using a service file is one of two ways to make use of the `API` (check out _How to use the API_ in <a href="#api">API</a> for more information)
 
-<h2>Back-end</h2>
+<h2>process part</h2>
 
 <div class="tab ipcB">
   <button class="tablinks active" onclick="openCode(event, 'ipc_main.ts')">main.ts</button>
@@ -2786,7 +2786,7 @@ export declare class PluginIPCService extends EventEmitter {
 
 <h3>Example</h3>
 
-This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **back-end**.
+This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **process part**.
 
 <h2>UI</h2>
 
@@ -2818,7 +2818,7 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
         });
     }
     ngAfterViewInit() {
-        this._subscriptions.incomeIPCHostMessage = this.api.getIPC().subscribe((message: any) => {  // Subscribe to back-end to listen for messages
+        this._subscriptions.incomeIPCHostMessage = this.api.getIPC().subscribe((message: any) => {  // Subscribe to process part to listen for messages
             if (typeof message !== 'object' && message === null) {                                  // Check for correct format of message
                 return;
             }
@@ -2827,12 +2827,12 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
             }
         });
     }
-    public _ng_onRequest() {                                                                        // on click function for request-type of message to the back-end
+    public _ng_onRequest() {                                                                        // on click function for request-type of message to the process part
         if (this.api) {                                                                             // check if API exists
-            this.api.getIPC().request({                                                             // send request-type of message to the back-end
+            this.api.getIPC().request({                                                             // send request-type of message to the process part
                 stream: this.session,
                 command: 'request'
-            }, this.session).then((response) => {                                                   // Catch response from back-end
+            }, this.session).then((response) => {                                                   // Catch response from process part
                 console.log(`Received onRequest: ${response.msg}`);                                 // Print out responsed answer in the console
             }).catch((error: Error) => {
                 console.error(error);
@@ -2841,9 +2841,9 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
         console.error('No API found!');
       }
     }
-    public _ng_onSend() {                                                                           // on click function for send-type of message to the back-end
+    public _ng_onSend() {                                                                           // on click function for send-type of message to the process part
         if (this.api) {                                                                             // check if API exists
-            this.api.getIPC().send({                                                                // send send-type of message to the back-end
+            this.api.getIPC().send({                                                                // send send-type of message to the process part
                 stream: this.session,
                 command: 'send'
             }, this.session).catch((error: Error) => {
@@ -2906,7 +2906,7 @@ export * from './module';
 </code></pre>
 </div>
 
-<h2>Back-end</h2>
+<h2>process part</h2>
 
 <div class="tab pipcB">
   <button class="tablinks active" onclick="openCode(event, 'pIPC_main.ts')">main.ts</button>
@@ -2952,7 +2952,7 @@ const app: Plugin = new Plugin();
 
 The class `ServiceConfig` offers a variety of methods to read and write from an external file. This feature can be used to save and load settings.
 
-> **IMPORTANT**: This module can only be used in the **back-end**
+> **IMPORTANT**: This module can only be used in the **process part**
 
 ```Javascript
 // Typescript
@@ -3067,7 +3067,7 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
         });
     }
     ngAfterViewInit() {
-        this._subscriptions.incomeIPCHostMessage = this.api.getIPC().subscribe((message: any) => {  // Subscribe to back-end to listen for messages
+        this._subscriptions.incomeIPCHostMessage = this.api.getIPC().subscribe((message: any) => {  // Subscribe to process part to listen for messages
             if (typeof message !== 'object' && message === null) {                                  // Check for correct format of message
                 return;
             }
@@ -3076,12 +3076,12 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
             }
         });
     }
-    public _ng_onRead() {                                                                           // on click function to request settings from the back-end
+    public _ng_onRead() {                                                                           // on click function to request settings from the process part
         if (this.api) {                                                                             // check if API exists
-            this.api.getIPC().request({                                                             // send request-type of message to the back-end
+            this.api.getIPC().request({                                                             // send request-type of message to the process part
                 stream: this.session,
                 command: 'read'
-            }, this.session).then((response) => {                                                   // Catch response from back-end
+            }, this.session).then((response) => {                                                   // Catch response from process part
                 console.log(`Settings: ${response.msg}`);                                           // Print out settings in the console
             }).catch((error: Error) => {
                 console.error(error);
@@ -3090,9 +3090,9 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
         console.error('No API found!');
       }
     }
-    public _ng_onWrite(options: IOptions) {                                                         // on click function for send-type of message to the back-end
+    public _ng_onWrite(options: IOptions) {                                                         // on click function for send-type of message to the process part
         if (this.api) {                                                                             // check if API exists
-            this.api.getIPC().request({                                                             // send send-type of message to the back-end
+            this.api.getIPC().request({                                                             // send send-type of message to the process part
                 stream: this.session,
                 command: 'write',
                 settings: options
@@ -3134,7 +3134,7 @@ export * from './module';
 </code></pre>
 </div>
 
-<h2>Back-end</h2>
+<h2>process part</h2>
 
 <div class="tab scB">
   <button class="tablinks active" onclick="openCode(event, 'sc_main.ts')">main.ts</button>
