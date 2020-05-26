@@ -440,8 +440,6 @@ The plugin **Plugin with Settings** gives the opportunity to create custom setti
 
 At the top there is an input area to search for specific settings quickly. On the left side are the sections of the settings.
 
-<img src="../images/settings.png" width="600" height="300">
-
 To create settings the first step is to create the component for the setting. In this example `SomestringSetting` will create an input field which takes a string in.
 Currently there are 3 types of settings available to implement: **string input, number input and checkboxes**
 
@@ -454,14 +452,21 @@ The `Service` class is necessary to register the created settings and make them 
 `desc`  -   Description under setting
 `type`  -   Type of setting (standard - show settings, advanced - button to show/hide advanced settings)
 
-By creating a `read` the value of the setting can be read and put out into the console.
-It's important to note, that the `get` method needs the data type of the setting and takes the relative path of the setting (e.g. _'selectionparser'_) and the full path **(all superpathes seperated by a '.')** as the second arguement (e.g. _'plugins.selectionparser'_). 
+By creating a `read` method the value of the setting can be read and put out into the console.
+It's important to note, that the `get` method needs the data type of the setting and takes the relative path of the setting (e.g. _'selectionparser'_) and the full path **(all superpathes seperated by a '.')** as the second arguement (e.g. _'plugins.selectionparser'_).
+
+Settings can be created for both the Angular part or the back-end of the plugin. Settings for the Angular part are located in the `render` folder, whereas the settings for the back-end are located in the `process` folder.
 
 > NOTE: Settings can only be added under **Plugins**
 
 > NOTE: No restriction on amount of sub-settings  
 
-<pre><code>&#9492;&#9472;&#9472; render
+<pre><code>&#9492;&#9472;&#9472; process
+    &#9500;&#9472;&#9472; src
+    &#9474;   &#9492;&#9472;&#9472; main.ts
+    &#9500;&#9472;&#9472; package.json
+    &#9492;&#9472;&#9472; tsconfig.json
+&#9492;&#9472;&#9472; render
     &#9500;&#9472;&#9472; src
     &#9474;   &#9492;&#9472;&#9472; index.ts
     &#9500;&#9472;&#9472; package.json
@@ -471,13 +476,106 @@ It's important to note, that the `get` method needs the data type of the setting
 </code></pre>
 
 <div class="tab pws">
-  <button class="tablinks active" onclick="openCode(event, 'pws_index.ts')">index.ts</button>
+  <button class="tablinks active" onclick="openCode(event, 'pws_main.ts')">main.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'pws_index.ts')">index.ts</button>
 </div>
 
-<div id="sel_index.ts" class="tabcontent sel active">
+<div id="pws_main.ts" class="tabcontent pws active">
+<pre><code class="language-Javascript">import PluginIPCService, { ServiceState, ServiceSettings, Entry, ESettingType, IPCMessages, Field, ElementInputStringRef } from 'chipmunk.plugin.ipc';
+/**
+ * To create settings field we should use abstract class Field<T>.
+ * T: string, boolean or number
+ */
+export class SomestringSetting extends Field<string> {
+    /**
+     * We should define reference to one of controller to render setting:
+     */
+    private _element: ElementInputStringRef = new ElementInputStringRef({
+        placeholder: 'Test placeholder',
+    });
+    /**
+     * Returns default value
+     */
+    public getDefault(): Promise<string> {
+        return new Promise((resolve) => {
+            resolve('');
+        });
+    }
+    /**
+     * Validation of value. Called each time user change it. Also called before save data into
+     * setting file.
+     * Should reject on error and resolve on success.
+     */
+    public validate(state: string): Promise<void> {
+        return new Promise((resolve, reject) => {
+            if (typeof state !== 'string') {
+                return reject(new Error(`Expecting string type for "SomestringSetting"`));
+            }
+            if (state.trim() !== '' && (state.length < 5 || state.length > 15)) {
+                return reject(new Error(`${state.length} isn't valid length. Expected 5 < > 15`));
+            }
+            resolve();
+        });
+    }
+    /**
+     * Should return reference to render component
+     */
+    public getElement(): ElementInputStringRef {
+        return this._element;
+    }
+}
+class Plugin {
+    constructor() {
+        this._setup();
+        this._read();
+    }
+    private _setup() {
+        // Create a group (section) for settings
+        ServiceSettings.register(new Entry({
+            key: 'testBEEntry',
+            path: '', // Put settings into root of settings tree
+            name: 'Backend Plugin Settings',
+            desc: 'This is some kind of settings, delivered from backend',
+            type: ESettingType.standard,
+        })).then(() => {
+            console.log(`Group is registred`);
+            ServiceSettings.register(new SomestringSetting({
+                key: 'pluginBESetting',
+                path: 'testBEEntry',
+                name: 'BE String setting',
+                desc: 'This is test of string setting',
+                type: ESettingType.standard,
+                value: '',
+            })).then(() => {
+                console.log(`Setting is registred`);
+            }).catch((error: Error) => {
+                console.log(`Fail due: ${error.message}`);
+            });
+        }).catch((error: Error) => {
+            console.log(`Fail due: ${error.message}`);
+        });
+    }
+    private _read() {
+        // Read some settings
+        ServiceSettings.get<boolean>('PluginsUpdates', 'general.plugins').then((value: boolean) => {
+            console.log(value);
+        }).catch((error: Error) => {
+            console.log(error);
+        });
+    }
+}
+const app: Plugin = new Plugin();
+// Notify core about plugin
+ServiceState.accept().catch((err: Error) => {
+    console.log(`Fail to notify core about plugin due error: ${err.message}`);
+});
+</code></pre>
+</div>
+
+<div id="pws_index.ts" class="tabcontent pws">
 <pre><code class="language-Javascript">// tslint:disable: max-classes-per-file
 import * as Toolkit from 'chipmunk.client.toolkit';
-import { Field, ElementInputStringRef, IField } from 'chipmunk.client.toolkit';
+import { Field, ElementInputStringRef } from 'chipmunk.client.toolkit';
 /**
  * To create settings field we should use abstract class Field<T>.
  * T: string, boolean or number
