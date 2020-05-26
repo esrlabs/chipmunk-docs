@@ -455,7 +455,7 @@ The `Service` class is necessary to register the created settings and make them 
 By creating a `read` method the value of the setting can be read and put out into the console.
 It's important to note, that the `get` method needs the data type of the setting and takes the relative path of the setting (e.g. _'selectionparser'_) and the full path **(all superpathes seperated by a '.')** as the second arguement (e.g. _'plugins.selectionparser'_).
 
-Settings can be created for both the Angular part or the back-end of the plugin. Settings for the Angular part are located in the `render` folder, whereas the settings for the back-end are located in the `process` folder.
+Settings can be created for both the UI part or the process part of the plugin. Settings for the UI part are located in the `render` folder, whereas the settings for the process part are located in the `process` folder.
 
 > NOTE: Settings can only be added under **Plugins**
 
@@ -2369,7 +2369,9 @@ export class ExampleComponent {
 
 > NOTE: For more information how the `API` works check out <a href="05_api.html#api">`Chapter 5 - API`</a>
 
-<h1> Developer mode and Breakpoints </h1>
+# Debugging
+
+## Debugging in the UI part
 
 The developer mode can be very helpful at developing (especially for the development in the **UI**). To enable the developing mode, type the following command in the command line, in which the application is started:
 
@@ -2379,7 +2381,11 @@ The developer mode will create a debugger console with which console outputs mad
 
 Another feature which the debugger provides is creating breakpoints as well as the ability to select HTML elements which then will be highlighted in the code along with its attributes. 
 
-To create **breakpoints**, type the keyword `debugger` in the line the breakpoint should activate.
+>NOTE: The keyword `debugger` serves as a breakpoint in the UI part.
+
+## Debugging in the process part
+
+To debug in the process part, simply put breakpoints in the `.js` files located in the folder  `releases` from `Chipmunk Quickstart`
 
 ### Example
 
