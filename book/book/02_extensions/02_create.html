@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>The Basics - documentation</title>
+        <title>A quick start - documentation</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_basics.html" class="active"><strong aria-hidden="true">2.1.</strong> The Basics</a></li><li class="expanded "><a href="../02_extensions/03_ui.html"><strong aria-hidden="true">2.2.</strong> Front-end</a></li><li class="expanded "><a href="../02_extensions/05_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_create.html" class="active"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="../02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="../02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -149,33 +149,77 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
-<h2><a class="header" href="#rake-commands" id="rake-commands">Rake commands</a></h2>
-<p>Rake commands are vital for the compilation of <strong>Chipmunk</strong>, which is why in this section the most important rake commands are going to be mentioned and described.</p>
-<pre><code>
-rake dev                            # Build electron application including all plugins and native code parts
-rake start                          # Start Chipmunk
-rake dev:pluginName_render          # Install 'pluginName' to application
-
-# NOTE: Complex plugins are not available for the time being! #
-rake install_plugins_complex        # Install all complex plugins
-                                    # Complex plugins are plugins that consist of a UI and a back-end implementation
-                                    # The UI represents the user-interface of the plugin whereas the back-end provides information and functionality from external sources (e.g analyzing the stream of a serial connection, for which an external library is used to connect to the serial device)
-rake install_plugins_standalone     # Install all standalone plugins
-                                    # Standalone plugins exist in the UI part of Chipmunk and provide functions to parse the output stream (e.g. coloring specific terms)
-rake install_plugins_angular        # Install all angular plugins
-                                    # Angular plugins exist in the UI part of Chipmunk
+<h1><a class="header" href="#create-a-plugin" id="create-a-plugin">Create a plugin</a></h1>
+<p>This section provides a step by step guide on how to get <strong>Chipmunk</strong> and the <strong>Quickstart</strong> repository as well as how to build them.
+The repository <strong>Quickstart</strong> provides a variety of plugins which can be copied and modifed to create new plugins.</p>
+<h2><a class="header" href="#installation-of-plugins-and-chipmunk" id="installation-of-plugins-and-chipmunk">Installation of plugins and Chipmunk</a></h2>
+<p>First off clone the create a folder for <strong>Chipmunk</strong> and <strong>Quickstart</strong> by typing the following commands:</p>
+<pre><code>mkdir chipmunk-developing
+cd chipmunk-developing
 </code></pre>
-<!-- To build the back-end of a plugin, change to the directory of the plugin that will be built (in this example <pluginName>) `sandbox/pluginName/process` and run:
-`npm run build` -->
-<p>If a new update of <strong>Chipmunk</strong> is available, first run <code>rake clobber</code> (to remove all compiled files) and then <code>rake dev</code>, to update and re-build <strong>Chipmunk</strong>.</p>
-<h2><a class="header" href="#add-plugin-to-sidebar" id="add-plugin-to-sidebar">Add plugin to sidebar</a></h2>
-<p>For the developed plugin to appear on the sidebar as an option, it will be necessary to add the name of the plugin in:</p>
-<p><code>application/client.core/src/app/environment/services/service.sessions.tabs.ts</code></p>
-<p>In the method <code>public add(): Promise&lt;string&gt;</code> add the name of the plugin into the array <code>transports: ['processes', 'serial', 'dlt-render']</code></p>
+<p>After creating the folder, clone both the <strong>Chipmunk</strong> and the <strong>Quickstart</strong> repository into the folder and navigate into it. </p>
+<pre><code>git clone https://github.com/esrlabs/chipmunk.git
+git clone https://github.com/esrlabs/chipmunk-quickstart.git
+cd chipmunk-quickstart
+</code></pre>
+<p>The <strong>Quickstart</strong> repository has a few examples of plugins which are located in the folder <code>plugin</code>:</p>
+<pre><code>&#9492;&#9472;&#9472; plugins
+    &#9500;&#9472;&#9472; plugin.helloworld
+    &#9500;&#9472;&#9472; plugin.row.columns
+    &#9500;&#9472;&#9472; plugin.row.parser
+    &#9500;&#9472;&#9472; plugin.selection.parser
+    &#9492;&#9472;&#9472; plugin.sh
+</code></pre>
+<p>To build the plugin, type the following command with the path to the target plugin:</p>
+<pre><code>rake build[./plugins/plugin.helloworld]</code></pre>
+<p>Optionally you can define a version of your plugin:</p>
+<pre><code>rake build[./plugins/plugin.helloworld, 1.0.1]</code></pre>
+<blockquote>
+<p><strong>WINDOWS</strong> Note: To call a rake task with multiple arguments, it could be command should be wrapped as string <code>rake 'build[./plugins/plugin.helloworld, 1.0.1]'</code></p>
+</blockquote>
+<blockquote>
+<p>Note: The very first build always takes some noticeable time because of build script downloads and compiles necessary infrastructure.</p>
+</blockquote>
+<p>As a result the folder <code>releases</code> will be created with the compiled plugin:</p>
+<pre><code>&#9500;&#9472;&#9472; plugins
+&#9474    &#9500;&#9472;&#9472; plugin.helloworld
+&#9474    &#9500;&#9472;&#9472; plugin.row.columns
+&#9474    &#9500;&#9472;&#9472; plugin.row.parser
+&#9474    &#9500;&#9472;&#9472; plugin.selection.parser
+&#9474    &#9492;&#9472;&#9472; plugin.sh
+&#9492;&#9472;&#9472; releases
+     &#9492;&#9472;&#9472; plugin.helloworld
+</code></pre>
+<p>To build <strong>Chipmunk</strong> run the following commands to navigate into the folder where the repository was copied:</p>
+<pre><code>cd ../chipmunk
+rake full_pipeline
+</code></pre>
+<p>The building of <strong>Chipmunk</strong> will take some time but only needs to be built once. After the build is finished <strong>Chipmunk</strong> can be executed from the <code>releases</code> folder.</p>
+<p>Before starting <strong>Chipmunk</strong> some environment variables need to be passed in as a preparation.</p>
+<p>First off define a full path to the folder that will hold the release of your plugin.</p>
+<p><code><pre>export CHIPMUNK_PLUGINS_SANDBOX=../chipmunk-quickstart/releases</pre></code></p>
+<p>By default <strong>Chipmunk</strong> stores plugins in <code>~/.chipmunk/plugins</code> but by running the command above it can be modified.</p>
+<p>To prevent the installation of default plugins, run the following command</p>
+<pre><code>export CHIPMUNK_PLUGINS_NO_DEFAULTS=true</code></pre>
+<p>If your has plugin already been published in the <strong>Chipmunk Store</strong> these commands would prevent it from updating:</p>
+<pre><code>export CHIPMUNK_PLUGINS_NO_UPGRADE=true
+export CHIPMUNK_PLUGINS_NO_UPDATES=true
+</code></pre>
+<p>To enable logs in the Console making it easier to debug:</p>
+<pre><code>export CHIPMUNK_DEV_LOGLEVEL=ENV</code></pre>
+<p>Now <strong>Chipmunk</strong> is ready to be executed.</p>
+<h2><a class="header" href="#rake-commands" id="rake-commands">Rake commands</a></h2>
+<p>The following Rake commands are vital for the compilation of <strong>Chipmunk</strong>, which is why in this section the most important rake commands are going to be mentioned and described.</p>
+<pre><code>rake start                                          # Start Chipmunk
+rake full_pipeline                                  # Build Chipmunk (whole application)
+rake build[./plugins/plugin.helloworld]             # Build plugin
+rake build[./plugins/plugin.helloworld, 1.0.1]      # Build plugin with version
+rake 'build[./plugins/plugin.helloworld, 1.0.1]'    # Build plugin with version (Windows) 
+</code></pre>
+<p>If a new update of <strong>Chipmunk</strong> is available, first run <code>rake clobber</code> (to remove all compiled files) and then <code>rake full_pipeline</code> to update and re-build <strong>Chipmunk</strong>.</p>
 <h2><a class="header" href="#git-commit" id="git-commit">Git commit</a></h2>
 <p>Commits that are being made need to be in following shape:</p>
-<pre><code>
-[#xxx](type) message
+<pre><code>[#xxx](type) message
 
 #xxx        Issue number
 type        Commit type
@@ -185,6 +229,10 @@ type        Commit type
             fix      - fix for bug
 message     Commit message
 </code></pre>
+<p>Example:</p>
+<pre><code>[#123](refact) Remove popup in Serial plugin</code></pre>
+<p>The next section gives a thorough explanation of the default plugins provided by <strong>Quickstart</strong> </p>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -196,7 +244,7 @@ message     Commit message
                         
 
                         
-                            <a rel="next" href="../02_extensions/03_ui.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../02_extensions/03_defaults.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -214,7 +262,7 @@ message     Commit message
                 
 
                 
-                    <a href="../02_extensions/03_ui.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="../02_extensions/03_defaults.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

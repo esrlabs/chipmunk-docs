@@ -7,8 +7,13 @@ function openCode(evt, fileName) {
     }
   }
   tablinks = document.getElementsByClassName("tablinks");
+  CLASS_NAME = fileName.split('_')[0];
+
   for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(/ active/gi, '');
+    const PARENT_CLASS = tablinks[i].parentNode.className.split(' ');
+    if (PARENT_CLASS.indexOf(CLASS_NAME) !== -1) {
+      tablinks[i].className = tablinks[i].className.replace(/ active/gi, '');
+    }
   }
   document.getElementById(fileName).className += " active";
   evt.currentTarget.className += " active";

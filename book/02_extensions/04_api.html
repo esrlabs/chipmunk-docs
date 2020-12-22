@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_basics.html"><strong aria-hidden="true">2.1.</strong> The Basics</a></li><li class="expanded "><a href="../02_extensions/03_ui.html"><strong aria-hidden="true">2.2.</strong> Front-end</a></li><li class="expanded "><a href="../02_extensions/05_api.html" class="active"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="../02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="../02_extensions/04_api.html" class="active"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -404,25 +404,24 @@ export interface IAPI {
 <h3><a class="header" href="#example---getipc" id="example---getipc"> Example - getIPC</a></h3>
 <p>In this example the <code>API</code> will be assigned to the instance variable of the main component of the plugin</p>
 <div class="tab getipc">
-  <button class="tablinks" onclick="openCode(event, 'getIPC_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'getIPC_styles.less')">styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'getIPC_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'getIPC_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'getIPC_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'getipc_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'getipc_styles.less')">styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'getipc_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'getipc_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'getipc_public_api.ts')">public_api.ts</button>
 </div>
-<div id="getIPC_template.html" class="tabcontent getipc">
-<pre><code class="language-HTML">
-&lt;p&gt;Example&lt;/p&gt;     &lt;!-- Show session ID --&gt;
+<div id="getipc_template.html" class="tabcontent getipc">
+<pre><code class="language-HTML">&lt;p&gt;Example&lt;/p&gt;     &lt;!-- Show session ID --&gt;
 </code></pre>
 </div>
-<div id="getIPC_styles.less" class="tabcontent getipc">
+<div id="getipc_styles.less" class="tabcontent getipc">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
-<div id="getIPC_component.ts" class="tabcontent getipc active">
+<div id="getipc_component.ts" class="tabcontent getipc active">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -440,7 +439,7 @@ export class ExampleComponent {
 }
 </code></pre>
 </div>
-<div id="getIPC_module.ts" class="tabcontent getipc">
+<div id="getipc_module.ts" class="tabcontent getipc">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                   // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';             // Import the class of the plugin, mentioned in the components.ts file
@@ -457,7 +456,7 @@ export class PluginModule extends Toolkit.PluginNgModule {  // Create module cla
 }
 </code></pre>
 </div>
-<div id="getIPC_public_api.ts" class="tabcontent getipc">
+<div id="getipc_public_api.ts" class="tabcontent getipc">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
@@ -717,28 +716,28 @@ export { Service };
 <h3><a class="header" href="#example---addpopup" id="example---addpopup">Example - addPopup</a></h3>
 <p>To create a popup, a plugin to host the popup and the popup itself have to be defined.</p>
 <div class="tab addpop">
-  <button class="tablinks" onclick="openCode(event, 'addPop_pop_template.html')">/popup/template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'addPop_pop_styles.less')">/popup/styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'addPop_pop_component.ts')">/popup/component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'addPop_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'addPop_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'addPop_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'addPop_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'addPop_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_pop_template.html')">/popup/template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_pop_styles.less')">/popup/styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'addpop_pop_component.ts')">/popup/component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'addpop_public_api.ts')">public_api.ts</button>
 </div>
-<div id="addPop_pop_template.html" class="tabcontent addpop">
+<div id="addpop_pop_template.html" class="tabcontent addpop">
 <pre><code class="language-HTML">
 &lt;p&gt;{{msg}}&lt;/p&gt;      &lt;!-- Show message from component --&gt;
 </code></pre>
 </div>
-<div id="addPop_pop_styles.less" class="tabcontent addpop">
+<div id="addpop_pop_styles.less" class="tabcontent addpop">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
-<div id="addPop_pop_component.ts" class="tabcontent addpop active">
+<div id="addpop_pop_component.ts" class="tabcontent addpop active">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';           // Import necessary components for popup
 @Component({
@@ -751,20 +750,20 @@ export class PopupComponent {
 }
 </code></pre>
 </div>
-<div id="addPop_template.html" class="tabcontent addpop">
+<div id="addpop_template.html" class="tabcontent addpop">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_popup()&quot;&gt;&lt;/button&gt;       &lt;!-- Button to open popup --&gt;
 </code></pre>
 </div>
-<div id="addPop_styles.less" class="tabcontent addpop">
+<div id="addpop_styles.less" class="tabcontent addpop">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
-<div id="addPop_component.ts" class="tabcontent addpop">
+<div id="addpop_component.ts" class="tabcontent addpop">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';           // Import necessary components for plugin
 import { PopupComponent } from './popup/components';        // Import the popup module
@@ -791,7 +790,7 @@ export class ExampleComponent {
 }
 </code></pre>
 </div>
-<div id="addPop_module.ts" class="tabcontent addpop">
+<div id="addpop_module.ts" class="tabcontent addpop">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                   // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';             // Import the class of the plugin, mentioned in the components.ts file
@@ -808,7 +807,7 @@ export class PluginModule extends Toolkit.PluginNgModule {  // Create module cla
 }
 </code></pre>
 </div>
-<div id="addPop_public_api.ts" class="tabcontent addpop">
+<div id="addpop_public_api.ts" class="tabcontent addpop">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
@@ -824,28 +823,28 @@ export * from './module';
 <h3><a class="header" href="#example---removepopup" id="example---removepopup">Example - removePopup</a></h3>
 <p>To remove the popup, one way is to create a button on the popup, which calls the method to remove the popup upon clicking.</p>
 <div class="tab rempop">
-  <button class="tablinks" onclick="openCode(event, 'remPop_pop_template.html')">/popup/template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'remPop_pop_styles.less')">/popup/styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'remPop_pop_component.ts')">/popup/component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'remPop_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'remPop_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'remPop_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'remPop_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'remPop_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_pop_template.html')">/popup/template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_pop_styles.less')">/popup/styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'rempop_pop_component.ts')">/popup/component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'rempop_public_api.ts')">public_api.ts</button>
 </div>
-<div id="remPop_pop_template.html" class="tabcontent rempop">
+<div id="rempop_pop_template.html" class="tabcontent rempop">
 <pre><code class="language-HTML">
 &lt;p&gt;{{msg}}&lt;/p&gt;      &lt;!-- Show message from component --&gt;
 </code></pre>
 </div>
-<div id="remPop_pop_styles.less" class="tabcontent rempop">
+<div id="rempop_pop_styles.less" class="tabcontent rempop">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
-<div id="remPop_pop_component.ts" class="tabcontent rempop active">
+<div id="rempop_pop_component.ts" class="tabcontent rempop active">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';           // Import necessary components for popup
 @Component({
@@ -858,20 +857,20 @@ export class PopupComponent {
 }
 </code></pre>
 </div>
-<div id="remPop_template.html" class="tabcontent rempop">
+<div id="rempop_template.html" class="tabcontent rempop">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_popup()&quot;&gt;&lt;/button&gt;       &lt;!-- Button to open popup --&gt;
 </code></pre>
 </div>
-<div id="remPop_styles.less" class="tabcontent rempop">
+<div id="rempop_styles.less" class="tabcontent rempop">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
-<div id="remPop_component.ts" class="tabcontent rempop">
+<div id="rempop_component.ts" class="tabcontent rempop">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';           // Import necessary components for plugin
 import { PopupComponent } from './popup/components';        // Import the popup module
@@ -905,7 +904,7 @@ export class ExampleComponent {
 }
 </code></pre>
 </div>
-<div id="remPop_module.ts" class="tabcontent rempop">
+<div id="rempop_module.ts" class="tabcontent rempop">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                   // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';             // Import the class of the plugin, mentioned in the components.ts file
@@ -922,13 +921,13 @@ export class PluginModule extends Toolkit.PluginNgModule {  // Create module cla
 }
 </code></pre>
 </div>
-<div id="remPop_public_api.ts" class="tabcontent rempop">
+<div id="rempop_public_api.ts" class="tabcontent rempop">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
 </code></pre>
 </div>
-<h3 id="iapi_sti">setSidebarTitleInjection</h3>
+<h3 id="iapi_title">setSidebarTitleInjection</h3>
 <pre><code class="language-Javascript">    /**
      * Adds sidebar title injection.
      * This method doesn't need &quot;delete&quot; method, because sidebar injection would be
@@ -942,30 +941,30 @@ export * from './module';
 </code></pre>
 <h3><a class="header" href="#example---setsidebartitleinjection" id="example---setsidebartitleinjection">Example - setSidebarTitleInjection</a></h3>
 <p>In this example a button will be created in the title of the sidebar which will log a message when clicked.</p>
-<div class="tab sti">
+<div class="tab title">
   <button class="tablinks" onclick="openCode(event, 'title_template.html')">/title/template.html</button>
   <button class="tablinks" onclick="openCode(event, 'title_styles.less')">/title/styles.less</button>
   <button class="tablinks active" onclick="openCode(event, 'title_component.ts')">/title/component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'titleP_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'titleP_styles.less')">styles.less</button>
-  <button class="tablinks" onclick="openCode(event, 'titleP_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'titleP_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'titleP_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'title_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'title_styles.less')">styles.less</button>
+  <button class="tablinks" onclick="openCode(event, 'title_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'title_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'title_public_api.ts')">public_api.ts</button>
 </div>
-<div id="title_template.html" class="tabcontent sti">
+<div id="title_template.html" class="tabcontent title">
 <pre><code class="language-HTML">
 &lt;!-- Create the title component of the button. --&gt;
 &lt;span&gt;+&lt;/span&gt;      &lt;!-- Create '+' as button --&gt;
 </code></pre>
 </div>
-<div id="title_styles.less" class="tabcontent sti">
+<div id="title_styles.less" class="tabcontent title">
 <pre><code class="language-CSS">
 span {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
-<div id="title_component.ts" class="tabcontent sti active">
+<div id="title_component.ts" class="tabcontent title active">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -979,19 +978,19 @@ export class ExampleTitleComponent {
 }
 </code></pre>
 </div>
-<div id="titleP_template.html" class="tabcontent sti">
+<div id="title_template.html" class="tabcontent title">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;      &lt;!-- Show example string --&gt;
 </code></pre>
 </div>
-<div id="titleP_styles.less" class="tabcontent sti">
+<div id="title_styles.less" class="tabcontent title">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
-<div id="titleP_component.ts" class="tabcontent sti">
+<div id="title_component.ts" class="tabcontent title">
 <pre><code class="language-Javascript">
 import { Component, AfterViewInit } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -1013,7 +1012,7 @@ export class ExampleComponent implements AfterViewInit {
 }
 </code></pre>
 </div>
-<div id="titleP_module.ts" class="tabcontent sti">
+<div id="title_module.ts" class="tabcontent title">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                       // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';                 // Import the class of the plugin, mentioned in the components.ts file
@@ -1030,7 +1029,7 @@ export class PluginModule extends Toolkit.PluginNgModule {      // Create module
 }
 </code></pre>
 </div>
-<div id="titleP_public_api.ts" class="tabcontent sti">
+<div id="title_public_api.ts" class="tabcontent title">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
@@ -1047,25 +1046,25 @@ export * from './module';
 <h3><a class="header" href="#example---opensidebarapp" id="example---opensidebarapp">Example - openSidebarApp</a></h3>
 <p>In this example the plugin <code>serial</code> will be opened and set as the active plugin 2 seconds after the <code>example</code> plugin is opened.</p>
 <div class="tab osa">
-  <button class="tablinks" onclick="openCode(event, 'sb_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'sb_styles.less')">styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'sb_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sb_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'sb_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'osa_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'osa_styles.less')">styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'osa_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'osa_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'osa_public_api.ts')">public_api.ts</button>
 </div>
-<div id="sb_template.html" class="tabcontent osa">
+<div id="osa_template.html" class="tabcontent osa">
 <pre><code class="language-HTML">
 &lt;p&gt;Wait for it...&lt;/p&gt;       &lt;!-- Show example string --&gt;
 </code></pre>
 </div>
-<div id="sb_styles.less" class="tabcontent osa">
+<div id="osa_styles.less" class="tabcontent osa">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
-<div id="sb_component.ts" class="tabcontent osa active">
+<div id="osa_component.ts" class="tabcontent osa active">
 <pre><code class="language-Javascript">
 import { Component, Input } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -1084,7 +1083,7 @@ export class ExampleComponent {
 }
 </code></pre>
 </div>
-<div id="sb_module.ts" class="tabcontent osa">
+<div id="osa_module.ts" class="tabcontent osa">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                       // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';                 // Import the class of the plugin, mentioned in the components.ts file
@@ -1101,7 +1100,7 @@ export class PluginModule extends Toolkit.PluginNgModule {      // Create module
 }
 </code></pre>
 </div>
-<div id="sb_public_api.ts" class="tabcontent osa">
+<div id="osa_public_api.ts" class="tabcontent osa">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
@@ -1118,25 +1117,25 @@ export * from './module';
 <h3><a class="header" href="#example---opentoolbarapp" id="example---opentoolbarapp">Example - openToolbarApp</a></h3>
 <p>In this example the <code>xterminal</code> app will be opened and set as active 2 seconds after the <code>example</code> plugin is opened.</p>
 <div class="tab ota">
-  <button class="tablinks" onclick="openCode(event, 'tb_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'tb_styles.less')">styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'tb_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'tb_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'tb_public_api.ts')">public_api.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'ota_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'ota_styles.less')">styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'ota_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'ota_module.ts')">module.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'ota_public_api.ts')">public_api.ts</button>
 </div>
-<div id="tb_template.html" class="tabcontent ota">
+<div id="ota_template.html" class="tabcontent ota">
 <pre><code class="language-HTML">
 &lt;p&gt;Wait for it...&lt;/p&gt;       &lt;!-- Show example string --&gt;
 </code></pre>
 </div>
-<div id="tb_styles.less" class="tabcontent ota">
+<div id="ota_styles.less" class="tabcontent ota">
 <pre><code class="language-CSS">
 p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
-<div id="tb_component.ts" class="tabcontent ota active">
+<div id="ota_component.ts" class="tabcontent ota active">
 <pre><code class="language-Javascript">
 import { Component, Input, AfterViewInit } from '@angular/core';
 import * as Toolkit from 'chipmunk.client.toolkit';
@@ -1155,7 +1154,7 @@ export class ExampleComponent implements AfterViewInit {
 }
 </code></pre>
 </div>
-<div id="tb_module.ts" class="tabcontent ota">
+<div id="ota_module.ts" class="tabcontent ota">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                       // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';                 // Import the class of the plugin, mentioned in the components.ts file
@@ -1172,7 +1171,7 @@ export class PluginModule extends Toolkit.PluginNgModule {      // Create module
 }
 </code></pre>
 </div>
-<div id="tb_public_api.ts" class="tabcontent ota">
+<div id="ota_public_api.ts" class="tabcontent ota">
 <pre><code class="language-Javascript">
 export * from './component';
 export * from './module';
@@ -1264,7 +1263,7 @@ export * from './module';
 <h2 id="parsers">3.1 Parsers</h2>
 <p>These abstract classes allow to create <strong>parsers</strong> that can modify the output in the rows (e.g: change text color, convert into different format).</p>
 <table><thead><tr><th>Parser name</th><th>Description</th></tr></thead><tbody>
-<tr><td><a href="#rbp"><code>RowBoundParser</code></a></td><td>Parse only data received from the back-end of the plugin</td></tr>
+<tr><td><a href="#rbp"><code>RowBoundParser</code></a></td><td>Parse only data received from the process part of the plugin</td></tr>
 <tr><td><a href="#rcp"><code>RowCommomParser</code></a></td><td>Parse data from any kind of source</td></tr>
 <tr><td><a href="#rtp"><code>RowTypedParser</code></a></td><td>Parse only specific type of source (e.g. DLT)</td></tr>
 <tr><td><a href="#sp"><code>SelectionParser</code> (coming soon)</a></td><td>Parse only selected line(s), right-click to see self-chosen name as option to see the parsed result in the tab <strong>Details</strong> below</td></tr>
@@ -1582,7 +1581,7 @@ export class PluginModule extends Toolkit.PluginNgModule {      // <-- The modul
 }
 </code></pre>
 </div>
-<h3 id="ps">PluginService</h3>
+<h3 id="pls">PluginService</h3>
 <pre><code class="language-Javascript">// Typescript
 
 /**
@@ -1615,25 +1614,25 @@ export declare abstract class PluginService {
 </code></pre>
 <h3><a class="header" href="#example---pluginservice" id="example---pluginservice">Example - PluginService</a></h3>
 <p>This example shows how to create a service class, that extends from <code>PluginService</code>, which allows global access to the <code>API</code> by import the service class:</p>
-<div class="tab ps">
-  <button class="tablinks" onclick="openCode(event, 'ps_template.html')">template.html</button>
-  <button class="tablinks" onclick="openCode(event, 'ps_styles.less')">styles.less</button>
-  <button class="tablinks active" onclick="openCode(event, 'ps_service.ts')">service.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'ps_component.ts')">component.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'ps_module.ts')">module.ts</button>
+<div class="tab pls">
+  <button class="tablinks" onclick="openCode(event, 'pls_template.html')">template.html</button>
+  <button class="tablinks" onclick="openCode(event, 'pls_styles.less')">styles.less</button>
+  <button class="tablinks active" onclick="openCode(event, 'pls_service.ts')">service.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'pls_component.ts')">component.ts</button>
+  <button class="tablinks" onclick="openCode(event, 'pls_module.ts')">module.ts</button>
 </div>
-<div id="ps_template.html" class="tabcontent ps">
+<div id="pls_template.html" class="tabcontent pls">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 </code></pre>
 </div>
-<div id="ps_styles.less" class="tabcontent ps">
+<div id="pls_styles.less" class="tabcontent pls">
 <pre><code class="language-CSS">p {
     color: #FFFFFF;
 }
 </code></pre>
 </div>
-<div id="ps_service.ts" class="tabcontent ps active">
+<div id="pls_service.ts" class="tabcontent pls active">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';
 export class Service extends Toolkit.PluginService {                    // The service class has to inherit the PluginService from chipmunk.client.toolkit to get access the the API methods
@@ -1655,7 +1654,7 @@ export class Service extends Toolkit.PluginService {                    // The s
 export default (new Service());                                         // Export the instantiated service class
 </code></pre>
 </div>
-<div id="ps_component.ts" class="tabcontent ps">
+<div id="pls_component.ts" class="tabcontent pls">
 <pre><code class="language-Javascript">
 import { Component } from '@angular/core';
 import Service from './service.ts'              // Import the service class to use in main component of plugin
@@ -1670,7 +1669,7 @@ export class ExampleComponent {
 }
 </code></pre>
 </div>
-<div id="ps_module.ts" class="tabcontent ps">
+<div id="pls_module.ts" class="tabcontent pls">
 <pre><code class="language-Javascript">
 import { NgModule } from '@angular/core';                       // Import the Angular component that is necessary for the setup below
 import { ExampleComponent } from './component';                 // Import the class of the plugin, mentioned in the components.ts file
@@ -1687,7 +1686,7 @@ export class PluginModule extends Toolkit.PluginNgModule {      // Create module
 }
 </code></pre>
 </div>
-<div id="ps_public_api.ts" class="tabcontent ps">
+<div id="pls_public_api.ts" class="tabcontent pls">
 <pre><code class="language-Javascript">
 import Service from './service';
 export * from './component';
@@ -1733,10 +1732,10 @@ export declare abstract class PluginServiceGate {
 </code></pre>
 <h3><a class="header" href="#example---pluginservicegate" id="example---pluginservicegate">Example - PluginServiceGate</a></h3>
 <p>This example shows how to create a parser, that puts '--&gt;' in front of every line in the output.</p>
-<div class="tab psg">
-  <button class="tablinks active" onclick="openCode(event, 'psg_index.ts')">index.ts</button>
+<div class="tab psge">
+  <button class="tablinks active" onclick="openCode(event, 'psge_index.ts')">index.ts</button>
 </div>
-<div id="psg_index.ts" class="tabcontent psg active">
+<div id="psge_index.ts" class="tabcontent psge active">
 <pre><code class="language-Javascript">
 import * as Toolkit from 'chipmunk.client.toolkit';                                                 // Import front-end API to extend Parser class
 class ParseMe extends Toolkit.RowCommonParser {                                                    // Extend parser class with Abstract parser class 
@@ -1853,7 +1852,7 @@ export class SidebarVerticalComponent {
     @Input() public api: Toolkit.IAPI;                  // Assign API to instance variable
     @Input() public session: string;                    // Assign session ID to instance variable
     constructor() {
-        this.api.getIPC().send({                        // Send session ID to back-end of plugin
+        this.api.getIPC().send({                        // Send session ID to process part of plugin
             stream: this.session,
             command: 'session'
         }).catch((error: Error) => {
@@ -2157,7 +2156,7 @@ export class SidebarVerticalComponent {
     @Input() public api: Toolkit.IAPI;                  // Assign API to instance variable
     @Input() public session: string;                    // Assign session ID to instance variable 
     constructor() {
-        this.api.getIPC().send({                        // Send session ID to the back-end
+        this.api.getIPC().send({                        // Send session ID to the process part
             stream: this.session,
             command: 'session'
         }).catch((error: Error) => {
@@ -2182,7 +2181,7 @@ p {
 </code></pre>
 </div>
 
-**Back-end**
+**process part**
 
 <div class="tab trreB">
   <button class="tablinks active" onclick="openCode(event, 'trre_main.ts')">main.ts</button>
@@ -2221,9 +2220,9 @@ export default new ExampleBackend();
 <!--
 <h2 id="ipc">3.2 IPC </h2>
 
-These abstract classes allow to create different methods to establish communication between the **back-end** and the **UI**.
+These abstract classes allow to create different methods to establish communication between the **process part** and the **UI**.
 
-> **IMPORTANT**: `IPC` is only used in the **back-end**
+> **IMPORTANT**: `IPC` is only used in the **process part**
 
 ```Javascript
 // Typescript
@@ -2234,7 +2233,7 @@ These abstract classes allow to create different methods to establish communicat
  * Plugin IPC controller allows communicating between render part of a plugin
  * and backend part of a plugin.
  * Render part (render) - a plugin's part, which executes on UI in browser
- * Backend part (host) - a plugin's part, which executes on back-end on nodejs level
+ * Backend part (host) - a plugin's part, which executes on process part on nodejs level
  */
 
 export declare abstract class IPC {
@@ -2271,7 +2270,7 @@ export declare abstract class IPC {
 
 <h3><a class="header" href="#example---ipc" id="example---ipc">Example - IPC</a></h3>
 
-This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **back-end**.
+This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **process part**.
 
 > **NOTE**: To make use of `IPC` add `IAPI` in the code, since `IAPI` holds the method `getIPC()` which provides an instance of `IPC` with the methods already implemented. (For more information: <a href="#iapi">IAPI</a>) 
 
@@ -2354,12 +2353,12 @@ export class Service extends Toolkit.PluginService {                            
             }
         });
     }
-    public _ng_onRequest() {                                                                                                        // on click function for request-type of message to the back-end
+    public _ng_onRequest() {                                                                                                        // on click function for request-type of message to the process part
         if (this.api) {                                                                                                             // check if API exists
-            this.api.getIPC().request({                                                                                             // send request-type of message to the back-end
+            this.api.getIPC().request({                                                                                             // send request-type of message to the process part
                 stream: this.session,
                 command: 'request'
-            }, this.session).then((response) => {                                                                                   // Catch response from back-end
+            }, this.session).then((response) => {                                                                                   // Catch response from process part
                 console.log(`Received onRequest: ${response.msg}`);                                                                 // Print out responsed answer in the console
             }).catch((error: Error) => {
                 console.error(error);
@@ -2368,9 +2367,9 @@ export class Service extends Toolkit.PluginService {                            
         console.error('No API found!');
       }
     }
-    public _ng_onSend() {                                                                                                           // on click function for send-type of message to the back-end
+    public _ng_onSend() {                                                                                                           // on click function for send-type of message to the process part
         if (this.api) {                                                                                                             // check if API exists
-            this.api.getIPC().send({                                                                                                // send send-type of message to the back-end
+            this.api.getIPC().send({                                                                                                // send send-type of message to the process part
                 stream: this.session,
                 command: 'send'
             }, this.session).catch((error: Error) => {
@@ -2416,7 +2415,7 @@ export { Service };
 
 > **NOTE**: Using a service file is one of two ways to make use of the `API` (check out _How to use the API_ in <a href="#api">API</a> for more information)
 
-<h2><a class="header" href="#back-end" id="back-end">Back-end</a></h2>
+<h2><a class="header" href="#process-part" id="process-part">process part</a></h2>
 
 <div class="tab ipcB">
   <button class="tablinks active" onclick="openCode(event, 'ipc_main.ts')">main.ts</button>
@@ -2718,7 +2717,7 @@ export declare class PluginIPCService extends EventEmitter {
 
 <h3><a class="header" href="#example" id="example">Example</a></h3>
 
-This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **back-end**.
+This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **process part**.
 
 <h2><a class="header" href="#ui-1" id="ui-1">UI</a></h2>
 
@@ -2750,7 +2749,7 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
         });
     }
     ngAfterViewInit() {
-        this._subscriptions.incomeIPCHostMessage = this.api.getIPC().subscribe((message: any) => {  // Subscribe to back-end to listen for messages
+        this._subscriptions.incomeIPCHostMessage = this.api.getIPC().subscribe((message: any) => {  // Subscribe to process part to listen for messages
             if (typeof message !== 'object' && message === null) {                                  // Check for correct format of message
                 return;
             }
@@ -2759,12 +2758,12 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
             }
         });
     }
-    public _ng_onRequest() {                                                                        // on click function for request-type of message to the back-end
+    public _ng_onRequest() {                                                                        // on click function for request-type of message to the process part
         if (this.api) {                                                                             // check if API exists
-            this.api.getIPC().request({                                                             // send request-type of message to the back-end
+            this.api.getIPC().request({                                                             // send request-type of message to the process part
                 stream: this.session,
                 command: 'request'
-            }, this.session).then((response) => {                                                   // Catch response from back-end
+            }, this.session).then((response) => {                                                   // Catch response from process part
                 console.log(`Received onRequest: ${response.msg}`);                                 // Print out responsed answer in the console
             }).catch((error: Error) => {
                 console.error(error);
@@ -2773,9 +2772,9 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
         console.error('No API found!');
       }
     }
-    public _ng_onSend() {                                                                           // on click function for send-type of message to the back-end
+    public _ng_onSend() {                                                                           // on click function for send-type of message to the process part
         if (this.api) {                                                                             // check if API exists
-            this.api.getIPC().send({                                                                // send send-type of message to the back-end
+            this.api.getIPC().send({                                                                // send send-type of message to the process part
                 stream: this.session,
                 command: 'send'
             }, this.session).catch((error: Error) => {
@@ -2838,7 +2837,7 @@ export * from './module';
 </code></pre>
 </div>
 
-<h2><a class="header" href="#back-end-1" id="back-end-1">Back-end</a></h2>
+<h2><a class="header" href="#process-part-1" id="process-part-1">process part</a></h2>
 
 <div class="tab pipcB">
   <button class="tablinks active" onclick="openCode(event, 'pIPC_main.ts')">main.ts</button>
@@ -2884,7 +2883,7 @@ const app: Plugin = new Plugin();
 
 The class `ServiceConfig` offers a variety of methods to read and write from an external file. This feature can be used to save and load settings.
 
-> **IMPORTANT**: This module can only be used in the **back-end**
+> **IMPORTANT**: This module can only be used in the **process part**
 
 ```Javascript
 // Typescript
@@ -2999,7 +2998,7 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
         });
     }
     ngAfterViewInit() {
-        this._subscriptions.incomeIPCHostMessage = this.api.getIPC().subscribe((message: any) => {  // Subscribe to back-end to listen for messages
+        this._subscriptions.incomeIPCHostMessage = this.api.getIPC().subscribe((message: any) => {  // Subscribe to process part to listen for messages
             if (typeof message !== 'object' && message === null) {                                  // Check for correct format of message
                 return;
             }
@@ -3008,12 +3007,12 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
             }
         });
     }
-    public _ng_onRead() {                                                                           // on click function to request settings from the back-end
+    public _ng_onRead() {                                                                           // on click function to request settings from the process part
         if (this.api) {                                                                             // check if API exists
-            this.api.getIPC().request({                                                             // send request-type of message to the back-end
+            this.api.getIPC().request({                                                             // send request-type of message to the process part
                 stream: this.session,
                 command: 'read'
-            }, this.session).then((response) => {                                                   // Catch response from back-end
+            }, this.session).then((response) => {                                                   // Catch response from process part
                 console.log(`Settings: ${response.msg}`);                                           // Print out settings in the console
             }).catch((error: Error) => {
                 console.error(error);
@@ -3022,9 +3021,9 @@ export class ExampleComponent implements AfterViewInit, OnDestroy {
         console.error('No API found!');
       }
     }
-    public _ng_onWrite(options: IOptions) {                                                         // on click function for send-type of message to the back-end
+    public _ng_onWrite(options: IOptions) {                                                         // on click function for send-type of message to the process part
         if (this.api) {                                                                             // check if API exists
-            this.api.getIPC().request({                                                             // send send-type of message to the back-end
+            this.api.getIPC().request({                                                             // send send-type of message to the process part
                 stream: this.session,
                 command: 'write',
                 settings: options
@@ -3066,7 +3065,7 @@ export * from './module';
 </code></pre>
 </div>
 
-<h2><a class="header" href="#back-end-2" id="back-end-2">Back-end</a></h2>
+<h2><a class="header" href="#process-part-2" id="process-part-2">process part</a></h2>
 
 <div class="tab scB">
   <button class="tablinks active" onclick="openCode(event, 'sc_main.ts')">main.ts</button>
@@ -3254,7 +3253,7 @@ export * from './module';
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../02_extensions/03_ui.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../02_extensions/03_defaults.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
@@ -3272,7 +3271,7 @@ export * from './module';
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../02_extensions/03_ui.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../02_extensions/03_defaults.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
