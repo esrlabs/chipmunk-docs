@@ -12,6 +12,6 @@ This can be expanded so can select what components or loglevels you want to incl
 
 ![](../images/import_dlt.gif)
 
-The columns can be configured by right-clicking in one of the column titles. Then you can filter out columns and adjust colors.
+The columns can be configured by right-clicking in one of the column titles or hover over one of the column titles and left-click the `...`. Then you can filter out columns and adjust colors.
 
 ![](../images/dlt_columns.gif)
