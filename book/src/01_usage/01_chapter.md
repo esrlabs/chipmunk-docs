@@ -14,6 +14,12 @@ Searching through huge logfiles
 
 Add bookmarks to mark and remember important log entries. Jump between bookmarks with shortcuts (`j` and `k`).
 
+## Commenting
+
+<img src="../images/comment_sign.png" width="100" height="100">
+
+Comment line(s) of the log to have additional information about specific places in the file.
+
 ## Charts
 
 ![](../images/chart.png)

@@ -3,6 +3,7 @@
 - [Usage](01_usage/01_chapter.md)
   - [Searching and Filtering](01_usage/searching_and_filtering.md)
   - [Working with Bookmarks](01_usage/bookmarks.md)
+  - [Commenting](01_usage/commenting.md)
   - [Charts](01_usage/charts.md)
   - [Concatenate Files](01_usage/concatenation.md)
   - [Merging Files](01_usage/merging.md)
