@@ -16,6 +16,4 @@
   - [Plugin API](02_extensions/04_api.md)
 - [Contributing](03_contributing/01_chapter.md)
   - [Native Development](03_contributing/developer_docs.md)
-- [TODO: API](404.md)
-  - [TODO: nothing here yet...](404.md)
   
