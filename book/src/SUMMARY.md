@@ -7,6 +7,7 @@
   - [Charts](01_usage/charts.md)
   - [Concatenate Files](01_usage/concatenation.md)
   - [Merging Files](01_usage/merging.md)
+  - [Time Range](01_usage/time_range.md)
   - [DLT support](01_usage/dlt.md)
   - [Keyboard Shortcuts](01_usage/keyboard_shortcuts.md)
 - [Developing Plugins](02_extensions/01_about.md)

@@ -43,6 +43,12 @@ Merging is useful if you have several log files e.g. from different
 devices/processors and you want combine them by merging according to their
 timestamps.
 
+## Time Ranges
+
+<img src="../images/stopwatch_sign.png" width="100" height="100">
+
+To measure how much time passed between lines of a logfile `chipmunk` provides the **Time Range** Feature. 
+
 ## DLT - Diagnostic Log and Trace
 
 <img src="../images/dlt.png" width="200" height="200">
