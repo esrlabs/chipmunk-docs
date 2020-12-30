@@ -51,9 +51,7 @@ As a result the folder <code>releases</code> will be created with the compiled p
 </code></pre>
 
 To build **Chipmunk** run the following commands to navigate into the folder where the repository was copied:
-<pre><code>cd ../chipmunk
-rake full_pipeline
-</code></pre>
+<pre><code>rake full_pipeline</code></pre>
 
 The building of **Chipmunk** will take some time but only needs to be built once. After the build is finished **Chipmunk** can be executed from the <code>releases</code> folder.
 
@@ -65,7 +63,7 @@ First off define a full path to the folder that will hold the release of your pl
 
 <code><pre>export CHIPMUNK_PLUGINS_SANDBOX=../chipmunk-quickstart/releases</pre></code>
 
-By default **Chipmunk** stores plugins in <code>~/.chipmunk/plugins</code> but by running the command above it can be modified.
+By default **Chipmunk** stores plugins the home folder in <code>.chipmunk/plugins</code> but by running the command above it can be modified.
 
 
 To prevent the installation of default plugins, run the following command
@@ -96,22 +94,5 @@ rake 'build[./plugins/plugin.helloworld, 1.0.1]'    # Build plugin with version 
 </code></pre>
 
 If a new update of **Chipmunk** is available, first run `rake clobber` (to remove all compiled files) and then `rake full_pipeline` to update and re-build **Chipmunk**.
-
-## Git commit
-
-Commits that are being made need to be in following shape:
-<pre><code>[#xxx](type) message
-
-#xxx        Issue number
-type        Commit type
-            feat     - new code / feature(s)
-            clean    - cleanup of code
-            refact   - refactoring of existing code
-            fix      - fix for bug
-message     Commit message
-</code></pre>
-
-Example:
-<pre><code>[#123](refact) Remove popup in Serial plugin</code></pre>
 
 The next section gives a thorough explanation of the default plugins provided by **Quickstart** 
