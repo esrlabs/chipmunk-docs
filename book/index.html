@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="01_usage/commenting.html"><strong aria-hidden="true">1.3.</strong> Commenting</a></li><li class="expanded "><a href="01_usage/charts.html"><strong aria-hidden="true">1.4.</strong> Charts</a></li><li class="expanded "><a href="01_usage/concatenation.html"><strong aria-hidden="true">1.5.</strong> Concatenate Files</a></li><li class="expanded "><a href="01_usage/merging.html"><strong aria-hidden="true">1.6.</strong> Merging Files</a></li><li class="expanded "><a href="01_usage/time_range.html"><strong aria-hidden="true">1.7.</strong> Time Range</a></li><li class="expanded "><a href="01_usage/dlt.html"><strong aria-hidden="true">1.8.</strong> DLT support</a></li><li class="expanded "><a href="01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.9.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -150,30 +150,36 @@
                     <main>
                         <h1><a class="header" href="#user-guide" id="user-guide">User Guide</a></h1>
 <p>This guide describes the most common usecases for using chipmunk.</p>
-<h2><a class="header" href="#searching-and-filtering" id="searching-and-filtering">Searching and Filtering</a></h2>
+<h2><a class="header" href="#a-hrefsearching_and_filteringsearching-and-filteringa" id="a-hrefsearching_and_filteringsearching-and-filteringa"><a href="searching_and_filtering">Searching and Filtering</a></a></h2>
 <img src="../images/magnifying-search-lenses-tool.png" width="100" height="100">
 <p>Searching through huge logfiles</p>
-<h2><a class="header" href="#concatenating-logfiles" id="concatenating-logfiles">Concatenating logfiles</a></h2>
-<img src="../images/glue_together.png" width="100" height="100">
-<p><code>chipmunk</code> can combine multiple log file. This is useful for example
-when you just want to reassamble a logfile that were stored in parts.</p>
-<h2><a class="header" href="#merging" id="merging">merging</a></h2>
-<p><img src="../images/intersection.png" alt="" /></p>
-<p>Merging is useful if you have several log files e.g. from different
-devices/processors and you want combine them by merging according to their
-timestamps.</p>
-<h2><a class="header" href="#charts" id="charts">Charts</a></h2>
+<h2><a class="header" href="#a-hrefbookmarksbookmarksa" id="a-hrefbookmarksbookmarksa"><a href="bookmarks">Bookmarks</a></a></h2>
+<img src="../images/bookmark_sign.png" width="100" height="100">
+<p>Add bookmarks to mark and remember important log entries. Jump between bookmarks with shortcuts (<code>j</code> and <code>k</code>).</p>
+<h2><a class="header" href="#a-hrefcommentingcommentinga" id="a-hrefcommentingcommentinga"><a href="commenting">Commenting</a></a></h2>
+<img src="../images/comment_sign.png" width="100" height="100">
+<p>Comment line(s) of the log to have additional information about specific places in the file.</p>
+<h2><a class="header" href="#a-hrefchartschartsa" id="a-hrefchartschartsa"><a href="charts">Charts</a></a></h2>
 <p><img src="../images/chart.png" alt="" /></p>
 <p>To better understand what's going on in a large logfile, it can be helpful to visualize data over
 time. <code>chipmunk</code> let's you define regular expressions that match a number and to use this expression
 to capture a value throughout a logfile.</p>
-<h2><a class="header" href="#bookmarks" id="bookmarks">Bookmarks</a></h2>
-<img src="../images/bookmark_sign.png" width="100" height="100">
-<p>Add bookmarks to mark and remember important log entries. Jump between bookmarks with shortcuts (<code>j</code> and <code>k</code>).</p>
-<h2><a class="header" href="#dlt---diagnostic-log-and-trace" id="dlt---diagnostic-log-and-trace">DLT - Diagnostic Log and Trace</a></h2>
+<h2><a class="header" href="#a-hrefconcatenationconcatenating-logfilesa" id="a-hrefconcatenationconcatenating-logfilesa"><a href="concatenation">Concatenating logfiles</a></a></h2>
+<img src="../images/glue_together.png" width="100" height="100">
+<p><code>chipmunk</code> can combine multiple log file. This is useful for example
+when you just want to reassamble a logfile that were stored in parts.</p>
+<h2><a class="header" href="#a-hrefmergingmerginga" id="a-hrefmergingmerginga"><a href="merging">Merging</a></a></h2>
+<p><img src="../images/intersection.png" alt="" /></p>
+<p>Merging is useful if you have several log files e.g. from different
+devices/processors and you want combine them by merging according to their
+timestamps.</p>
+<h2><a class="header" href="#a-hreftime_rangetime-rangesa" id="a-hreftime_rangetime-rangesa"><a href="time_range">Time Ranges</a></a></h2>
+<img src="../images/stopwatch_sign.png" width="100" height="100">
+<p>To measure how much time passed between lines of a logfile <code>chipmunk</code> provides the <strong>Time Range</strong> Feature. </p>
+<h2><a class="header" href="#a-hrefdltdlt---diagnostic-log-and-tracea" id="a-hrefdltdlt---diagnostic-log-and-tracea"><a href="dlt">DLT - Diagnostic Log and Trace</a></a></h2>
 <img src="../images/dlt.png" width="200" height="200">
 <p>View and search and filter DLT files.
-rogramming in Rust!</p>
+Programming in Rust!</p>
 
                     </main>
 

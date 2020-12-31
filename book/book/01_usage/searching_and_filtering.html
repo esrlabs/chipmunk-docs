@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html" class="active"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="../02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="../02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html" class="active"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/commenting.html"><strong aria-hidden="true">1.3.</strong> Commenting</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.4.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.5.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.6.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/time_range.html"><strong aria-hidden="true">1.7.</strong> Time Range</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.8.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.9.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="../02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="../02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,6 +151,40 @@
                         <h1><a class="header" href="#searching-with-filters" id="searching-with-filters">Searching with Filters</a></h1>
 <p>Of course multiple searches are supported and filters can be saved and restored.</p>
 <p><img src="../images/multiple-filters.png" alt="" /></p>
+<h2><a class="header" href="#create-filter" id="create-filter">Create filter</a></h2>
+<p>Type a search request at the bottom and click the floppy disc icon next to the search input.</p>
+<blockquote>
+<p><strong>Keyboard shortcut:</strong> <code>Enter + Enter</code> or <code>Enter + CTRL/CMD</code> (depending on the OS)</p>
+</blockquote>
+<h2><a class="header" href="#edit-filter" id="edit-filter">Edit filter</a></h2>
+<p>Created filters can be modified afterwards by simply right-clicking on the desired filter and selecting <code>Edit</code>.</p>
+<p>When the edit is done press <code>Enter</code> to apply the changes.</p>
+<h2><a class="header" href="#remove-filter" id="remove-filter">Remove filter</a></h2>
+<p>Filters can be removed one by one by right-clicking on the filter and selecting <code>Remove</code>.</p>
+<p>Another way is to drag&amp;drop the filter on the bin icon at the bottom of the sidebar which appears as soon as the filter is picked up and moved around. </p>
+<p>To remove all created filters at once right-click on any filter and select <code>Remove all</code>.</p>
+<p><img src="../images/remove_filter.gif" alt="" /></p>
+<h2><a class="header" href="#convert-into-chart" id="convert-into-chart">Convert into chart</a></h2>
+<p>If a filter needs to be converted into a chart, right-click on the filter and select <code>Convert To Chart</code>.</p>
+<p>Another way to convert a filter into a chart is to drag&amp;drop the filter in the <strong>Charts</strong> section on the sidebar (only visible when at least one chart is already created).</p>
+<blockquote>
+<p><strong>Note:</strong> This option is only available for filters that consist of regular expressions.</p>
+</blockquote>
+<p><img src="../images/convert_filter.gif" alt="" /></p>
+<h2><a class="header" href="#create-time-range" id="create-time-range">Create Time Range</a></h2>
+<p>By selecting two or more filters time ranges can be created. To select multiple filters, hold <code>SHIFT</code> while left-clicking on the desired filters. After selecting the filters right-click on one of the selected filters and select <code>Create Time Range</code>.</p>
+<blockquote>
+<p><strong>Note:</strong> More about Time Range <a href="#">here</a></p>
+</blockquote>
+<h2><a class="header" href="#en-disable-filter" id="en-disable-filter">En-/Disable filter</a></h2>
+<h3><a class="header" href="#in-search-results" id="in-search-results">In search results</a></h3>
+<p>Filters can be en-/disabled in the search results by un-/checking the checkbox next to the corresponding filter.</p>
+<h3><a class="header" href="#in-search-results-and-output" id="in-search-results-and-output">In search results and output</a></h3>
+<p>Filters can also be en-/disabled completely by right-clicking the corresponding filter and select <code>Disable</code>.</p>
+<p>If the disabled area is visible due to a filter or any other search component is disabled, the filter can be dragged and dropped into the area directly.</p>
+<h2><a class="header" href="#save-and-load-filters" id="save-and-load-filters">Save and load filters</a></h2>
+<p>To save the created filters and other search settings click on the <code>Save</code> button in the <strong>Manage</strong> section on the sidebar.</p>
+<p>To load previously created filters and other search settings click on the <code>Load</code> button in the <strong>Manage</strong> section on the sidebar.</p>
 
                     </main>
 

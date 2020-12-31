@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/charts.html" class="active"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="../02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="../02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/commenting.html"><strong aria-hidden="true">1.3.</strong> Commenting</a></li><li class="expanded "><a href="../01_usage/charts.html" class="active"><strong aria-hidden="true">1.4.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.5.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.6.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/time_range.html"><strong aria-hidden="true">1.7.</strong> Time Range</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.8.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.9.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="../02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="../02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -162,13 +162,37 @@
 <p>This will match <code>measured: 42</code> and pull out the value <code>42</code>.
 Here is an example of how this looks in action.</p>
 <p><img src="../images/capture_expression.gif" alt="" /></p>
+<h2><a class="header" href="#create-chart" id="create-chart">Create chart</a></h2>
+<p>Type a search request at the bottom and click the graph icon next to the search input.</p>
+<blockquote>
+<p><strong>Keyboard shortcut</strong>: <code>Shift + Enter</code></p>
+</blockquote>
+<h2><a class="header" href="#edit-chart" id="edit-chart">Edit chart</a></h2>
+<p>Created charts can be modified afterwards by simply right-clicking on the desired chart and selecting <code>Edit</code>.</p>
+<p>When the edit is done press <code>Enter</code> to apply the changes.</p>
+<h2><a class="header" href="#remove-chart" id="remove-chart">Remove chart</a></h2>
+<p>Charts can be removed one by one by right-clicking on the chart and selecting <code>Remove</code>.</p>
+<p>Another way is to drag&amp;drop the chart on the bin icon at the bottom of the sidebar which appears as soon as the chart is picked up and moved around. </p>
+<p>To remove all created charts at once right-click on any chart and select <code>Remove all</code>.</p>
+<h2><a class="header" href="#convert-to-filter" id="convert-to-filter">Convert to filter</a></h2>
+<p>If a chart needs to be converted into a chart, right-click on the chart and select <code>Convert To Filter</code>.</p>
+<p>Another way to convert a chart into a filter is to drag&amp;drop the chart in the <strong>Filters</strong> section on the sidebar.</p>
+<h2><a class="header" href="#en-disable-chart" id="en-disable-chart">En-/Disable chart</a></h2>
+<h3><a class="header" href="#in-search-results" id="in-search-results">In search results</a></h3>
+<p>Charts can be en-/disabled in the search results by un-/checking the checkbox next to the corresponding chart.</p>
+<h3><a class="header" href="#in-search-results-and-output" id="in-search-results-and-output">In search results and output</a></h3>
+<p>Charts can also be en-/disabled completely by right-clicking the corresponding chart and select <code>Disable</code>.</p>
+<p>If the disabled area is visible due to a chart or any other search component is disabled, the chart can be dragged and dropped into the area directly.</p>
+<h2><a class="header" href="#save-and-load-charts" id="save-and-load-charts">Save and load charts</a></h2>
+<p>To save the created charts and other search settings click on the <code>Save</code> button in the <strong>Manage</strong> section on the sidebar.</p>
+<p>To load previously created charts and other search settings click on the <code>Load</code> button in the <strong>Manage</strong> section on the sidebar.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../01_usage/bookmarks.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../01_usage/commenting.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
@@ -186,7 +210,7 @@ Here is an example of how this looks in action.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../01_usage/bookmarks.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../01_usage/commenting.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 

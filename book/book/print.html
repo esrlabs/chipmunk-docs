@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="01_usage/commenting.html"><strong aria-hidden="true">1.3.</strong> Commenting</a></li><li class="expanded "><a href="01_usage/charts.html"><strong aria-hidden="true">1.4.</strong> Charts</a></li><li class="expanded "><a href="01_usage/concatenation.html"><strong aria-hidden="true">1.5.</strong> Concatenate Files</a></li><li class="expanded "><a href="01_usage/merging.html"><strong aria-hidden="true">1.6.</strong> Merging Files</a></li><li class="expanded "><a href="01_usage/time_range.html"><strong aria-hidden="true">1.7.</strong> Time Range</a></li><li class="expanded "><a href="01_usage/dlt.html"><strong aria-hidden="true">1.8.</strong> DLT support</a></li><li class="expanded "><a href="01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.9.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -152,38 +152,85 @@
                     <main>
                         <h1><a class="header" href="#user-guide" id="user-guide">User Guide</a></h1>
 <p>This guide describes the most common usecases for using chipmunk.</p>
-<h2><a class="header" href="#searching-and-filtering" id="searching-and-filtering">Searching and Filtering</a></h2>
+<h2><a class="header" href="#a-href01_usagesearching_and_filteringsearching-and-filteringa" id="a-href01_usagesearching_and_filteringsearching-and-filteringa"><a href="01_usage/searching_and_filtering">Searching and Filtering</a></a></h2>
 <img src="01_usage/../images/magnifying-search-lenses-tool.png" width="100" height="100">
 <p>Searching through huge logfiles</p>
-<h2><a class="header" href="#concatenating-logfiles" id="concatenating-logfiles">Concatenating logfiles</a></h2>
-<img src="01_usage/../images/glue_together.png" width="100" height="100">
-<p><code>chipmunk</code> can combine multiple log file. This is useful for example
-when you just want to reassamble a logfile that were stored in parts.</p>
-<h2><a class="header" href="#merging" id="merging">merging</a></h2>
-<p><img src="01_usage/../images/intersection.png" alt="" /></p>
-<p>Merging is useful if you have several log files e.g. from different
-devices/processors and you want combine them by merging according to their
-timestamps.</p>
-<h2><a class="header" href="#charts" id="charts">Charts</a></h2>
+<h2><a class="header" href="#a-href01_usagebookmarksbookmarksa" id="a-href01_usagebookmarksbookmarksa"><a href="01_usage/bookmarks">Bookmarks</a></a></h2>
+<img src="01_usage/../images/bookmark_sign.png" width="100" height="100">
+<p>Add bookmarks to mark and remember important log entries. Jump between bookmarks with shortcuts (<code>j</code> and <code>k</code>).</p>
+<h2><a class="header" href="#a-href01_usagecommentingcommentinga" id="a-href01_usagecommentingcommentinga"><a href="01_usage/commenting">Commenting</a></a></h2>
+<img src="01_usage/../images/comment_sign.png" width="100" height="100">
+<p>Comment line(s) of the log to have additional information about specific places in the file.</p>
+<h2><a class="header" href="#a-href01_usagechartschartsa" id="a-href01_usagechartschartsa"><a href="01_usage/charts">Charts</a></a></h2>
 <p><img src="01_usage/../images/chart.png" alt="" /></p>
 <p>To better understand what's going on in a large logfile, it can be helpful to visualize data over
 time. <code>chipmunk</code> let's you define regular expressions that match a number and to use this expression
 to capture a value throughout a logfile.</p>
-<h2><a class="header" href="#bookmarks" id="bookmarks">Bookmarks</a></h2>
-<img src="01_usage/../images/bookmark_sign.png" width="100" height="100">
-<p>Add bookmarks to mark and remember important log entries. Jump between bookmarks with shortcuts (<code>j</code> and <code>k</code>).</p>
-<h2><a class="header" href="#dlt---diagnostic-log-and-trace" id="dlt---diagnostic-log-and-trace">DLT - Diagnostic Log and Trace</a></h2>
+<h2><a class="header" href="#a-href01_usageconcatenationconcatenating-logfilesa" id="a-href01_usageconcatenationconcatenating-logfilesa"><a href="01_usage/concatenation">Concatenating logfiles</a></a></h2>
+<img src="01_usage/../images/glue_together.png" width="100" height="100">
+<p><code>chipmunk</code> can combine multiple log file. This is useful for example
+when you just want to reassamble a logfile that were stored in parts.</p>
+<h2><a class="header" href="#a-href01_usagemergingmerginga" id="a-href01_usagemergingmerginga"><a href="01_usage/merging">Merging</a></a></h2>
+<p><img src="01_usage/../images/intersection.png" alt="" /></p>
+<p>Merging is useful if you have several log files e.g. from different
+devices/processors and you want combine them by merging according to their
+timestamps.</p>
+<h2><a class="header" href="#a-href01_usagetime_rangetime-rangesa" id="a-href01_usagetime_rangetime-rangesa"><a href="01_usage/time_range">Time Ranges</a></a></h2>
+<img src="01_usage/../images/stopwatch_sign.png" width="100" height="100">
+<p>To measure how much time passed between lines of a logfile <code>chipmunk</code> provides the <strong>Time Range</strong> Feature. </p>
+<h2><a class="header" href="#a-href01_usagedltdlt---diagnostic-log-and-tracea" id="a-href01_usagedltdlt---diagnostic-log-and-tracea"><a href="01_usage/dlt">DLT - Diagnostic Log and Trace</a></a></h2>
 <img src="01_usage/../images/dlt.png" width="200" height="200">
 <p>View and search and filter DLT files.
-rogramming in Rust!</p>
+Programming in Rust!</p>
 <h1><a class="header" href="#searching-with-filters" id="searching-with-filters">Searching with Filters</a></h1>
 <p>Of course multiple searches are supported and filters can be saved and restored.</p>
 <p><img src="01_usage/../images/multiple-filters.png" alt="" /></p>
-<h1><a class="header" href="#bookmarks-1" id="bookmarks-1">Bookmarks</a></h1>
+<h2><a class="header" href="#create-filter" id="create-filter">Create filter</a></h2>
+<p>Type a search request at the bottom and click the floppy disc icon next to the search input.</p>
+<blockquote>
+<p><strong>Keyboard shortcut:</strong> <code>Enter + Enter</code> or <code>Enter + CTRL/CMD</code> (depending on the OS)</p>
+</blockquote>
+<h2><a class="header" href="#edit-filter" id="edit-filter">Edit filter</a></h2>
+<p>Created filters can be modified afterwards by simply right-clicking on the desired filter and selecting <code>Edit</code>.</p>
+<p>When the edit is done press <code>Enter</code> to apply the changes.</p>
+<h2><a class="header" href="#remove-filter" id="remove-filter">Remove filter</a></h2>
+<p>Filters can be removed one by one by right-clicking on the filter and selecting <code>Remove</code>.</p>
+<p>Another way is to drag&amp;drop the filter on the bin icon at the bottom of the sidebar which appears as soon as the filter is picked up and moved around. </p>
+<p>To remove all created filters at once right-click on any filter and select <code>Remove all</code>.</p>
+<p><img src="01_usage/../images/remove_filter.gif" alt="" /></p>
+<h2><a class="header" href="#convert-into-chart" id="convert-into-chart">Convert into chart</a></h2>
+<p>If a filter needs to be converted into a chart, right-click on the filter and select <code>Convert To Chart</code>.</p>
+<p>Another way to convert a filter into a chart is to drag&amp;drop the filter in the <strong>Charts</strong> section on the sidebar (only visible when at least one chart is already created).</p>
+<blockquote>
+<p><strong>Note:</strong> This option is only available for filters that consist of regular expressions.</p>
+</blockquote>
+<p><img src="01_usage/../images/convert_filter.gif" alt="" /></p>
+<h2><a class="header" href="#create-time-range" id="create-time-range">Create Time Range</a></h2>
+<p>By selecting two or more filters time ranges can be created. To select multiple filters, hold <code>SHIFT</code> while left-clicking on the desired filters. After selecting the filters right-click on one of the selected filters and select <code>Create Time Range</code>.</p>
+<blockquote>
+<p><strong>Note:</strong> More about Time Range <a href="01_usage/searching_and_filtering.html#">here</a></p>
+</blockquote>
+<h2><a class="header" href="#en-disable-filter" id="en-disable-filter">En-/Disable filter</a></h2>
+<h3><a class="header" href="#in-search-results" id="in-search-results">In search results</a></h3>
+<p>Filters can be en-/disabled in the search results by un-/checking the checkbox next to the corresponding filter.</p>
+<h3><a class="header" href="#in-search-results-and-output" id="in-search-results-and-output">In search results and output</a></h3>
+<p>Filters can also be en-/disabled completely by right-clicking the corresponding filter and select <code>Disable</code>.</p>
+<p>If the disabled area is visible due to a filter or any other search component is disabled, the filter can be dragged and dropped into the area directly.</p>
+<h2><a class="header" href="#save-and-load-filters" id="save-and-load-filters">Save and load filters</a></h2>
+<p>To save the created filters and other search settings click on the <code>Save</code> button in the <strong>Manage</strong> section on the sidebar.</p>
+<p>To load previously created filters and other search settings click on the <code>Load</code> button in the <strong>Manage</strong> section on the sidebar.</p>
+<h1><a class="header" href="#bookmarks" id="bookmarks">Bookmarks</a></h1>
 <p>Bookmarks can be used to pin down log entries that are important to the user.</p>
 <p><img src="01_usage/../images/bookmarks.png" alt="bookmarks" /></p>
 <p>Lines that are bookmarked will stick in the result view.</p>
-<h1><a class="header" href="#charts-1" id="charts-1">Charts</a></h1>
+<h1><a class="header" href="#commenting" id="commenting">Commenting</a></h1>
+<p>There might be cases when you want to add a remark to a few places in the log. Simply mark lines, right-click and select <code>Comment</code> to add a comment to the specified lines.</p>
+<h3><a class="header" href="#reply-to-comments" id="reply-to-comments">Reply to comments</a></h3>
+<p>In addition to creating comment, you can also reply to comments with no limit.</p>
+<h3><a class="header" href="#colors" id="colors">Colors</a></h3>
+<p>By changing the color of a comment the priority changes. The priority order is defined by default and cannot be changed. It is also possible to display only one specific color of comments.</p>
+<p><img src="01_usage/../images/comment.gif" alt="" /></p>
+<h1><a class="header" href="#charts" id="charts">Charts</a></h1>
 <p>Getting a quick overview of what happened during a 24h-trace period can be daunting if the logfiles are huge (millions of log entries). A very neat way to get a quick overview is to show some graphs for what is happening.</p>
 <p><img src="01_usage/../images/temperatures_chart.png" alt="" /></p>
 <p>In this graph we captured processor workload for different cores. Any numerical value can be captured by using a regular expression with a group.</p>
@@ -197,15 +244,90 @@ rogramming in Rust!</p>
 <p>This will match <code>measured: 42</code> and pull out the value <code>42</code>.
 Here is an example of how this looks in action.</p>
 <p><img src="01_usage/../images/capture_expression.gif" alt="" /></p>
+<h2><a class="header" href="#create-chart" id="create-chart">Create chart</a></h2>
+<p>Type a search request at the bottom and click the graph icon next to the search input.</p>
+<blockquote>
+<p><strong>Keyboard shortcut</strong>: <code>Shift + Enter</code></p>
+</blockquote>
+<h2><a class="header" href="#edit-chart" id="edit-chart">Edit chart</a></h2>
+<p>Created charts can be modified afterwards by simply right-clicking on the desired chart and selecting <code>Edit</code>.</p>
+<p>When the edit is done press <code>Enter</code> to apply the changes.</p>
+<h2><a class="header" href="#remove-chart" id="remove-chart">Remove chart</a></h2>
+<p>Charts can be removed one by one by right-clicking on the chart and selecting <code>Remove</code>.</p>
+<p>Another way is to drag&amp;drop the chart on the bin icon at the bottom of the sidebar which appears as soon as the chart is picked up and moved around. </p>
+<p>To remove all created charts at once right-click on any chart and select <code>Remove all</code>.</p>
+<h2><a class="header" href="#convert-to-filter" id="convert-to-filter">Convert to filter</a></h2>
+<p>If a chart needs to be converted into a chart, right-click on the chart and select <code>Convert To Filter</code>.</p>
+<p>Another way to convert a chart into a filter is to drag&amp;drop the chart in the <strong>Filters</strong> section on the sidebar.</p>
+<h2><a class="header" href="#en-disable-chart" id="en-disable-chart">En-/Disable chart</a></h2>
+<h3><a class="header" href="#in-search-results-1" id="in-search-results-1">In search results</a></h3>
+<p>Charts can be en-/disabled in the search results by un-/checking the checkbox next to the corresponding chart.</p>
+<h3><a class="header" href="#in-search-results-and-output-1" id="in-search-results-and-output-1">In search results and output</a></h3>
+<p>Charts can also be en-/disabled completely by right-clicking the corresponding chart and select <code>Disable</code>.</p>
+<p>If the disabled area is visible due to a chart or any other search component is disabled, the chart can be dragged and dropped into the area directly.</p>
+<h2><a class="header" href="#save-and-load-charts" id="save-and-load-charts">Save and load charts</a></h2>
+<p>To save the created charts and other search settings click on the <code>Save</code> button in the <strong>Manage</strong> section on the sidebar.</p>
+<p>To load previously created charts and other search settings click on the <code>Load</code> button in the <strong>Manage</strong> section on the sidebar.</p>
 <h1><a class="header" href="#assembling-files" id="assembling-files">Assembling files</a></h1>
 <p>There is handy support for combining multiple files into one view. You simple drag &amp; drop the files you need into a fresh tab. Then select the concatenate option.</p>
-<p>Now you will have the chance to quickly check for a search expression to see if it is present in the dropped files. Here you can potentially include of exclude files.</p>
+<p>Now you will have the chance to quickly check for a search expression to see if it is present in the dropped files. Here you can potentially include or exclude files.</p>
 <img src="01_usage/../images/concat.gif" width="700" height="400">
-<h1><a class="header" href="#merging-1" id="merging-1">Merging</a></h1>
-<p>this is how merging works:</p>
+<h1><a class="header" href="#merging" id="merging">Merging</a></h1>
+<p>To help developers to deal with multiple logfiles, chipmunk can automatically detect timestamps and merge logs from multiple files sorting the lines of the files by their timestamp.</p>
+<p>Here is an animation to show how it works:</p>
 <p><img src="01_usage/../images/merging.gif" alt="" /></p>
-<p>To help developers to deal with multiple logfiles, chipmunk can automatically detect timestamps and merge logs from multiple files.</p>
+<p>To merge files either drag and drop multiple files into the output window of <code>chipmunk</code></p>
+<blockquote>
+<p><strong>NOTE:</strong> It's possible to drag and drop additional files onto the dialog window.</p>
+</blockquote>
+<p>Another option is to open the <code>merging</code> tab on the sidebar and click on <code>Add file(s)</code>.</p>
+<blockquote>
+<p><strong>NOTE:</strong> You can select multiple files at once by clicking <code>Add file(s)</code></p>
+</blockquote>
+<p>Once the files are added, you have an overview of all added files and their filesize along with the detected datetime formats.</p>
+<p>By left-clicking one of the files the details are being shown. The details display the content of the file along with the datetime format which colorizes the components to identify them easier in the content window.</p>
+<p>The format can also be modfied by hand along with adding a year. Another option is to set the offset of a file after what time in <code>ms</code> the selected file should be included.</p>
+<p>When the configuration and selection of the files is done, just press <code>Merge</code>.</p>
+<blockquote>
+<p><strong>NOTE:</strong> In the output window you can still see which line is from which file by the colors or hover with the mouse over them which will show the filename.</p>
+</blockquote>
 <p><img src="01_usage/../images/merging_sample.gif" alt="" /></p>
+<h1><a class="header" href="#time-range" id="time-range">Time Range</a></h1>
+<p><code>Chipmunk</code> provides the measurement of  time that passed between lines and makes it possible to compare them in a chart.</p>
+<h2><a class="header" href="#create-and-remove-time-ranges" id="create-and-remove-time-ranges">Create and remove time ranges</a></h2>
+<h3><a class="header" href="#start-time-range" id="start-time-range">Start time range</a></h3>
+<p>By right-clicking on a line either select the option <code>Open time measurement view</code> or when it already is open <code>Start Time Range</code>.</p>
+<h3><a class="header" href="#add-time-range" id="add-time-range">Add time range</a></h3>
+<p>If you want to another time range to the current selection right-click and select <code>Add time range &lt;line begin&gt;-&lt;line end&gt;</code>.</p>
+<h3><a class="header" href="#close-time-range" id="close-time-range">Close time range</a></h3>
+<p>The currently opened time range can be closed by right-clicking and selecting <code>Close time range &lt;line begin&gt;-&lt;line end&gt;</code>. </p>
+<h3><a class="header" href="#remove-time-range" id="remove-time-range">Remove time range</a></h3>
+<p>Time ranges can easily be removed by right-clicking on a line which is part of a time range select:</p>
+<ul>
+<li>Remove a single range: <code>Remove this range</code></li>
+<li>Remove all <strong>except the selected range</strong>: <code>Remove all except selected</code></li>
+<li>Remove all: <code>Remove all ranges</code></li>
+</ul>
+<p><img src="01_usage/../images/time_range.gif" alt="" /></p>
+<h2><a class="header" href="#analyze-time-ranges" id="analyze-time-ranges">Analyze time ranges</a></h2>
+<p>In the tabs below select <code>Time Measurement</code> to see all of the created ranges.</p>
+<p>On the bottom left the format to detect timestamps is shown.
+On the bottom right the <code>...</code> symbol offers options to add, remove and set default timestamp formats.</p>
+<h3><a class="header" href="#view-modes" id="view-modes">View modes</a></h3>
+<p>There are two modes available on viewing the charts:</p>
+<ol>
+<li><code>Scaled</code> (default)</li>
+</ol>
+<p>Sorts the ranges by their position in the logfile and lets you scale on the ranges.</p>
+<p>Scrolling inside the scaler changes the scaling of the view. By holding left-mouse in the <strong>upper part</strong> of the scaler, the scaler can be moved to view specific parts of the created ranges. By holding left-mouse in the <strong>lower part</strong> of the scaler, the scaler size can be change to that specific part and that marked size.</p>
+<ol start="2">
+<li><code>Aligned</code></li>
+</ol>
+<p>Aligns all ranges to the left and sorts ranges by their position in the logfile.</p>
+<blockquote>
+<p>NOTE: To change the view mode right-click anywhere in the <code>Time Measurement</code> area and select <code>Switch to: ...</code></p>
+</blockquote>
+<p><img src="01_usage/../images/time_measurement.gif" alt="" /></p>
 <h1><a class="header" href="#dlt-support" id="dlt-support">DLT support</a></h1>
 <p>The Diagnostic Log and Trace AUTOSAR format is widely used in the automotive industry and is a binary log format. <code>chipmunk</code> can understand and process DLT content in large quantities.</p>
 <p><img src="01_usage/../images/dlt-support.png" alt="" /></p>
@@ -213,7 +335,7 @@ Here is an example of how this looks in action.</p>
 <p>When opening a dlt file, you are prompted with this dialog. Here you can also provide the path to a <strong>FIBEX</strong> file that contains descriptions for you non-verbose messages.</p>
 <p>This can be expanded so can select what components or loglevels you want to include. Note that you are presented with a statistics of how many log messages exist e.g. for a component with a certain log level.</p>
 <p><img src="01_usage/../images/import_dlt.gif" alt="" /></p>
-<p>The columns can be configured by right-clicking in one of the column titles. Then you can filter out columns and adjust colors.</p>
+<p>The columns can be configured by right-clicking in one of the column titles or hover over one of the column titles and left-click the <code>...</code>. Then you can filter out columns and adjust colors.</p>
 <p><img src="01_usage/../images/dlt_columns.gif" alt="" /></p>
 <h1><a class="header" href="#keyboard-shortcuts" id="keyboard-shortcuts">Keyboard Shortcuts</a></h1>
 <p>Important to most developers: a good and intuitive set of keyboard shortcuts.</p>
@@ -279,14 +401,12 @@ cd chipmunk-quickstart
      &#9492;&#9472;&#9472; plugin.helloworld
 </code></pre>
 <p>To build <strong>Chipmunk</strong> run the following commands to navigate into the folder where the repository was copied:</p>
-<pre><code>cd ../chipmunk
-rake full_pipeline
-</code></pre>
+<pre><code>rake full_pipeline</code></pre>
 <p>The building of <strong>Chipmunk</strong> will take some time but only needs to be built once. After the build is finished <strong>Chipmunk</strong> can be executed from the <code>releases</code> folder.</p>
 <p>Before starting <strong>Chipmunk</strong> some environment variables need to be passed in as a preparation.</p>
 <p>First off define a full path to the folder that will hold the release of your plugin.</p>
 <p><code><pre>export CHIPMUNK_PLUGINS_SANDBOX=../chipmunk-quickstart/releases</pre></code></p>
-<p>By default <strong>Chipmunk</strong> stores plugins in <code>~/.chipmunk/plugins</code> but by running the command above it can be modified.</p>
+<p>By default <strong>Chipmunk</strong> stores plugins the home folder in <code>.chipmunk/plugins</code> but by running the command above it can be modified.</p>
 <p>To prevent the installation of default plugins, run the following command</p>
 <pre><code>export CHIPMUNK_PLUGINS_NO_DEFAULTS=true</code></pre>
 <p>If your has plugin already been published in the <strong>Chipmunk Store</strong> these commands would prevent it from updating:</p>
@@ -305,20 +425,6 @@ rake build[./plugins/plugin.helloworld, 1.0.1]      # Build plugin with version
 rake 'build[./plugins/plugin.helloworld, 1.0.1]'    # Build plugin with version (Windows) 
 </code></pre>
 <p>If a new update of <strong>Chipmunk</strong> is available, first run <code>rake clobber</code> (to remove all compiled files) and then <code>rake full_pipeline</code> to update and re-build <strong>Chipmunk</strong>.</p>
-<h2><a class="header" href="#git-commit" id="git-commit">Git commit</a></h2>
-<p>Commits that are being made need to be in following shape:</p>
-<pre><code>[#xxx](type) message
-
-#xxx        Issue number
-type        Commit type
-            feat     - new code / feature(s)
-            clean    - cleanup of code
-            refact   - refactoring of existing code
-            fix      - fix for bug
-message     Commit message
-</code></pre>
-<p>Example:</p>
-<pre><code>[#123](refact) Remove popup in Serial plugin</code></pre>
 <p>The next section gives a thorough explanation of the default plugins provided by <strong>Quickstart</strong> </p>
 <link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
 <script src="../scripts/script.tab.js">

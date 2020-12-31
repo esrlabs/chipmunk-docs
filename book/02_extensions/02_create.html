@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.3.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.4.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.5.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.6.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.7.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_create.html" class="active"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="../02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="../02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.</strong> TODO: API</a></li><li><ol class="section"><li class="expanded "><a href="../404.html"><strong aria-hidden="true">4.1.</strong> TODO: nothing here yet...</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/commenting.html"><strong aria-hidden="true">1.3.</strong> Commenting</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.4.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.5.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.6.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/time_range.html"><strong aria-hidden="true">1.7.</strong> Time Range</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.8.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.9.</strong> Keyboard Shortcuts</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_create.html" class="active"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="../02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="../02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -191,14 +191,12 @@ cd chipmunk-quickstart
      &#9492;&#9472;&#9472; plugin.helloworld
 </code></pre>
 <p>To build <strong>Chipmunk</strong> run the following commands to navigate into the folder where the repository was copied:</p>
-<pre><code>cd ../chipmunk
-rake full_pipeline
-</code></pre>
+<pre><code>rake full_pipeline</code></pre>
 <p>The building of <strong>Chipmunk</strong> will take some time but only needs to be built once. After the build is finished <strong>Chipmunk</strong> can be executed from the <code>releases</code> folder.</p>
 <p>Before starting <strong>Chipmunk</strong> some environment variables need to be passed in as a preparation.</p>
 <p>First off define a full path to the folder that will hold the release of your plugin.</p>
 <p><code><pre>export CHIPMUNK_PLUGINS_SANDBOX=../chipmunk-quickstart/releases</pre></code></p>
-<p>By default <strong>Chipmunk</strong> stores plugins in <code>~/.chipmunk/plugins</code> but by running the command above it can be modified.</p>
+<p>By default <strong>Chipmunk</strong> stores plugins the home folder in <code>.chipmunk/plugins</code> but by running the command above it can be modified.</p>
 <p>To prevent the installation of default plugins, run the following command</p>
 <pre><code>export CHIPMUNK_PLUGINS_NO_DEFAULTS=true</code></pre>
 <p>If your has plugin already been published in the <strong>Chipmunk Store</strong> these commands would prevent it from updating:</p>
@@ -217,20 +215,6 @@ rake build[./plugins/plugin.helloworld, 1.0.1]      # Build plugin with version
 rake 'build[./plugins/plugin.helloworld, 1.0.1]'    # Build plugin with version (Windows) 
 </code></pre>
 <p>If a new update of <strong>Chipmunk</strong> is available, first run <code>rake clobber</code> (to remove all compiled files) and then <code>rake full_pipeline</code> to update and re-build <strong>Chipmunk</strong>.</p>
-<h2><a class="header" href="#git-commit" id="git-commit">Git commit</a></h2>
-<p>Commits that are being made need to be in following shape:</p>
-<pre><code>[#xxx](type) message
-
-#xxx        Issue number
-type        Commit type
-            feat     - new code / feature(s)
-            clean    - cleanup of code
-            refact   - refactoring of existing code
-            fix      - fix for bug
-message     Commit message
-</code></pre>
-<p>Example:</p>
-<pre><code>[#123](refact) Remove popup in Serial plugin</code></pre>
 <p>The next section gives a thorough explanation of the default plugins provided by <strong>Quickstart</strong> </p>
 
                     </main>
