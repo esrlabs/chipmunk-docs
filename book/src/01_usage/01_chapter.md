@@ -55,3 +55,9 @@ To measure how much time passed between lines of a logfile `chipmunk` provides t
 
 View and search and filter DLT files.
 Programming in Rust!
+
+## [Command line](command_line)
+
+<img src="../images/command_line.png" width="100" height="100">
+
+It's also possible to open a file with `Chipmunk` directly from the console.
