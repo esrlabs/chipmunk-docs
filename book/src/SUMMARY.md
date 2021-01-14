@@ -10,6 +10,7 @@
   - [Time Range](01_usage/time_range.md)
   - [DLT support](01_usage/dlt.md)
   - [Keyboard Shortcuts](01_usage/keyboard_shortcuts.md)
+  - [Command line](01_usage/command_line.md)
 - [Developing Plugins](02_extensions/01_about.md)
   - [A quick start](02_extensions/02_create.md)
   - [Default plugins](02_extensions/03_defaults.md)
