@@ -12,4 +12,6 @@ Run Chipmunk and open the `File` section of the toolbar at the top and install `
 
 Simply open the command line of your choice and type:
 
-`cm <filename>`
+`cm [...filename]`
+
+> **NOTE:** Opening with multiple files will result in one tab for each file
