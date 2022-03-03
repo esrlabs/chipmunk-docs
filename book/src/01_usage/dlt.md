@@ -8,6 +8,8 @@ The Diagnostic Log and Trace AUTOSAR format is widely used in the automotive ind
 
 When opening a dlt file, you are prompted with this dialog. Here you can also provide the path to a **FIBEX** file that contains descriptions for you non-verbose messages.
 
+> **NOTE:** Referred Fibex files will be restored for each file it was referred to
+
 This can be expanded so can select what components or loglevels you want to include. Note that you are presented with a statistics of how many log messages exist e.g. for a component with a certain log level.
 
 ![](../images/import_dlt.gif)
