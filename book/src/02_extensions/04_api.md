@@ -7,6 +7,8 @@
 
 Chipmunk provides an `API` for the **UI**, which gives access to major core events, UI of the core and plugin IPC (required for communication beteween the host and render of plugin). The `API` for the **UI** is named `chipmunk.client.toollkit` and holds different modules.
 
+> **NOTE:** This API will soon be deprecated
+
 <h2 id="howAPI">1. How to use the API</h2>
 
 <h3 id="api1"> Method 1: Bind the api to the component </h3>
@@ -93,7 +95,7 @@ export * from './module';
 </code></pre>
 </div>
 
-> **NOTE**: The lines commented with *[optional]* will be covered in <a href="#cse">ControllerSessionsEvents</a> and serves in this example just for demonstration
+> **NOTE**: The lines commented with _[optional]_ will be covered in <a href="#cse">ControllerSessionsEvents</a> and serves in this example just for demonstration
 
 <h3 id="api2"> Method 2: Create a service for the api</h3>
 
@@ -1258,15 +1260,15 @@ export * from './module';
 
 These abstract classes allow to create **parsers** that can modify the output in the rows (e.g: change text color, convert into different format).
 
-| Parser name                         | Description                                                                                                                     |
-|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| <a href="#rbp">`RowBoundParser`</a> | Parse only data received from the process part of the plugin                                                                        |
-| <a href="#rcp">`RowCommomParser`</a>| Parse data from any kind of source                                                                                              |
-| <a href="#rtp">`RowTypedParser`</a> | Parse only specific type of source (e.g. DLT)                                                                                   |
-| <a href="#sp">`SelectionParser` (coming soon)</a> | Parse only selected line(s), right-click to see self-chosen name as option to see the parsed result in the tab **Details** below|
-| <a href="#trr">`TypedRowRender` (coming soon)</a> | Parser for more complex stream output                                                                                           |
-|                                     | <a href="#trrCol">`TypedRowRenderAPIColumns`</a> - show stream line as columns                                                  |
-|                                     | <a href="#trrExt">`TypedRowRenderAPIExternal`</a> - use custom Angular component as stream                                      |
+| Parser name                                       | Description                                                                                                                      |
+| ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| <a href="#rbp">`RowBoundParser`</a>               | Parse only data received from the process part of the plugin                                                                     |
+| <a href="#rcp">`RowCommomParser`</a>              | Parse data from any kind of source                                                                                               |
+| <a href="#rtp">`RowTypedParser`</a>               | Parse only specific type of source (e.g. DLT)                                                                                    |
+| <a href="#sp">`SelectionParser` (coming soon)</a> | Parse only selected line(s), right-click to see self-chosen name as option to see the parsed result in the tab **Details** below |
+| <a href="#trr">`TypedRowRender` (coming soon)</a> | Parser for more complex stream output                                                                                            |
+|                                                   | <a href="#trrCol">`TypedRowRenderAPIColumns`</a> - show stream line as columns                                                   |
+|                                                   | <a href="#trrExt">`TypedRowRenderAPIExternal`</a> - use custom Angular component as stream                                       |
 
 <h3 id="rbp">RowBoundParser</h3>
 
@@ -1980,7 +1982,7 @@ export class ExampleRowColumns extends Toolkit.TypedRowRender<ExampleRowColumnsA
         if (fileName.search(/\.txt/) > -1) {
             return true;
         }
-    }    
+    }
     public getAPI(): ExampleRowColumnsAPI {                                             // Getter method for API
         return this._api;
     }
@@ -2208,7 +2210,7 @@ import * as Toolkit from 'chipmunk.client.toolkit';
 })
 export class SidebarVerticalComponent {
     @Input() public api: Toolkit.IAPI;                  // Assign API to instance variable
-    @Input() public session: string;                    // Assign session ID to instance variable 
+    @Input() public session: string;                    // Assign session ID to instance variable
     constructor() {
         this.api.getIPC().send({                        // Send session ID to the process part
             stream: this.session,
@@ -2246,7 +2248,7 @@ p {
 import PluginIPCService, { IPCMessages } from 'chipmunk.plugin.ipc';
 class ExampleBackend {
     public static count = 0;                                                                                    // Create counting variable
-    constructor(){      
+    constructor(){
         this._onIncomeRenderIPCMessage = this._onIncomeRenderIPCMessage.bind(this);                             // Bind method for subscription
         PluginIPCService.subscribe(IPCMessages.PluginInternalMessage, this._onIncomeRenderIPCMessage);          // Subscribe to messages from the UI
     }
@@ -2327,7 +2329,7 @@ export declare abstract class IPC {
 
 This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **process part**.
 
-> **NOTE**: To make use of `IPC` add `IAPI` in the code, since `IAPI` holds the method `getIPC()` which provides an instance of `IPC` with the methods already implemented. (For more information: <a href="#iapi">IAPI</a>) 
+> **NOTE**: To make use of `IPC` add `IAPI` in the code, since `IAPI` holds the method `getIPC()` which provides an instance of `IPC` with the methods already implemented. (For more information: <a href="#iapi">IAPI</a>)
 
 <h2>UI</h2>
 
@@ -2336,13 +2338,13 @@ This example shows a **Complex plugin** with two buttons demonstrating how to co
   <button class="tablinks" onclick="openCode(event, 'ipc_styles.less')">styles.less</button>
   <button class="tablinks active" onclick="openCode(event, 'ipc_service.ts')">service.ts</button>
   <button class="tablinks" onclick="openCode(event, 'ipc_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'ipc_public_api.ts')">public_api.ts</button> 
+  <button class="tablinks" onclick="openCode(event, 'ipc_public_api.ts')">public_api.ts</button>
 </div>
 
 <div id="ipc_template.html" class="tabcontent ipc">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
-&lt;button (click)=&quot;_ng_onRequest()">'request' to backend&lt;/button&gt    &lt;!-- Create button for request-type of message --&gt; 
+&lt;button (click)=&quot;_ng_onRequest()">'request' to backend&lt;/button&gt    &lt;!-- Create button for request-type of message --&gt;
 &lt;button (click)=&quot;_ng_onSend()">'send' to backend&lt;/button&gt          &lt;!-- Create button for send-type of message --&gt;
 </code></pre>
 </div>
@@ -2445,7 +2447,7 @@ import { NgModule } from '@angular/core';                   // Import the Angula
 import { Example } from './component';                      // Import the class of the plugin, mentioned in the components.ts file
 import * as Toolkit from 'chipmunk.client.toolkit';         // Import Chipmunk Toolkit to let the module class inherit
 @NgModule({
-    declarations: [ Example ],                              // Declare which components, directives and pipes belong to the module 
+    declarations: [ Example ],                              // Declare which components, directives and pipes belong to the module
     imports: [ ],                                           // Imports other modules with the components, directives and pipes that components in the current module need
     exports: [ Example ]                                    // Provides services that the other application components can use
 })
@@ -2624,7 +2626,7 @@ export class ControllerSessionsEvents {
 
 <h3>Example - ControllerSessionEvents</h3>
 
-This example shows how to call specific methods when a session is created/closed/changed: 
+This example shows how to call specific methods when a session is created/closed/changed:
 
 <div class="tab cse">
   <button class="tablinks" onclick="openCode(event, 'cse_template.html')">template.html</button>
@@ -2699,7 +2701,6 @@ export * from './component';
 export * from './module';
 </code></pre>
 </div>
-
 
 <!--
 <h2 id="ipc_service">4.2 PluginIPCService </h2>
@@ -2894,7 +2895,7 @@ button {
 <div id="pIPC_template.html" class="tabcontent pipc">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
-&lt;button (click)=&quot;_ng_onRequest()"&gt;'request' to backend&lt;/button&gt;    &lt;!-- Create button for request-type of message --&gt; 
+&lt;button (click)=&quot;_ng_onRequest()"&gt;'request' to backend&lt;/button&gt;    &lt;!-- Create button for request-type of message --&gt;
 &lt;button (click)=&quot;_ng_onSend()"&gt;'send' to backend&lt;/button&gt;          &lt;!-- Create button for send-type of message --&gt;
 </code></pre>
 </div>
@@ -3023,7 +3024,7 @@ export declare class ServiceConfig {
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_onRead()"&gt;Read settings&lt;/button&gt;                               &lt;!-- Create button read settings --&gt;
-&lt;button (click)=&quot;_ng_onWrite({id: 1234, name: 'Example'})"&gt;Write settings&lt;/button&gt;  &lt;!-- Create button to write settings--&gt;            
+&lt;button (click)=&quot;_ng_onWrite({id: 1234, name: 'Example'})"&gt;Write settings&lt;/button&gt;  &lt;!-- Create button to write settings--&gt;
 </code></pre>
 </div>
 
