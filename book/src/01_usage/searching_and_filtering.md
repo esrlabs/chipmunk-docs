@@ -1,13 +1,38 @@
 # Searching with Filters
 
-Of course multiple searches are supported and filters can be saved and restored.
+Of course multiple searches are supported and search requests can be saved and restored as filters.
 
 ![](../images/multiple-filters.png)
 
+## Search
+
+To search within the opened file, type into the area with the "Type a Search Request" placeholder and press `Enter`. The search results will be listed as they are with their whole line.
+
+> **Note:** The bottom left shows: Total lines of search results/Total lines of file
+
+## Flags
+
+The three buttons on the right side of the search request input are flags to modify the search. Active flags will have a blue background color. 
+
+![](../images/Match_Case.png)
+
+Starting from the left, the first flag defines a `Case Sensitive`-search. As the name suggests, this flag will make the search case-sesitive when active.
+
+![](../images/Match_Whole_Word.png)
+
+The second flag defines a `Match Whole Word`-search. With this flag active, the search only lists search results, where the search request matches with just special characters or spaces surrounding the word.
+
+![](../images/Regex.png)
+
+The third flag defines a `Use Regular Expression`-search. With this flag active it is possible to run searches with Regex (Regular expression).
+
+> **Note:** It is possible to de-/activate search flags while and after starting the search. 
+
 ## Create filter
+> **Note:** Saved search requests will be called **filter** from this point on
 
 Type a search request at the bottom and click the floppy disc icon next to the search input.
-> **Keyboard shortcut:** `Enter + Enter` or `Enter + CTRL/CMD` (depending on the OS)
+> **Keyboard shortcut:** `Enter + CTRL (Windows) / CMD (Mac/Linux)`
 
 ## Edit filter
 
