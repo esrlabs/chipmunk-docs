@@ -5,6 +5,7 @@
 - [Architecture](architecture/README.md)
 - [Plugin System](plugin/README.md)
     - [Wasmer](plugin/wasmer/README.md)
+        - [Plugin Proposal](plugin/wasmer/proposal.md) 
     - [Wasmtime](plugin/wasmtime/README.md)
         - [Component Model](plugin/wasmtime/component-model.md)
         - [Advantages](plugin/wasmtime/advantages.md)
