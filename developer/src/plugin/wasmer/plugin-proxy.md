@@ -70,3 +70,5 @@ impl PluginProxy {
     }
 }
 ```
+
+*The PluginProxy allows communication with a plugin instance. It creates a handle for the plugin's message function to send and receive RPC messages. The call method sends RPC requests to the plugin and retrieves the results. It prepares the input data, sends the request to the plugin, reads the response from the plugin's memory, and returns it as a vector of bytes.*

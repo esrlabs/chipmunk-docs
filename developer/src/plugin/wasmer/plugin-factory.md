@@ -68,6 +68,8 @@ impl PluginFactory for WasmPluginFactory {
 }
 ```
 
+*The WasmPluginFactory is responsible for creating instances of WebAssembly (WASM) plugins. It uses a precompiled binary to create plugin proxies. First, it sets up a WebAssembly runtime and loads the module. Then, it initializes the plugin with required imports like a debug-print function from the host. After that, it connects the plugin's memory to the runtime and gives back a PluginProxy to handle the plugin. This ensures proper initialization and interaction between plugins and the host environment.*
+
 ## Wasi Plugin Factory
 
 The implementation for a `wasi` plugin factory would respectively get a precompiled WebAssembly binary and instantiate a proxy based on the `wasmer` runtime and a `wasmer_wasix` environment to support eg. system I/O operations:
@@ -149,3 +151,7 @@ impl PluginFactory for WasiPluginFactory {
     }
 }
 ```
+
+*The WasiPluginFactory is responsible for creating and initializing WASI (WebAssembly System Interface) plugin instances. It takes a precompiled binary as input and sets up the necessary environment for the plugin to run. The create method loads the WASM module, sets up a WASI environment with file system access, and initializes it. It also defines a debug-print function for the plugin to communicate with the host.*
+
+*The factory creates a runtime environment, loads the module, sets up imports, and creates an instance of the plugin. It maps the plugin's memory for access during runtime and starts the WASI plugin as a reactor by calling its initialization function. Finally, it returns a PluginProxy to manage the plugin instance, ensuring it is correctly initialized and can interact with the host and WASI environment.*

@@ -76,6 +76,8 @@ pub unsafe extern "C" fn message(ptr: *const u8, len: u32) -> Response {
 }
 ```
 
+*The ByteSource WASI module sets up a single instance of a ByteSource. When a message is received, it is deserialized, processed according to its type (either setting up the source with specific settings or reloading data), and results are collected. If reloading, it tracks data consumption, attempts to load new data, and returns the result. Finally, the results are serialized and returned as a response.*
+
 ## ByteSource Host proxy
 
 The proxy will store the data retrieved from the plugin and returns it to the host as long as unconsumed data is available.
@@ -115,7 +117,11 @@ impl ByteSourceProxy {
         }
     }
 }
+```
 
+*The ByteSourceProxy sets up a plugin proxy with specific settings, including the input path and buffer capacities. The `new` function sends a setup request to the plugin and handles the response. Once initialized, it maintains a data buffer and tracks the data offset for further operations.*
+
+```rust,no_run
 #[async_trait]
 impl ByteSource for ByteSourceProxy {
     fn consume(&mut self, offset: usize) {
@@ -173,5 +179,6 @@ impl ByteSource for ByteSourceProxy {
         self.data.len() - self.offset
     }
 }
-
 ```
+
+*The ByteSourceProxy implements the ByteSource trait. It tracks the offset of consumed data and, if necessary, requests new data from the plugin. If there is unconsumed data, it returns the current data without reloading. When reloading, it sends a request to the plugin and updates its data buffer based on the response. Additionally, it provides methods to get the current slice of unconsumed data and the length of the remaining data.*

@@ -88,6 +88,8 @@ pub unsafe extern "C" fn message(ptr: *const u8, len: u32) -> Response {
 }
 ```
 
+*The DltParser WASM module sets up a single parser instance that can handle incoming requests. When a message is received, it is deserialized, processed according to its type (either setting up the parser or parsing input bytes), and the results are collected. Finally, the results are serialized and returned as a response.*
+
 ## DltParser Host proxy
 
 The proxy will store the results retrieved from the plugin and returns them to the host as long as unconsumed results are available.
@@ -127,7 +129,11 @@ impl DltParserProxy {
         ...
     }
 }
+```
 
+*The DltParserProxy initializes the plugin with specific settings and communicates by a plugin proxy to handle requests. The `new` function sends a setup request, and creates a queue for storing results, which can be accessed using the next_result function to retrieve the next item from the stored results.*
+
+```rust,no_run
 impl Parser<DltProxyMessage> for DltParserProxy {
     fn parse<'b>(
         &mut self,
@@ -163,3 +169,5 @@ impl Parser<DltProxyMessage> for DltParserProxy {
     }
 }
 ```
+
+*The DltParserProxy implements the Parser trait to handle the parsing of DLT messages. It first checks if there are stored results to return the next item. If not, it creates a request with the next chunk of data to be parsed and sends it to the plugin. Upon receiving the response, it stores the results and returns the first item.*
