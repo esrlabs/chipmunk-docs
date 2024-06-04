@@ -20,7 +20,8 @@ Wasmtime is part of a suite of crates and tools designed around Wasm, Wasi, and 
 - Path configurations allow for specifying directory paths with different permissions, and paths on the guest side can be configured to appear with different names than on the host for added security.
 - The macro [bindgen!()](https://docs.rs/wasmtime/latest/wasmtime/component/macro.bindgen.html) macro on the host side is similar to `generate!()` from `wit-bindgen` and allow generating the types and the functions from `wit` files.
 - Nightly not required & No need to write unsafe code
-- Users can provide plugins written in any language compiled to WebAssembly as long as they comply with the contract defined in the WIT file. For Rust users, macros or project templates can simplify plugin development by requiring only logic for parsing or reading.  
+- Users can provide plugins written in any language compiled to WebAssembly as long as they comply with the contract defined in the WIT file. For Rust users, macros or project templates can simplify plugin development by requiring only logic for parsing or reading.
+- Error at compile time if the host and or the plugin doesn't fulfil `wit` file contract.
 - We can define a single API on the host for the producer functionality. This API can support standalone plugins with custom implementations for data source and parsing. Additionally, it can be used with composed source and parser plugins.
 - Plugins are compiled as libraries and don't have to have their own runtime and main function. 
 - Many Projects are using it and can be used for references. 
