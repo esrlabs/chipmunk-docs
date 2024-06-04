@@ -57,6 +57,7 @@ world parse {
 }
 
 ```
+
 ## Host Implementation:
 ```rust
 
@@ -203,11 +204,21 @@ impl Parser<PluginParseMessage> for WasmParser {
 
     }
 }
+
+// It's required to call drop on all instances of resources defined by plugins manually
+impl Drop for WasmParser {
+    fn drop(&mut self) {
+        if let Err(err) = self.parser_res.resource_drop(&mut self.store)
+        {
+            log::error!("Error while dropping resources: {err}");
+        }
+    }
+}
+
 ```
 
 ## Plugin (Guest) Implementation:
 ```rust
-
 // Same as `bindgen!` on the host with similar options
 generate!({...});
 
