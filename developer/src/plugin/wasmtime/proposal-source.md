@@ -4,7 +4,7 @@
 * Acting as a wrapper, the host implements the read trait and is provided as an argument to the native `BinaryByteSource` Struct.
 * With this simple approach it's possible to achieve a near-native performance with the plugin being only 2% slower than native. This is primarily due to all buffering being handled within the native part.
 
-## WIT File
+## WIT File:
 
 ```wit, ignore
 interface sourcing {
@@ -32,6 +32,7 @@ world source {
 
 ## Host Implementation:
 ```rust
+// Generate functions and types form `wit` file
 wasmtime::component::bindgen!({
     world: "source",
   ...
