@@ -24,7 +24,9 @@ Wasmtime is part of a suite of crates and tools designed around Wasm, Wasi, and 
 - Error at compile time if the host and or the plugin doesn't fulfil `wit` file contract.
 - We can define a single API on the host for the producer functionality. This API can support standalone plugins with custom implementations for data source and parsing. Additionally, it can be used with composed source and parser plugins.
 - Plugins are compiled as libraries and don't have to have their own runtime and main function. 
+- Versioning can be easily resolved by defining different `wit` files for each version. Any error with version-mismatching will be discovered early by loading the plugin file directly. There are many examples for versioning in `Zed Editor` and `Verloren Games`.
 - Many Projects are using it and can be used for references. 
   - [Zed Editor](https://github.com/zed-industries/zed): Uses the component model and compile the plugins in run-time. Good source to check how version compatibilities problem are solved.
   - [Veloren Game](https://github.com/veloren/veloren): Multiplayer voxel RPG. It uses the component model for the plugins as well.
+  - [Extism](https://github.com/extism/extism): Framework for building with WebAssembly. They have their own memory approach and have a lot of tweaking for wasmtime default configurations, besides using host functions as pointers. They don't use component model approach though.
   - [Lapce Editor](https://github.com/lapce/lapce): Using Wasi version 0.1 without the component model.
