@@ -17,6 +17,7 @@
         - [Advantages](plugin/wasmtime/advantages.md)
         - [Disadvantages](plugin/wasmtime/disadvantages.md)
         - [Notes & Tips](plugin/wasmtime/notes-tips.md)
+        - [Multi-Language Plugins](plugin/wasmtime/multi-language.md)
         - [Plugin Proposal](plugin/wasmtime/proposal.md) 
             - [Parser](plugin/wasmtime/proposal-parser.md) 
             - [Source](plugin/wasmtime/proposal-source.md) 
