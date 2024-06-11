@@ -4,6 +4,7 @@
 
 - [Architecture](architecture/README.md)
 - [Plugin System](plugin/README.md)
+    - [Life Sessions](plugin/life_sessions.md)
     - [Wasmer](plugin/wasmer/README.md)
         - [Proposal](plugin/wasmer/proposal.md) 
         - [Plugin Factory](plugin/wasmer/plugin-factory.md)
