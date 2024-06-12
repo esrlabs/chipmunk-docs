@@ -45,7 +45,7 @@ The need for a protocol becomes particularly acute in the context of chipmunk tr
 | UBJSON           |      | X    |   |     | X          | X      |       | X  |
 | FlexBuffers      | X    | X    | X | X   |            | X      |       | X  |
 
-> **Note**. JavaScript isn't supported by FlexBuffer by mainterner. Same situation with JavaScript and Cap'n Proto (there are some npm modules, but no any guarantue about stability)
+> **Note**: JavaScript is not supported by FlexBuffer maintainers. The same situation applies to JavaScript and Cap'n Proto (there are some npm modules, but no guarantee about stability).
 
 ## Technical overview
 
