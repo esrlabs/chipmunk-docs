@@ -23,3 +23,5 @@
             - [Parser](plugin/wasmtime/proposal-parser.md) 
             - [Source](plugin/wasmtime/proposal-source.md) 
             - [Producer & Composing](plugin/wasmtime/proposal-producer.md) 
+- [Tantivy](tantivy/README.md)
+    - [Architecture](tantivy/tantivy_architecture.md)
