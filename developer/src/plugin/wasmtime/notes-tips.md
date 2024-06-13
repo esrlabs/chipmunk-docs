@@ -8,3 +8,24 @@
 - Generally, it's possible to debug the plugins directly from the host for standard wasm plugins without the component model feature. Debugging must be enabled in the engine configuration. Here is a link to a [working example](https://docs.wasmtime.dev/examples-rust-debugging.html).
 - However, breakpoints cannot be resolved when using the component model with the `wasmtime::bindgen` macros on the host and `wit-bindgen::generate` on the guest. There is no documentation about this yet; it might become available in the future or with more in-depth investigation.
 - There is other possibilities for debugging using [Debugging WebAssembly with Core Dumps](https://docs.wasmtime.dev/examples-debugging-core-dumps.html), to create core-dumps on errors. Here is [an example](https://docs.wasmtime.dev/examples-rust-core-dumps.html).  
+
+## Versioning:
+
+- Versioning can be managed within the component model.
+- We can set the version for each package inside the `wit` file as follows:
+  ```wit
+  package documentation:example@1.0.1;
+  ```
+- In the host we can read the metadata of each component, including the package's name and version, before instantiating it:
+  ```rust,ignore
+  let component = Component::from_file(&engine, wasm_file_path)?;
+
+  // This provides us with the metadata of the component
+  let component_types = component.component_type();
+
+  println!("Printing component exports info:");
+  for export_infos in component_types.exports(&engine) {
+    // export_infos contain the package name and version as text
+    dbg!(export_infos);
+  }
+  ```
