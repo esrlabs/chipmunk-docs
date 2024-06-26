@@ -1,18 +1,19 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>documentation</title>
-        
-        <meta name="robots" content="noindex" />
-        
+        <meta name="robots" content="noindex">
 
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+        <!-- Custom HTML head -->
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
+        <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
@@ -21,8 +22,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -30,19 +30,18 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -58,78 +57,104 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
 
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="01_usage/commenting.html"><strong aria-hidden="true">1.3.</strong> Commenting</a></li><li class="expanded "><a href="01_usage/charts.html"><strong aria-hidden="true">1.4.</strong> Charts</a></li><li class="expanded "><a href="01_usage/concatenation.html"><strong aria-hidden="true">1.5.</strong> Concatenate Files</a></li><li class="expanded "><a href="01_usage/merging.html"><strong aria-hidden="true">1.6.</strong> Merging Files</a></li><li class="expanded "><a href="01_usage/time_range.html"><strong aria-hidden="true">1.7.</strong> Time Range</a></li><li class="expanded "><a href="01_usage/dlt.html"><strong aria-hidden="true">1.8.</strong> DLT support</a></li><li class="expanded "><a href="01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.9.</strong> Keyboard Shortcuts</a></li><li class="expanded "><a href="01_usage/command_line.html"><strong aria-hidden="true">1.10.</strong> Command line</a></li></ol></li><li class="expanded "><a href="02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="01_usage/searching_and_filtering.html"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="chapter-item expanded "><a href="01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="chapter-item expanded "><a href="01_usage/commenting.html"><strong aria-hidden="true">1.3.</strong> Commenting</a></li><li class="chapter-item expanded "><a href="01_usage/charts.html"><strong aria-hidden="true">1.4.</strong> Charts</a></li><li class="chapter-item expanded "><a href="01_usage/concatenation.html"><strong aria-hidden="true">1.5.</strong> Concatenate Files</a></li><li class="chapter-item expanded "><a href="01_usage/merging.html"><strong aria-hidden="true">1.6.</strong> Merging Files</a></li><li class="chapter-item expanded "><a href="01_usage/time_range.html"><strong aria-hidden="true">1.7.</strong> Time Range</a></li><li class="chapter-item expanded "><a href="01_usage/dlt.html"><strong aria-hidden="true">1.8.</strong> DLT support</a></li><li class="chapter-item expanded "><a href="01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.9.</strong> Keyboard Shortcuts</a></li><li class="chapter-item expanded "><a href="01_usage/command_line.html"><strong aria-hidden="true">1.10.</strong> Command line</a></li></ol></li><li class="chapter-item expanded "><a href="02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="chapter-item expanded "><a href="02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="chapter-item expanded "><a href="02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="chapter-item expanded "><a href="03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
 
-                        <h1 class="menu-title">documentation</h1>
+                    <h1 class="menu-title">documentation</h1>
 
-                        <div class="right-buttons">
-                            <a href="print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -137,10 +162,9 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -150,93 +174,115 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#user-guide" id="user-guide">User Guide</a></h1>
+                        <h1 id="user-guide"><a class="header" href="#user-guide">User Guide</a></h1>
 <p>This guide describes the most common usecases for using chipmunk.</p>
-<h2><a class="header" href="#a-href01_usagesearching_and_filteringsearching-and-filteringa" id="a-href01_usagesearching_and_filteringsearching-and-filteringa"><a href="01_usage/searching_and_filtering">Searching and Filtering</a></a></h2>
+<h2 id="searching-and-filtering"><a class="header" href="#searching-and-filtering"><a href="01_usage/searching_and_filtering">Searching and Filtering</a></a></h2>
 <img src="01_usage/../images/magnifying-search-lenses-tool.png" width="100" height="100">
 <p>Searching through huge logfiles</p>
-<h2><a class="header" href="#a-href01_usagebookmarksbookmarksa" id="a-href01_usagebookmarksbookmarksa"><a href="01_usage/bookmarks">Bookmarks</a></a></h2>
+<h2 id="bookmarks"><a class="header" href="#bookmarks"><a href="01_usage/bookmarks">Bookmarks</a></a></h2>
 <img src="01_usage/../images/bookmark_sign.png" width="100" height="100">
 <p>Add bookmarks to mark and remember important log entries. Jump between bookmarks with shortcuts (<code>j</code> and <code>k</code>).</p>
-<h2><a class="header" href="#a-href01_usagecommentingcommentinga" id="a-href01_usagecommentingcommentinga"><a href="01_usage/commenting">Commenting</a></a></h2>
+<h2 id="commenting"><a class="header" href="#commenting"><a href="01_usage/commenting">Commenting</a></a></h2>
 <img src="01_usage/../images/comment_sign.png" width="100" height="100">
 <p>Comment line(s) of the log to have additional information about specific places in the file.</p>
-<h2><a class="header" href="#a-href01_usagechartschartsa" id="a-href01_usagechartschartsa"><a href="01_usage/charts">Charts</a></a></h2>
+<h2 id="charts"><a class="header" href="#charts"><a href="01_usage/charts">Charts</a></a></h2>
 <p><img src="01_usage/../images/chart.png" alt="" /></p>
 <p>To better understand what's going on in a large logfile, it can be helpful to visualize data over
 time. <code>chipmunk</code> let's you define regular expressions that match a number and to use this expression
 to capture a value throughout a logfile.</p>
-<h2><a class="header" href="#a-href01_usageconcatenationconcatenating-logfilesa" id="a-href01_usageconcatenationconcatenating-logfilesa"><a href="01_usage/concatenation">Concatenating logfiles</a></a></h2>
+<h2 id="concatenating-logfiles"><a class="header" href="#concatenating-logfiles"><a href="01_usage/concatenation">Concatenating logfiles</a></a></h2>
 <img src="01_usage/../images/glue_together.png" width="100" height="100">
 <p><code>chipmunk</code> can combine multiple log file. This is useful for example
 when you just want to reassamble a logfile that were stored in parts.</p>
-<h2><a class="header" href="#a-href01_usagemergingmerginga" id="a-href01_usagemergingmerginga"><a href="01_usage/merging">Merging</a></a></h2>
+<h2 id="merging"><a class="header" href="#merging"><a href="01_usage/merging">Merging</a></a></h2>
 <p><img src="01_usage/../images/intersection.png" alt="" /></p>
 <p>Merging is useful if you have several log files e.g. from different
 devices/processors and you want combine them by merging according to their
 timestamps.</p>
-<h2><a class="header" href="#a-href01_usagetime_rangetime-rangesa" id="a-href01_usagetime_rangetime-rangesa"><a href="01_usage/time_range">Time Ranges</a></a></h2>
+<h2 id="time-ranges"><a class="header" href="#time-ranges"><a href="01_usage/time_range">Time Ranges</a></a></h2>
 <img src="01_usage/../images/stopwatch_sign.png" width="100" height="100">
-<p>To measure how much time passed between lines of a logfile <code>chipmunk</code> provides the <strong>Time Range</strong> Feature. </p>
-<h2><a class="header" href="#a-href01_usagedltdlt---diagnostic-log-and-tracea" id="a-href01_usagedltdlt---diagnostic-log-and-tracea"><a href="01_usage/dlt">DLT - Diagnostic Log and Trace</a></a></h2>
+<p>To measure how much time passed between lines of a logfile <code>chipmunk</code> provides the <strong>Time Range</strong> Feature.</p>
+<h2 id="dlt---diagnostic-log-and-trace"><a class="header" href="#dlt---diagnostic-log-and-trace"><a href="01_usage/dlt">DLT - Diagnostic Log and Trace</a></a></h2>
 <img src="01_usage/../images/dlt.png" width="200" height="200">
 <p>View and search and filter DLT files.
 Programming in Rust!</p>
-<h2><a class="header" href="#a-href01_usagekeyboard_shortcutskeyboard-shortcutsa" id="a-href01_usagekeyboard_shortcutskeyboard-shortcutsa"><a href="01_usage/keyboard_shortcuts">Keyboard shortcuts</a></a></h2>
+<h2 id="keyboard-shortcuts"><a class="header" href="#keyboard-shortcuts"><a href="01_usage/keyboard_shortcuts">Keyboard shortcuts</a></a></h2>
 <img src="01_usage/../images/keyboard.png" width="100" height="100">
 <p>An overview of all the keyboard shortcuts.</p>
-<h2><a class="header" href="#a-href01_usagecommand_linecommand-linea" id="a-href01_usagecommand_linecommand-linea"><a href="01_usage/command_line">Command line</a></a></h2>
+<h2 id="command-line"><a class="header" href="#command-line"><a href="01_usage/command_line">Command line</a></a></h2>
 <img src="01_usage/../images/command_line.png" width="100" height="100">
 <p>It's also possible to open a file with <code>Chipmunk</code> directly from the console.</p>
-<h1><a class="header" href="#searching-with-filters" id="searching-with-filters">Searching with Filters</a></h1>
-<p>Of course multiple searches are supported and filters can be saved and restored.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="searching-with-filters"><a class="header" href="#searching-with-filters">Searching with Filters</a></h1>
+<p>Of course multiple searches are supported and search requests can be saved and restored as filters.</p>
 <p><img src="01_usage/../images/multiple-filters.png" alt="" /></p>
-<h2><a class="header" href="#create-filter" id="create-filter">Create filter</a></h2>
+<h2 id="search"><a class="header" href="#search">Search</a></h2>
+<p>To search within the opened file, type into the area with the "Type a Search Request" placeholder and press <code>Enter</code>. The search results will be listed as they are with their whole line.</p>
+<blockquote>
+<p><strong>Note:</strong> The bottom left shows: Total lines of search results/Total lines of file</p>
+</blockquote>
+<h2 id="flags"><a class="header" href="#flags">Flags</a></h2>
+<p>The three buttons on the right side of the search request input are flags to modify the search. Active flags will have a blue background color.</p>
+<p><img src="01_usage/../images/Match_Case.png" alt="" /></p>
+<p>Starting from the left, the first flag defines a <code>Case Sensitive</code>-search. As the name suggests, this flag will make the search case-sesitive when active.</p>
+<p><img src="01_usage/../images/Match_Whole_Word.png" alt="" /></p>
+<p>The second flag defines a <code>Match Whole Word</code>-search. With this flag active, the search only lists search results, where the search request matches with just special characters or spaces surrounding the word.</p>
+<p><img src="01_usage/../images/Regex.png" alt="" /></p>
+<p>The third flag defines a <code>Use Regular Expression</code>-search. With this flag active it is possible to run searches with Regex (Regular expression).</p>
+<blockquote>
+<p><strong>Note:</strong> It is possible to de-/activate search flags while and after starting the search.</p>
+</blockquote>
+<h2 id="create-filter"><a class="header" href="#create-filter">Create filter</a></h2>
+<blockquote>
+<p><strong>Note:</strong> Saved search requests will be called <strong>filter</strong> from this point on</p>
+</blockquote>
 <p>Type a search request at the bottom and click the floppy disc icon next to the search input.</p>
 <blockquote>
-<p><strong>Keyboard shortcut:</strong> <code>Enter + Enter</code> or <code>Enter + CTRL/CMD</code> (depending on the OS)</p>
+<p><strong>Keyboard shortcut:</strong> <code>Enter + CTRL (Windows) / CMD (Mac/Linux)</code></p>
 </blockquote>
-<h2><a class="header" href="#edit-filter" id="edit-filter">Edit filter</a></h2>
+<h2 id="edit-filter"><a class="header" href="#edit-filter">Edit filter</a></h2>
 <p>Created filters can be modified afterwards by simply right-clicking on the desired filter and selecting <code>Edit</code>.</p>
 <p>When the edit is done press <code>Enter</code> to apply the changes.</p>
-<h2><a class="header" href="#remove-filter" id="remove-filter">Remove filter</a></h2>
+<h2 id="remove-filter"><a class="header" href="#remove-filter">Remove filter</a></h2>
 <p>Filters can be removed one by one by right-clicking on the filter and selecting <code>Remove</code>.</p>
-<p>Another way is to drag&amp;drop the filter on the bin icon at the bottom of the sidebar which appears as soon as the filter is picked up and moved around. </p>
+<p>Another way is to drag&amp;drop the filter on the bin icon at the bottom of the sidebar which appears as soon as the filter is picked up and moved around.</p>
 <p>To remove all created filters at once right-click on any filter and select <code>Remove all</code>.</p>
 <p><img src="01_usage/../images/remove_filter.gif" alt="" /></p>
-<h2><a class="header" href="#convert-into-chart" id="convert-into-chart">Convert into chart</a></h2>
+<h2 id="convert-into-chart"><a class="header" href="#convert-into-chart">Convert into chart</a></h2>
 <p>If a filter needs to be converted into a chart, right-click on the filter and select <code>Convert To Chart</code>.</p>
 <p>Another way to convert a filter into a chart is to drag&amp;drop the filter in the <strong>Charts</strong> section on the sidebar (only visible when at least one chart is already created).</p>
 <blockquote>
 <p><strong>Note:</strong> This option is only available for filters that consist of regular expressions.</p>
 </blockquote>
 <p><img src="01_usage/../images/convert_filter.gif" alt="" /></p>
-<h2><a class="header" href="#create-time-range" id="create-time-range">Create Time Range</a></h2>
+<h2 id="create-time-range"><a class="header" href="#create-time-range">Create Time Range</a></h2>
 <p>By selecting two or more filters time ranges can be created. To select multiple filters, hold <code>SHIFT</code> while left-clicking on the desired filters. After selecting the filters right-click on one of the selected filters and select <code>Create Time Range</code>.</p>
 <blockquote>
 <p><strong>Note:</strong> More about Time Range <a href="01_usage/searching_and_filtering.html#">here</a></p>
 </blockquote>
-<h2><a class="header" href="#en-disable-filter" id="en-disable-filter">En-/Disable filter</a></h2>
-<h3><a class="header" href="#in-search-results" id="in-search-results">In search results</a></h3>
+<h2 id="en-disable-filter"><a class="header" href="#en-disable-filter">En-/Disable filter</a></h2>
+<h3 id="in-search-results"><a class="header" href="#in-search-results">In search results</a></h3>
 <p>Filters can be en-/disabled in the search results by un-/checking the checkbox next to the corresponding filter.</p>
-<h3><a class="header" href="#in-search-results-and-output" id="in-search-results-and-output">In search results and output</a></h3>
+<h3 id="in-search-results-and-output"><a class="header" href="#in-search-results-and-output">In search results and output</a></h3>
 <p>Filters can also be en-/disabled completely by right-clicking the corresponding filter and select <code>Disable</code>.</p>
 <p>If the disabled area is visible due to a filter or any other search component is disabled, the filter can be dragged and dropped into the area directly.</p>
-<h2><a class="header" href="#save-and-load-filters" id="save-and-load-filters">Save and load filters</a></h2>
+<h2 id="save-and-load-filters"><a class="header" href="#save-and-load-filters">Save and load filters</a></h2>
 <p>To save the created filters and other search settings click on the <code>Save</code> button in the <strong>Manage</strong> section on the sidebar.</p>
 <p>To load previously created filters and other search settings click on the <code>Load</code> button in the <strong>Manage</strong> section on the sidebar.</p>
-<h1><a class="header" href="#bookmarks" id="bookmarks">Bookmarks</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bookmarks-1"><a class="header" href="#bookmarks-1">Bookmarks</a></h1>
 <p>Bookmarks can be used to pin down log entries that are important to the user.</p>
 <p><img src="01_usage/../images/bookmarks.png" alt="bookmarks" /></p>
 <p>Lines that are bookmarked will stick in the result view.</p>
-<h1><a class="header" href="#commenting" id="commenting">Commenting</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="commenting-1"><a class="header" href="#commenting-1">Commenting</a></h1>
 <p>There might be cases when you want to add a remark to a few places in the log. Simply mark lines, right-click and select <code>Comment</code> to add a comment to the specified lines.</p>
-<h3><a class="header" href="#reply-to-comments" id="reply-to-comments">Reply to comments</a></h3>
+<blockquote>
+<p><strong>NOTE:</strong> Commenting only works for the visible area at the start of marking lines. Scrolling out of the visible area while marking lines to comment is not supported.</p>
+</blockquote>
+<h3 id="reply-to-comments"><a class="header" href="#reply-to-comments">Reply to comments</a></h3>
 <p>In addition to creating comment, you can also reply to comments with no limit.</p>
-<h3><a class="header" href="#colors" id="colors">Colors</a></h3>
-<p>By changing the color of a comment the priority changes. The priority order is defined by default and cannot be changed. It is also possible to display only one specific color of comments.</p>
+<h3 id="colors"><a class="header" href="#colors">Colors</a></h3>
+<p>Comments can be grouped by color which can help when the view of comments is filtered by a specific color. The ordering of the comments is ascending by line numbers and can be changed to ordered by color (The order of the colors is predefined and cannot be edited).</p>
 <p><img src="01_usage/../images/comment.gif" alt="" /></p>
-<h1><a class="header" href="#charts" id="charts">Charts</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="charts-1"><a class="header" href="#charts-1">Charts</a></h1>
 <p>Getting a quick overview of what happened during a 24h-trace period can be daunting if the logfiles are huge (millions of log entries). A very neat way to get a quick overview is to show some graphs for what is happening.</p>
 <p><img src="01_usage/../images/temperatures_chart.png" alt="" /></p>
 <p>In this graph we captured processor workload for different cores. Any numerical value can be captured by using a regular expression with a group.</p>
@@ -250,35 +296,35 @@ Programming in Rust!</p>
 <p>This will match <code>measured: 42</code> and pull out the value <code>42</code>.
 Here is an example of how this looks in action.</p>
 <p><img src="01_usage/../images/capture_expression.gif" alt="" /></p>
-<h2><a class="header" href="#create-chart" id="create-chart">Create chart</a></h2>
+<h2 id="create-chart"><a class="header" href="#create-chart">Create chart</a></h2>
 <p>Type a search request at the bottom and click the graph icon next to the search input.</p>
 <blockquote>
 <p><strong>Keyboard shortcut</strong>: <code>Shift + Enter</code></p>
 </blockquote>
-<h2><a class="header" href="#edit-chart" id="edit-chart">Edit chart</a></h2>
+<h2 id="edit-chart"><a class="header" href="#edit-chart">Edit chart</a></h2>
 <p>Created charts can be modified afterwards by simply right-clicking on the desired chart and selecting <code>Edit</code>.</p>
 <p>When the edit is done press <code>Enter</code> to apply the changes.</p>
-<h2><a class="header" href="#remove-chart" id="remove-chart">Remove chart</a></h2>
+<h2 id="remove-chart"><a class="header" href="#remove-chart">Remove chart</a></h2>
 <p>Charts can be removed one by one by right-clicking on the chart and selecting <code>Remove</code>.</p>
-<p>Another way is to drag&amp;drop the chart on the bin icon at the bottom of the sidebar which appears as soon as the chart is picked up and moved around. </p>
+<p>Another way is to drag&amp;drop the chart on the bin icon at the bottom of the sidebar which appears as soon as the chart is picked up and moved around.</p>
 <p>To remove all created charts at once right-click on any chart and select <code>Remove all</code>.</p>
-<h2><a class="header" href="#convert-to-filter" id="convert-to-filter">Convert to filter</a></h2>
+<h2 id="convert-to-filter"><a class="header" href="#convert-to-filter">Convert to filter</a></h2>
 <p>If a chart needs to be converted into a chart, right-click on the chart and select <code>Convert To Filter</code>.</p>
 <p>Another way to convert a chart into a filter is to drag&amp;drop the chart in the <strong>Filters</strong> section on the sidebar.</p>
-<h2><a class="header" href="#en-disable-chart" id="en-disable-chart">En-/Disable chart</a></h2>
-<h3><a class="header" href="#in-search-results-1" id="in-search-results-1">In search results</a></h3>
+<h2 id="en-disable-chart"><a class="header" href="#en-disable-chart">En-/Disable chart</a></h2>
+<h3 id="in-search-results-1"><a class="header" href="#in-search-results-1">In search results</a></h3>
 <p>Charts can be en-/disabled in the search results by un-/checking the checkbox next to the corresponding chart.</p>
-<h3><a class="header" href="#in-search-results-and-output-1" id="in-search-results-and-output-1">In search results and output</a></h3>
+<h3 id="in-search-results-and-output-1"><a class="header" href="#in-search-results-and-output-1">In search results and output</a></h3>
 <p>Charts can also be en-/disabled completely by right-clicking the corresponding chart and select <code>Disable</code>.</p>
 <p>If the disabled area is visible due to a chart or any other search component is disabled, the chart can be dragged and dropped into the area directly.</p>
-<h2><a class="header" href="#save-and-load-charts" id="save-and-load-charts">Save and load charts</a></h2>
+<h2 id="save-and-load-charts"><a class="header" href="#save-and-load-charts">Save and load charts</a></h2>
 <p>To save the created charts and other search settings click on the <code>Save</code> button in the <strong>Manage</strong> section on the sidebar.</p>
 <p>To load previously created charts and other search settings click on the <code>Load</code> button in the <strong>Manage</strong> section on the sidebar.</p>
-<h1><a class="header" href="#assembling-files" id="assembling-files">Assembling files</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="assembling-files"><a class="header" href="#assembling-files">Assembling files</a></h1>
 <p>There is handy support for combining multiple files into one view. You simple drag &amp; drop the files you need into a fresh tab. Then select the concatenate option.</p>
 <p>Now you will have the chance to quickly check for a search expression to see if it is present in the dropped files. Here you can potentially include or exclude files.</p>
 <img src="01_usage/../images/concat.gif" width="700" height="400">
-<h1><a class="header" href="#merging" id="merging">Merging</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="merging-1"><a class="header" href="#merging-1">Merging</a></h1>
 <p>To help developers to deal with multiple logfiles, chipmunk can automatically detect timestamps and merge logs from multiple files sorting the lines of the files by their timestamp.</p>
 <p>Here is an animation to show how it works:</p>
 <p><img src="01_usage/../images/merging.gif" alt="" /></p>
@@ -298,16 +344,16 @@ Here is an example of how this looks in action.</p>
 <p><strong>NOTE:</strong> In the output window you can still see which line is from which file by the colors or hover with the mouse over them which will show the filename.</p>
 </blockquote>
 <p><img src="01_usage/../images/merging_sample.gif" alt="" /></p>
-<h1><a class="header" href="#time-range" id="time-range">Time Range</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="time-range"><a class="header" href="#time-range">Time Range</a></h1>
 <p><code>Chipmunk</code> provides the measurement of  time that passed between lines and makes it possible to compare them in a chart.</p>
-<h2><a class="header" href="#create-and-remove-time-ranges" id="create-and-remove-time-ranges">Create and remove time ranges</a></h2>
-<h3><a class="header" href="#start-time-range" id="start-time-range">Start time range</a></h3>
+<h2 id="create-and-remove-time-ranges"><a class="header" href="#create-and-remove-time-ranges">Create and remove time ranges</a></h2>
+<h3 id="start-time-range"><a class="header" href="#start-time-range">Start time range</a></h3>
 <p>By right-clicking on a line either select the option <code>Open time measurement view</code> or when it already is open <code>Start Time Range</code>.</p>
-<h3><a class="header" href="#add-time-range" id="add-time-range">Add time range</a></h3>
+<h3 id="add-time-range"><a class="header" href="#add-time-range">Add time range</a></h3>
 <p>If you want to another time range to the current selection right-click and select <code>Add time range &lt;line begin&gt;-&lt;line end&gt;</code>.</p>
-<h3><a class="header" href="#close-time-range" id="close-time-range">Close time range</a></h3>
-<p>The currently opened time range can be closed by right-clicking and selecting <code>Close time range &lt;line begin&gt;-&lt;line end&gt;</code>. </p>
-<h3><a class="header" href="#remove-time-range" id="remove-time-range">Remove time range</a></h3>
+<h3 id="close-time-range"><a class="header" href="#close-time-range">Close time range</a></h3>
+<p>The currently opened time range can be closed by right-clicking and selecting <code>Close time range &lt;line begin&gt;-&lt;line end&gt;</code>.</p>
+<h3 id="remove-time-range"><a class="header" href="#remove-time-range">Remove time range</a></h3>
 <p>Time ranges can easily be removed by right-clicking on a line which is part of a time range select:</p>
 <ul>
 <li>Remove a single range: <code>Remove this range</code></li>
@@ -315,11 +361,11 @@ Here is an example of how this looks in action.</p>
 <li>Remove all: <code>Remove all ranges</code></li>
 </ul>
 <p><img src="01_usage/../images/time_range.gif" alt="" /></p>
-<h2><a class="header" href="#analyze-time-ranges" id="analyze-time-ranges">Analyze time ranges</a></h2>
+<h2 id="analyze-time-ranges"><a class="header" href="#analyze-time-ranges">Analyze time ranges</a></h2>
 <p>In the tabs below select <code>Time Measurement</code> to see all of the created ranges.</p>
 <p>On the bottom left the format to detect timestamps is shown.
 On the bottom right the <code>...</code> symbol offers options to add, remove and set default timestamp formats.</p>
-<h3><a class="header" href="#view-modes" id="view-modes">View modes</a></h3>
+<h3 id="view-modes"><a class="header" href="#view-modes">View modes</a></h3>
 <p>There are two modes available on viewing the charts:</p>
 <ol>
 <li><code>Scaled</code> (default)</li>
@@ -334,20 +380,23 @@ On the bottom right the <code>...</code> symbol offers options to add, remove an
 <p>NOTE: To change the view mode right-click anywhere in the <code>Time Measurement</code> area and select <code>Switch to: ...</code></p>
 </blockquote>
 <p><img src="01_usage/../images/time_measurement.gif" alt="" /></p>
-<h1><a class="header" href="#dlt-support" id="dlt-support">DLT support</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dlt-support"><a class="header" href="#dlt-support">DLT support</a></h1>
 <p>The Diagnostic Log and Trace AUTOSAR format is widely used in the automotive industry and is a binary log format. <code>chipmunk</code> can understand and process DLT content in large quantities.</p>
 <p><img src="01_usage/../images/dlt-support.png" alt="" /></p>
-<h2><a class="header" href="#import-file" id="import-file">Import file</a></h2>
+<h2 id="import-file"><a class="header" href="#import-file">Import file</a></h2>
 <p>When opening a dlt file, you are prompted with this dialog. Here you can also provide the path to a <strong>FIBEX</strong> file that contains descriptions for you non-verbose messages.</p>
+<blockquote>
+<p><strong>NOTE:</strong> Referred Fibex files will be restored for each file it was referred to</p>
+</blockquote>
 <p>This can be expanded so can select what components or loglevels you want to include. Note that you are presented with a statistics of how many log messages exist e.g. for a component with a certain log level.</p>
 <p><img src="01_usage/../images/import_dlt.gif" alt="" /></p>
 <p>The columns can be configured by right-clicking in one of the column titles or hover over one of the column titles and left-click the <code>...</code>. Then you can filter out columns and adjust colors.</p>
 <p><img src="01_usage/../images/dlt_columns.gif" alt="" /></p>
-<h1><a class="header" href="#keyboard-shortcuts" id="keyboard-shortcuts">Keyboard Shortcuts</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="keyboard-shortcuts-1"><a class="header" href="#keyboard-shortcuts-1">Keyboard Shortcuts</a></h1>
 <p>Important to most developers: a good and intuitive set of keyboard shortcuts.</p>
 <p><img src="01_usage/../images/shortcuts.png" alt="" /></p>
 <p>Just hit <code>?</code> and you should get the overview documentation.</p>
-<h1><a class="header" href="#command-line" id="command-line">Command Line</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="command-line-1"><a class="header" href="#command-line-1">Command Line</a></h1>
 <p>Here's a way to open a file with <code>Chipmunk</code> directly from the command line.</p>
 <p>Run Chipmunk and open the <code>File</code> section of the toolbar at the top and install <code>cm</code>.</p>
 <blockquote>
@@ -356,34 +405,37 @@ On the bottom right the <code>...</code> symbol offers options to add, remove an
 <p><img src="01_usage/../images/cm.png" alt="" /></p>
 <p><strong>Now you're ready to go!</strong></p>
 <p>Simply open the command line of your choice and type:</p>
-<p><code>cm &lt;filename&gt;</code></p>
-<link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
-<h1><a class="header" href="#extending-chipmunk-with-plugins" id="extending-chipmunk-with-plugins">Extending Chipmunk with plugins</a></h1>
+<p><code>cm [...filename]</code></p>
+<blockquote>
+<p><strong>NOTE:</strong> Opening with multiple files will result in one tab for each file</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
+<h1 id="extending-chipmunk-with-plugins"><a class="header" href="#extending-chipmunk-with-plugins">Extending Chipmunk with plugins</a></h1>
 <p>In this section everything about plugins will be explained as well as how to create custom plugins for <strong>Chipmunk</strong>.</p>
-<h2><a class="header" href="#about-plugins" id="about-plugins">About plugins</a></h2>
+<h2 id="about-plugins"><a class="header" href="#about-plugins">About plugins</a></h2>
 <p>In computing, a plug-in (or plugin, add-in, addin, add-on, or addon) is a software component that adds a specific feature to an existing computer program. When a program supports plug-ins, it enables customization.<sup>[1]</sup></p>
 <p>Plugins in <strong>Chipmunk</strong> extend the default functionalities making it possible to receive and analyze data from different kind of sources (e.g. serial connections).</p>
-<h2><a class="header" href="#plugin-structure" id="plugin-structure">Plugin structure</a></h2>
+<h2 id="plugin-structure"><a class="header" href="#plugin-structure">Plugin structure</a></h2>
 <p><strong>Chipmunk</strong> plugins mainly consist of a <strong>render</strong> and a <strong>process</strong> part.</p>
-<h3><a class="header" href="#render" id="render">Render</a></h3>
+<h3 id="render"><a class="header" href="#render">Render</a></h3>
 <p>The render part is responsible for the visual part of the plugin itself. With the help of Angular components are created using Typescript, HTML and CSS. The component will be automatically included in <strong>Chipmunk</strong> after building the plugin.</p>
-<h3><a class="header" href="#process" id="process">Process</a></h3>
+<h3 id="process"><a class="header" href="#process">Process</a></h3>
 <p>The process part is responsible for the background processing of the plugin and modifying the output stream.</p>
-<h2><a class="header" href="#chipmunk-store" id="chipmunk-store">Chipmunk Store</a></h2>
+<h2 id="chipmunk-store"><a class="header" href="#chipmunk-store">Chipmunk Store</a></h2>
 <p>The <strong>Chipmunk Store</strong> provides different plugins to install on <strong>Chipmunk</strong>. By simply clicking on the desired plugin and then on <em>install</em> will add the plugin to <strong>Chipmunk</strong>. The <strong>Chipmunk Store</strong> also provides the option to upgrade the already installed plugin to a newer version.</p>
 <img src="02_extensions/../images/chipmunk_store.png"/>
-<h2><a class="header" href="#references" id="references">References</a></h2>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
 <hr/>
-<sup>[1]</sup> https://en.wikipedia.org/wiki/Plug-in_(computing)<link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
-<h1><a class="header" href="#create-a-plugin" id="create-a-plugin">Create a plugin</a></h1>
+<sup>[1]</sup> https://en.wikipedia.org/wiki/Plug-in_(computing)<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
+<h1 id="create-a-plugin"><a class="header" href="#create-a-plugin">Create a plugin</a></h1>
 <p>This section provides a step by step guide on how to get <strong>Chipmunk</strong> and the <strong>Quickstart</strong> repository as well as how to build them.
 The repository <strong>Quickstart</strong> provides a variety of plugins which can be copied and modifed to create new plugins.</p>
-<h2><a class="header" href="#installation-of-plugins-and-chipmunk" id="installation-of-plugins-and-chipmunk">Installation of plugins and Chipmunk</a></h2>
+<h2 id="installation-of-plugins-and-chipmunk"><a class="header" href="#installation-of-plugins-and-chipmunk">Installation of plugins and Chipmunk</a></h2>
 <p>First off clone the create a folder for <strong>Chipmunk</strong> and <strong>Quickstart</strong> by typing the following commands:</p>
 <pre><code>mkdir chipmunk-developing
 cd chipmunk-developing
 </code></pre>
-<p>After creating the folder, clone both the <strong>Chipmunk</strong> and the <strong>Quickstart</strong> repository into the folder and navigate into it. </p>
+<p>After creating the folder, clone both the <strong>Chipmunk</strong> and the <strong>Quickstart</strong> repository into the folder and navigate into it.</p>
 <pre><code>git clone https://github.com/esrlabs/chipmunk.git
 git clone https://github.com/esrlabs/chipmunk-quickstart.git
 cd chipmunk-quickstart
@@ -432,7 +484,7 @@ export CHIPMUNK_PLUGINS_NO_UPDATES=true
 <p>To enable logs in the Console making it easier to debug:</p>
 <pre><code>export CHIPMUNK_DEV_LOGLEVEL=ENV</code></pre>
 <p>Now <strong>Chipmunk</strong> is ready to be executed.</p>
-<h2><a class="header" href="#rake-commands" id="rake-commands">Rake commands</a></h2>
+<h2 id="rake-commands"><a class="header" href="#rake-commands">Rake commands</a></h2>
 <p>The following Rake commands are vital for the compilation of <strong>Chipmunk</strong>, which is why in this section the most important rake commands are going to be mentioned and described.</p>
 <pre><code>rake start                                          # Start Chipmunk
 rake full_pipeline                                  # Build Chipmunk (whole application)
@@ -441,13 +493,13 @@ rake build[./plugins/plugin.helloworld, 1.0.1]      # Build plugin with version
 rake 'build[./plugins/plugin.helloworld, 1.0.1]'    # Build plugin with version (Windows) 
 </code></pre>
 <p>If a new update of <strong>Chipmunk</strong> is available, first run <code>rake clobber</code> (to remove all compiled files) and then <code>rake full_pipeline</code> to update and re-build <strong>Chipmunk</strong>.</p>
-<p>The next section gives a thorough explanation of the default plugins provided by <strong>Quickstart</strong> </p>
-<link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
+<p>The next section gives a thorough explanation of the default plugins provided by <strong>Quickstart</strong></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
 <script src="../scripts/script.tab.js">
 </script>
-<h1><a class="header" href="#default-plugins" id="default-plugins">Default plugins</a></h1>
+<h1 id="default-plugins"><a class="header" href="#default-plugins">Default plugins</a></h1>
 <p>In the first part of this section all default plugins provided by <strong>Quickstart</strong> will be thoroughly explained as of what they do and explain each line. In the second part other useful things such as popup windows or notifications will demonstrated with examples.</p>
-<h2><a class="header" href="#hello-world" id="hello-world">Hello World</a></h2>
+<h2 id="hello-world"><a class="header" href="#hello-world">Hello World</a></h2>
 <p>The plugin <strong>Hello World</strong> creates a button which prints 'Hello World!' in the debug console whenever it is clicked.</p>
 <pre><code>&#9500;&#9472;&#9472; process
 &#9474;   &#9500;&#9472;&#9472; src
@@ -534,7 +586,7 @@ export * from './lib/module';       // Export the module file of the plugin
 <blockquote>
 <p><strong>IMPORTANT</strong>: Exporting the component and module is required by Angular and necessary for the plugin to work!</p>
 </blockquote>
-<h2><a class="header" href="#row-columns" id="row-columns">Row Columns</a></h2>
+<h2 id="row-columns"><a class="header" href="#row-columns">Row Columns</a></h2>
 <p>The plugin <strong>Row Columns</strong> creates a custom render for CSV files to show its conent in columns.</p>
 <pre><code>&#9492;&#9472;&#9472; render
     &#9500;&#9472;&#9472; src
@@ -711,7 +763,7 @@ const columns = new Columns();
 export { columns };
 </code></pre>
 </div>
-<h2><a class="header" href="#row-parser" id="row-parser">Row Parser</a></h2>
+<h2 id="row-parser"><a class="header" href="#row-parser">Row Parser</a></h2>
 <p>The plugin <strong>Row Parser</strong> creates a custom render for DLT files to colorize keywords.</p>
 <pre><code>&#9492;&#9472;&#9472; render
     &#9500;&#9472;&#9472; src
@@ -779,8 +831,8 @@ if (gate === undefined) {
 }
 </code></pre>
 </div>
-<h2><a class="header" href="#selection-parser" id="selection-parser">Selection Parser</a></h2>
-<p>The plugin <strong>Selection Parser</strong> creates a parser that parses the selected string in the output console. The parser can be selected by right-clicking and opening the option menu. </p>
+<h2 id="selection-parser"><a class="header" href="#selection-parser">Selection Parser</a></h2>
+<p>The plugin <strong>Selection Parser</strong> creates a parser that parses the selected string in the output console. The parser can be selected by right-clicking and opening the option menu.</p>
 <pre><code>&#9492;&#9472;&#9472; render
     &#9500;&#9472;&#9472; src
     &#9474;   &#9492;&#9472;&#9472; index.ts
@@ -850,7 +902,7 @@ if (gate === undefined) {
 }
 </code></pre>
 </div>
-<h2><a class="header" href="#plugin-with-settings" id="plugin-with-settings">Plugin with Settings</a></h2>
+<h2 id="plugin-with-settings"><a class="header" href="#plugin-with-settings">Plugin with Settings</a></h2>
 <p>The plugin <strong>Plugin with Settings</strong> gives the opportunity to create custom settings for plugins.</p>
 <p>At the top there is an input area to search for specific settings quickly. On the left side are the sections of the settings.</p>
 <p>To create settings the first step is to create the component for the setting. In this example <code>SomestringSetting</code> will create an input field which takes a string in.
@@ -1132,7 +1184,7 @@ if (gate === undefined) {
 }
 </code></pre>
 </div>
-<h2><a class="header" href="#shell" id="shell">Shell</a></h2>
+<h2 id="shell"><a class="header" href="#shell">Shell</a></h2>
 <p>The plugin <strong>Shell</strong> creates an input in which console commands can be typed whereas the output will be directed into the output section of Chipmunk.</p>
 <pre><code>&#9500;&#9472;&#9472; process
 &#9474;   &#9500;&#9472;&#9472; src
@@ -1169,7 +1221,7 @@ if (gate === undefined) {
     &#9500;&#9472;&#9472; tsconfig.spec.json
     &#9492;&#9472;&#9472; tslint.json
 </code></pre>
-<h3><a class="header" href="#process-1" id="process-1">Process</a></h3>
+<h3 id="process-1"><a class="header" href="#process-1">Process</a></h3>
 <div class="tab shp">
   <button class="tablinks" onclick="openCode(event, 'shp_env.logger.parameters.ts')">env.logger.parameters.ts</button>
   <button class="tablinks" onclick="openCode(event, 'shp_env.logger.ts')">env.logger.ts</button>
@@ -1907,7 +1959,7 @@ class StreamsService extends EventEmitter {
 export default (new StreamsService());
 </code></pre>
 </div>
-<h3><a class="header" href="#render-1" id="render-1">Render</a></h3>
+<h3 id="render-1"><a class="header" href="#render-1">Render</a></h3>
 <div class="tab shr">
   <button class="tablinks" onclick="openCode(event, 'shr_public_api.ts')">public_api.ts</button>
   <button class="tablinks" onclick="openCode(event, 'shr_module.ts')">module.ts</button>
@@ -2548,12 +2600,12 @@ export class SidebarVerticalComponent implements AfterViewInit, OnDestroy {
 &lt;/div&gt;
 </code></pre>
 </div>
-<h1><a class="header" href="#additional-features" id="additional-features">Additional features</a></h1>
+<h1 id="additional-features"><a class="header" href="#additional-features">Additional features</a></h1>
 <p>In this part a few additional features will be explained with an example as well as a line by line description of the example code.</p>
-<h2><a class="header" href="#popup" id="popup">Popup</a></h2>
+<h2 id="popup"><a class="header" href="#popup">Popup</a></h2>
 <p>A popup is a window that appears on the most upper layer of Chipmunk and blocks any kind of interaction outside of the popup until closed. It can be closed by either clicking the 'x' button on the upper right
 To create and remove popups, the <a href="02_extensions/05_api.html#api"><code>API</code></a> is required. <strong>Chipmunk</strong> provides an <a href="02_extensions/05_api.html#api"><code>API</code></a> which gives access to major core events and different modules. The <a href="02_extensions/05_api.html#api"><code>API</code></a> for the <strong>UI</strong> is named <code>chipmunk.client.toollkit</code>.</p>
-<h3><a class="header" href="#example" id="example">Example</a></h3>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
 <p>In this example, a plugin with a button will be created. When the button is pressed, a popup with a message (provided by the plugin) will be shown along with a button to close the popup window.</p>
 <p><strong>Popup component</strong></p>
 <div class="tab popup">
@@ -2636,9 +2688,9 @@ export class ExampleComponent {
 <blockquote>
 <p>NOTE: For more information how the <code>API</code> works check out <a href="02_extensions/05_api.html#api"><code>Chapter 5 - API</code></a></p>
 </blockquote>
-<h2><a class="header" href="#notifications" id="notifications">Notifications</a></h2>
+<h2 id="notifications"><a class="header" href="#notifications">Notifications</a></h2>
 <p>To create notifications, the <a href="02_extensions/05_api.html#api"><code>API</code></a> is required. <strong>Chipmunk</strong> provides an <a href="02_extensions/05_api.html#api"><code>API</code></a> which gives access to major core events and different modules. The <a href="02_extensions/05_api.html#api"><code>API</code></a> for the <strong>UI</strong> is named <code>chipmunk.client.toollkit</code>.</p>
-<h3><a class="header" href="#example-1" id="example-1">Example</a></h3>
+<h3 id="example-1"><a class="header" href="#example-1">Example</a></h3>
 <p>The following example shows an example plugin with a line of text and a button which creates a notification.</p>
 <div class="tab not">
   <button class="tablinks" onclick="openCode(event, 'not_template.html')">template.html</button>
@@ -2687,9 +2739,9 @@ export class ExampleComponent {
 <blockquote>
 <p>NOTE: For more information how the <code>API</code> works check out <a href="02_extensions/05_api.html#api"><code>Chapter 5 - API</code></a></p>
 </blockquote>
-<h2><a class="header" href="#logger" id="logger">Logger</a></h2>
+<h2 id="logger"><a class="header" href="#logger">Logger</a></h2>
 <p>To use the logger, the <a href="02_extensions/05_api.html#api"><code>API</code></a> is required. <strong>Chipmunk</strong> provides an <a href="02_extensions/05_api.html#api"><code>API</code></a> which gives access to major core events and different modules. The <a href="02_extensions/05_api.html#api"><code>API</code></a> for the <strong>UI</strong> is named <code>chipmunk.client.toollkit</code>.</p>
-<h3><a class="header" href="#example-2" id="example-2">Example</a></h3>
+<h3 id="example-2"><a class="header" href="#example-2">Example</a></h3>
 <p>In the example below a plugin is created which logs a message as soon as the plugin is created.</p>
 <div class="tab log">
   <button class="tablinks" onclick="openCode(event, 'log_template.html')">template.html</button>
@@ -2724,18 +2776,18 @@ export class ExampleComponent {
 <blockquote>
 <p>NOTE: For more information how the <code>API</code> works check out <a href="02_extensions/05_api.html#api"><code>Chapter 5 - API</code></a></p>
 </blockquote>
-<h1><a class="header" href="#debugging" id="debugging">Debugging</a></h1>
-<h2><a class="header" href="#debugging-in-the-ui-part" id="debugging-in-the-ui-part">Debugging in the UI part</a></h2>
+<h1 id="debugging"><a class="header" href="#debugging">Debugging</a></h1>
+<h2 id="debugging-in-the-ui-part"><a class="header" href="#debugging-in-the-ui-part">Debugging in the UI part</a></h2>
 <p>The developer mode can be very helpful at developing (especially for the development in the <strong>UI</strong>). To enable the developing mode, type the following command in the command line, in which the application is started:</p>
 <p><code>export CHIPMUNK_DEVELOPING_MODE=ON</code></p>
 <p>The developer mode will create a debugger console with which console outputs made in the <strong>UI</strong> can be seen.</p>
-<p>Another feature which the debugger provides is creating breakpoints as well as the ability to select HTML elements which then will be highlighted in the code along with its attributes. </p>
+<p>Another feature which the debugger provides is creating breakpoints as well as the ability to select HTML elements which then will be highlighted in the code along with its attributes.</p>
 <blockquote>
 <p>NOTE: The keyword <code>debugger</code> serves as a breakpoint in the UI part.</p>
 </blockquote>
-<h2><a class="header" href="#debugging-in-the-process-part" id="debugging-in-the-process-part">Debugging in the process part</a></h2>
+<h2 id="debugging-in-the-process-part"><a class="header" href="#debugging-in-the-process-part">Debugging in the process part</a></h2>
 <p>To debug in the process part, simply put breakpoints in the <code>.js</code> files located in the folder  <code>releases</code> from <code>Chipmunk Quickstart</code></p>
-<h3><a class="header" href="#example-3" id="example-3">Example</a></h3>
+<h3 id="example-3"><a class="header" href="#example-3">Example</a></h3>
 <p>In the example below a plugin is created which has a breakpoint in the constructor, so the application stops as soon as the application is created.</p>
 <div class="tab dev">
   <button class="tablinks" onclick="openCode(event, 'dev_template.html')">template.html</button>
@@ -2767,13 +2819,16 @@ export class ExampleComponent {
 }
 </code></pre>
 </div>
-<link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" type="text/css" href="../styles/styles.extension.css">
 <script src="../scripts/script.tab.js">
 </script>
-<h1 id="api">API</h1>
+<h1 id="api"><a class="header" href="#api">API</a></h1>
 <p>Chipmunk provides an <code>API</code> for the <strong>UI</strong>, which gives access to major core events, UI of the core and plugin IPC (required for communication beteween the host and render of plugin). The <code>API</code> for the <strong>UI</strong> is named <code>chipmunk.client.toollkit</code> and holds different modules.</p>
-<h2 id="howAPI">1. How to use the API</h2>
-<h3 id="api1"> Method 1: Bind the api to the component </h3>
+<blockquote>
+<p><strong>NOTE:</strong> This API will soon be deprecated</p>
+</blockquote>
+<h2 id="howAPI"><a class="header" href="#howAPI">1. How to use the API</a></h2>
+<h3 id="api1"><a class="header" href="#api1"> Method 1: Bind the api to the component </a></h3>
 <p>One way to use the API is by binding it to the main component of the plugin (<code>component.ts</code>).</p>
 <blockquote>
 <p><strong>IMPORTANT</strong>: When the <code>API</code> is bound to component directly, the <code>API</code> is bound to the life cycle of the component and gets destroyed together with the component. It is advised to bind the <code>API</code> to the component if it is going to be used locally only by the component itself and nothing else. If the <code>API</code> should be used globally (in scope of the plugin), the second method is more suited.</p>
@@ -2852,7 +2907,7 @@ export * from './module';
 <blockquote>
 <p><strong>NOTE</strong>: The lines commented with <em>[optional]</em> will be covered in <a href="02_extensions/04_api.html#cse">ControllerSessionsEvents</a> and serves in this example just for demonstration</p>
 </blockquote>
-<h3 id="api2"> Method 2: Create a service for the api</h3>
+<h3 id="api2"><a class="header" href="#api2"> Method 2: Create a service for the api</a></h3>
 <p>Another way to make use of the <code>API</code> is by creating a service, which can be accessed from any part of the plugin. To make it work, it is important to export the service file in <code>public_api.ts</code>, the library management file of the plugin (generated by Angular automatically).
 To demonstrate how to use the <code>API</code>, each time the session changes the session ID will be printed out in the console.</p>
 <blockquote>
@@ -2950,8 +3005,8 @@ export { Service };
 <blockquote>
 <p><strong>IMPORTANT</strong>: It's important to note, that the <code>Service</code> HAS to be exported to be used globally (in scope of the plugin)</p>
 </blockquote>
-<h1 id="api_inter"> API - Interfaces</h1>
-<h2 id="iapi">2. IAPI interface</h2>
+<h1 id="api_inter"><a class="header" href="#api_inter"> API - Interfaces</a></h1>
+<h2 id="iapi"><a class="header" href="#iapi">2. IAPI interface</a></h2>
 <pre><code class="language-Javascript">// Typescript
 
 export interface IAPI {
@@ -2987,9 +3042,9 @@ export interface IAPI {
     removePopup: (guid: string) =&gt; void;
     /**
      * Adds sidebar title injection.
-     * This method doesn't need &quot;delete&quot; method, because sidebar injection would be
+     * This method doesn't need "delete" method, because sidebar injection would be
      * removed with a component, which used as sidebar tab render.
-     * In any way developer could define an argument as &quot;undefined&quot; to force removing
+     * In any way developer could define an argument as "undefined" to force removing
      * injection from the title of sidebar
      * @param {IComponentDesc} component - description of Angular component
      * @returns {void}
@@ -3014,13 +3069,13 @@ export interface IAPI {
     addNotification: (notification: INotification) =&gt; void;
 }
 </code></pre>
-<h3 id="iapi_getIPC">getIPC</h3>
+<h3 id="iapi_getIPC"><a class="header" href="#iapi_getIPC">getIPC</a></h3>
 <pre><code class="language-Javascript">    /**
      * @returns {PluginIPC} Returns PluginAPI object for host and render plugin communication
      */
     getIPC: () =&gt; PluginIPC | undefined;
 </code></pre>
-<h3><a class="header" href="#example---getipc" id="example---getipc"> Example - getIPC</a></h3>
+<h3 id="example---getipc"><a class="header" href="#example---getipc"> Example - getIPC</a></h3>
 <p>In this example the <code>API</code> will be assigned to the instance variable of the main component of the plugin</p>
 <div class="tab getipc">
   <button class="tablinks" onclick="openCode(event, 'getipc_template.html')">template.html</button>
@@ -3081,13 +3136,13 @@ export * from './component';
 export * from './module';
 </code></pre>
 </div>
-<h3 id="iapi_getActive">getActiveSessionId</h3>
+<h3 id="iapi_getActive"><a class="header" href="#iapi_getActive">getActiveSessionId</a></h3>
 <pre><code class="language-Javascript">    /**
      * @returns {string} ID of active stream (active tab)
      */
     getActiveSessionId: () =&gt; string;
 </code></pre>
-<h2><a class="header" href="#example---getactivesessionid" id="example---getactivesessionid">Example - getActiveSessionId</a></h2>
+<h2 id="example---getactivesessionid"><a class="header" href="#example---getactivesessionid">Example - getActiveSessionId</a></h2>
 <p>In this example the session id will be shown in the plugin</p>
 <div class="tab asid">
   <button class="tablinks" onclick="openCode(event, 'asid_template.html')">template.html</button>
@@ -3149,7 +3204,7 @@ export * from './component';
 export * from './module';
 </code></pre>
 </div>
-<h3 id="iapi_getVPEH">getViewportEventsHub</h3>
+<h3 id="iapi_getVPEH"><a class="header" href="#iapi_getVPEH">getViewportEventsHub</a></h3>
 <pre><code class="language-Javascript">    /**
      * Returns hub of viewport events (resize, update and so on)
      * Should be used to track state of viewport
@@ -3157,7 +3212,7 @@ export * from './module';
      */
     getViewportEventsHub: () =&gt; ControllerViewportEvents;
 </code></pre>
-<h3><a class="header" href="#example---getviewporteventshub" id="example---getviewporteventshub">Example - getViewportEventsHub</a></h3>
+<h3 id="example---getviewporteventshub"><a class="header" href="#example---getviewporteventshub">Example - getViewportEventsHub</a></h3>
 <div class="tab vpe">
   <button class="tablinks" onclick="openCode(event, 'vpe_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'vpe_styles.less')">styles.less</button>
@@ -3223,7 +3278,7 @@ export * from './component';
 export * from './module';
 </code></pre>
 </div>
-<h3 id="getSEH">getSessionsEventsHub</h3>
+<h3 id="getSEH"><a class="header" href="#getSEH">getSessionsEventsHub</a></h3>
 <pre><code class="language-Javascript">    /**
      * Returns hub of sessions events (open, close, changed and so on)
      * Should be used to track active sessions
@@ -3231,7 +3286,7 @@ export * from './module';
      */
     getSessionsEventsHub: () =&gt; ControllerSessionsEvents;
 </code></pre>
-<h3><a class="header" href="#example---getsessionseventshub" id="example---getsessionseventshub">Example - getSessionsEventsHub</a></h3>
+<h3 id="example---getsessionseventshub"><a class="header" href="#example---getsessionseventshub">Example - getSessionsEventsHub</a></h3>
 <p>This example shows the usage of <code>getSessionsEventsHub</code> by creating methods to be called when a session <em>opens/closes/changes</em>:</p>
 <div class="tab seh">
   <button class="tablinks" onclick="openCode(event, 'seh_template.html')">template.html</button>
@@ -3325,14 +3380,14 @@ export { Service };
 <blockquote>
 <p><strong>IMPORTANT</strong>: It's important to note, that the <code>Service</code> <strong>HAS</strong> to be exported to be used globally (in scope of the plugin)</p>
 </blockquote>
-<h3 id="iapi_addPopup">addPopup</h3>
+<h3 id="iapi_addPopup"><a class="header" href="#iapi_addPopup">addPopup</a></h3>
 <pre><code class="language-Javascript">    /**
      * Open popup
      * @param {IPopup} popup - description of popup
      */
     addPopup: (popup: IPopup) =&gt; string;
 </code></pre>
-<h3><a class="header" href="#example---addpopup" id="example---addpopup">Example - addPopup</a></h3>
+<h3 id="example---addpopup"><a class="header" href="#example---addpopup">Example - addPopup</a></h3>
 <p>To create a popup, a plugin to host the popup and the popup itself have to be defined.</p>
 <div class="tab addpop">
   <button class="tablinks" onclick="openCode(event, 'addpop_pop_template.html')">/popup/template.html</button>
@@ -3432,14 +3487,14 @@ export * from './component';
 export * from './module';
 </code></pre>
 </div>
-<h3 id="iapi_rmPop">removePopup</h3>
+<h3 id="iapi_rmPop"><a class="header" href="#iapi_rmPop">removePopup</a></h3>
 <pre><code class="language-Javascript">    /**
      * Closes popup
      * @param {string} guid - id of existing popup
      */
     removePopup: (guid: string) =&gt; void;
 </code></pre>
-<h3><a class="header" href="#example---removepopup" id="example---removepopup">Example - removePopup</a></h3>
+<h3 id="example---removepopup"><a class="header" href="#example---removepopup">Example - removePopup</a></h3>
 <p>To remove the popup, one way is to create a button on the popup, which calls the method to remove the popup upon clicking.</p>
 <div class="tab rempop">
   <button class="tablinks" onclick="openCode(event, 'rempop_pop_template.html')">/popup/template.html</button>
@@ -3546,19 +3601,19 @@ export * from './component';
 export * from './module';
 </code></pre>
 </div>
-<h3 id="iapi_title">setSidebarTitleInjection</h3>
+<h3 id="iapi_title"><a class="header" href="#iapi_title">setSidebarTitleInjection</a></h3>
 <pre><code class="language-Javascript">    /**
      * Adds sidebar title injection.
-     * This method doesn't need &quot;delete&quot; method, because sidebar injection would be
+     * This method doesn't need "delete" method, because sidebar injection would be
      * removed with a component, which used as sidebar tab render.
-     * In any way developer could define an argument as &quot;undefined&quot; to force removing
+     * In any way developer could define an argument as "undefined" to force removing
      * injection from the title of sidebar
      * @param {IComponentDesc} component - description of Angular component
      * @returns {void}
      */
     setSidebarTitleInjection: (component: IComponentDesc | undefined) =&gt; void;
 </code></pre>
-<h3><a class="header" href="#example---setsidebartitleinjection" id="example---setsidebartitleinjection">Example - setSidebarTitleInjection</a></h3>
+<h3 id="example---setsidebartitleinjection"><a class="header" href="#example---setsidebartitleinjection">Example - setSidebarTitleInjection</a></h3>
 <p>In this example a button will be created in the title of the sidebar which will log a message when clicked.</p>
 <div class="tab title">
   <button class="tablinks" onclick="openCode(event, 'title_template.html')">/title/template.html</button>
@@ -3654,7 +3709,7 @@ export * from './component';
 export * from './module';
 </code></pre>
 </div>
-<h3 id="iapi_osa">openSidebarApp</h3>
+<h3 id="iapi_osa"><a class="header" href="#iapi_osa">openSidebarApp</a></h3>
 <pre><code class="language-Javascript">    /**
      * Opens sidebar app by ID
      * @param {string} appId - id of app
@@ -3662,7 +3717,7 @@ export * from './module';
      */
     openSidebarApp: (appId: string, silence: boolean) =&gt; void;
 </code></pre>
-<h3><a class="header" href="#example---opensidebarapp" id="example---opensidebarapp">Example - openSidebarApp</a></h3>
+<h3 id="example---opensidebarapp"><a class="header" href="#example---opensidebarapp">Example - openSidebarApp</a></h3>
 <p>In this example the plugin <code>serial</code> will be opened and set as the active plugin 2 seconds after the <code>example</code> plugin is opened.</p>
 <div class="tab osa">
   <button class="tablinks" onclick="openCode(event, 'osa_template.html')">template.html</button>
@@ -3725,7 +3780,7 @@ export * from './component';
 export * from './module';
 </code></pre>
 </div>
-<h3 id="iapi_ota">openToolbarApp</h3>
+<h3 id="iapi_ota"><a class="header" href="#iapi_ota">openToolbarApp</a></h3>
 <pre><code class="language-Javascript">    /**
      * Opens toolbar app by ID
      * @param {string} appId - id of app
@@ -3733,7 +3788,7 @@ export * from './module';
      */
     openToolbarApp: (appId: string, silence: boolean) =&gt; void;
 </code></pre>
-<h3><a class="header" href="#example---opentoolbarapp" id="example---opentoolbarapp">Example - openToolbarApp</a></h3>
+<h3 id="example---opentoolbarapp"><a class="header" href="#example---opentoolbarapp">Example - openToolbarApp</a></h3>
 <p>In this example the <code>xterminal</code> app will be opened and set as active 2 seconds after the <code>example</code> plugin is opened.</p>
 <div class="tab ota">
   <button class="tablinks" onclick="openCode(event, 'ota_template.html')">template.html</button>
@@ -3796,14 +3851,14 @@ export * from './component';
 export * from './module';
 </code></pre>
 </div>
-<h3 id="iapi_addNot">addNotification</h3>
+<h3 id="iapi_addNot"><a class="header" href="#iapi_addNot">addNotification</a></h3>
 <pre><code class="language-Javascript">    /**
      * Adds new notification
      * @param {INotification} notification - notification to be added
      */
     addNotification: (notification: INotification) =&gt; void;
 </code></pre>
-<h3><a class="header" href="#example---addnotification" id="example---addnotification">Example - addNotification</a></h3>
+<h3 id="example---addnotification"><a class="header" href="#example---addnotification">Example - addNotification</a></h3>
 <p>In this example the <code>xterminal</code> app will be opened and set as active 2 seconds after the <code>example</code> plugin is opened.</p>
 <p>The following example shows an example plugin with a line of text and a button which creates a notification.</p>
 <div class="tab not">
@@ -3877,11 +3932,11 @@ export * from './component';
 export * from './module';
 </code></pre>
 </div>
-<h1 id="abstract">3. Abstract classes</h1>
+<h1 id="abstract"><a class="header" href="#abstract">3. Abstract classes</a></h1>
 <p><code>chipmunk.client.toolkit</code> provides different kinds of abstract classes from which classes can extend from.</p>
-<h2 id="parsers">3.1 Parsers</h2>
+<h2 id="parsers"><a class="header" href="#parsers">3.1 Parsers</a></h2>
 <p>These abstract classes allow to create <strong>parsers</strong> that can modify the output in the rows (e.g: change text color, convert into different format).</p>
-<table><thead><tr><th>Parser name</th><th>Description</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Parser name</th><th>Description</th></tr></thead><tbody>
 <tr><td><a href="02_extensions/04_api.html#rbp"><code>RowBoundParser</code></a></td><td>Parse only data received from the process part of the plugin</td></tr>
 <tr><td><a href="02_extensions/04_api.html#rcp"><code>RowCommomParser</code></a></td><td>Parse data from any kind of source</td></tr>
 <tr><td><a href="02_extensions/04_api.html#rtp"><code>RowTypedParser</code></a></td><td>Parse only specific type of source (e.g. DLT)</td></tr>
@@ -3890,7 +3945,7 @@ export * from './module';
 <tr><td></td><td><a href="02_extensions/04_api.html#trrCol"><code>TypedRowRenderAPIColumns</code></a> - show stream line as columns</td></tr>
 <tr><td></td><td><a href="02_extensions/04_api.html#trrExt"><code>TypedRowRenderAPIExternal</code></a> - use custom Angular component as stream</td></tr>
 </tbody></table>
-<h3 id="rbp">RowBoundParser</h3>
+</div><h3 id="rbp"><a class="header" href="#rbp">RowBoundParser</a></h3>
 <pre><code class="language-Javascript">// Typescript
 
 /**
@@ -3918,7 +3973,7 @@ export declare abstract class RowBoundParser {
     abstract parse(str: string, themeTypeRef: EThemeType, row: IRowInfo): string;
 }
 </code></pre>
-<h3><a class="header" href="#example---rowboundparser" id="example---rowboundparser">Example - RowBoundParser</a></h3>
+<h3 id="example---rowboundparser"><a class="header" href="#example---rowboundparser">Example - RowBoundParser</a></h3>
 <div class="tab rbp">
   <button class="tablinks active" onclick="openCode(event, 'rbp_index.ts')">index.ts</button>
 </div>
@@ -3940,7 +3995,7 @@ if (gate === undefined) {                                                       
 }
 </code></pre>
 </div>
-<h3 id="rcp"> RowCommomParser </h3>
+<h3 id="rcp"><a class="header" href="#rcp"> RowCommomParser </a></h3>
 <pre><code class="language-Javascript">// Typescript
 
 /**
@@ -3961,7 +4016,7 @@ export declare abstract class RowCommonParser {
     abstract parse(str: string, themeTypeRef: EThemeType, row: IRowInfo): string;
 }
 </code></pre>
-<h3><a class="header" href="#example---rowcommonparser" id="example---rowcommonparser">Example - RowCommonParser</a></h3>
+<h3 id="example---rowcommonparser"><a class="header" href="#example---rowcommonparser">Example - RowCommonParser</a></h3>
 <div class="tab rcp">
   <button class="tablinks active" onclick="openCode(event, 'rcp_index.ts')">index.ts</button>
 </div>
@@ -3983,7 +4038,7 @@ if (gate === undefined) {                                                       
 }
 </code></pre>
 </div>
-<h3 id="rtp"> RowTypedParser </h3>
+<h3 id="rtp"><a class="header" href="#rtp"> RowTypedParser </a></h3>
 <pre><code class="language-Javascript">// Typescript
 
 /**
@@ -4005,14 +4060,14 @@ export declare abstract class RowTypedParser {
      */
     abstract parse(str: string, themeTypeRef: EThemeType, row: IRowInfo): string;
     /**
-     * This method will be called for each line of stream before method &quot;parse&quot; will be called.
+     * This method will be called for each line of stream before method "parse" will be called.
      * @param {string} sourceName - name of source
-     * @returns {boolean} - true - method &quot;parse&quot; will be called for this line; false - parser will be ignored
+     * @returns {boolean} - true - method "parse" will be called for this line; false - parser will be ignored
      */
     abstract isTypeMatch(sourceName: string): boolean;
 }
 </code></pre>
-<h3><a class="header" href="#example---rowtypedparser" id="example---rowtypedparser">Example - RowTypedParser</a></h3>
+<h3 id="example---rowtypedparser"><a class="header" href="#example---rowtypedparser">Example - RowTypedParser</a></h3>
 <div class="tab rtp">
   <button class="tablinks active" onclick="openCode(event, 'rtp_index.ts')">index.ts</button>
 </div>
@@ -4039,13 +4094,13 @@ if (gate === undefined) {                                                       
 }
 </code></pre>
 </div>
-<h3 id="sp"> SelectionParser</h3>
+<h3 id="sp"><a class="header" href="#sp"> SelectionParser</a></h3>
 <pre><code class="language-Javascript">// Typescript
 
 /**
  * Allows creating parser of selection.
  * Name of the parser will be shown in the context menu of selection. If a user selects parser,
- * parser will be applied to selection and result will be shown on tab &quot;Details&quot;
+ * parser will be applied to selection and result will be shown on tab "Details"
  * @usecases decoding selected content; converting selected content into human-readable format
  * @requirements TypeScript or JavaScript
  * @examples encrypting of data, Base64string parser, HEX converting into a string and so on
@@ -4067,7 +4122,7 @@ export declare abstract class SelectionParser {
     abstract getParserName(str: string): string | undefined;
 }
 </code></pre>
-<h3><a class="header" href="#example---selectionparser" id="example---selectionparser">Example - SelectionParser</a></h3>
+<h3 id="example---selectionparser"><a class="header" href="#example---selectionparser">Example - SelectionParser</a></h3>
 <div class="tab sp">
   <button class="tablinks active" onclick="openCode(event, 'sp_index.ts')">index.ts</button>
 </div>
@@ -4095,7 +4150,7 @@ if (gate === undefined) {                                                       
 }
 </code></pre>
 </div>
-<h3 id="trr"> TypedRowRender </h3>
+<h3 id="trr"><a class="header" href="#trr"> TypedRowRender </a></h3>
 <pre><code class="language-Javascript">// Typescript
 
 /**
@@ -4109,9 +4164,9 @@ if (gate === undefined) {                                                       
  */
 export declare abstract class TypedRowRender&lt;T&gt; {
     /**
-     * This method will be called for each line of a stream before method &quot;parse&quot; will be called.
+     * This method will be called for each line of a stream before method "parse" will be called.
      * @param {string} sourceName - name of source
-     * @returns {boolean} - true - method &quot;parse&quot; will be called for this line; false - parser will be ignored
+     * @returns {boolean} - true - method "parse" will be called for this line; false - parser will be ignored
      */
     abstract isTypeMatch(sourceName: string): boolean;
     /**
@@ -4129,13 +4184,13 @@ export declare abstract class TypedRowRender&lt;T&gt; {
     abstract getAPI(): T;
 }
 </code></pre>
-<h3><a class="header" href="#example---typedrowrender" id="example---typedrowrender">Example - TypedRowRender</a></h3>
+<h3 id="example---typedrowrender"><a class="header" href="#example---typedrowrender">Example - TypedRowRender</a></h3>
 <blockquote>
 <p><strong>IMPORTANT</strong>: It's important to note, that <code>TypedRowRender</code> <strong>cannot</strong> be used by itself, but instead used to create <code>TypedRowRenderAPIColumns</code> and <code>TypedRowRenderAPIExternal</code> renderers. For examples and further information check out the sections <a href="02_extensions/04_api.html#trrCol">TypedRowRenderAPIColumns</a> and <a href="02_extensions/04_api.html#trrExt">TypedRowRenderAPIExternal</a></p>
 </blockquote>
-<h2 id="ident"> Identification </h2>
+<h2 id="ident"><a class="header" href="#ident"> Identification </a></h2>
 <p>The abstract classes listed below are necessary for the <strong>identification and registration</strong> of the plugin.</p>
-<h3 id="ngModule">PluginNgModule</h3>
+<h3 id="ngModule"><a class="header" href="#ngModule">PluginNgModule</a></h3>
 <pre><code class="language-Javascript">// Typescript
 
 /**
@@ -4150,7 +4205,7 @@ export declare class PluginNgModule {
     constructor(name: string, description: string) {}
 }
 </code></pre>
-<h3><a class="header" href="#example---pluginngmodule" id="example---pluginngmodule">Example - PluginNgModule</a></h3>
+<h3 id="example---pluginngmodule"><a class="header" href="#example---pluginngmodule">Example - PluginNgModule</a></h3>
 <p>This example shows how to create a simple plugin along with the usage of <code>PluginNgModule</code>:</p>
 <div class="tab ng">
   <button class="tablinks" onclick="openCode(event, 'ng_template.html')">template.html</button>
@@ -4200,7 +4255,7 @@ export class PluginModule extends Toolkit.PluginNgModule {      // <-- The modul
 }
 </code></pre>
 </div>
-<h3 id="pls">PluginService</h3>
+<h3 id="pls"><a class="header" href="#pls">PluginService</a></h3>
 <pre><code class="language-Javascript">// Typescript
 
 /**
@@ -4231,7 +4286,7 @@ export declare abstract class PluginService {
     getAPI(): IAPI | undefined;
 }
 </code></pre>
-<h3><a class="header" href="#example---pluginservice" id="example---pluginservice">Example - PluginService</a></h3>
+<h3 id="example---pluginservice"><a class="header" href="#example---pluginservice">Example - PluginService</a></h3>
 <p>This example shows how to create a service class, that extends from <code>PluginService</code>, which allows global access to the <code>API</code> by import the service class:</p>
 <div class="tab pls">
   <button class="tablinks" onclick="openCode(event, 'pls_template.html')">template.html</button>
@@ -4316,7 +4371,7 @@ export { Service };
 <blockquote>
 <p><strong>IMPORTANT</strong>: It's important to note, that the <code>Service</code> HAS to be exported to be used globally (in scope of the plugin)</p>
 </blockquote>
-<h3 id="psg"> PluginServiceGate </h3>
+<h3 id="psg"><a class="header" href="#psg"> PluginServiceGate </a></h3>
 <pre><code class="language-Javascript">// Typescript
 
 /**
@@ -4330,7 +4385,7 @@ export { Service };
  *     parser: new MyParserOfEachRow(),
  * });
  * =================================================================================================
- * This code snippet registered a new parser for output &quot;MyParserOfEachRow&quot;
+ * This code snippet registered a new parser for output "MyParserOfEachRow"
  * @usecases should be used for none-angular plugins to register parsers
  * @class PluginServiceGate
  */
@@ -4349,7 +4404,7 @@ export declare abstract class PluginServiceGate {
     abstract getRequireFunc(): TRequire;
 }
 </code></pre>
-<h3><a class="header" href="#example---pluginservicegate" id="example---pluginservicegate">Example - PluginServiceGate</a></h3>
+<h3 id="example---pluginservicegate"><a class="header" href="#example---pluginservicegate">Example - PluginServiceGate</a></h3>
 <p>This example shows how to create a parser, that puts '--&gt;' in front of every line in the output.</p>
 <div class="tab psge">
   <button class="tablinks active" onclick="openCode(event, 'psge_index.ts')">index.ts</button>
@@ -4373,7 +4428,7 @@ if (gate === undefined) {                                                       
 </code></pre>
 </div>
 <!--
-<h3 id="trrCol"> TypedRowRenderAPIColumns </h3>
+<h3 id="trrCol"><a class="header" href="#trrCol"> TypedRowRenderAPIColumns </a></h3>
 
 ```Javascript
 // Typescript
@@ -4416,7 +4471,7 @@ export abstract class TypedRowRenderAPIColumns {
 }
 ```
 
-<h3><a class="header" href="#example---typedrowrenderapicolumns" id="example---typedrowrenderapicolumns">Example - TypedRowRenderAPIColumns</a></h3>
+<h3 id="example---typedrowrenderapicolumns"><a class="header" href="#example---typedrowrenderapicolumns">Example - TypedRowRenderAPIColumns</a></h3>
 
 <div class="tab trrc">
   <button class="tablinks" onclick="openCode(event, 'trrc_template.html')">template.html</button>
@@ -4545,7 +4600,7 @@ export class ExampleRowColumns extends Toolkit.TypedRowRender<ExampleRowColumnsA
         if (fileName.search(/\.txt/) > -1) {
             return true;
         }
-    }    
+    }
     public getAPI(): ExampleRowColumnsAPI {                                             // Getter method for API
         return this._api;
     }
@@ -4555,7 +4610,7 @@ export class ExampleRowColumns extends Toolkit.TypedRowRender<ExampleRowColumnsA
 
 > **NOTE**: To test this plugin, create a `.txt` file with some text in it and the words being seperated by `\t`.
 
-<h3 id="trrExt"> TypedRowRenderAPIExternal </h3>
+<h3 id="trrExt"><a class="header" href="#trrExt"> TypedRowRenderAPIExternal </a></h3>
 
 ```Javascript
 // Typescript
@@ -4590,7 +4645,7 @@ export abstract class TypedRowRenderAPIExternal {
 }
 ```
 
-<h3><a class="header" href="#example---typedrowrenderapiexternal" id="example---typedrowrenderapiexternal">Example - TypedRowRenderAPIExternal</a></h3>
+<h3 id="example---typedrowrenderapiexternal"><a class="header" href="#example---typedrowrenderapiexternal">Example - TypedRowRenderAPIExternal</a></h3>
 
 **User-Interface UI**
 
@@ -4773,7 +4828,7 @@ import * as Toolkit from 'chipmunk.client.toolkit';
 })
 export class SidebarVerticalComponent {
     @Input() public api: Toolkit.IAPI;                  // Assign API to instance variable
-    @Input() public session: string;                    // Assign session ID to instance variable 
+    @Input() public session: string;                    // Assign session ID to instance variable
     constructor() {
         this.api.getIPC().send({                        // Send session ID to the process part
             stream: this.session,
@@ -4811,7 +4866,7 @@ p {
 import PluginIPCService, { IPCMessages } from 'chipmunk.plugin.ipc';
 class ExampleBackend {
     public static count = 0;                                                                                    // Create counting variable
-    constructor(){      
+    constructor(){
         this._onIncomeRenderIPCMessage = this._onIncomeRenderIPCMessage.bind(this);                             // Bind method for subscription
         PluginIPCService.subscribe(IPCMessages.PluginInternalMessage, this._onIncomeRenderIPCMessage);          // Subscribe to messages from the UI
     }
@@ -4837,7 +4892,7 @@ export default new ExampleBackend();
 </div>
 -->
 <!--
-<h2 id="ipc">3.2 IPC </h2>
+<h2 id="ipc"><a class="header" href="#ipc">3.2 IPC </a></h2>
 
 These abstract classes allow to create different methods to establish communication between the **process part** and the **UI**.
 
@@ -4887,26 +4942,26 @@ export declare abstract class IPC {
 }
 ```
 
-<h3><a class="header" href="#example---ipc" id="example---ipc">Example - IPC</a></h3>
+<h3 id="example---ipc"><a class="header" href="#example---ipc">Example - IPC</a></h3>
 
 This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **process part**.
 
-> **NOTE**: To make use of `IPC` add `IAPI` in the code, since `IAPI` holds the method `getIPC()` which provides an instance of `IPC` with the methods already implemented. (For more information: <a href="02_extensions/04_api.html#iapi">IAPI</a>) 
+> **NOTE**: To make use of `IPC` add `IAPI` in the code, since `IAPI` holds the method `getIPC()` which provides an instance of `IPC` with the methods already implemented. (For more information: <a href="02_extensions/04_api.html#iapi">IAPI</a>)
 
-<h2><a class="header" href="#ui" id="ui">UI</a></h2>
+<h2 id="ui"><a class="header" href="#ui">UI</a></h2>
 
 <div class="tab ipc">
   <button class="tablinks" onclick="openCode(event, 'ipc_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'ipc_styles.less')">styles.less</button>
   <button class="tablinks active" onclick="openCode(event, 'ipc_service.ts')">service.ts</button>
   <button class="tablinks" onclick="openCode(event, 'ipc_module.ts')">module.ts</button>
-  <button class="tablinks" onclick="openCode(event, 'ipc_public_api.ts')">public_api.ts</button> 
+  <button class="tablinks" onclick="openCode(event, 'ipc_public_api.ts')">public_api.ts</button>
 </div>
 
 <div id="ipc_template.html" class="tabcontent ipc">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
-&lt;button (click)=&quot;_ng_onRequest()">'request' to backend&lt;/button&gt    &lt;!-- Create button for request-type of message --&gt; 
+&lt;button (click)=&quot;_ng_onRequest()">'request' to backend&lt;/button&gt    &lt;!-- Create button for request-type of message --&gt;
 &lt;button (click)=&quot;_ng_onSend()">'send' to backend&lt;/button&gt          &lt;!-- Create button for send-type of message --&gt;
 </code></pre>
 </div>
@@ -5009,7 +5064,7 @@ import { NgModule } from '@angular/core';                   // Import the Angula
 import { Example } from './component';                      // Import the class of the plugin, mentioned in the components.ts file
 import * as Toolkit from 'chipmunk.client.toolkit';         // Import Chipmunk Toolkit to let the module class inherit
 @NgModule({
-    declarations: [ Example ],                              // Declare which components, directives and pipes belong to the module 
+    declarations: [ Example ],                              // Declare which components, directives and pipes belong to the module
     imports: [ ],                                           // Imports other modules with the components, directives and pipes that components in the current module need
     exports: [ Example ]                                    // Provides services that the other application components can use
 })
@@ -5034,7 +5089,7 @@ export { Service };
 
 > **NOTE**: Using a service file is one of two ways to make use of the `API` (check out _How to use the API_ in <a href="02_extensions/04_api.html#api">API</a> for more information)
 
-<h2><a class="header" href="#process-part" id="process-part">process part</a></h2>
+<h2 id="process-part"><a class="header" href="#process-part">process part</a></h2>
 
 <div class="tab ipcB">
   <button class="tablinks active" onclick="openCode(event, 'ipc_main.ts')">main.ts</button>
@@ -5076,8 +5131,8 @@ const app: Plugin = new Plugin();
 </code></pre>
 </div>
 -->
-<h1 id="api_class">4. Classes </h1>
-<h2 id="cse">4.1 ControllerSessionsEvents </h2>
+<h1 id="api_class"><a class="header" href="#api_class">4. Classes </a></h1>
+<h2 id="cse"><a class="header" href="#cse">4.1 ControllerSessionsEvents </a></h2>
 <pre><code class="language-Javascript">// Typescript
 
 /**
@@ -5181,8 +5236,8 @@ export class ControllerSessionsEvents {
         };
     }
 </code></pre>
-<h3><a class="header" href="#example---controllersessionevents" id="example---controllersessionevents">Example - ControllerSessionEvents</a></h3>
-<p>This example shows how to call specific methods when a session is created/closed/changed: </p>
+<h3 id="example---controllersessionevents"><a class="header" href="#example---controllersessionevents">Example - ControllerSessionEvents</a></h3>
+<p>This example shows how to call specific methods when a session is created/closed/changed:</p>
 <div class="tab cse">
   <button class="tablinks" onclick="openCode(event, 'cse_template.html')">template.html</button>
   <button class="tablinks" onclick="openCode(event, 'cse_styles.less')">styles.less</button>
@@ -5252,7 +5307,7 @@ export * from './module';
 </code></pre>
 </div>
 <!--
-<h2 id="ipc_service">4.2 PluginIPCService </h2>
+<h2 id="ipc_service"><a class="header" href="#ipc_service">4.2 PluginIPCService </a></h2>
 
 ```Javascript
 // Typescript
@@ -5334,11 +5389,11 @@ export declare class PluginIPCService extends EventEmitter {
 }
 ```
 
-<h3><a class="header" href="#example-4" id="example-4">Example</a></h3>
+<h3 id="example-4"><a class="header" href="#example-4">Example</a></h3>
 
 This example shows a **Complex plugin** with two buttons demonstrating how to communicate **UI** <-> **process part**.
 
-<h2><a class="header" href="#ui-1" id="ui-1">UI</a></h2>
+<h2 id="ui-1"><a class="header" href="#ui-1">UI</a></h2>
 
 <div class="tab pipc">
   <button class="tablinks" onclick="openCode(event, 'pIPC_template.html')">template.html</button>
@@ -5444,7 +5499,7 @@ button {
 <div id="pIPC_template.html" class="tabcontent pipc">
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
-&lt;button (click)=&quot;_ng_onRequest()"&gt;'request' to backend&lt;/button&gt;    &lt;!-- Create button for request-type of message --&gt; 
+&lt;button (click)=&quot;_ng_onRequest()"&gt;'request' to backend&lt;/button&gt;    &lt;!-- Create button for request-type of message --&gt;
 &lt;button (click)=&quot;_ng_onSend()"&gt;'send' to backend&lt;/button&gt;          &lt;!-- Create button for send-type of message --&gt;
 </code></pre>
 </div>
@@ -5456,7 +5511,7 @@ export * from './module';
 </code></pre>
 </div>
 
-<h2><a class="header" href="#process-part-1" id="process-part-1">process part</a></h2>
+<h2 id="process-part-1"><a class="header" href="#process-part-1">process part</a></h2>
 
 <div class="tab pipcB">
   <button class="tablinks active" onclick="openCode(event, 'pIPC_main.ts')">main.ts</button>
@@ -5498,7 +5553,7 @@ const app: Plugin = new Plugin();
 </code></pre>
 </div>
 
-<h2 id="service_conf">4.3 ServiceConfig </h2>
+<h2 id="service_conf"><a class="header" href="#service_conf">4.3 ServiceConfig </a></h2>
 
 The class `ServiceConfig` offers a variety of methods to read and write from an external file. This feature can be used to save and load settings.
 
@@ -5557,9 +5612,9 @@ export declare class ServiceConfig {
 }
 ```
 
-<h3><a class="header" href="#example---serviceconfig" id="example---serviceconfig">Example - ServiceConfig</a></h3>
+<h3 id="example---serviceconfig"><a class="header" href="#example---serviceconfig">Example - ServiceConfig</a></h3>
 
-<h2><a class="header" href="#ui-2" id="ui-2">UI</a></h2>
+<h2 id="ui-2"><a class="header" href="#ui-2">UI</a></h2>
 
 <div class="tab sc">
   <button class="tablinks" onclick="openCode(event, 'sc_template.html')">template.html</button>
@@ -5573,7 +5628,7 @@ export declare class ServiceConfig {
 <pre><code class="language-HTML">
 &lt;p&gt;Example&lt;/p&gt;
 &lt;button (click)=&quot;_ng_onRead()"&gt;Read settings&lt;/button&gt;                               &lt;!-- Create button read settings --&gt;
-&lt;button (click)=&quot;_ng_onWrite({id: 1234, name: 'Example'})"&gt;Write settings&lt;/button&gt;  &lt;!-- Create button to write settings--&gt;            
+&lt;button (click)=&quot;_ng_onWrite({id: 1234, name: 'Example'})"&gt;Write settings&lt;/button&gt;  &lt;!-- Create button to write settings--&gt;
 </code></pre>
 </div>
 
@@ -5684,7 +5739,7 @@ export * from './module';
 </code></pre>
 </div>
 
-<h2><a class="header" href="#process-part-2" id="process-part-2">process part</a></h2>
+<h2 id="process-part-2"><a class="header" href="#process-part-2">process part</a></h2>
 
 <div class="tab scB">
   <button class="tablinks active" onclick="openCode(event, 'sc_main.ts')">main.ts</button>
@@ -5749,7 +5804,7 @@ const app: Plugin = new Plugin();
 </code></pre>
 </div>
 -->
-<h2 id="logger">4.4 Logger </h2>
+<h2 id="logger"><a class="header" href="#logger">4.4 Logger </a></h2>
 <p>The <code>API</code> also offers a logger to log any kind of errors or warnings in the <strong>UI</strong>.</p>
 <pre><code class="language-Javascript">// Typescript
 
@@ -5805,7 +5860,7 @@ export default class Logger {
     private _log;
 }
 </code></pre>
-<h3><a class="header" href="#example---logger" id="example---logger">Example - Logger</a></h3>
+<h3 id="example---logger"><a class="header" href="#example---logger">Example - Logger</a></h3>
 <p>In the example below a plugin is created which logs a message.</p>
 <div class="tab log">
   <button class="tablinks" onclick="openCode(event, 'log_template.html')">template.html</button>
@@ -5866,20 +5921,18 @@ export * from './module';
 </code></pre>
 </div>
 <p><a href="02_extensions/04_api.html#api">Go to top</a></p>
-<h1><a class="header" href="#developing-for-chipmunk" id="developing-for-chipmunk">Developing for chipmunk</a></h1>
-<h1><a class="header" href="#create-indexer-operation-with-neon-binding" id="create-indexer-operation-with-neon-binding">create indexer operation with neon binding</a></h1>
-<h2><a class="header" href="#rust-implement-streaming-api" id="rust-implement-streaming-api">Rust: implement streaming API</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="developing-for-chipmunk"><a class="header" href="#developing-for-chipmunk">Developing for chipmunk</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="create-indexer-operation-with-neon-binding"><a class="header" href="#create-indexer-operation-with-neon-binding">create indexer operation with neon binding</a></h1>
+<h2 id="rust-implement-streaming-api"><a class="header" href="#rust-implement-streaming-api">Rust: implement streaming API</a></h2>
 <p>Since most operations triggered in chipmunk can take some time (mostly working on big files or
 streams), all functions should use events/messages to inform the chipmunk about progress, results,
 errors and warnings. Below is a description of how to achieve that.</p>
 <p>your function should take 2 additional parameters:</p>
-<pre><pre class="playpen"><code class="language-rust edition2018">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust edition2018"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>update_channel: mpsc::Sender&lt;IndexingResults&lt;T&gt;&gt;,
 shutdown_rx: Option&lt;mpsc::Receiver&lt;()&gt;&gt;,
-<span class="boring">}
-</span></code></pre></pre>
+<span class="boring">}</span></code></pre></pre>
 <p>both are rust mpsc channels that can be used for communication between the client using your
 function and the function itself. the <code>update_channel</code> is the sender-end of a mpsc channel which
 means that your function can use it to send messages to the function-user.
@@ -5887,16 +5940,13 @@ So what should/can your function send? There are 2 basic categories of events yo
 <code>IndexingProgress&lt;T&gt;</code> messages or <code>Notification</code> messages. We use the <code>Result</code> type to make the
 distinction. Kind of like the <code>Either</code> type in haskell. Either we send an <code>Ok(event)</code> or an
 <code>Err(notification)</code>.</p>
-<pre><pre class="playpen"><code class="language-rust edition2018">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust edition2018"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub type IndexingResults&lt;T&gt; = std::result::Result&lt;IndexingProgress&lt;T&gt;, Notification&gt;;
-<span class="boring">}
-</span></code></pre></pre>
+<span class="boring">}</span></code></pre></pre>
 <p>In case of an <code>IndexingProgress</code>, you can either send an actual result (<code>GotItem</code>), or report on the
 lifecycle state of the function (indicating progress or the end of the function)</p>
-<pre><pre class="playpen"><code class="language-rust edition2018">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust edition2018"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub enum IndexingProgress&lt;T&gt; {
     GotItem { item: T },
@@ -5904,32 +5954,27 @@ lifecycle state of the function (indicating progress or the end of the function)
     Stopped,
     Finished,
 }
-<span class="boring">}
-</span></code></pre></pre>
+<span class="boring">}</span></code></pre></pre>
 <p>Note that for indicating that the function is finished, there are 2 events (<code>Stopped</code> and
-<code>Finished</code>) This is to distinguish between &quot;we were stopped from outside&quot; and &quot;we really did
-finish&quot;).
+<code>Finished</code>) This is to distinguish between "we were stopped from outside" and "we really did
+finish").
 For all errors that occure and should be communicated to chipmunk, you can send a <code>Notification</code>.
 This is a struct that contains the severity, some content and optionally a line number to indicate
 at which line the error has occurred.</p>
-<pre><pre class="playpen"><code class="language-rust edition2018">
-<span class="boring">#![allow(unused_variables)]
+<pre><pre class="playground"><code class="language-rust edition2018"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub struct Notification {
     pub severity: Severity,
     pub content: String,
     pub line: Option&lt;usize&gt;,
 }
-<span class="boring">}
-</span></code></pre></pre>
+<span class="boring">}</span></code></pre></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
 
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -5937,49 +5982,35 @@ at which line the error has occurred.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
 
-                
             </nav>
 
         </div>
 
-        
 
-        
 
-        
-        
-        
-        <script type="text/javascript">
-            window.playpen_copyable = true;
+
+        <script>
+            window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
-        
-        <script type="text/javascript">
+        <script>
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
         });
         </script>
-        
-        
 
+    </div>
     </body>
 </html>

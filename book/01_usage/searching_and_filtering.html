@@ -1,16 +1,18 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Searching and Filtering - documentation</title>
-        
 
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+        <!-- Custom HTML head -->
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
+        <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
@@ -19,8 +21,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -28,19 +29,18 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -56,78 +56,104 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
 
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="expanded "><a href="../01_usage/searching_and_filtering.html" class="active"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="expanded "><a href="../01_usage/commenting.html"><strong aria-hidden="true">1.3.</strong> Commenting</a></li><li class="expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.4.</strong> Charts</a></li><li class="expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.5.</strong> Concatenate Files</a></li><li class="expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.6.</strong> Merging Files</a></li><li class="expanded "><a href="../01_usage/time_range.html"><strong aria-hidden="true">1.7.</strong> Time Range</a></li><li class="expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.8.</strong> DLT support</a></li><li class="expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.9.</strong> Keyboard Shortcuts</a></li><li class="expanded "><a href="../01_usage/command_line.html"><strong aria-hidden="true">1.10.</strong> Command line</a></li></ol></li><li class="expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="expanded "><a href="../02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="expanded "><a href="../02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="expanded "><a href="../02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../01_usage/01_chapter.html"><strong aria-hidden="true">1.</strong> Usage</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_usage/searching_and_filtering.html" class="active"><strong aria-hidden="true">1.1.</strong> Searching and Filtering</a></li><li class="chapter-item expanded "><a href="../01_usage/bookmarks.html"><strong aria-hidden="true">1.2.</strong> Working with Bookmarks</a></li><li class="chapter-item expanded "><a href="../01_usage/commenting.html"><strong aria-hidden="true">1.3.</strong> Commenting</a></li><li class="chapter-item expanded "><a href="../01_usage/charts.html"><strong aria-hidden="true">1.4.</strong> Charts</a></li><li class="chapter-item expanded "><a href="../01_usage/concatenation.html"><strong aria-hidden="true">1.5.</strong> Concatenate Files</a></li><li class="chapter-item expanded "><a href="../01_usage/merging.html"><strong aria-hidden="true">1.6.</strong> Merging Files</a></li><li class="chapter-item expanded "><a href="../01_usage/time_range.html"><strong aria-hidden="true">1.7.</strong> Time Range</a></li><li class="chapter-item expanded "><a href="../01_usage/dlt.html"><strong aria-hidden="true">1.8.</strong> DLT support</a></li><li class="chapter-item expanded "><a href="../01_usage/keyboard_shortcuts.html"><strong aria-hidden="true">1.9.</strong> Keyboard Shortcuts</a></li><li class="chapter-item expanded "><a href="../01_usage/command_line.html"><strong aria-hidden="true">1.10.</strong> Command line</a></li></ol></li><li class="chapter-item expanded "><a href="../02_extensions/01_about.html"><strong aria-hidden="true">2.</strong> Developing Plugins</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_extensions/02_create.html"><strong aria-hidden="true">2.1.</strong> A quick start</a></li><li class="chapter-item expanded "><a href="../02_extensions/03_defaults.html"><strong aria-hidden="true">2.2.</strong> Default plugins</a></li><li class="chapter-item expanded "><a href="../02_extensions/04_api.html"><strong aria-hidden="true">2.3.</strong> Plugin API</a></li></ol></li><li class="chapter-item expanded "><a href="../03_contributing/01_chapter.html"><strong aria-hidden="true">3.</strong> Contributing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../03_contributing/developer_docs.html"><strong aria-hidden="true">3.1.</strong> Native Development</a></li></ol></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
 
-                        <h1 class="menu-title">documentation</h1>
+                    <h1 class="menu-title">documentation</h1>
 
-                        <div class="right-buttons">
-                            <a href="../print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -135,10 +161,9 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -148,41 +173,60 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#searching-with-filters" id="searching-with-filters">Searching with Filters</a></h1>
-<p>Of course multiple searches are supported and filters can be saved and restored.</p>
+                        <h1 id="searching-with-filters"><a class="header" href="#searching-with-filters">Searching with Filters</a></h1>
+<p>Of course multiple searches are supported and search requests can be saved and restored as filters.</p>
 <p><img src="../images/multiple-filters.png" alt="" /></p>
-<h2><a class="header" href="#create-filter" id="create-filter">Create filter</a></h2>
+<h2 id="search"><a class="header" href="#search">Search</a></h2>
+<p>To search within the opened file, type into the area with the "Type a Search Request" placeholder and press <code>Enter</code>. The search results will be listed as they are with their whole line.</p>
+<blockquote>
+<p><strong>Note:</strong> The bottom left shows: Total lines of search results/Total lines of file</p>
+</blockquote>
+<h2 id="flags"><a class="header" href="#flags">Flags</a></h2>
+<p>The three buttons on the right side of the search request input are flags to modify the search. Active flags will have a blue background color.</p>
+<p><img src="../images/Match_Case.png" alt="" /></p>
+<p>Starting from the left, the first flag defines a <code>Case Sensitive</code>-search. As the name suggests, this flag will make the search case-sesitive when active.</p>
+<p><img src="../images/Match_Whole_Word.png" alt="" /></p>
+<p>The second flag defines a <code>Match Whole Word</code>-search. With this flag active, the search only lists search results, where the search request matches with just special characters or spaces surrounding the word.</p>
+<p><img src="../images/Regex.png" alt="" /></p>
+<p>The third flag defines a <code>Use Regular Expression</code>-search. With this flag active it is possible to run searches with Regex (Regular expression).</p>
+<blockquote>
+<p><strong>Note:</strong> It is possible to de-/activate search flags while and after starting the search.</p>
+</blockquote>
+<h2 id="create-filter"><a class="header" href="#create-filter">Create filter</a></h2>
+<blockquote>
+<p><strong>Note:</strong> Saved search requests will be called <strong>filter</strong> from this point on</p>
+</blockquote>
 <p>Type a search request at the bottom and click the floppy disc icon next to the search input.</p>
 <blockquote>
-<p><strong>Keyboard shortcut:</strong> <code>Enter + Enter</code> or <code>Enter + CTRL/CMD</code> (depending on the OS)</p>
+<p><strong>Keyboard shortcut:</strong> <code>Enter + CTRL (Windows) / CMD (Mac/Linux)</code></p>
 </blockquote>
-<h2><a class="header" href="#edit-filter" id="edit-filter">Edit filter</a></h2>
+<h2 id="edit-filter"><a class="header" href="#edit-filter">Edit filter</a></h2>
 <p>Created filters can be modified afterwards by simply right-clicking on the desired filter and selecting <code>Edit</code>.</p>
 <p>When the edit is done press <code>Enter</code> to apply the changes.</p>
-<h2><a class="header" href="#remove-filter" id="remove-filter">Remove filter</a></h2>
+<h2 id="remove-filter"><a class="header" href="#remove-filter">Remove filter</a></h2>
 <p>Filters can be removed one by one by right-clicking on the filter and selecting <code>Remove</code>.</p>
-<p>Another way is to drag&amp;drop the filter on the bin icon at the bottom of the sidebar which appears as soon as the filter is picked up and moved around. </p>
+<p>Another way is to drag&amp;drop the filter on the bin icon at the bottom of the sidebar which appears as soon as the filter is picked up and moved around.</p>
 <p>To remove all created filters at once right-click on any filter and select <code>Remove all</code>.</p>
 <p><img src="../images/remove_filter.gif" alt="" /></p>
-<h2><a class="header" href="#convert-into-chart" id="convert-into-chart">Convert into chart</a></h2>
+<h2 id="convert-into-chart"><a class="header" href="#convert-into-chart">Convert into chart</a></h2>
 <p>If a filter needs to be converted into a chart, right-click on the filter and select <code>Convert To Chart</code>.</p>
 <p>Another way to convert a filter into a chart is to drag&amp;drop the filter in the <strong>Charts</strong> section on the sidebar (only visible when at least one chart is already created).</p>
 <blockquote>
 <p><strong>Note:</strong> This option is only available for filters that consist of regular expressions.</p>
 </blockquote>
 <p><img src="../images/convert_filter.gif" alt="" /></p>
-<h2><a class="header" href="#create-time-range" id="create-time-range">Create Time Range</a></h2>
+<h2 id="create-time-range"><a class="header" href="#create-time-range">Create Time Range</a></h2>
 <p>By selecting two or more filters time ranges can be created. To select multiple filters, hold <code>SHIFT</code> while left-clicking on the desired filters. After selecting the filters right-click on one of the selected filters and select <code>Create Time Range</code>.</p>
 <blockquote>
 <p><strong>Note:</strong> More about Time Range <a href="#">here</a></p>
 </blockquote>
-<h2><a class="header" href="#en-disable-filter" id="en-disable-filter">En-/Disable filter</a></h2>
-<h3><a class="header" href="#in-search-results" id="in-search-results">In search results</a></h3>
+<h2 id="en-disable-filter"><a class="header" href="#en-disable-filter">En-/Disable filter</a></h2>
+<h3 id="in-search-results"><a class="header" href="#in-search-results">In search results</a></h3>
 <p>Filters can be en-/disabled in the search results by un-/checking the checkbox next to the corresponding filter.</p>
-<h3><a class="header" href="#in-search-results-and-output" id="in-search-results-and-output">In search results and output</a></h3>
+<h3 id="in-search-results-and-output"><a class="header" href="#in-search-results-and-output">In search results and output</a></h3>
 <p>Filters can also be en-/disabled completely by right-clicking the corresponding filter and select <code>Disable</code>.</p>
 <p>If the disabled area is visible due to a filter or any other search component is disabled, the filter can be dragged and dropped into the area directly.</p>
-<h2><a class="header" href="#save-and-load-filters" id="save-and-load-filters">Save and load filters</a></h2>
+<h2 id="save-and-load-filters"><a class="header" href="#save-and-load-filters">Save and load filters</a></h2>
 <p>To save the created filters and other search settings click on the <code>Save</code> button in the <strong>Manage</strong> section on the sidebar.</p>
 <p>To load previously created filters and other search settings click on the <code>Load</code> button in the <strong>Manage</strong> section on the sidebar.</p>
 
@@ -190,17 +234,13 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../01_usage/01_chapter.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
-                            <a rel="next" href="../01_usage/bookmarks.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../01_usage/bookmarks.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -208,49 +248,36 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-                    <a href="../01_usage/01_chapter.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../01_usage/01_chapter.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
-                    <a href="../01_usage/bookmarks.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../01_usage/bookmarks.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
 
-        
-        
-        
-        <script type="text/javascript">
-            window.playpen_copyable = true;
+
+        <script>
+            window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
 
+    </div>
     </body>
 </html>
