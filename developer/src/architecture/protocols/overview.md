@@ -99,12 +99,4 @@ What plays a significant role in the context of chipmunk are:
 
 From this perspective, the obvious favorites are **protobuf** and **flatbuffer**.
 
-## Transition to Protocol Usage
-
-In the current version of chipmunk, data validation is performed:
-- On the Rust side: through serialization/deserialization of data (serde), as well as part of the data being transferred to the JavaScript ecosystem as ready-made JavaScript objects.
-- On the JavaScript side: received objects undergo additional validation from the ts-binding level to the client.
-
-Thus, the current version already has validation tools that ensure the security of data transfer and processing. A comprehensive refactoring and transition to **protobuf** or **flatbuffer** seems unnecessary, as it would entail changing the entire communication chain between all components of the application (e.g., IPC (client ↔ electron) would need to be completely updated). However, where necessary, the **MessagePack** protocol can be safely integrated, allowing the avoidance of unsafe JSON with minimal changes to the current codebase.
-
-However, the next generation of chipmunk should initially adopt **protobuf** or **flatbuffer** as the base protocol, allowing for complete abandonment of "manual" data validation at all levels of the application.
+[Transition Journal](./transition.md)
