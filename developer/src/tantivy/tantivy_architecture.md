@@ -1,4 +1,5 @@
-﻿## **Tantivy**
+﻿
+## **Tantivy**
 ![Tantivy's logo](tantivy-logo.png)
 
 Tantivy is a library meant to build search engines. Its architecture is strongly inspired by Lucene. It focuses mainly on full-text search. It looks to execute text queries in a large set of text documents and return N most relevant documents. To execute these queries quickly, tantivy needs to build an index beforehand. Given a large set of textual documents, and a text query, Tantivy returns the K-most relevant documents in a very efficient way. The relevance score (from Okapi BM25 - Best matching ranking function) in Tantivy is non-configurable.
@@ -65,7 +66,7 @@ These normalization factors are typically derived based on the length of the fie
 -> Schema definition of the index.
 -> Document addition to the index as per the defined schema.
 -> Tokenization and analysis of text fields as per the schema.
-	doc1 Body: "He was an old man who fished alone..." -> ["he", "was", "an", "old", "man", "who", "fished", "alone"]
+    doc1 Body: "He was an old man who fished alone..." -> ["he", "was", "an", "old", "man", "who", "fished", "alone"]
 -> Creation of the inverted index by mapping terms to the documents they appear in. Writing the .term and .idx file.
 -> Creating the fast fields if required and writing the .fast file.
 -> Creation of the Fieldnorms and creation of .fieldnorm files.
@@ -96,59 +97,57 @@ When a user submits a query, it needs to be transformed into a format that the s
 2. Query Parsing
 The query parser takes the user's query and converts it into a structured query. This involves several sub-steps:
 
-	Tokenization: Breaking the query into individual terms.
-Field Mapping: Mapping each term to the relevant fields in the schema (e.g., title, body).
-Logical Operators: Determining how the terms should be combined (e.g., AND, OR).
-Example
-The query "president obama" might be parsed as:
-(title:president OR body:president) AND (title:obama OR body:obama)
-Here, title and body are fields defined in the schema, and the query parser creates logical combinations of terms across these fields.
+        a. Tokenization: Breaking the query into individual terms.
+        b. Field Mapping: Mapping each term to the relevant fields in the schema (e.g., title, body).
+        c. Logical Operators: Determining how the terms should be combined (e.g., AND, OR).
+
+> For example, the query "president obama" might be parsed as:
+> (title:president OR body:president) AND (title:obama OR body:obama)
+> Here, title and body are fields defined in the schema, and the query parser creates logical  combinations of terms across these fields.
 
 3. Query Execution
 This phase involves several steps to retrieve and score the relevant documents:
 
-	a. Document Retrieval
+    a. Document Retrieval
 Using the parsed query, the search engine scans the term dictionaries and postings lists to find documents containing the query terms. This involves:
 
-	Term Lookup: For each term in the query, the engine looks it up in the term dictionary (.term file).
-Postings List Access: Retrieves the list of document IDs (DocIDs) that contain the term from the inverted index (.idx file).
-Position Information: Accesses the .pos file to get term positions within the documents, if positional data is relevant for the query (e.g., phrase queries).
-b. Scoring
+        i) Term Lookup: For each term in the query, the engine looks it up in the term dictionary (.term file).
+        ii) Postings List Access: Retrieves the list of document IDs (DocIDs) that contain the term from the inverted index (.idx file).
+        iii) Position Information: Accesses the .pos file to get term positions within the documents, if positional data is relevant for the query (e.g., phrase queries).
+    b. Scoring
 Documents are scored based on the relevance of the query terms within them. Tantivy uses the Okapi BM25 ranking function, which considers:
 
-	Term Frequency (TF): The number of times a term appears in a document.
-Inverse Document Frequency (IDF): A measure of how common or rare a term is across all documents.
-Field Normalization: Adjusts the term frequency based on the length of the field to prevent longer fields from having an undue advantage.
-Example
-For a document containing "president" and "obama" in the title and body fields:
-
-	Calculate the TF and IDF for each term.
+        i) Term Frequency (TF): The number of times a term appears in a document.
+        ii) Inverse Document Frequency (IDF): A measure of how common or rare a term is across all documents.
+        iii) Field Normalization: Adjusts the term frequency based on the length of the field to prevent longer fields from having an undue advantage.
+> For example, a document containing "president" and "obama" in the title and body fields:
+Calculate the TF and IDF for each term.
 Combine these with normalization factors to compute a BM25 score for the document.
+
 4. Document Deserialization
 After retrieving the relevant documents, they need to be deserialized, which means converting the stored document data into a usable format.
 
-	a. Stored Fields Retrieval
-Fields marked as stored in the schema (e.g., title, author) are retrieved from the .store file. This involves:
-
-	Reading the .store File: Extracting the field values based on document IDs.
-Constructing the Document: Building the full document from the retrieved fields.
+        a. Stored Fields Retrieval: Fields marked as stored in the schema (e.g., title, author) are retrieved from the .store file. This involves:
+        b. Reading the .store File: Extracting the field values based on document IDs.
+        c. Constructing the Document: Building the full document from the retrieved fields.
 5. Result Compilation
 Once the documents are retrieved and scored, the search engine compiles the results:
 
-	Sorting: Sort the documents based on their BM25 scores, from highest to lowest.
-Filtering: Apply any additional filters specified in the query (e.g., date ranges, specific field values).
-Limiting: Return the top N results as specified by the query.
-Example
+        i) Sorting: Sort the documents based on their BM25 scores, from highest to lowest.
+        ii) Filtering: Apply any additional filters specified in the query (e.g., date ranges, specific field values).
+        iii) Limiting: Return the top N results as specified by the query.
+>Example
 If the query requests the top 10 documents for "president obama", the search engine will sort all matched documents by their relevance scores and return the top 10.
 
-	Search Workflow Summary
-	User Input: The user enters a query.
-Query Parsing: The query parser converts the user's input into a structured query.
-Index Scanning: The search engine scans the index to find documents matching the query terms.
-Scoring: Documents are scored based on relevance using BM25.
-Deserialization: Relevant documents are deserialized from the stored fields.
-Result Compilation: The top N results are sorted and returned to the user.
-Example Walkthrough
+**Search Workflow Summary**
+    User Input: The user enters a query.
+    Query Parsing: The query parser converts the user's input into a structured query.
+    Index Scanning: The search engine scans the index to find documents matching the query terms.
+    Scoring: Documents are scored based on relevance using BM25.
+    Deserialization: Relevant documents are deserialized from the stored fields.
+    Result Compilation: The top N results are sorted and returned to the user.
+
+*Example Walkthrough*
 Let’s walk through a detailed example of the query "old man":
 
 *Query Construction:*
@@ -186,3 +185,75 @@ Result Compilation:
 
 > Sort documents by BM25 scores. Return the top N results to the user.
 
+## **Adding Documents to the Index**
+
+1. **Document Structure**:
+
+
+    -   A document in Tantivy is a collection of fields, where each field can hold different types of data (e.g., text, numeric, date).
+2.  **Schema Definition**:
+
+    -   Before adding documents, a schema must be defined. This schema specifies the fields, their types, and how they should be indexed (e.g., whether they are tokenized, stored, etc.).
+3.  **Creating the Index**:
+
+    -   An index is created using the schema. The index acts as a container for the documents and allows for efficient querying.
+4.  **IndexWriter**:
+
+    -   To add documents, an `IndexWriter` is used. This is the component responsible for making changes to the index.
+5.  **Adding a Document**:
+
+    -   A document is created by populating it with fields and their values.
+    -   The document is then added to the `IndexWriter` using the `add_document` method.
+6.  **Committing Changes**:
+
+    -   Changes made by the `IndexWriter` are buffered in memory.
+    -   To persist these changes to the index, the `commit` method is called. This writes the buffered documents to disk, making them part of the index.
+7.  **Segment Creation**:
+
+    -   Documents are grouped into segments. A segment is a subset of the index that can be independently searched.
+    -   When a commit is performed, a new segment is created if there are new documents.
+8.  **Merge Policy**:
+
+    -   Over time, multiple segments are created. Tantivy uses a merge policy to combine smaller segments into larger ones, improving search efficiency.
+
+## Deleting Documents from the Index
+
+1.  **Identifying Documents for Deletion**:
+
+    -   Documents are identified for deletion using a unique identifier (typically a field marked as the primary key).
+2.  **Deletion Marker**:
+
+    -   Instead of physically removing a document, Tantivy marks it as deleted. This is done using a deletion marker.
+3.  **Using the IndexWriter**:
+
+    -   The `IndexWriter` provides a method to mark documents for deletion. For instance, the `delete_term` method is used to mark all documents containing a specific term (e.g., a unique identifier) as deleted.
+4.  **Logical Deletion**:
+
+    -   Deletions are logical rather than physical, meaning the document is still present in the index files but marked as deleted and excluded from search results.
+5.  **Commit Changes**:
+
+    -   As with adding documents, deletions are also buffered in memory. The `commit` method must be called to persist these deletions to the index.
+6.  **Garbage Collection**:
+
+    -   During segment merges, deleted documents are physically removed from the new merged segments. This process is part of Tantivy’s garbage collection mechanism to clean up deleted documents and optimize storage.
+
+## Benchmarks
+There are already multiple benchmarks available which make use of tantivy and compare it against other search engine technologies.
+One such benchmark can be found at the below link which compares Tantivy with lucene and pisa.
+
+> https://tantivy-search.github.io/bench/
+
+We conducted our own set of basic benchmarks for some use cases.
+
+| Test/Search | Total Files | Total Size | Total Time |
+|--|--|--|--|
+| Index files | 1061 | 32.5 GB  | 127.7 sec |
+| Search term | 1061 | 32.5 GB  | 19.7 ms |
+| Search phrase | 1061 | 32.5 GB    | 8.2 ms |
+| Search regex | 1061 | 32.5 GB | 45.67 ms |
+| Add document | 1062 | 32.5 GB | 5.7 sec |
+| Delete document | 1061 | 32.5 GB  | 190.78 ms |
+| Index files | 5.1 Million | 11 GB | 04:36:35 hrs |
+| Search term | 5.1 Million | 11 GB | 86.2 ms |
+| Search phrase | 5.1 Million | 11 GB   | 98.6 ms |
+| Search regex | 5.1 Million | 11 GB    | 166.74 ms |

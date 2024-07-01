@@ -1,3 +1,5 @@
+# Tantivy Architecture
+
 Tantivy is a high-performance, full-text search engine library written in Rust. It is designed to be fast and reliable, making it suitable for use in search applications that require quick and efficient text indexing and retrieval. Here are some key features and characteristics of Tantivy:
 
 1.  **High Performance**: Tantivy is optimized for speed, leveraging Rust's performance characteristics to provide fast search capabilities.
