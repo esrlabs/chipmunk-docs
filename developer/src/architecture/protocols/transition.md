@@ -19,3 +19,32 @@ Using `FlatBuffers`, on the other hand, is associated with the need to account f
 However, comparing the performance of `FlatBuffers` and `Protobuf`, one can conclude that using `FlatBuffers` is justified in some cases and does indeed provide a performance boost. But the problem is that in `chipmunk`, there are simply no use cases where `FlatBuffers` performance would yield a noticeable and significant result.
 
 Therefore, as a result of the first stage of protocol implementation, it was decided to use `Protobuf` as the main protocol.
+
+## Stage 2
+
+After transitioning the main session and related APIs (error messages, events) to protobuf, a significant drawback of integrating protobuf into our solution has become evident. It's important to note that this problem isn't specific to protobuf but is a general issue applicable to any protocol we might implement in our solution.
+
+### Problem Overview
+
+In many cases, the backend sends data to the frontend that is associated with certain structures. For instance, we have an object `DltParserSettings` which is part of the `sources` crate. `DltParserSettings` also includes `DltFilterConfig`, which is part of an external crate `dlt_core`. The main object `DltParserSettings` is part of an even more complex object `ObserveOptions` that comes from the frontend.
+
+`ObserveOptions` needs to be included in a protobuf message for subsequent transmission. However, the structure of the object becomes quite complex:
+
+`ObserveOptions -> ParserType -> DltParserSettings -> DltFilterConfig`
+
+Using the classical approach, we generate Rust or TypeScript code for the given protocol (*.proto files) and then use the generated code for packing, unpacking, and sending messages. This approach inevitably involves deep and complex data conversion. For example,
+
+- `DltFilterConfigProtoMsg` → `DltFilterConfig`
+- `DltParserSettingsProtoMsg` → `DltParserSettings`
+- `ParserTypeProtoMsg` → `ParserType`
+- `ObserveOptionsProtoMsg` → `ObserveOptions`
+
+to ultimately obtain:
+
+`ObserveOptions -> ParserType -> DltParserSettings -> DltFilterConfig`
+
+Given the volume of such operations, transitioning to this protocol reduces flexibility and introduces potential error points. Moreover, some types might not match, for example, `usize` is not supported by protobuf.
+
+### Alternative Approach
+
+An alternative approach is generating *.desc files (binary protocol description). This method allows us to partially automate the process, but it doesn't eliminate the need to manually convert final types from protocol types (`ObserveOptionsProtoMsg` → `ObserveOptions`). Additionally, it doesn't solve type mismatch issues.
