@@ -23,17 +23,28 @@ Therefore, as a result of the first stage of protocol implementation, it was dec
 
 ## Stage 2
 
-After transitioning the main session and related APIs (error messages, events) to protobuf, a significant drawback of integrating protobuf into our solution has become evident. It's important to note that this problem isn't specific to protobuf but is a general issue applicable to any protocol we might implement in our solution.
+After transitioning the main session and related APIs (error messages, events) to protobuf, we can make some summary of results.
 
-### Overview of protobuf related crates
+### Overview of Results/Consequences of Transitioning to `protobuf`
 
-`protobuf` is more oriented towards dynamic handling of messages. It supports working with descriptors and allows dynamic creation of messages. By default, it does not have tools for code generation. Created 9 years ago. Supports: proto2, proto3.
+| Factor | Impact |
+|---|---|
+| Resolves issues with JSON deserialization (particularly string encoding issues) | 5 |
+| Significantly reduces message size | 5 |
+| Introduces a unified description of all messages/events used in the application (`*.proto` files) | 4 |
+| Substantially increases the performance of message encoding/decoding (compared to JSON) | 3 |
 
-`prost` is more oriented towards using protobuf with code generation (for which the `prost-build` crate is used). It has a more user-friendly API and allows mapping structures to protobuf message fields (using the `prost` proc-macro). Created 7 years ago. Supports: proto2, proto3.
+| Factor | Impact |
+|---|---|
+| Requires an additional build step: code generation for `Rust` and `TypeScript` | 3 |
+| Requires installation of additional dependencies during build: `protoc` for code generation | 3 |
+| Generated code does not always meet standards, requiring more tolerant linting (`eslint` for `TypeScript` and `clippy` for `Rust`) | 4 |
+| Introduces two additional packages: an `npm` package with generated code for `TypeScript` and a `crate` with generated code for `Rust` | 3 |
+| Requires an additional level of data conversion on the `Rust` side | 4 |
 
-`protobuf-serde` allows mapping structs to messages, but the trait is outdated and seems to be not well-supported. It was probably created for a specific project.
+"Impact" is rated from 0 to 5, where 0 indicates weak impact and 5 indicates strong impact. In the context of positive results, 5 means an extremely positive outcome. In the context of negative results, 5 means an extremely negative consequence.
 
-### Problem Overview
+### An additional level of data conversion
 
 In many cases, the backend sends data to the frontend that is associated with certain structures. For instance, we have an object `DltParserSettings` which is part of the `sources` crate. `DltParserSettings` also includes `DltFilterConfig`, which is part of an external crate `dlt_core`. The main object `DltParserSettings` is part of an even more complex object `ObserveOptions` that comes from the frontend.
 
@@ -52,8 +63,57 @@ to ultimately obtain:
 
 `ObserveOptions -> ParserType -> DltParserSettings -> DltFilterConfig`
 
-Given the volume of such operations, transitioning to this protocol reduces flexibility and introduces potential error points. Moreover, some types might not match, for example, `usize` is not supported by protobuf.
+Given the volume of such operations, transitioning to `protobuf` reduces flexibility and introduces potential error points. Moreover, some types might not match, for example, `usize` is not supported by `protobuf`.
 
-### Alternative Approach
+> **Important:** With the use of `JSON`, it isn't an issue as long as we take the structures from the Rust side as the "master" and convert them into `JSON`. In `TypeScript`, we still have to validate the received objects, whether they come via `protobuf` or `JSON`. Therefore, from the TypeScript point of view, there aren't many changes because it doesn't matter much whether we check a `protobuf` message or a `JSON` object.
+
+### proto2 or proto3
+
+| .proto Version | Modifier   | Rust Type                        |
+|----------------|------------|----------------------------------|
+| proto2         | optional   | `Option<T>`                      |
+| proto2         | required   | `T`                               |
+| proto3         | default    | `T` for scalar types, `Option<T>` otherwise |
+| proto3         | optional   | `Option<T>`                      |
+| proto2/proto3  | repeated   | `Vec<T>`                         |
+
+From the perspective of reducing the volume of checks and conversions, it is **more convenient** to use `proto2` because in the `proto3` format, any non-scalar data type will be represented as `Option<T>`. This complicates conversion and can introduce ambiguity, especially in cases where `Option` types are present in the original structure.
+
+### Overview of protobuf related crates
+
+`protobuf` is more oriented towards dynamic handling of messages. It supports working with descriptors and allows dynamic creation of messages. By default, it does not have tools for code generation. Created 9 years ago. Supports: `proto2`, `proto3`.
+
+`prost` is more oriented towards using protobuf with code generation (for which the `prost-build` crate is used). It has a more user-friendly API and allows mapping structures to protobuf message fields (using the `prost` proc-macro). Created 7 years ago. Supports: `proto2`, `proto3`.
+
+`protobuf-serde` allows mapping structs to messages, but the trait is outdated and seems to be not well-supported. It was probably created for a specific project.
+
+### Using Serde
+
+Unfortunately, the crate `serde-protobuf` does not offer significant advantages. For instance, the implementation of the serializer is entirely absent; only the deserializer is available.
+
+On the other hand, the crate `prost` provides the ability to map structures to match fields with message fields. An example from the documentation:
+
+```rust
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Person {
+    #[prost(string, tag="1")]
+    pub name: ::prost::alloc::string::String,
+    /// Unique ID number for this person.
+    #[prost(int32, tag="2")]
+    pub id: i32,
+    #[prost(string, tag="3")]
+    pub email: ::prost::alloc::string::String,
+    #[prost(message, repeated, tag="4")]
+    pub phones: ::prost::alloc::vec::Vec<person::PhoneNumber>,
+}
+```
+
+Clearly, mapping can greatly facilitate the integration of `protobuf`. However, it is important to understand that this is not an absolute solution, as some final structures belong to external crates. Therefore, some amount of "manual" conversion will be present regardless.
+
+Another issue is that when using structure mapping, we must ensure that the message format matches the format in the schema (`*.proto`), as this schema will be used at least for code generation on the `TypeScript` side.
+
+Thus, the application of structure mapping is not straightforward.
+
+### Alternative Approach (still under research)
 
 An alternative approach is generating *.desc files (binary protocol description). This method allows us to partially automate the process, but it doesn't eliminate the need to manually convert final types from protocol types (`ObserveOptionsProtoMsg` → `ObserveOptions`). Additionally, it doesn't solve type mismatch issues.
