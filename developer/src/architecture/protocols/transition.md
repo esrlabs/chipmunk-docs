@@ -10,6 +10,7 @@ Thus, the current version already has validation tools that ensure the security 
 
 However, the next generation of chipmunk should initially adopt **protobuf** or **flatbuffer** as the base protocol, allowing for complete abandonment of "manual" data validation at all levels of the application.
 
+
 ## Stage 1
 
 The `MessagePack` library turned out to be inapplicable at the TypeScript level. Without a data schema, this library does not allow recognizing incoming messages from Rust in TypeScript. Therefore, despite the fact that using `MessagePack` is extremely convenient at the Rust level, it cannot provide reliable results at higher levels, since TypeScript is not a strictly typed language.
@@ -23,6 +24,14 @@ Therefore, as a result of the first stage of protocol implementation, it was dec
 ## Stage 2
 
 After transitioning the main session and related APIs (error messages, events) to protobuf, a significant drawback of integrating protobuf into our solution has become evident. It's important to note that this problem isn't specific to protobuf but is a general issue applicable to any protocol we might implement in our solution.
+
+### Overview of protobuf related crates
+
+`protobuf` is more oriented towards dynamic handling of messages. It supports working with descriptors and allows dynamic creation of messages. By default, it does not have tools for code generation. Created 9 years ago. Supports: proto2, proto3.
+
+`prost` is more oriented towards using protobuf with code generation (for which the `prost-build` crate is used). It has a more user-friendly API and allows mapping structures to protobuf message fields (using the `prost` proc-macro). Created 7 years ago. Supports: proto2, proto3.
+
+`protobuf-serde` allows mapping structs to messages, but the trait is outdated and seems to be not well-supported. It was probably created for a specific project.
 
 ### Problem Overview
 
