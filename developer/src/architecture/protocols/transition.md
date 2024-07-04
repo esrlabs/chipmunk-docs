@@ -21,7 +21,7 @@ However, comparing the performance of `FlatBuffers` and `Protobuf`, one can conc
 
 Therefore, as a result of the first stage of protocol implementation, it was decided to use `Protobuf` as the main protocol.
 
-## Stage 2
+## Protobuf usage (stage 2)
 
 After transitioning the main session and related APIs (error messages, events) to protobuf, we can make some summary of results.
 
@@ -87,7 +87,7 @@ From the perspective of reducing the volume of checks and conversions, it is **m
 
 `protobuf-serde` allows mapping structs to messages, but the trait is outdated and seems to be not well-supported. It was probably created for a specific project.
 
-### Using Serde
+### Using serde
 
 Unfortunately, the crate `serde-protobuf` does not offer significant advantages. For instance, the implementation of the serializer is entirely absent; only the deserializer is available.
 
@@ -114,6 +114,44 @@ Another issue is that when using structure mapping, we must ensure that the mess
 
 Thus, the application of structure mapping is not straightforward.
 
-### Alternative Approach (still under research)
+### Using binary descriptor
 
 An alternative approach is generating *.desc files (binary protocol description). This method allows us to partially automate the process, but it doesn't eliminate the need to manually convert final types from protocol types (`ObserveOptionsProtoMsg` → `ObserveOptions`). Additionally, it doesn't solve type mismatch issues.
+
+In general using of binary description gives much less props to  how much it gives complexity.
+
+For example, deserialization of message
+
+```
+use protobuf::{
+    descriptor::{FileDescriptorProto, FileDescriptorSet},
+    reflect::MessageDescriptor,
+    MessageDyn,
+};
+
+fn get_desc() -> FileDescriptorSet {
+    protobuf::Message::parse_from_bytes(include_bytes!("path_to_precompiled.desc"))
+        .expect("Protocol descriptor is valid")
+}
+
+fn find_message_descriptor(fds: &FileDescriptorSet, name: &str) -> Option<MessageDescriptor> {
+    for file in &fds.file {
+        for message_type in &file.message_type {
+            if message_type.name() == name {
+                return Some(message_type.descriptor_dyn());
+            }
+        }
+    }
+    None
+}
+
+fn deserialization(schema: &FileDescriptorSet, bytes: &[u8]) -> Option<Box<dyn MessageDyn>> {
+    let msg_desc = find_message_descriptor(schema, "MyMessage")?;
+    let mut msg = msg_desc.new_instance();
+    msg.merge_from_bytes_dyn(bytes)
+        .expect("message is serialized");
+    Some(msg)
+}
+```
+
+Method `deserialization` will give `MyMessage` which also has to be converted into some origin structure. The only one reason is to use descriptors - if it allows using it with serde to make it easier to convert protobuf entity to origin rust structure. But it looks like there are no good solutions for it at the current moment.
