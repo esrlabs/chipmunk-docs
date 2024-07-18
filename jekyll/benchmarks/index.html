@@ -7,6 +7,67 @@ layout: default
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Benchmarks</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <script src="js/script.js"></script>
+    <style>
+        .graph_container {
+            display: flex;
+            flex: 2;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-left: 30px;
+            margin-right: 30px;
+            border: 2px solid #000; /* Add this line to create a border */
+            padding: 10px; /* Optional: Add some padding to improve the appearance */
+        }
+        .description {
+            flex: 1;
+            padding: 20px;
+        }
+        .chart-container {
+            flex: 2;
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+  <div class="content">
+    <h1 style="text-align: center;">Chipmunk Performance benchmarks</h1>
+    <br><br>
+    <div class="graph_container">
+        <div style="text-align: left;" class="description">Performance test comparison for each subsequent release and time taken for each test. Lesser the time taken, better the performance. </div>
+        <div class="chart-container">
+            <canvas id="chart_full"></canvas>
+        </div>
+    </div>
+    <br><br>
+    <div class="graph_container">
+        <div class="description">Performance test comparison for each subsequent release where time taken for each test is below 500ms.</div>
+        <div class="chart-container">
+            <canvas id="chart_below500"></canvas>
+        </div>
+    </div>
+    <br><br>
+    <div class="graph_container">
+        <div class="description">Performance test comparison for each subsequent release where time taken for each test is below 500ms.</div>
+        <div class="chart-container">
+            <canvas id="chart_above500"></canvas>
+        </div>
+    </div>
+    <br><br>
+  </div>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
     <title>Performance Benchmarks</title>
     <script src="js/script.js"></script>
@@ -22,3 +83,4 @@ layout: default
   </div>
 </body>
 </html>
+ -->
