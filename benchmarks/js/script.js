@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // function to generate a random color
+    // Function to generate a random color
     const getRandomColor = () => {
         return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
     };
@@ -15,35 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }));
     };
 
-            // // Function to handle click events on the x-axis
-            // function clickableScales(canvas, click) {
-            //     const height = chart.scales.x.height;
-            //     const top = chart.scales.x.top;
-            //     const bottom = chart.scales.x.bottom;
-            //     const left = chart.scales.x.left;
-            //     const right = chart.scales.x.maxWidth / chart.scales.x.ticks.length;
-            //     const width = right - left;
-            //     // alert(`right = ${chart.scales.x.maxWidth}/${chart.scales.x.ticks.length} = ${right}`)
-
-            //     let resetCoordinates = canvas.getBoundingClientRect()
-            //     // alert (event.clientX);
-            //     const x = click.clientX - resetCoordinates.left;
-            //     const y = click.clientY - resetCoordinates.top;
-
-            //     for (let i = 0; i < chart.scales.x.ticks.length; i++) {
-            //         // alert (`x=${x}\ny=${y}\nleft=${left}\nright=${right}\ntop=${top}\nbottom=${bottom}\ni=${i}\nx >= left + (right * i) && x <= right + (right * i) && y >= top && y <= bottom`);
-            //         // alert (`i=${i}\n${width}\n${x} >= ${left} + (${right * i}) && ${x} <= ${right} + (${right * i}) && ${y} >= ${top} && ${y} <= ${bottom}`);
-            //         // alert(x >= left + (right * i) && x <= right + (right * i) && y >= top && y <= bottom);
-            //         if ((width + x >= (left + right*i)) && (x <= (left + right + right * i)) && (y >= top && y <= bottom)) {
-            //             // alert(chart.data.labels[i]);
-            //             const url = `https://github.com/esrlabs/chipmunk/releases/tag/${chart.data.labels[i]}`;
-            //             window.open(url, '_blank');
-            //             break;
-            //         }
-            //     }
-            // }
-
-    // Function to handle click events on the x-axis
+    // Function to handle clicking of labels on the x-axis
     const clickableScales = (chart, event) => {
         const { top, bottom, left, width: chartWidth } = chart.scales.x;
         const tickWidth = chartWidth / chart.scales.x.ticks.length;
@@ -57,12 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 const tickStart = left + i * tickWidth;
                 const tickEnd = tickStart + tickWidth;
                 if (x >= tickStart && x <= tickEnd) {
-                    const url = `https://github.com/esrlabs/chipmunk/releases/tag/${chart.data.labels[i]}`;
+                    const label = chart.data.labels[i];
+                    let url;
+
+                    if (label.startsWith('PR_')) {
+                        // Open pull request URL if the label starts with "PR_"
+                        url = `https://github.com/esrlabs/chipmunk/pull/${label.split("_")[1]}`;
+                    } else {
+                        // Open release URL if the label does not start with "PR_"
+                        url = `https://github.com/esrlabs/chipmunk/releases/tag/${label}`;
+                    }
+
                     window.open(url, '_blank');
                 }
             });
         }
     };
+
 
     // Function to render a chart
     const renderChart = (canvasId, labels, datasets) => {
@@ -108,29 +91,63 @@ document.addEventListener('DOMContentLoaded', () => {
         return chart;
     };
 
+    // Function to fetch and combine data
+    const fetchAndCombineData = (prId) => {
+        const fetchMainData = fetch('data/data.json').then(response => response.json());
+        const fetchPrData = prId ? fetch(`data/pull_request/Benchmark_PR_${prId}.json`).then(response => response.json()) : Promise.resolve({});
+
+        return Promise.all([fetchMainData, fetchPrData])
+            .then(([mainData, prData]) => {
+                // Combine data
+                const combinedData = { ...mainData };
+
+                // Merge pull request data into combined data
+                Object.entries(prData).forEach(([benchmark, entries]) => {
+                    if (!combinedData[benchmark]) {
+                        combinedData[benchmark] = [];
+                    }
+                    combinedData[benchmark] = combinedData[benchmark].concat(entries);
+                });
+
+                // Generate datasets
+                const allFileNames = [...new Set(Object.values(combinedData).flat().map(entry => entry.release))];
+                const below500Data = {};
+                const above500Data = {};
+
+                Object.entries(combinedData).forEach(([benchmark, entries]) => {
+                    const maxValue = Math.max(...entries.map(entry => entry.actual_value));
+                    if (maxValue < 500) {
+                        below500Data[benchmark] = entries;
+                    } else {
+                        above500Data[benchmark] = entries;
+                    }
+                });
+
+                const datasets = createDatasets(combinedData);
+                const below500Datasets = createDatasets(below500Data);
+                const above500Datasets = createDatasets(above500Data);
+
+                // Render charts
+                renderChart('chart_full', allFileNames, datasets);
+                renderChart('chart_below500', allFileNames, below500Datasets);
+                renderChart('chart_above500', allFileNames, above500Datasets);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    };
+
+    // Parse URL parameters
+    const getQueryParams = () => {
+        let params = {};
+        window.location.search.substring(1).split("&").forEach(function(part) {
+            let pair = part.split("=");
+            params[pair[0]] = decodeURIComponent(pair[1]);
+        });
+        return params;
+    };
+
     // Fetch benchmark data and render charts
-    fetch('data/data.json')
-        .then(response => response.json())
-        .then(data => {
-            const allFileNames = [...new Set(Object.values(data).flat().map(entry => entry.release))];
+    const params = getQueryParams();
+    var prId = params['pr_id'] || null;
 
-            const below500Data = {};
-            const above500Data = {};
-            Object.entries(data).forEach(([benchmark, entries]) => {
-                const maxValue = Math.max(...entries.map(entry => entry.actual_value));
-                if (maxValue < 500) {
-                    below500Data[benchmark] = entries;
-                } else {
-                    above500Data[benchmark] = entries;
-                }
-            });
-
-            const datasets = createDatasets(data);
-            const below500Datasets = createDatasets(below500Data);
-            const above500Datasets = createDatasets(above500Data);
-            renderChart('chart_full', allFileNames, datasets);
-            renderChart('chart_below500', allFileNames, below500Datasets);
-            renderChart('chart_above500', allFileNames, above500Datasets);
-        })
-        .catch(error => console.error('Error fetching data:', error));
+    fetchAndCombineData(prId);
 });
