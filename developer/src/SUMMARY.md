@@ -3,6 +3,8 @@
 [Introduction](./README.md)
 
 - [Architecture](architecture/README.md)
+- [Performance](performance/README.md)
+  - [Benchmarking](performance/benchmarking.md)
 - [Plugin System](plugin/README.md)
     - [Life Sessions](plugin/life_sessions.md)
     - [Decisions Context](plugin/decisions/decisions-context.md)
