@@ -4,7 +4,9 @@
 
 - [Architecture](architecture/README.md)
 - [Performance](performance/README.md)
-  - [Benchmarking](performance/benchmarking.md)
+  - [Benchmarks](performance/benchmarks/README.md)
+    - [Main Methods](performance/benchmarks/main_methods.md)
+    - [Async Functions](performance/benchmarks/async_runtime.md)
 - [Plugin System](plugin/README.md)
     - [Life Sessions](plugin/life_sessions.md)
     - [Decisions Context](plugin/decisions/decisions-context.md)
