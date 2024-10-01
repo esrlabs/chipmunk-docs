@@ -15,8 +15,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }));
     };
 
-    // Function to handle clicking of labels on the x-axis
-    const clickableScales = (chart, event) => {
+    // Function to create a graph container dynamically
+    const createGraphContainer = (benchmarkName) => {
+        const container = document.createElement('div');
+        container.className = 'graph_container';
+
+        const descriptionDiv = document.createElement('div');
+        descriptionDiv.className = 'description';
+        descriptionDiv.textContent = `Performance test comparison for ${benchmarkName}`;
+
+        const chartContainerDiv = document.createElement('div');
+        chartContainerDiv.className = 'chart-container';
+        const canvas = document.createElement('canvas');
+        canvas.id = `chart_${benchmarkName.replace(/\s+/g, '_')}`;
+
+        chartContainerDiv.appendChild(canvas);
+        container.appendChild(descriptionDiv);
+        container.appendChild(chartContainerDiv);
+
+        return container;
+    };
+
+    // Function to handle clickable x-axis labels
+    const clickableScales = (chart, event, prId) => {
         const { top, bottom, left, width: chartWidth } = chart.scales.x;
         const tickWidth = chartWidth / chart.scales.x.ticks.length;
         const { clientX, clientY } = event;
@@ -32,9 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const label = chart.data.labels[i];
                     let url;
 
-                    if (label.startsWith('PR_')) {
-                        // Open pull request URL if the label starts with "PR_"
-                        url = `https://github.com/esrlabs/chipmunk/pull/${label.split("_")[1]}`;
+                    if (label.startsWith('PR_') && prId) {
+                        // Open pull request URL if the label starts with "PR_" and pr_id exists
+                        url = `https://github.com/esrlabs/chipmunk/pull/${prId}`;
                     } else {
                         // Open release URL if the label does not start with "PR_"
                         url = `https://github.com/esrlabs/chipmunk/releases/tag/${label}`;
@@ -46,9 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-
     // Function to render a chart
-    const renderChart = (canvasId, labels, datasets) => {
+    const renderChart = (canvasId, labels, datasets, prId) => {
         const ctx = document.getElementById(canvasId).getContext('2d');
         const chart = new Chart(ctx, {
             type: 'line',
@@ -85,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.getElementById(canvasId).addEventListener('click', (e) => {
-            clickableScales(chart, e);
+            clickableScales(chart, e, prId);
         });
 
         return chart;
@@ -93,44 +113,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to fetch and combine data
     const fetchAndCombineData = (prId) => {
+        // Fetch the main data
         const fetchMainData = fetch('data/data.json').then(response => response.json());
+
+        // Fetch the PR data if prId is provided
         const fetchPrData = prId ? fetch(`data/pull_request/Benchmark_PR_${prId}.json`).then(response => response.json()) : Promise.resolve({});
 
-        return Promise.all([fetchMainData, fetchPrData])
-            .then(([mainData, prData]) => {
-                // Combine data
-                const combinedData = { ...mainData };
+        // Combine the main data with PR data
+        return Promise.all([fetchMainData, fetchPrData]).then(([mainData, prData]) => {
+            // Merge the PR data into the main data
+            Object.entries(prData).forEach(([benchmark, entries]) => {
+                if (!mainData[benchmark]) {
+                    mainData[benchmark] = [];
+                }
+                mainData[benchmark] = mainData[benchmark].concat(entries);
+            });
 
-                // Merge pull request data into combined data
-                Object.entries(prData).forEach(([benchmark, entries]) => {
-                    if (!combinedData[benchmark]) {
-                        combinedData[benchmark] = [];
-                    }
-                    combinedData[benchmark] = combinedData[benchmark].concat(entries);
-                });
+            return mainData;
+        });
+    };
 
-                // Generate datasets
+    // Function to fetch and render all benchmarks as individual charts
+    const fetchAndRenderBenchmarks = (prId) => {
+        fetchAndCombineData(prId)
+            .then((combinedData) => {
                 const allFileNames = [...new Set(Object.values(combinedData).flat().map(entry => entry.release))];
-                const below500Data = {};
-                const above500Data = {};
 
-                Object.entries(combinedData).forEach(([benchmark, entries]) => {
-                    const maxValue = Math.max(...entries.map(entry => entry.actual_value));
-                    if (maxValue < 500) {
-                        below500Data[benchmark] = entries;
-                    } else {
-                        above500Data[benchmark] = entries;
-                    }
+                Object.keys(combinedData).forEach(benchmarkName => {
+                    const entries = combinedData[benchmarkName];
+                    const container = createGraphContainer(benchmarkName);
+
+                    document.getElementById('dynamic_graphs_container').appendChild(container);
+
+                    const datasets = createDatasets({ [benchmarkName]: entries });
+                    renderChart(`chart_${benchmarkName.replace(/\s+/g, '_')}`, allFileNames, datasets, prId);
                 });
-
-                const datasets = createDatasets(combinedData);
-                const below500Datasets = createDatasets(below500Data);
-                const above500Datasets = createDatasets(above500Data);
-
-                // Render charts
-                renderChart('chart_full', allFileNames, datasets);
-                renderChart('chart_below500', allFileNames, below500Datasets);
-                renderChart('chart_above500', allFileNames, above500Datasets);
             })
             .catch(error => console.error('Error fetching data:', error));
     };
@@ -147,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch benchmark data and render charts
     const params = getQueryParams();
-    var prId = params['pr_id'] || null;
+    const prId = params['pr_id'] || null;
 
-    fetchAndCombineData(prId);
+    fetchAndRenderBenchmarks(prId);
 });
