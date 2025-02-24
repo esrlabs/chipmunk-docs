@@ -41,34 +41,6 @@
       "actual_value": 2575.716693
     },
     {
-      "release": "3.13.0",
-      "actual_value": 4100.669254
-    },
-    {
-      "release": "3.13.1",
-      "actual_value": 3495.660430666667
-    },
-    {
-      "release": "3.13.2",
-      "actual_value": 2443.0633138333333
-    },
-    {
-      "release": "3.13.3",
-      "actual_value": 2562.881878
-    },
-    {
-      "release": "3.13.4",
-      "actual_value": 2912.3479126666666
-    },
-    {
-      "release": "3.13.5",
-      "actual_value": 2690.5821048333332
-    },
-    {
-      "release": "3.14.0",
-      "actual_value": 2823.5697830000004
-    },
-    {
       "release": "3.14.1",
       "actual_value": 145.63364433333334
     },
@@ -107,6 +79,34 @@
     {
       "release": "3.16.1",
       "actual_value": 146.25111466666667
+    },
+    {
+      "release": "3.13.0",
+      "actual_value": 185.13304666666667
+    },
+    {
+      "release": "3.13.1",
+      "actual_value": 188.78633866666667
+    },
+    {
+      "release": "3.13.2",
+      "actual_value": 187.58500716666666
+    },
+    {
+      "release": "3.13.3",
+      "actual_value": 142.6140105
+    },
+    {
+      "release": "3.13.4",
+      "actual_value": 146.66146183333333
+    },
+    {
+      "release": "3.13.5",
+      "actual_value": 140.04887816666667
+    },
+    {
+      "release": "3.14.0",
+      "actual_value": 146.53500133333333
     }
   ],
   "Observe - grab content (dlt)": [
@@ -151,34 +151,6 @@
       "actual_value": 41031.26361383333
     },
     {
-      "release": "3.13.0",
-      "actual_value": 41048.64703016666
-    },
-    {
-      "release": "3.13.1",
-      "actual_value": 40949.082113833334
-    },
-    {
-      "release": "3.13.2",
-      "actual_value": 51360.060287
-    },
-    {
-      "release": "3.13.3",
-      "actual_value": 51416.044395833334
-    },
-    {
-      "release": "3.13.4",
-      "actual_value": 50223.897793000004
-    },
-    {
-      "release": "3.13.5",
-      "actual_value": 49135.31305999999
-    },
-    {
-      "release": "3.14.0",
-      "actual_value": 50121.789285000006
-    },
-    {
       "release": "3.14.1",
       "actual_value": 21880.92537833333
     },
@@ -217,6 +189,34 @@
     {
       "release": "3.16.1",
       "actual_value": 22081.185799166666
+    },
+    {
+      "release": "3.13.0",
+      "actual_value": 17728.997627666668
+    },
+    {
+      "release": "3.13.1",
+      "actual_value": 17651.392479500002
+    },
+    {
+      "release": "3.13.2",
+      "actual_value": 17518.038145666666
+    },
+    {
+      "release": "3.13.3",
+      "actual_value": 17448.821292666667
+    },
+    {
+      "release": "3.13.4",
+      "actual_value": 17625.4066785
+    },
+    {
+      "release": "3.13.5",
+      "actual_value": 17726.934512166667
+    },
+    {
+      "release": "3.14.0",
+      "actual_value": 17761.918278666668
     }
   ],
   "Observe - grab content (pcapng)": [
@@ -261,34 +261,6 @@
       "actual_value": 12.840629
     },
     {
-      "release": "3.13.0",
-      "actual_value": 15.201569166666667
-    },
-    {
-      "release": "3.13.1",
-      "actual_value": 21.923794166666667
-    },
-    {
-      "release": "3.13.2",
-      "actual_value": 19.666187
-    },
-    {
-      "release": "3.13.3",
-      "actual_value": 15.125131000000001
-    },
-    {
-      "release": "3.13.4",
-      "actual_value": 16.70820266666667
-    },
-    {
-      "release": "3.13.5",
-      "actual_value": 18.343172666666668
-    },
-    {
-      "release": "3.14.0",
-      "actual_value": 12.590367333333333
-    },
-    {
       "release": "3.14.1",
       "actual_value": 2.566129
     },
@@ -327,6 +299,34 @@
     {
       "release": "3.16.1",
       "actual_value": 2.4824325000000003
+    },
+    {
+      "release": "3.13.0",
+      "actual_value": 2.431092
+    },
+    {
+      "release": "3.13.1",
+      "actual_value": 2.331942833333333
+    },
+    {
+      "release": "3.13.2",
+      "actual_value": 2.2077955
+    },
+    {
+      "release": "3.13.3",
+      "actual_value": 2.4467638333333332
+    },
+    {
+      "release": "3.13.4",
+      "actual_value": 2.5022013333333333
+    },
+    {
+      "release": "3.13.5",
+      "actual_value": 2.411493166666667
+    },
+    {
+      "release": "3.14.0",
+      "actual_value": 2.626763
     }
   ],
   "Stream - startup measurement": [
@@ -371,34 +371,6 @@
       "actual_value": 26.804373
     },
     {
-      "release": "3.13.0",
-      "actual_value": 18.7125545
-    },
-    {
-      "release": "3.13.1",
-      "actual_value": 19.092141
-    },
-    {
-      "release": "3.13.2",
-      "actual_value": 19.713255666666665
-    },
-    {
-      "release": "3.13.3",
-      "actual_value": 18.738899
-    },
-    {
-      "release": "3.13.4",
-      "actual_value": 22.0734575
-    },
-    {
-      "release": "3.13.5",
-      "actual_value": 25.70112933333333
-    },
-    {
-      "release": "3.14.0",
-      "actual_value": 22.467306499999996
-    },
-    {
       "release": "3.14.1",
       "actual_value": 9.453952833333334
     },
@@ -437,6 +409,34 @@
     {
       "release": "3.16.1",
       "actual_value": 10.397666666666666
+    },
+    {
+      "release": "3.13.0",
+      "actual_value": 9.0133705
+    },
+    {
+      "release": "3.13.1",
+      "actual_value": 8.252743333333333
+    },
+    {
+      "release": "3.13.2",
+      "actual_value": 8.7628535
+    },
+    {
+      "release": "3.13.3",
+      "actual_value": 9.593278
+    },
+    {
+      "release": "3.13.4",
+      "actual_value": 8.861712666666667
+    },
+    {
+      "release": "3.13.5",
+      "actual_value": 9.080117166666668
+    },
+    {
+      "release": "3.14.0",
+      "actual_value": 9.160958500000001
     }
   ],
   "Stream - shutdown measurement": [
@@ -481,34 +481,6 @@
       "actual_value": 8.281267666666666
     },
     {
-      "release": "3.13.0",
-      "actual_value": 7.944130166666667
-    },
-    {
-      "release": "3.13.1",
-      "actual_value": 21.868494125
-    },
-    {
-      "release": "3.13.2",
-      "actual_value": 11.547207499999999
-    },
-    {
-      "release": "3.13.3",
-      "actual_value": 6.757206833333334
-    },
-    {
-      "release": "3.13.4",
-      "actual_value": 8.173253666666666
-    },
-    {
-      "release": "3.13.5",
-      "actual_value": 5.993425333333334
-    },
-    {
-      "release": "3.14.0",
-      "actual_value": 9.944258833333333
-    },
-    {
       "release": "3.14.1",
       "actual_value": 2.0836495
     },
@@ -547,6 +519,34 @@
     {
       "release": "3.16.1",
       "actual_value": 2.5035203333333333
+    },
+    {
+      "release": "3.13.0",
+      "actual_value": 2.0517958333333333
+    },
+    {
+      "release": "3.13.1",
+      "actual_value": 1.9093491666666667
+    },
+    {
+      "release": "3.13.2",
+      "actual_value": 2.1123214999999997
+    },
+    {
+      "release": "3.13.3",
+      "actual_value": 2.085170666666667
+    },
+    {
+      "release": "3.13.4",
+      "actual_value": 2.191308166666667
+    },
+    {
+      "release": "3.13.5",
+      "actual_value": 2.173442
+    },
+    {
+      "release": "3.14.0",
+      "actual_value": 2.0327888333333335
     }
   ],
   "Stream - Open 50 sessions": [
@@ -591,34 +591,6 @@
       "actual_value": 538.1952211666667
     },
     {
-      "release": "3.13.0",
-      "actual_value": 554.3616491666667
-    },
-    {
-      "release": "3.13.1",
-      "actual_value": 541.9939061666666
-    },
-    {
-      "release": "3.13.2",
-      "actual_value": 708.6527769999999
-    },
-    {
-      "release": "3.13.3",
-      "actual_value": 701.041227
-    },
-    {
-      "release": "3.13.4",
-      "actual_value": 712.8146106666667
-    },
-    {
-      "release": "3.13.5",
-      "actual_value": 642.5150903333333
-    },
-    {
-      "release": "3.14.0",
-      "actual_value": 697.5422238333334
-    },
-    {
       "release": "3.14.1",
       "actual_value": 1221.3298986666666
     },
@@ -657,6 +629,34 @@
     {
       "release": "3.16.1",
       "actual_value": 1435.7344393333333
+    },
+    {
+      "release": "3.13.0",
+      "actual_value": 1216.5827729999999
+    },
+    {
+      "release": "3.13.1",
+      "actual_value": 1265.0830766666666
+    },
+    {
+      "release": "3.13.2",
+      "actual_value": 1267.292604
+    },
+    {
+      "release": "3.13.3",
+      "actual_value": 1344.8580116666667
+    },
+    {
+      "release": "3.13.4",
+      "actual_value": 1146.4929723333332
+    },
+    {
+      "release": "3.13.5",
+      "actual_value": 1194.8795416666667
+    },
+    {
+      "release": "3.14.0",
+      "actual_value": 1161.9615938333334
     }
   ],
   "Indexes - Switch to breadcrumb mode": [
@@ -701,34 +701,6 @@
       "actual_value": 7158.092888833334
     },
     {
-      "release": "3.13.0",
-      "actual_value": 7465.126816
-    },
-    {
-      "release": "3.13.1",
-      "actual_value": 8970.325959666667
-    },
-    {
-      "release": "3.13.2",
-      "actual_value": 4199.509462833333
-    },
-    {
-      "release": "3.13.3",
-      "actual_value": 5967.235095166667
-    },
-    {
-      "release": "3.13.4",
-      "actual_value": 6165.865888166667
-    },
-    {
-      "release": "3.13.5",
-      "actual_value": 5042.865164333333
-    },
-    {
-      "release": "3.14.0",
-      "actual_value": 8620.545297333332
-    },
-    {
       "release": "3.14.1",
       "actual_value": 363.1918256666666
     },
@@ -767,6 +739,34 @@
     {
       "release": "3.16.1",
       "actual_value": 382.633728
+    },
+    {
+      "release": "3.13.0",
+      "actual_value": 340.7109845
+    },
+    {
+      "release": "3.13.1",
+      "actual_value": 288.60947949999996
+    },
+    {
+      "release": "3.13.2",
+      "actual_value": 309.2726905
+    },
+    {
+      "release": "3.13.3",
+      "actual_value": 345.21879383333334
+    },
+    {
+      "release": "3.13.4",
+      "actual_value": 364.47484633333335
+    },
+    {
+      "release": "3.13.5",
+      "actual_value": 333.62405466666667
+    },
+    {
+      "release": "3.14.0",
+      "actual_value": 379.40928533333334
     }
   ],
   "Assign & single search": [
@@ -811,34 +811,6 @@
       "actual_value": 6169.699196999999
     },
     {
-      "release": "3.13.0",
-      "actual_value": 6813.748773833333
-    },
-    {
-      "release": "3.13.1",
-      "actual_value": 7242.39389
-    },
-    {
-      "release": "3.13.2",
-      "actual_value": 3257.7758395
-    },
-    {
-      "release": "3.13.3",
-      "actual_value": 5737.163076833333
-    },
-    {
-      "release": "3.13.4",
-      "actual_value": 5919.061218333333
-    },
-    {
-      "release": "3.13.5",
-      "actual_value": 4501.324714333333
-    },
-    {
-      "release": "3.14.0",
-      "actual_value": 3071.5021138333336
-    },
-    {
       "release": "3.14.1",
       "actual_value": 405.95966799999997
     },
@@ -877,6 +849,34 @@
     {
       "release": "3.16.1",
       "actual_value": 437.5903786666667
+    },
+    {
+      "release": "3.13.0",
+      "actual_value": 314.52144333333337
+    },
+    {
+      "release": "3.13.1",
+      "actual_value": 298.97850016666666
+    },
+    {
+      "release": "3.13.2",
+      "actual_value": 303.0265165
+    },
+    {
+      "release": "3.13.3",
+      "actual_value": 327.37288216666667
+    },
+    {
+      "release": "3.13.4",
+      "actual_value": 382.75896016666667
+    },
+    {
+      "release": "3.13.5",
+      "actual_value": 378.8959825
+    },
+    {
+      "release": "3.14.0",
+      "actual_value": 419.91506566666664
     }
   ],
   "Assign & multiple search": [
@@ -921,34 +921,6 @@
       "actual_value": 5616.236154333333
     },
     {
-      "release": "3.13.0",
-      "actual_value": 6636.8431986666665
-    },
-    {
-      "release": "3.13.1",
-      "actual_value": 6855.822127333333
-    },
-    {
-      "release": "3.13.2",
-      "actual_value": 3415.4444535
-    },
-    {
-      "release": "3.13.3",
-      "actual_value": 5665.034158166666
-    },
-    {
-      "release": "3.13.4",
-      "actual_value": 5844.002266833333
-    },
-    {
-      "release": "3.13.5",
-      "actual_value": 4472.788729333333
-    },
-    {
-      "release": "3.14.0",
-      "actual_value": 2571.133432333333
-    },
-    {
       "release": "3.14.1",
       "actual_value": 418.11673850000005
     },
@@ -987,6 +959,34 @@
     {
       "release": "3.16.1",
       "actual_value": 421.496089
+    },
+    {
+      "release": "3.13.0",
+      "actual_value": 308.339046
+    },
+    {
+      "release": "3.13.1",
+      "actual_value": 301.9690156666667
+    },
+    {
+      "release": "3.13.2",
+      "actual_value": 323.12465449999996
+    },
+    {
+      "release": "3.13.3",
+      "actual_value": 375.51723783333335
+    },
+    {
+      "release": "3.13.4",
+      "actual_value": 388.60393483333337
+    },
+    {
+      "release": "3.13.5",
+      "actual_value": 364.49009333333333
+    },
+    {
+      "release": "3.14.0",
+      "actual_value": 406.69157083333334
     }
   ]
 }
