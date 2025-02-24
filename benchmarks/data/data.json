@@ -41,72 +41,72 @@
       "actual_value": 2575.716693
     },
     {
-      "release": "3.14.1",
-      "actual_value": 145.63364433333334
-    },
-    {
-      "release": "3.14.2",
-      "actual_value": 151.08785083333333
-    },
-    {
-      "release": "3.14.3",
-      "actual_value": 166.30743266666667
-    },
-    {
-      "release": "3.14.4",
-      "actual_value": 155.9405865
-    },
-    {
-      "release": "3.15.0",
-      "actual_value": 146.96182883333333
-    },
-    {
-      "release": "3.15.1",
-      "actual_value": 128.44308216666667
-    },
-    {
-      "release": "3.15.2",
-      "actual_value": 163.61517916666665
-    },
-    {
-      "release": "3.15.3",
-      "actual_value": 156.989462
-    },
-    {
-      "release": "3.16.0",
-      "actual_value": 148.10404883333334
-    },
-    {
-      "release": "3.16.1",
-      "actual_value": 146.25111466666667
-    },
-    {
       "release": "3.13.0",
-      "actual_value": 185.13304666666667
+      "actual_value": 170.29240266666667
     },
     {
       "release": "3.13.1",
-      "actual_value": 188.78633866666667
+      "actual_value": 160.60902983333332
     },
     {
       "release": "3.13.2",
-      "actual_value": 187.58500716666666
+      "actual_value": 161.07480866666666
     },
     {
       "release": "3.13.3",
-      "actual_value": 142.6140105
+      "actual_value": 138.59695083333332
     },
     {
       "release": "3.13.4",
-      "actual_value": 146.66146183333333
+      "actual_value": 144.63836933333334
     },
     {
       "release": "3.13.5",
-      "actual_value": 140.04887816666667
+      "actual_value": 137.05355966666667
     },
     {
       "release": "3.14.0",
-      "actual_value": 146.53500133333333
+      "actual_value": 164.04648116666667
+    },
+    {
+      "release": "3.14.1",
+      "actual_value": 186.1505086666667
+    },
+    {
+      "release": "3.14.2",
+      "actual_value": 157.87700933333335
+    },
+    {
+      "release": "3.14.3",
+      "actual_value": 194.75226833333332
+    },
+    {
+      "release": "3.14.4",
+      "actual_value": 171.15459483333333
+    },
+    {
+      "release": "3.15.0",
+      "actual_value": 205.93863766666666
+    },
+    {
+      "release": "3.15.1",
+      "actual_value": 172.0581576666667
+    },
+    {
+      "release": "3.15.2",
+      "actual_value": 172.72178133333333
+    },
+    {
+      "release": "3.15.3",
+      "actual_value": 191.2340985
+    },
+    {
+      "release": "3.16.0",
+      "actual_value": 209.31867883333334
+    },
+    {
+      "release": "3.16.1",
+      "actual_value": 195.80994116666668
     }
   ],
   "Observe - grab content (dlt)": [
@@ -151,72 +151,72 @@
       "actual_value": 41031.26361383333
     },
     {
-      "release": "3.14.1",
-      "actual_value": 21880.92537833333
-    },
-    {
-      "release": "3.14.2",
-      "actual_value": 21295.312256499998
-    },
-    {
-      "release": "3.14.3",
-      "actual_value": 22238.970065166664
-    },
-    {
-      "release": "3.14.4",
-      "actual_value": 22027.901991333332
-    },
-    {
-      "release": "3.15.0",
-      "actual_value": 19561.33264433333
-    },
-    {
-      "release": "3.15.1",
-      "actual_value": 19247.133651666667
-    },
-    {
-      "release": "3.15.2",
-      "actual_value": 19255.169562666666
-    },
-    {
-      "release": "3.15.3",
-      "actual_value": 19302.447763666667
-    },
-    {
-      "release": "3.16.0",
-      "actual_value": 21669.720629
-    },
-    {
-      "release": "3.16.1",
-      "actual_value": 22081.185799166666
-    },
-    {
       "release": "3.13.0",
-      "actual_value": 17728.997627666668
+      "actual_value": 17668.9040655
     },
     {
       "release": "3.13.1",
-      "actual_value": 17651.392479500002
+      "actual_value": 19073.8917165
     },
     {
       "release": "3.13.2",
-      "actual_value": 17518.038145666666
+      "actual_value": 19542.796867833335
     },
     {
       "release": "3.13.3",
-      "actual_value": 17448.821292666667
+      "actual_value": 17016.0886
     },
     {
       "release": "3.13.4",
-      "actual_value": 17625.4066785
+      "actual_value": 16874.046997499998
     },
     {
       "release": "3.13.5",
-      "actual_value": 17726.934512166667
+      "actual_value": 18629.548353000002
     },
     {
       "release": "3.14.0",
-      "actual_value": 17761.918278666668
+      "actual_value": 17960.475103
+    },
+    {
+      "release": "3.14.1",
+      "actual_value": 18435.520364166667
+    },
+    {
+      "release": "3.14.2",
+      "actual_value": 17451.15277233333
+    },
+    {
+      "release": "3.14.3",
+      "actual_value": 18271.383630833334
+    },
+    {
+      "release": "3.14.4",
+      "actual_value": 14897.817228166668
+    },
+    {
+      "release": "3.15.0",
+      "actual_value": 17230.711083833336
+    },
+    {
+      "release": "3.15.1",
+      "actual_value": 16864.585775166666
+    },
+    {
+      "release": "3.15.2",
+      "actual_value": 16813.602413
+    },
+    {
+      "release": "3.15.3",
+      "actual_value": 16824.583908166667
+    },
+    {
+      "release": "3.16.0",
+      "actual_value": 19183.2078505
+    },
+    {
+      "release": "3.16.1",
+      "actual_value": 21257.38787733333
     }
   ],
   "Observe - grab content (pcapng)": [
@@ -261,72 +261,72 @@
       "actual_value": 12.840629
     },
     {
-      "release": "3.14.1",
-      "actual_value": 2.566129
-    },
-    {
-      "release": "3.14.2",
-      "actual_value": 2.5680976666666666
-    },
-    {
-      "release": "3.14.3",
-      "actual_value": 2.630659833333333
-    },
-    {
-      "release": "3.14.4",
-      "actual_value": 2.430803666666667
-    },
-    {
-      "release": "3.15.0",
-      "actual_value": 2.3282553333333333
-    },
-    {
-      "release": "3.15.1",
-      "actual_value": 2.330597
-    },
-    {
-      "release": "3.15.2",
-      "actual_value": 2.5158216666666666
-    },
-    {
-      "release": "3.15.3",
-      "actual_value": 2.469104833333333
-    },
-    {
-      "release": "3.16.0",
-      "actual_value": 2.3457728333333336
-    },
-    {
-      "release": "3.16.1",
-      "actual_value": 2.4824325000000003
-    },
-    {
       "release": "3.13.0",
-      "actual_value": 2.431092
+      "actual_value": 2.9010943333333334
     },
     {
       "release": "3.13.1",
-      "actual_value": 2.331942833333333
+      "actual_value": 3.035069833333333
     },
     {
       "release": "3.13.2",
-      "actual_value": 2.2077955
+      "actual_value": 8.044989166666667
     },
     {
       "release": "3.13.3",
-      "actual_value": 2.4467638333333332
+      "actual_value": 2.3598671666666666
     },
     {
       "release": "3.13.4",
-      "actual_value": 2.5022013333333333
+      "actual_value": 2.6144038333333333
     },
     {
       "release": "3.13.5",
-      "actual_value": 2.411493166666667
+      "actual_value": 2.6134203333333335
     },
     {
       "release": "3.14.0",
-      "actual_value": 2.626763
+      "actual_value": 2.8170230000000003
+    },
+    {
+      "release": "3.14.1",
+      "actual_value": 4.211420666666666
+    },
+    {
+      "release": "3.14.2",
+      "actual_value": 3.080124
+    },
+    {
+      "release": "3.14.3",
+      "actual_value": 6.021681
+    },
+    {
+      "release": "3.14.4",
+      "actual_value": 2.2887345
+    },
+    {
+      "release": "3.15.0",
+      "actual_value": 2.3284908333333334
+    },
+    {
+      "release": "3.15.1",
+      "actual_value": 2.3743168333333333
+    },
+    {
+      "release": "3.15.2",
+      "actual_value": 2.4291115
+    },
+    {
+      "release": "3.15.3",
+      "actual_value": 2.2742755
+    },
+    {
+      "release": "3.16.0",
+      "actual_value": 2.4787171666666667
+    },
+    {
+      "release": "3.16.1",
+      "actual_value": 2.787789
     }
   ],
   "Stream - startup measurement": [
@@ -371,72 +371,72 @@
       "actual_value": 26.804373
     },
     {
-      "release": "3.14.1",
-      "actual_value": 9.453952833333334
-    },
-    {
-      "release": "3.14.2",
-      "actual_value": 9.263873333333335
-    },
-    {
-      "release": "3.14.3",
-      "actual_value": 9.605958833333334
-    },
-    {
-      "release": "3.14.4",
-      "actual_value": 10.040885000000001
-    },
-    {
-      "release": "3.15.0",
-      "actual_value": 10.580394833333333
-    },
-    {
-      "release": "3.15.1",
-      "actual_value": 9.8861135
-    },
-    {
-      "release": "3.15.2",
-      "actual_value": 9.784018000000001
-    },
-    {
-      "release": "3.15.3",
-      "actual_value": 11.2753605
-    },
-    {
-      "release": "3.16.0",
-      "actual_value": 10.782931833333334
-    },
-    {
-      "release": "3.16.1",
-      "actual_value": 10.397666666666666
-    },
-    {
       "release": "3.13.0",
-      "actual_value": 9.0133705
+      "actual_value": 10.528173833333334
     },
     {
       "release": "3.13.1",
-      "actual_value": 8.252743333333333
+      "actual_value": 10.848452333333334
     },
     {
       "release": "3.13.2",
-      "actual_value": 8.7628535
+      "actual_value": 69.0632045
     },
     {
       "release": "3.13.3",
-      "actual_value": 9.593278
+      "actual_value": 8.647191666666666
     },
     {
       "release": "3.13.4",
-      "actual_value": 8.861712666666667
+      "actual_value": 9.853809166666666
     },
     {
       "release": "3.13.5",
-      "actual_value": 9.080117166666668
+      "actual_value": 10.034576166666666
     },
     {
       "release": "3.14.0",
-      "actual_value": 9.160958500000001
+      "actual_value": 9.955898166666666
+    },
+    {
+      "release": "3.14.1",
+      "actual_value": 9.8506155
+    },
+    {
+      "release": "3.14.2",
+      "actual_value": 12.061769333333332
+    },
+    {
+      "release": "3.14.3",
+      "actual_value": 29.471268
+    },
+    {
+      "release": "3.14.4",
+      "actual_value": 9.902694833333333
+    },
+    {
+      "release": "3.15.0",
+      "actual_value": 10.024865833333333
+    },
+    {
+      "release": "3.15.1",
+      "actual_value": 9.813874666666667
+    },
+    {
+      "release": "3.15.2",
+      "actual_value": 10.4358585
+    },
+    {
+      "release": "3.15.3",
+      "actual_value": 9.716509833333333
+    },
+    {
+      "release": "3.16.0",
+      "actual_value": 10.272930166666667
+    },
+    {
+      "release": "3.16.1",
+      "actual_value": 10.557440333333334
     }
   ],
   "Stream - shutdown measurement": [
@@ -481,72 +481,72 @@
       "actual_value": 8.281267666666666
     },
     {
-      "release": "3.14.1",
-      "actual_value": 2.0836495
-    },
-    {
-      "release": "3.14.2",
-      "actual_value": 1.9927475000000001
-    },
-    {
-      "release": "3.14.3",
-      "actual_value": 2.1176038333333334
-    },
-    {
-      "release": "3.14.4",
-      "actual_value": 2.2202758333333334
-    },
-    {
-      "release": "3.15.0",
-      "actual_value": 2.5160013333333335
-    },
-    {
-      "release": "3.15.1",
-      "actual_value": 2.692535
-    },
-    {
-      "release": "3.15.2",
-      "actual_value": 2.472472666666667
-    },
-    {
-      "release": "3.15.3",
-      "actual_value": 2.4338836666666666
-    },
-    {
-      "release": "3.16.0",
-      "actual_value": 2.4317045
-    },
-    {
-      "release": "3.16.1",
-      "actual_value": 2.5035203333333333
-    },
-    {
       "release": "3.13.0",
-      "actual_value": 2.0517958333333333
+      "actual_value": 2.5131698333333334
     },
     {
       "release": "3.13.1",
-      "actual_value": 1.9093491666666667
+      "actual_value": 2.6472765
     },
     {
       "release": "3.13.2",
-      "actual_value": 2.1123214999999997
+      "actual_value": 5.176642333333334
     },
     {
       "release": "3.13.3",
-      "actual_value": 2.085170666666667
+      "actual_value": 2.2921768333333334
     },
     {
       "release": "3.13.4",
-      "actual_value": 2.191308166666667
+      "actual_value": 2.0814463333333335
     },
     {
       "release": "3.13.5",
-      "actual_value": 2.173442
+      "actual_value": 2.418028833333333
     },
     {
       "release": "3.14.0",
-      "actual_value": 2.0327888333333335
+      "actual_value": 2.7209258333333337
+    },
+    {
+      "release": "3.14.1",
+      "actual_value": 2.3809998333333335
+    },
+    {
+      "release": "3.14.2",
+      "actual_value": 2.5624031666666665
+    },
+    {
+      "release": "3.14.3",
+      "actual_value": 3.8320195
+    },
+    {
+      "release": "3.14.4",
+      "actual_value": 2.6673285
+    },
+    {
+      "release": "3.15.0",
+      "actual_value": 2.457852
+    },
+    {
+      "release": "3.15.1",
+      "actual_value": 2.3377865
+    },
+    {
+      "release": "3.15.2",
+      "actual_value": 2.5362406666666666
+    },
+    {
+      "release": "3.15.3",
+      "actual_value": 2.6500776666666668
+    },
+    {
+      "release": "3.16.0",
+      "actual_value": 2.797834833333333
+    },
+    {
+      "release": "3.16.1",
+      "actual_value": 2.756904666666667
     }
   ],
   "Stream - Open 50 sessions": [
@@ -591,72 +591,72 @@
       "actual_value": 538.1952211666667
     },
     {
-      "release": "3.14.1",
-      "actual_value": 1221.3298986666666
-    },
-    {
-      "release": "3.14.2",
-      "actual_value": 1460.4148223333334
-    },
-    {
-      "release": "3.14.3",
-      "actual_value": 1346.1492771666667
-    },
-    {
-      "release": "3.14.4",
-      "actual_value": 1477.9444458
-    },
-    {
-      "release": "3.15.0",
-      "actual_value": 1562.7060165
-    },
-    {
-      "release": "3.15.1",
-      "actual_value": 1438.5718651666666
-    },
-    {
-      "release": "3.15.2",
-      "actual_value": 1432.9028308333334
-    },
-    {
-      "release": "3.15.3",
-      "actual_value": 1395.2621397999999
-    },
-    {
-      "release": "3.16.0",
-      "actual_value": 1474.7589511666665
-    },
-    {
-      "release": "3.16.1",
-      "actual_value": 1435.7344393333333
-    },
-    {
       "release": "3.13.0",
-      "actual_value": 1216.5827729999999
+      "actual_value": 1471.4319085
     },
     {
       "release": "3.13.1",
-      "actual_value": 1265.0830766666666
+      "actual_value": 1449.9488073333332
     },
     {
       "release": "3.13.2",
-      "actual_value": 1267.292604
+      "actual_value": 2267.417242
     },
     {
       "release": "3.13.3",
-      "actual_value": 1344.8580116666667
+      "actual_value": 1166.2405883333333
     },
     {
       "release": "3.13.4",
-      "actual_value": 1146.4929723333332
+      "actual_value": 1315.7885106666665
     },
     {
       "release": "3.13.5",
-      "actual_value": 1194.8795416666667
+      "actual_value": 1448.599954
     },
     {
       "release": "3.14.0",
-      "actual_value": 1161.9615938333334
+      "actual_value": 1348.4895813333335
+    },
+    {
+      "release": "3.14.1",
+      "actual_value": 1337.021013
+    },
+    {
+      "release": "3.14.2",
+      "actual_value": 1499.0994518333334
+    },
+    {
+      "release": "3.14.3",
+      "actual_value": 1762.2240583333332
+    },
+    {
+      "release": "3.14.4",
+      "actual_value": 1297.527718
+    },
+    {
+      "release": "3.15.0",
+      "actual_value": 1366.8843328333332
+    },
+    {
+      "release": "3.15.1",
+      "actual_value": 1294.1838193333333
+    },
+    {
+      "release": "3.15.2",
+      "actual_value": 1455.9662838333334
+    },
+    {
+      "release": "3.15.3",
+      "actual_value": 1471.150992
+    },
+    {
+      "release": "3.16.0",
+      "actual_value": 1421.8700956666669
+    },
+    {
+      "release": "3.16.1",
+      "actual_value": 1712.390619
     }
   ],
   "Indexes - Switch to breadcrumb mode": [
@@ -701,72 +701,72 @@
       "actual_value": 7158.092888833334
     },
     {
-      "release": "3.14.1",
-      "actual_value": 363.1918256666666
-    },
-    {
-      "release": "3.14.2",
-      "actual_value": 363.3178281666667
-    },
-    {
-      "release": "3.14.3",
-      "actual_value": 387.19398533333333
-    },
-    {
-      "release": "3.14.4",
-      "actual_value": 391.9943224
-    },
-    {
-      "release": "3.15.0",
-      "actual_value": 387.2813955
-    },
-    {
-      "release": "3.15.1",
-      "actual_value": 380.21172499999994
-    },
-    {
-      "release": "3.15.2",
-      "actual_value": 370.8293325
-    },
-    {
-      "release": "3.15.3",
-      "actual_value": 372.4094976
-    },
-    {
-      "release": "3.16.0",
-      "actual_value": 385.20379116666663
-    },
-    {
-      "release": "3.16.1",
-      "actual_value": 382.633728
-    },
-    {
       "release": "3.13.0",
-      "actual_value": 340.7109845
+      "actual_value": 431.1077956666666
     },
     {
       "release": "3.13.1",
-      "actual_value": 288.60947949999996
+      "actual_value": 425.0151518333334
     },
     {
       "release": "3.13.2",
-      "actual_value": 309.2726905
+      "actual_value": 482.17665016666666
     },
     {
       "release": "3.13.3",
-      "actual_value": 345.21879383333334
+      "actual_value": 443.70332783333333
     },
     {
       "release": "3.13.4",
-      "actual_value": 364.47484633333335
+      "actual_value": 425.3425701666667
     },
     {
       "release": "3.13.5",
-      "actual_value": 333.62405466666667
+      "actual_value": 431.3573876666667
     },
     {
       "release": "3.14.0",
-      "actual_value": 379.40928533333334
+      "actual_value": 435.5322816666667
+    },
+    {
+      "release": "3.14.1",
+      "actual_value": 426.02151299999997
+    },
+    {
+      "release": "3.14.2",
+      "actual_value": 425.31116
+    },
+    {
+      "release": "3.14.3",
+      "actual_value": 443.3279506666667
+    },
+    {
+      "release": "3.14.4",
+      "actual_value": 409.3126395
+    },
+    {
+      "release": "3.15.0",
+      "actual_value": 414.18260733333335
+    },
+    {
+      "release": "3.15.1",
+      "actual_value": 415.35493533333334
+    },
+    {
+      "release": "3.15.2",
+      "actual_value": 422.08820399999996
+    },
+    {
+      "release": "3.15.3",
+      "actual_value": 418.7703004
+    },
+    {
+      "release": "3.16.0",
+      "actual_value": 419.60790316666663
+    },
+    {
+      "release": "3.16.1",
+      "actual_value": 544.3954985
     }
   ],
   "Assign & single search": [
@@ -811,72 +811,72 @@
       "actual_value": 6169.699196999999
     },
     {
-      "release": "3.14.1",
-      "actual_value": 405.95966799999997
-    },
-    {
-      "release": "3.14.2",
-      "actual_value": 375.9546086666667
-    },
-    {
-      "release": "3.14.3",
-      "actual_value": 391.5574966666666
-    },
-    {
-      "release": "3.14.4",
-      "actual_value": 421.2027858
-    },
-    {
-      "release": "3.15.0",
-      "actual_value": 411.25865833333336
-    },
-    {
-      "release": "3.15.1",
-      "actual_value": 374.8091483333333
-    },
-    {
-      "release": "3.15.2",
-      "actual_value": 381.241628
-    },
-    {
-      "release": "3.15.3",
-      "actual_value": 429.7478532
-    },
-    {
-      "release": "3.16.0",
-      "actual_value": 412.5790488333334
-    },
-    {
-      "release": "3.16.1",
-      "actual_value": 437.5903786666667
-    },
-    {
       "release": "3.13.0",
-      "actual_value": 314.52144333333337
+      "actual_value": 440.57734566666664
     },
     {
       "release": "3.13.1",
-      "actual_value": 298.97850016666666
+      "actual_value": 420.9101205
     },
     {
       "release": "3.13.2",
-      "actual_value": 303.0265165
+      "actual_value": 477.1919051666667
     },
     {
       "release": "3.13.3",
-      "actual_value": 327.37288216666667
+      "actual_value": 456.6292925
     },
     {
       "release": "3.13.4",
-      "actual_value": 382.75896016666667
+      "actual_value": 428.326257
     },
     {
       "release": "3.13.5",
-      "actual_value": 378.8959825
+      "actual_value": 443.29285733333336
     },
     {
       "release": "3.14.0",
-      "actual_value": 419.91506566666664
+      "actual_value": 435.4037308333333
+    },
+    {
+      "release": "3.14.1",
+      "actual_value": 460.8917338333333
+    },
+    {
+      "release": "3.14.2",
+      "actual_value": 429.469669
+    },
+    {
+      "release": "3.14.3",
+      "actual_value": 456.48284433333333
+    },
+    {
+      "release": "3.14.4",
+      "actual_value": 422.158811
+    },
+    {
+      "release": "3.15.0",
+      "actual_value": 422.4553815
+    },
+    {
+      "release": "3.15.1",
+      "actual_value": 434.06864083333335
+    },
+    {
+      "release": "3.15.2",
+      "actual_value": 445.17777483333333
+    },
+    {
+      "release": "3.15.3",
+      "actual_value": 428.9196386
+    },
+    {
+      "release": "3.16.0",
+      "actual_value": 446.9199578333334
+    },
+    {
+      "release": "3.16.1",
+      "actual_value": 439.3491365
     }
   ],
   "Assign & multiple search": [
@@ -921,72 +921,72 @@
       "actual_value": 5616.236154333333
     },
     {
-      "release": "3.14.1",
-      "actual_value": 418.11673850000005
-    },
-    {
-      "release": "3.14.2",
-      "actual_value": 382.6086021666667
-    },
-    {
-      "release": "3.14.3",
-      "actual_value": 423.0862091666666
-    },
-    {
-      "release": "3.14.4",
-      "actual_value": 413.09658440000004
-    },
-    {
-      "release": "3.15.0",
-      "actual_value": 405.94132599999995
-    },
-    {
-      "release": "3.15.1",
-      "actual_value": 392.8066503333334
-    },
-    {
-      "release": "3.15.2",
-      "actual_value": 395.3853208333333
-    },
-    {
-      "release": "3.15.3",
-      "actual_value": 433.83259260000005
-    },
-    {
-      "release": "3.16.0",
-      "actual_value": 395.3090936666667
-    },
-    {
-      "release": "3.16.1",
-      "actual_value": 421.496089
-    },
-    {
       "release": "3.13.0",
-      "actual_value": 308.339046
+      "actual_value": 445.208402
     },
     {
       "release": "3.13.1",
-      "actual_value": 301.9690156666667
+      "actual_value": 417.4826366666667
     },
     {
       "release": "3.13.2",
-      "actual_value": 323.12465449999996
+      "actual_value": 478.3598696666666
     },
     {
       "release": "3.13.3",
-      "actual_value": 375.51723783333335
+      "actual_value": 471.5626845
     },
     {
       "release": "3.13.4",
-      "actual_value": 388.60393483333337
+      "actual_value": 430.3532911666667
     },
     {
       "release": "3.13.5",
-      "actual_value": 364.49009333333333
+      "actual_value": 445.3703081666667
     },
     {
       "release": "3.14.0",
-      "actual_value": 406.69157083333334
+      "actual_value": 438.0033301666667
+    },
+    {
+      "release": "3.14.1",
+      "actual_value": 454.2795753333333
+    },
+    {
+      "release": "3.14.2",
+      "actual_value": 431.1423955
+    },
+    {
+      "release": "3.14.3",
+      "actual_value": 462.2236435
+    },
+    {
+      "release": "3.14.4",
+      "actual_value": 435.54312966666663
+    },
+    {
+      "release": "3.15.0",
+      "actual_value": 422.5788548333333
+    },
+    {
+      "release": "3.15.1",
+      "actual_value": 432.6635366666667
+    },
+    {
+      "release": "3.15.2",
+      "actual_value": 449.7188066666667
+    },
+    {
+      "release": "3.15.3",
+      "actual_value": 425.8661334
+    },
+    {
+      "release": "3.16.0",
+      "actual_value": 459.5780486666667
+    },
+    {
+      "release": "3.16.1",
+      "actual_value": 438.02876433333336
     }
   ]
 }
