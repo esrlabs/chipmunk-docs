@@ -80,6 +80,10 @@ The results indicate:
 - Replacing direct references with `std::sync::Arc` has a slightly negative effect on performance.
 - Changing `parse()` to async instead of bridging using `block_on()` has no positive impact on the plugin implementation.
 
+## Cancel-Safety:
+
+Making `parse()` will impact the cancellation safety of the producer in the method that pulls more bytes and then parse them, because we depends on that there is no yield points when we call parse after pulling new bytes and the internal buffer is emptied.
+
 ## Conclusion
 
 - Since changing the trait signature to async has no positive impact on the plugins and has a slightly negative impact, we decided to keep the function sync and use bridging for the async call from the plugin, until specifying which function in `bindgen!()` macro is supported.
