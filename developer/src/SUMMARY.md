@@ -38,3 +38,5 @@
             - [Producer & Composing](plugin/wasmtime/proposal-producer.md) 
 - [Tantivy](tantivy/README.md)
     - [Architecture](tantivy/tantivy_architecture.md)
+- [Databases](database/index.md)
+  - [Database Comparison](database/comparison.md)
