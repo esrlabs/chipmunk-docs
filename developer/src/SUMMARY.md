@@ -39,4 +39,5 @@
 - [Tantivy](tantivy/README.md)
     - [Architecture](tantivy/tantivy_architecture.md)
 - [Databases](database/index.md)
-  - [Database Comparison](database/comparison.md)
+  - [Initial Comparison](database/init-comparison.md)
+  - [Comparison Results](database/comparison-results.md)

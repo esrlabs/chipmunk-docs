@@ -1,4 +1,4 @@
-# Database Comparison
+# Database Initial Comparison
 
 This document compares different database options based on the requirements outlined in the [Databases in Chipmunk](./index.md) document.
 
@@ -52,6 +52,10 @@ DuckDB is another in-process analytical database, designed for fast read-only qu
 ## SurrealDB
 
 SurrealDB is a relatively new, multi-model database written in Rust, designed for various use cases including embedded applications.
+
+## Performance:
+
+42877 milliseconds without parsing.
 
 #### Pros:
 
