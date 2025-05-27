@@ -7,19 +7,36 @@
 
 To solve this, there are two approaches:
 
-## Bridging with [futures::executor::block_on](https://docs.rs/futures/latest/futures/executor/fn.block_on.html)
+## Bridging with [block_in_place](https://docs.rs/tokio/latest/tokio/task/fn.block_in_place.html) & [Handle::block_on](https://docs.rs/tokio/1.45.1/tokio/runtime/struct.Handle.html#method.block_on)
 
-- With this approach, we are bridging with sync code by blocking on the async calls of the plugins' methods.
-- This shouldn't have a noticeable impact on performance as long as we don't call plugin methods too often.
+This approach bridges asynchronous operations into a synchronous context by explicitly informing the Tokio runtime about a potentially blocking operation. It then blocks on the future using the current task's executor. This method is safer than `futures::executor::block_on` because the runtime is aware of the blocking, preventing the entire Tokio runtime from becoming unresponsive. While it involves an extra step to notify the runtime, this did not cause any noticeable performance degradation.
 
 ### Advantages:
-- There is no need to change the native code or impact its performance.
-- We already avoid calling plugins too often by letting the plugin parse all the given data at once, returning a collection of parse results at once. Calling plugin methods too often negatively impacts performance, even for non-async functions.
-- Parsing inside the plugins isn't async, so blocking on it won't produce too much overhead since the parse function won't yield in-between anyway.
+* No changes are needed to the native code, thus not impacting its performance.
+* Chipmunk's design already limits frequent plugin method calls by having plugins parse and return all results in one go, which mitigates performance concerns of blocking.
+* Parsing within plugins is synchronous, so blocking on these calls introduces minimal overhead as the parse function does not yield.
+* Utilizes the main Tokio runtime executor, avoiding the overhead of a separate local executor (unlike `futures::executor::block_on`).
+* The runtime is informed about potential blocking, preventing the entire runtime from being blocked even if the plugin's `parse` call takes time.
 
 ### Disadvantages:
-- The method `parse()` is called form within an async context in method `async read_next_segment()` in the producer. It doesn't make sense from the plugin perspective to block on an async function which is called from an async context.
-- Changing `parse()` to async using Rust's native support for `async_in_trait` incurs almost no overhead to make the method async. (More info below)
+* The `parse()` method is called from an asynchronous context (`async read_next_segment()` in the producer), making the act of blocking on an asynchronous function from an asynchronous context conceptually less straightforward from the plugin's perspective.
+
+---
+
+## Bridging with [futures::executor::block_on](https://docs.rs/futures/latest/futures/executor/fn.block_on.html)
+
+This approach bridges asynchronous plugin method calls into a synchronous context by directly blocking on the future. Performance impact is minimal as long as plugin methods are not called too frequently.
+
+### Advantages:
+* No changes are needed to the native code, thus not impacting its performance.
+* Chipmunk's design already limits frequent plugin method calls by having plugins parse and return all results in one go, which mitigates performance concerns of blocking.
+* Parsing within plugins is synchronous, so blocking on these calls introduces minimal overhead as the parse function does not yield.
+
+### Disadvantages:
+* The `parse()` method is called from an asynchronous context (`async read_next_segment()` in the producer), making the act of blocking on an asynchronous function from an asynchronous context conceptually less straightforward from the plugin's perspective.
+* This method uses a local executor, separate from Tokio's main runtime executor.
+* It will block the entire Tokio runtime until the future completes, potentially causing responsiveness issues.
+* A fully asynchronous `parse()` implementation (using Rust's native `async_in_trait`) would incur minimal overhead, making `block_on` a less ideal long-term solution in comparison.
 
 
 ## Make `parse()` function Async
@@ -78,7 +95,7 @@ This basic benchmarks were done on a DLT file with a size of 541 MB.
 The results indicate:
 - Changing `parse()` to async has no negative impact on the native implementation.
 - Replacing direct references with `std::sync::Arc` has a slightly negative effect on performance.
-- Changing `parse()` to async instead of bridging using `block_on()` has no positive impact on the plugin implementation.
+- Changing `parse()` to async instead of bridging using `block_in_place` then `block_on()` has no positive impact on the plugin implementation.
 
 ## Cancel-Safety:
 
