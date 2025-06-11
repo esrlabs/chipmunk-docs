@@ -1,6 +1,20 @@
 # Optimize Data Transfer
 
-WebAssembly's isolated memory model requires copying data (raw bytes and parsed items) between the host and plugin memory spaces. This requirement presented several challenges that influenced the internal design of Chipmunk, particularly regarding data transfer with plugins.
+WebAssembly's isolated memory model requires us to copy data between the host and plugin memory spaces. This requirement created several challenges that shaped our internal design, especially for how we transfer data with plugins.
+
+## The Component Model's Approach to Memory
+
+While core WebAssembly allows for shared memory, the Component Model disallows it by design. This choice improves security and ensures that languages with different memory approaches (like those with or without a garbage collector) can interact safely.
+
+The Wasmtime runtime does provide structs to share memory between the host and a guest, but this is for core WebAssembly APIs. These specific memory-sharing tools are not used when interacting via the Component Model, which enforces a stricter boundary between components.
+
+The Component Model introduces a helpful feature called **resources**, which act like handles or pointers that can be passed efficiently between the host and guest. However, the Component Model's rules don't allow functions to return direct references to data held within a resource. Instead, to get data out, a method must return an owned value (like a `String` or `Vec`). This means the component itself must allocate memory and copy its internal data before returning it. So while resources are a great way to manage state, this again shows why copying is fundamental to component interactions.
+
+Looking forward, there is a proposal for [static buffers](https://github.com/WebAssembly/component-model/issues/314) that could help with some of these problems, but this is still a work in progress.
+
+Given the Component Model's current approach to memory, we have developed our own strategies to transfer data between the host and plugins as efficiently as possible.
+
+The following sections describe the solutions we implemented to address specific challenges.
 
 ## Data transfer with Parser Plugin
 
